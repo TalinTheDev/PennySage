@@ -1,0 +1,33 @@
+{
+  "name": "pennysage-frontend",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vue-tsc -b && vite build",
+    "preview": "vite preview",
+    "lint": "pnpm eslint src",
+    "lint:fix": "pnpm run lint -- --fix",
+    "prettier": "pnpm prettier src --check",
+    "prettier:fix": "pnpm run prettier -- --write",
+    "format": "pnpm run prettier:fix && pnpm run lint:fix"
+  },
+  "dependencies": {
+    "vue": "^3.4.29"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.5.0",
+    "@vitejs/plugin-vue": "^5.0.5",
+    "eslint": "^9.5.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-vue": "^9.26.0",
+    "globals": "^15.6.0",
+    "prettier": "^3.3.2",
+    "tslint-config-prettier": "^1.18.0",
+    "typescript": "^5.2.2",
+    "typescript-eslint": "^7.13.1",
+    "vite": "^5.3.1",
+    "vue-tsc": "^2.0.21"
+  }
+}

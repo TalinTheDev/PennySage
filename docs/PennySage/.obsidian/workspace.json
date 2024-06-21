@@ -1,0 +1,171 @@
+{
+  "main": {
+    "id": "bdc69050c2753d2d",
+    "type": "split",
+    "children": [
+      {
+        "id": "94a728895e42fe33",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "db49bba4c69768ee",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Backend.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "c52d0e064ebcbe0d",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Frontend.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "b509621faea53acf",
+    "type": "split",
+    "children": [
+      {
+        "id": "02d9c5f658fc3c85",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "1110bb5e43081afc",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "8c76da9b7ffb70a4",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "c0fdd5270969c4ff",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "834a9eb7a37a32f1",
+    "type": "split",
+    "children": [
+      {
+        "id": "11dd8a2470030bb9",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "5feba043dd0691e6",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "Backend.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "2ed94a302903b850",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "Backend.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "9b0d20b02009cd69",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              }
+            }
+          },
+          {
+            "id": "4fc9c0a18bcc8390",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "Backend.md"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
+      "obsidian-excalidraw-plugin:Create new drawing": false
+    }
+  },
+  "active": "db49bba4c69768ee",
+  "lastOpenFiles": [
+    "Frontend.md",
+    "Backend.md",
+    "Drawing 2024-06-20 13.23.11.excalidraw.md",
+    "excelidraw.md",
+    "Excalidraw",
+    "Welcome.md"
+  ]
+}

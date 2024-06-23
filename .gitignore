@@ -26,4 +26,4 @@ dist-ssr
 # Rust
 target
 .env
-*.db*
+pennysage-dev.db*

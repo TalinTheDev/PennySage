@@ -115,63 +115,66 @@ pub async fn register(
   .fetch_all(&state.db_pool)
   .await
   {
-    Ok(_) => Err((
-      StatusCode::CONFLICT,
-      json!({"success": false, "message": "Email or Username Already Exists"}).to_string(),
-    )),
-    Err(sqlx::error::Error::RowNotFound) => {
-      let id = match gen_id(crate::db::Tables::Users, &state.db_pool).await {
-        Ok(id) => id,
-        Err(_) => {
-          return Err((
+    Ok(rows) => {
+      if rows.is_empty() {
+        let id = match gen_id(crate::db::Tables::Users, &state.db_pool).await {
+          Ok(id) => id,
+          Err(_) => {
+            return Err((
+              StatusCode::INTERNAL_SERVER_ERROR,
+              json!({"success": false, "message": "Error registering user"}).to_string(),
+            ))
+          }
+        };
+        let password = match hash_password(user_details.password) {
+          Ok(p) => p,
+          Err(_) => {
+            return Err((
+              StatusCode::INTERNAL_SERVER_ERROR,
+              json!({"success": false, "message": "Error registering user"}).to_string(),
+            ))
+          }
+        };
+        match sqlx::query!("INSERT INTO users (id, username, first_name, last_name, email, password, role) VALUES (?, ?, ?, ?, ?, ?, ?);", id, user_details.username, user_details.first_name, user_details.last_name, user_details.email, password, "user").execute(&state.db_pool).await{
+          Ok(_) => {
+            let access_token = match gen_access_token(id.clone(), "user".to_string()) {
+              Ok(token) => token,
+              Err(_) => {
+                return Err((
+                  StatusCode::INTERNAL_SERVER_ERROR,
+                  json!({"success": false, "message": "Can't generate access token"}).to_string(),
+                ))
+              }
+            };
+            let refresh_token = match gen_refresh_token(id, state.db_pool).await {
+              Ok(token) => token,
+              Err(_) => {
+                return Err((
+                  StatusCode::INTERNAL_SERVER_ERROR,
+                  json!({"success": false, "message": "Can't generate refresh token"}).to_string(),
+                ))
+              }
+            };
+            let refresh_cookie = Cookie::build(("refresh_token", refresh_token))
+              .secure(true)
+              .http_only(true)
+              .same_site(SameSite::Strict);
+            Ok((
+              StatusCode::OK,
+              jar.add(refresh_cookie),
+              json!({"success": true, "data": {"access_token": access_token}}).to_string(),
+            ))
+          },
+          Err(_) => Err((
             StatusCode::INTERNAL_SERVER_ERROR,
             json!({"success": false, "message": "Error registering user"}).to_string(),
-          ))
+          )),
         }
-      };
-      let password = match hash_password(user_details.password) {
-        Ok(p) => p,
-        Err(_) => {
-          return Err((
-            StatusCode::INTERNAL_SERVER_ERROR,
-            json!({"success": false, "message": "Error registering user"}).to_string(),
-          ))
-        }
-      };
-      match sqlx::query!("INSERT INTO users (id, username, first_name, last_name, email, password, role) VALUES (?, ?, ?, ?, ?, ?, ?);", id, user_details.username, user_details.first_name, user_details.last_name, user_details.email, password, "user").execute(&state.db_pool).await{
-        Ok(_) => {
-          let access_token = match gen_access_token(id.clone(), "user".to_string()) {
-            Ok(token) => token,
-            Err(_) => {
-              return Err((
-                StatusCode::INTERNAL_SERVER_ERROR,
-                json!({"success": false, "message": "Can't generate access token"}).to_string(),
-              ))
-            }
-          };
-          let refresh_token = match gen_refresh_token(id, state.db_pool).await {
-            Ok(token) => token,
-            Err(_) => {
-              return Err((
-                StatusCode::INTERNAL_SERVER_ERROR,
-                json!({"success": false, "message": "Can't generate refresh token"}).to_string(),
-              ))
-            }
-          };
-          let refresh_cookie = Cookie::build(("refresh_token", refresh_token))
-            .secure(true)
-            .http_only(true)
-            .same_site(SameSite::Strict);
-          Ok((
-            StatusCode::OK,
-            jar.add(refresh_cookie),
-            json!({"success": true, "data": {"access_token": access_token}}).to_string(),
-          ))
-        },
-        Err(_) => Err((
-          StatusCode::INTERNAL_SERVER_ERROR,
-          json!({"success": false, "message": "Error registering user"}).to_string(),
-        )),
+      } else {
+        Err((
+          StatusCode::CONFLICT,
+          json!({"success": false, "message": "Email or Username Already Exists"}).to_string(),
+        ))
       }
     }
     Err(_) => Err((

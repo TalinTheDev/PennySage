@@ -80,7 +80,7 @@ pub async fn gen_refresh_token(
     Ok(token) => {
       match sqlx::query!("INSERT INTO refresh_tokens (id, user_id, revoked, created_at, updated_at) VALUES (?, ?, ?, ?, ?);", jti, user_id, 0, issued_at, issued_at).execute(&connection).await {
         Ok(_) => {
-          match sqlx::query!("UPDATE refresh_tokens SET revoked = 1 WHERE id != ?", jti).execute(&connection).await {
+          match sqlx::query!("UPDATE refresh_tokens SET revoked = 1 WHERE id != ? AND user_id = ?", jti, user_id).execute(&connection).await {
             Ok(_) => Ok(token),
             Err(e) => Err(Box::new(e))
           }

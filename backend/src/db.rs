@@ -21,17 +21,6 @@ pub enum Tables {
   RefreshTokens,
 }
 
-pub struct UserRecord {
-  id: String,
-  username: String,
-  email: String,
-  first_name: String,
-  last_name: String,
-  password: String,
-  family_id: Option<String>,
-  role: String,
-}
-
 pub async fn gen_id(
   table: Tables,
   connection: &sqlx::Pool<sqlx::Sqlite>,

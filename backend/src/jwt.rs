@@ -9,8 +9,8 @@ use serde::{Deserialize, Serialize};
 pub struct AccessTokenClaims {
   exp: i64, // Expiry
   iat: i64, // Issued At
-  user_id: String,
-  role: String,
+  pub user_id: String,
+  pub role: String,
 }
 
 #[derive(Serialize, Deserialize)]

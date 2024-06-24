@@ -3,6 +3,7 @@ use sqlx::{sqlite::SqlitePoolOptions, Sqlite};
 use std::{env, time::Duration};
 mod db;
 mod jwt;
+mod middleware;
 mod routes;
 
 #[derive(Clone)]

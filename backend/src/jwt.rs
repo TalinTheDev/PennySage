@@ -18,11 +18,12 @@ pub struct RefreshTokenClaims {
   exp: i64,    // Expiry
   iat: i64,    // Issued At
   jti: String, // JWT Token Identifier (saved in DB as id)
-  user_id: String,
+  pub user_id: String,
 }
 
 pub fn gen_access_token(user_id: String, role: String) -> Result<String, Box<dyn Error>> {
-  let expiration = match Local::now().checked_add_signed(Duration::minutes(5)) {
+  let expiration = match Local::now().checked_add_signed(Duration::minutes(1)) {
+    // TODO Change to 5 minutes
     Some(time) => time.timestamp(),
     None => Local::now().timestamp(),
   };
@@ -109,15 +110,20 @@ pub fn verify_access_token(
   }
 }
 
+pub enum RefreshTokenVerificationError {
+  InvalidToken,
+  ServerError,
+}
+
 /// If refresh token is valid (exp) and isn't revoked from database, return the claims. If token invalid from validation or database revoked, error returned. If error while doing this, also returns that error
 pub async fn verify_refresh_token(
   token: String,
-  connection: sqlx::Pool<sqlx::Sqlite>,
-) -> Result<RefreshTokenClaims, Box<dyn Error>> {
+  connection: &sqlx::Pool<sqlx::Sqlite>,
+) -> Result<(RefreshTokenClaims, String), RefreshTokenVerificationError> {
   match decode::<RefreshTokenClaims>(
     &token,
     &DecodingKey::from_secret(
-      env::var("JWT_SECRET")
+      env::var("JWT_REFRESH_SECRET")
         .expect("JWT secret should be set in env file")
         .as_bytes(),
     ),
@@ -125,17 +131,36 @@ pub async fn verify_refresh_token(
   ) {
     Ok(token) => {
       match sqlx::query!(
-        "SELECT * FROM refresh_tokens WHERE id = ? AND user_id = ? AND revoked = 0",
+        "SELECT * FROM users u WHERE u.id = (SELECT rt.user_id FROM refresh_tokens rt WHERE rt.id = ? AND rt.user_id = ? AND revoked = 0)",
         token.claims.jti,
         token.claims.user_id
       )
-      .fetch_one(&connection)
+      .fetch_one(connection)
       .await
       {
-        Ok(_) => Ok(token.claims),
-        Err(e) => Err(Box::new(e)),
+        Ok(user) => Ok((token.claims, user.role)),
+        Err(e) => {
+          match e {
+            sqlx::Error::RowNotFound => Err(RefreshTokenVerificationError::InvalidToken),
+            _ => Err(RefreshTokenVerificationError::ServerError)
+          }
+        }
       }
     }
-    Err(e) => Err(Box::new(e)),
+    Err(e) => {
+      match e.into_kind() {
+        jsonwebtoken::errors::ErrorKind::ExpiredSignature => Err(RefreshTokenVerificationError::InvalidToken),
+        jsonwebtoken::errors::ErrorKind::InvalidToken => Err(RefreshTokenVerificationError::InvalidToken),
+        jsonwebtoken::errors::ErrorKind::InvalidSignature => Err(RefreshTokenVerificationError::InvalidToken),
+        jsonwebtoken::errors::ErrorKind::MissingRequiredClaim(_) => Err(RefreshTokenVerificationError::InvalidToken),
+        jsonwebtoken::errors::ErrorKind::InvalidIssuer => Err(RefreshTokenVerificationError::InvalidToken),
+        jsonwebtoken::errors::ErrorKind::InvalidAudience => Err(RefreshTokenVerificationError::InvalidToken),
+        jsonwebtoken::errors::ErrorKind::InvalidSubject => Err(RefreshTokenVerificationError::InvalidToken),
+        jsonwebtoken::errors::ErrorKind::ImmatureSignature => Err(RefreshTokenVerificationError::InvalidToken),
+        jsonwebtoken::errors::ErrorKind::InvalidAlgorithm => Err(RefreshTokenVerificationError::InvalidToken),
+        jsonwebtoken::errors::ErrorKind::Utf8(_) => Err(RefreshTokenVerificationError::InvalidToken),
+        _ => Err(RefreshTokenVerificationError::ServerError)
+      }
+    }
   }
 }

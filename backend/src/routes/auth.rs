@@ -53,7 +53,7 @@ pub async fn login(
   match sqlx::query!(
     "SELECT * FROM users WHERE username = ? OR email = ?",
     user_details.username,
-    user_details.username
+    user_details.email
   )
   .fetch_one(&state.db_pool)
   .await

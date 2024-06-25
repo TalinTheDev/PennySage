@@ -1,4 +1,9 @@
-use axum::Router;
+use axum::{
+  http::StatusCode,
+  response::{IntoResponse, Response},
+  Router,
+};
+use serde_json::json;
 
 use crate::AppState;
 mod auth;
@@ -8,4 +13,20 @@ pub fn app() -> Router<AppState> {
   Router::new()
     .nest("/auth", auth::routes())
     .nest("/transactions", transactions::routes())
+}
+
+pub struct ApiError {
+  pub code: StatusCode,
+  pub message: String,
+}
+
+impl IntoResponse for ApiError {
+  fn into_response(self) -> Response {
+    (
+      self.code,
+      json!({"success": false, "message": format!("Something went wrong: {}", self.message)})
+        .to_string(),
+    )
+      .into_response()
+  }
 }

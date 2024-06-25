@@ -1,6 +1,7 @@
-use std::{env, error::Error};
+use std::env;
 
-use crate::db::gen_id;
+use crate::{db::gen_id, routes::ApiError};
+use axum::http::StatusCode;
 use chrono::{Duration, Local};
 use jsonwebtoken::{decode, encode, DecodingKey, EncodingKey, Header, Validation};
 use serde::{Deserialize, Serialize};
@@ -9,7 +10,7 @@ use serde::{Deserialize, Serialize};
 pub struct AccessTokenClaims {
   exp: i64, // Expiry
   iat: i64, // Issued At
-  pub user_id: String,
+  pub id: String,
   pub role: String,
 }
 
@@ -21,7 +22,7 @@ pub struct RefreshTokenClaims {
   pub user_id: String,
 }
 
-pub fn gen_access_token(user_id: String, role: String) -> Result<String, Box<dyn Error>> {
+pub fn gen_access_token(user_id: String, role: String) -> Result<String, ApiError> {
   let expiration = match Local::now().checked_add_signed(Duration::minutes(1)) {
     // TODO Change to 5 minutes
     Some(time) => time.timestamp(),
@@ -32,7 +33,7 @@ pub fn gen_access_token(user_id: String, role: String) -> Result<String, Box<dyn
   let claims = AccessTokenClaims {
     exp: expiration,
     iat: issued_at,
-    user_id,
+    id: user_id,
     role,
   };
   match encode(
@@ -45,14 +46,17 @@ pub fn gen_access_token(user_id: String, role: String) -> Result<String, Box<dyn
     ),
   ) {
     Ok(token) => Ok(token),
-    Err(e) => Err(Box::new(e)),
+    Err(_) => Err(ApiError {
+      code: StatusCode::INTERNAL_SERVER_ERROR,
+      message: "Can't generate access token".to_string(),
+    }),
   }
 }
 
 pub async fn gen_refresh_token(
   user_id: String,
   connection: sqlx::Pool<sqlx::Sqlite>,
-) -> Result<String, Box<dyn Error>> {
+) -> Result<String, ApiError> {
   let expiration = match Local::now().checked_add_signed(Duration::days(7)) {
     Some(time) => time.timestamp(),
     None => Local::now().timestamp(),
@@ -61,7 +65,12 @@ pub async fn gen_refresh_token(
   let issued_at = Local::now().timestamp();
   let jti = match gen_id(crate::db::Tables::RefreshTokens, &connection).await {
     Ok(jti) => jti,
-    Err(e) => return Err(Box::new(e)),
+    Err(_) => {
+      return Err(ApiError {
+        code: StatusCode::INTERNAL_SERVER_ERROR,
+        message: "Can't generate refresh token".to_string(),
+      })
+    }
   };
   let claims = RefreshTokenClaims {
     exp: expiration,
@@ -83,19 +92,26 @@ pub async fn gen_refresh_token(
         Ok(_) => {
           match sqlx::query!("UPDATE refresh_tokens SET revoked = 1 WHERE id != ? AND user_id = ?", jti, user_id).execute(&connection).await {
             Ok(_) => Ok(token),
-            Err(e) => Err(Box::new(e))
+            Err(_) => Err(ApiError {
+              code: StatusCode::INTERNAL_SERVER_ERROR,
+              message: "Can't generate refresh token".to_string(),
+            })
           }
         },
-        Err(e) => Err(Box::new(e))
+        Err(_) => Err(ApiError {
+          code: StatusCode::INTERNAL_SERVER_ERROR,
+          message: "Can't generate refresh token".to_string(),
+        })
       }
     },
-    Err(e) => Err(Box::new(e)),
+    Err(_) => Err(ApiError {
+      code: StatusCode::INTERNAL_SERVER_ERROR,
+      message: "Can't generate refresh token".to_string(),
+    }),
   }
 }
 
-pub fn verify_access_token(
-  token: String,
-) -> Result<AccessTokenClaims, jsonwebtoken::errors::Error> {
+pub fn verify_access_token(token: String) -> Result<AccessTokenClaims, ApiError> {
   match decode::<AccessTokenClaims>(
     &token,
     &DecodingKey::from_secret(
@@ -106,20 +122,26 @@ pub fn verify_access_token(
     &Validation::default(),
   ) {
     Ok(token) => Ok(token.claims),
-    Err(e) => Err(e),
+    Err(_) => Err(ApiError {
+      code: StatusCode::UNAUTHORIZED,
+      message: "Access token could not be verified".to_string(),
+    }),
   }
-}
-
-pub enum RefreshTokenVerificationError {
-  InvalidToken,
-  ServerError,
 }
 
 /// If refresh token is valid (exp) and isn't revoked from database, return the claims. If token invalid from validation or database revoked, error returned. If error while doing this, also returns that error
 pub async fn verify_refresh_token(
   token: String,
   connection: &sqlx::Pool<sqlx::Sqlite>,
-) -> Result<(RefreshTokenClaims, String), RefreshTokenVerificationError> {
+) -> Result<(RefreshTokenClaims, String), ApiError> {
+  let auth_error = ApiError {
+    code: StatusCode::UNAUTHORIZED,
+    message: "Error refreshing tokens (unauthorized)".to_string(),
+  };
+  let server_error = ApiError {
+    code: StatusCode::INTERNAL_SERVER_ERROR,
+    message: "Error refreshing tokens".to_string(),
+  };
   match decode::<RefreshTokenClaims>(
     &token,
     &DecodingKey::from_secret(
@@ -141,25 +163,25 @@ pub async fn verify_refresh_token(
         Ok(user) => Ok((token.claims, user.role)),
         Err(e) => {
           match e {
-            sqlx::Error::RowNotFound => Err(RefreshTokenVerificationError::InvalidToken),
-            _ => Err(RefreshTokenVerificationError::ServerError)
+            sqlx::Error::RowNotFound => Err(auth_error),
+            _ => Err(server_error)
           }
         }
       }
     }
     Err(e) => {
       match e.into_kind() {
-        jsonwebtoken::errors::ErrorKind::ExpiredSignature => Err(RefreshTokenVerificationError::InvalidToken),
-        jsonwebtoken::errors::ErrorKind::InvalidToken => Err(RefreshTokenVerificationError::InvalidToken),
-        jsonwebtoken::errors::ErrorKind::InvalidSignature => Err(RefreshTokenVerificationError::InvalidToken),
-        jsonwebtoken::errors::ErrorKind::MissingRequiredClaim(_) => Err(RefreshTokenVerificationError::InvalidToken),
-        jsonwebtoken::errors::ErrorKind::InvalidIssuer => Err(RefreshTokenVerificationError::InvalidToken),
-        jsonwebtoken::errors::ErrorKind::InvalidAudience => Err(RefreshTokenVerificationError::InvalidToken),
-        jsonwebtoken::errors::ErrorKind::InvalidSubject => Err(RefreshTokenVerificationError::InvalidToken),
-        jsonwebtoken::errors::ErrorKind::ImmatureSignature => Err(RefreshTokenVerificationError::InvalidToken),
-        jsonwebtoken::errors::ErrorKind::InvalidAlgorithm => Err(RefreshTokenVerificationError::InvalidToken),
-        jsonwebtoken::errors::ErrorKind::Utf8(_) => Err(RefreshTokenVerificationError::InvalidToken),
-        _ => Err(RefreshTokenVerificationError::ServerError)
+        jsonwebtoken::errors::ErrorKind::ExpiredSignature => Err(auth_error),
+        jsonwebtoken::errors::ErrorKind::InvalidToken => Err(auth_error),
+        jsonwebtoken::errors::ErrorKind::InvalidSignature => Err(auth_error),
+        jsonwebtoken::errors::ErrorKind::MissingRequiredClaim(_) => Err(auth_error),
+        jsonwebtoken::errors::ErrorKind::InvalidIssuer => Err(auth_error),
+        jsonwebtoken::errors::ErrorKind::InvalidAudience => Err(auth_error),
+        jsonwebtoken::errors::ErrorKind::InvalidSubject => Err(auth_error),
+        jsonwebtoken::errors::ErrorKind::ImmatureSignature => Err(auth_error),
+        jsonwebtoken::errors::ErrorKind::InvalidAlgorithm => Err(auth_error),
+        jsonwebtoken::errors::ErrorKind::Utf8(_) => Err(auth_error),
+        _ => Err(server_error)
       }
     }
   }

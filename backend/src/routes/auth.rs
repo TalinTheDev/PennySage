@@ -1,6 +1,6 @@
 use crate::{
   db::{gen_id, hash_password, verify_password},
-  jwt::{gen_access_token, gen_refresh_token, verify_refresh_token, RefreshTokenVerificationError},
+  jwt::{gen_access_token, gen_refresh_token, verify_refresh_token},
   AppState,
 };
 use axum::{extract::State, http::StatusCode, routing::post, Form, Router};
@@ -11,6 +11,8 @@ use axum_extra::extract::{
 use cookie::Cookie;
 use serde::Deserialize;
 use serde_json::json;
+
+use super::ApiError;
 
 pub fn routes() -> Router<AppState> {
   Router::new()
@@ -30,7 +32,7 @@ pub async fn login(
   State(state): State<crate::AppState>,
   jar: CookieJar,
   Form(user_details): Form<LoginReq>,
-) -> Result<(StatusCode, CookieJar, String), (StatusCode, String)> {
+) -> Result<(StatusCode, CookieJar, String), ApiError> {
   match sqlx::query!(
     "SELECT * FROM users WHERE username = ? OR email = ?",
     user_details.username,
@@ -47,27 +49,22 @@ pub async fn login(
             Err(e) => Err(e),
           }
         } else {
-          Err((
-            StatusCode::UNAUTHORIZED,
-            json!({"success": false, "message": "Invalid username/password combo."}).to_string(),
-          ))
+          Err(ApiError {
+            code: StatusCode::UNAUTHORIZED,
+            message: "Invalid username/password combo.".to_string(),
+          })
         }
       }
-      Err(_) => Err((
-        StatusCode::INTERNAL_SERVER_ERROR,
-        json!({"success": false, "message": "Internal server error while authenticating user"})
-          .to_string(),
-      )),
+      Err(e) => Err(e),
     },
-    Err(sqlx::Error::RowNotFound) => Err((
-      StatusCode::UNAUTHORIZED,
-      json!({"success": false, "message": "Invalid username/password combo."}).to_string(),
-    )),
-    Err(_) => Err((
-      StatusCode::INTERNAL_SERVER_ERROR,
-      json!({"success": false, "message": "Internal server error while looking up user"})
-        .to_string(),
-    )),
+    Err(sqlx::Error::RowNotFound) => Err(ApiError {
+      code: StatusCode::UNAUTHORIZED,
+      message: "Invalid username/password combo.".to_string(),
+    }),
+    Err(_) => Err(ApiError {
+      code: StatusCode::INTERNAL_SERVER_ERROR,
+      message: "Internal server error while looking up user".to_string(),
+    }),
   }
 }
 
@@ -84,7 +81,7 @@ pub async fn register(
   State(state): State<crate::AppState>,
   jar: CookieJar,
   Form(user_details): Form<RegisterReq>,
-) -> Result<(StatusCode, CookieJar, String), (StatusCode, String)> {
+) -> Result<(StatusCode, CookieJar, String), ApiError> {
   match sqlx::query!(
     "SELECT * FROM users WHERE username = ? OR email = ?;",
     user_details.username,
@@ -97,21 +94,11 @@ pub async fn register(
       if rows.is_empty() {
         let id = match gen_id(crate::db::Tables::Users, &state.db_pool).await {
           Ok(id) => id,
-          Err(_) => {
-            return Err((
-              StatusCode::INTERNAL_SERVER_ERROR,
-              json!({"success": false, "message": "Error registering user"}).to_string(),
-            ))
-          }
+          Err(e) => return Err(e),
         };
         let password = match hash_password(user_details.password) {
           Ok(p) => p,
-          Err(_) => {
-            return Err((
-              StatusCode::INTERNAL_SERVER_ERROR,
-              json!({"success": false, "message": "Error registering user"}).to_string(),
-            ))
-          }
+          Err(e) => return Err(e),
         };
         let role = "user";
         match sqlx::query!("INSERT INTO users (id, username, first_name, last_name, email, password, role) VALUES (?, ?, ?, ?, ?, ?, ?);", id, user_details.username, user_details.first_name, user_details.last_name, user_details.email, password, role).execute(&state.db_pool).await{
@@ -121,36 +108,36 @@ pub async fn register(
               Err(e) => Err(e),
             }
           },
-          Err(_) => Err((
-            StatusCode::INTERNAL_SERVER_ERROR,
-            json!({"success": false, "message": "Error registering user"}).to_string(),
-          )),
+          Err(_) => Err(ApiError {
+            code: StatusCode::INTERNAL_SERVER_ERROR,
+            message: "Error registering user".to_string(),
+          }),
         }
       } else {
-        Err((
-          StatusCode::CONFLICT,
-          json!({"success": false, "message": "Email or Username Already Exists"}).to_string(),
-        ))
+        Err(ApiError {
+          code: StatusCode::CONFLICT,
+          message: "Email or Username Already Exists".to_string(),
+        })
       }
     }
-    Err(_) => Err((
-      StatusCode::INTERNAL_SERVER_ERROR,
-      json!({"success": false, "message": "Error registering user"}).to_string(),
-    )),
+    Err(_) => Err(ApiError {
+      code: StatusCode::INTERNAL_SERVER_ERROR,
+      message: "Error registering user".to_string(),
+    }),
   }
 }
 #[axum::debug_handler]
 pub async fn refresh_tokens(
   State(state): State<crate::AppState>,
   jar: CookieJar,
-) -> Result<(StatusCode, CookieJar, String), (StatusCode, String)> {
+) -> Result<(StatusCode, CookieJar, String), ApiError> {
   let refresh_token = match jar.get("refresh_token") {
     Some(token) => token.value().to_owned(),
     None => {
-      return Err((
-        StatusCode::UNAUTHORIZED,
-        json!({"success": false, "message": "Refresh token not found"}).to_string(),
-      ))
+      return Err(ApiError {
+        code: StatusCode::UNAUTHORIZED,
+        message: "Refresh token not found".to_string(),
+      })
     }
   };
   match verify_refresh_token(refresh_token, &state.db_pool).await {
@@ -158,16 +145,7 @@ pub async fn refresh_tokens(
       Ok(tokens) => Ok((StatusCode::OK, tokens.0, tokens.1)),
       Err(e) => Err(e),
     },
-    Err(e) => match e {
-      RefreshTokenVerificationError::InvalidToken => Err((
-        StatusCode::UNAUTHORIZED,
-        json!({"success": false, "message": "Error refreshing tokens (unauthorized)"}).to_string(),
-      )),
-      RefreshTokenVerificationError::ServerError => Err((
-        StatusCode::INTERNAL_SERVER_ERROR,
-        json!({"success": false, "message": "Error refreshing tokens"}).to_string(),
-      )),
-    },
+    Err(e) => Err(e),
   }
 }
 
@@ -176,24 +154,14 @@ async fn set_tokens(
   user_role: String,
   jar: CookieJar,
   db: sqlx::Pool<sqlx::Sqlite>,
-) -> Result<(CookieJar, String), (StatusCode, String)> {
+) -> Result<(CookieJar, String), ApiError> {
   let access_token = match gen_access_token(user_id.clone(), user_role) {
     Ok(token) => token,
-    Err(_) => {
-      return Err((
-        StatusCode::INTERNAL_SERVER_ERROR,
-        json!({"success": false, "message": "Can't generate access token"}).to_string(),
-      ))
-    }
+    Err(e) => return Err(e),
   };
   let refresh_token = match gen_refresh_token(user_id, db).await {
     Ok(token) => token,
-    Err(_) => {
-      return Err((
-        StatusCode::INTERNAL_SERVER_ERROR,
-        json!({"success": false, "message": "Can't generate refresh token"}).to_string(),
-      ))
-    }
+    Err(e) => return Err(e),
   };
   let refresh_cookie = Cookie::build(("refresh_token", refresh_token))
     .secure(true)

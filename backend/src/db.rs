@@ -2,9 +2,12 @@ use argon2::{
   password_hash::{rand_core::OsRng, PasswordHash, PasswordHasher, PasswordVerifier, SaltString},
   Argon2,
 };
+use axum::http::StatusCode;
 use nanoid::nanoid;
 use serde::{Deserialize, Serialize};
 use sqlx::Error;
+
+use crate::routes::ApiError;
 
 #[derive(Serialize, Deserialize)]
 pub enum Roles {
@@ -24,7 +27,7 @@ pub enum Tables {
 pub async fn gen_id(
   table: Tables,
   connection: &sqlx::Pool<sqlx::Sqlite>,
-) -> Result<String, sqlx::Error> {
+) -> Result<String, ApiError> {
   let mut id;
   let mut query = "SELECT * FROM".to_owned();
   match table {
@@ -41,27 +44,40 @@ pub async fn gen_id(
     match statement.fetch_one(connection).await {
       Ok(_) => continue,
       Err(Error::RowNotFound) => return Ok(id),
-      Err(e) => return Err(e),
+      Err(_) => {
+        return Err(ApiError {
+          code: StatusCode::INTERNAL_SERVER_ERROR,
+          message: "Error registering user".to_string(),
+        })
+      }
     }
   }
 }
 
-pub fn hash_password(password: String) -> Result<String, argon2::password_hash::errors::Error> {
+pub fn hash_password(password: String) -> Result<String, ApiError> {
   let salt = SaltString::generate(&mut OsRng);
   let argon2 = Argon2::default();
   let hashed_password = argon2.hash_password(password.as_bytes(), &salt);
 
   match hashed_password {
     Ok(hp) => Ok(hp.to_string()),
-    Err(e) => Err(e),
+    Err(_) => Err(ApiError {
+      code: StatusCode::INTERNAL_SERVER_ERROR,
+      message: "Error registering user".to_string(),
+    }),
   }
 }
 
-pub fn verify_password(
-  password: String,
-  hash: String,
-) -> Result<bool, argon2::password_hash::errors::Error> {
-  let parsed_hash = PasswordHash::new(&hash)?;
+pub fn verify_password(password: String, hash: String) -> Result<bool, ApiError> {
+  let parsed_hash = match PasswordHash::new(&hash) {
+    Ok(hash) => hash,
+    Err(_) => {
+      return Err(ApiError {
+        code: StatusCode::INTERNAL_SERVER_ERROR,
+        message: "Internal server error while authenticating user".to_string(),
+      });
+    }
+  };
   Ok(
     Argon2::default()
       .verify_password(password.as_bytes(), &parsed_hash)

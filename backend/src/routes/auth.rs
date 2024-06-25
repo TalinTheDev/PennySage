@@ -11,6 +11,7 @@ use axum_extra::extract::{
 use cookie::Cookie;
 use serde::Deserialize;
 use serde_json::json;
+use validator::{Validate, ValidationError};
 
 use super::ApiError;
 
@@ -21,9 +22,13 @@ pub fn routes() -> Router<AppState> {
     .route("/refresh_tokens", post(refresh_tokens))
 }
 
-#[derive(Deserialize)]
+#[derive(Deserialize, Validate)]
 pub struct LoginReq {
-  username: String,
+  #[validate(email(message = "Invalid Email"))]
+  email: Option<String>,
+  #[validate(length(min = 1, message = "Invalid username format"))]
+  username: Option<String>,
+  #[validate(length(min = 1, message = "Invalid password format"))]
   password: String,
 }
 
@@ -33,6 +38,18 @@ pub async fn login(
   jar: CookieJar,
   Form(user_details): Form<LoginReq>,
 ) -> Result<(StatusCode, CookieJar, String), ApiError> {
+  if user_details.email.is_none() && user_details.username.is_none() {
+    return Err(ApiError {
+      code: StatusCode::BAD_REQUEST,
+      message: "Email or username not provided".to_string(),
+    });
+  }
+  if user_details.validate().err().is_some() {
+    return Err(ApiError {
+      code: StatusCode::BAD_REQUEST,
+      message: "Details provided have an invalid format.".to_string(), // TODO: Try to also tell which fields are invalid.
+    });
+  }
   match sqlx::query!(
     "SELECT * FROM users WHERE username = ? OR email = ?",
     user_details.username,
@@ -68,12 +85,17 @@ pub async fn login(
   }
 }
 
-#[derive(Deserialize)]
+#[derive(Deserialize, Validate)]
 pub struct RegisterReq {
+  #[validate(length(min = 1, message = "Invalid username format"))]
   username: String,
+  #[validate(email(message = "Invalid Email"))]
   email: String,
+  #[validate(length(min = 1, message = "Invalid password format"))]
   password: String,
+  #[validate(length(min = 1, message = "Invalid first name format"))]
   first_name: String,
+  #[validate(length(min = 1, message = "Invalid last name format"))]
   last_name: String,
 }
 
@@ -82,6 +104,12 @@ pub async fn register(
   jar: CookieJar,
   Form(user_details): Form<RegisterReq>,
 ) -> Result<(StatusCode, CookieJar, String), ApiError> {
+  if user_details.validate().err().is_some() {
+    return Err(ApiError {
+      code: StatusCode::BAD_REQUEST,
+      message: "Details provided have an invalid format.".to_string(), // TODO: Try to also tell which fields are invalid.
+    });
+  }
   match sqlx::query!(
     "SELECT * FROM users WHERE username = ? OR email = ?;",
     user_details.username,

@@ -1,9 +1,10 @@
+use super::{ApiError, ApiRes, OkRes};
 use crate::{db::gen_id, jwt::AccessTokenClaims, AppState};
 use axum::{
   extract::State,
   http::StatusCode,
   routing::{get, post},
-  Form, Json, Router,
+  Json, Router,
 };
 use chrono::DateTime;
 use rust_decimal::prelude::ToPrimitive;
@@ -11,8 +12,6 @@ use rust_decimal::Decimal;
 use serde::{Deserialize, Serialize};
 use serde_json::json;
 use validator::{Validate, ValidationError};
-
-use super::{ApiError, OkRes};
 
 pub fn routes() -> Router<AppState> {
   Router::new()
@@ -161,7 +160,7 @@ pub struct TransactionItem {
 pub async fn get_transactions(
   State(state): State<crate::AppState>,
   user: AccessTokenClaims,
-) -> Result<(StatusCode, Json<OkRes<Vec<TransactionsRes>>>), ApiError> {
+) -> ApiRes<Vec<TransactionsRes>, String> {
   let mut results: Vec<TransactionsRes> = Vec::new();
   match sqlx::query_as!(TransactionRow, "SELECT id, description AS desc, date, amount, type, merchant, category, payment_source FROM transactions WHERE user_id = ?;", user.id).fetch_all(&state.db_pool).await {
     Ok(rows) => {
@@ -172,14 +171,15 @@ pub async fn get_transactions(
           }
           Err(e) => match e {
             sqlx::Error::RowNotFound => results.push(TransactionsRes{transaction: row.clone(), items: None}),
-            _ => return Err(ApiError{code: StatusCode::INTERNAL_SERVER_ERROR, message: "Could not fetch transaction items from database".to_string()}),}
+            _ => return ApiRes { success: false, status: StatusCode::INTERNAL_SERVER_ERROR, data: None, error: Some("Could not fetch transaction items from database".to_string()) }
+          }
         }
       }
-      Ok((StatusCode::OK, Json(OkRes{success: true, data: results})))
+      ApiRes{ success: true, status: StatusCode::OK, data: Some(results), error: None}
     },
     Err(e) => match e {
-      sqlx::Error::RowNotFound => Ok((StatusCode::OK, Json(OkRes{success: true, data: results}))),
-      _ => Err(ApiError{code: StatusCode::INTERNAL_SERVER_ERROR, message: "Could not fetch transactions from database".to_string()})
+      sqlx::Error::RowNotFound => ApiRes{ success: true, status: StatusCode::OK, data: Some(results), error: None},
+      _ => ApiRes { success: false, status: StatusCode::INTERNAL_SERVER_ERROR, data: None, error: Some("Could not fetch transactions from database".to_string()) }
     }
   }
 }

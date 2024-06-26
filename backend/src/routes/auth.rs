@@ -11,7 +11,7 @@ use axum_extra::extract::{
 use cookie::Cookie;
 use serde::Deserialize;
 use serde_json::json;
-use validator::{Validate, ValidationError};
+use validator::Validate;
 
 use super::ApiError;
 

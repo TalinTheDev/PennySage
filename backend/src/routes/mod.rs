@@ -3,6 +3,7 @@ use axum::{
   response::{IntoResponse, Response},
   Router,
 };
+use serde::Serialize;
 use serde_json::json;
 
 use crate::AppState;
@@ -29,4 +30,10 @@ impl IntoResponse for ApiError {
     )
       .into_response()
   }
+}
+
+#[derive(Serialize)]
+pub struct OkRes<T> {
+  success: bool,
+  data: T,
 }

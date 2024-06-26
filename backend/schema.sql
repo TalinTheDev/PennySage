@@ -21,6 +21,7 @@ CREATE TABLE IF NOT EXISTS transactions (
 	merchant TEXT NOT NULL DEFAULT 'Merchant N/A', -- With whoom the transaction was conducted
 	category TEXT NOT NULL DEFAULT 'Category N/A', -- General type of transaction
 	payment_source TEXT NOT NULL DEFAULT 'Payment_Source N/A', -- Where the money came from
+	type TEXT NOT NULL DEFAULT "debt",
 
 	FOREIGN KEY(user_id) REFERENCES users(id) ON UPDATE CASCADE ON DELETE SET NULL
 	FOREIGN KEY(family_id) REFERENCES families(id) ON UPDATE CASCADE ON DELETE SET NULL

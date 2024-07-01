@@ -11,7 +11,7 @@
     "lint:fix": "pnpm run lint -- --fix",
     "prettier": "pnpm prettier src --check",
     "prettier:fix": "pnpm run prettier -- --write",
-    "format": "pnpm run prettier:fix && pnpm run lint:fix"
+    "format": "pnpm run prettier:fix & pnpm run lint:fix"
   },
   "dependencies": {
     "vue": "^3.4.29"

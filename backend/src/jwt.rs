@@ -1,6 +1,6 @@
 use std::env;
 
-use crate::{db::gen_id, routes::ApiError};
+use crate::{db::gen_id, routes::ApiRes};
 use axum::http::StatusCode;
 use chrono::{Duration, Local};
 use jsonwebtoken::{decode, encode, DecodingKey, EncodingKey, Header, Validation};
@@ -22,9 +22,11 @@ pub struct RefreshTokenClaims {
   pub user_id: String,
 }
 
-pub fn gen_access_token(user_id: String, role: String) -> Result<String, ApiError> {
+pub fn gen_access_token(
+  user_id: String,
+  role: String,
+) -> Result<String, ApiRes<'static, String, String>> {
   let expiration = match Local::now().checked_add_signed(Duration::minutes(5)) {
-    // TODO Change to 5 minutes
     Some(time) => time.timestamp(),
     None => Local::now().timestamp(),
   };
@@ -46,9 +48,12 @@ pub fn gen_access_token(user_id: String, role: String) -> Result<String, ApiErro
     ),
   ) {
     Ok(token) => Ok(token),
-    Err(_) => Err(ApiError {
-      code: StatusCode::INTERNAL_SERVER_ERROR,
-      message: "Can't generate access token".to_string(),
+    Err(_) => Err(ApiRes {
+      success: false,
+      status: StatusCode::INTERNAL_SERVER_ERROR,
+      cookies: None,
+      data: None,
+      error: Some("Can't generate access token".to_string()),
     }),
   }
 }
@@ -56,7 +61,7 @@ pub fn gen_access_token(user_id: String, role: String) -> Result<String, ApiErro
 pub async fn gen_refresh_token(
   user_id: String,
   connection: sqlx::Pool<sqlx::Sqlite>,
-) -> Result<String, ApiError> {
+) -> Result<String, ApiRes<'static, String, String>> {
   let expiration = match Local::now().checked_add_signed(Duration::days(7)) {
     Some(time) => time.timestamp(),
     None => Local::now().timestamp(),
@@ -66,9 +71,12 @@ pub async fn gen_refresh_token(
   let jti = match gen_id(crate::db::Tables::RefreshTokens, &connection).await {
     Ok(jti) => jti,
     Err(_) => {
-      return Err(ApiError {
-        code: StatusCode::INTERNAL_SERVER_ERROR,
-        message: "Can't generate refresh token".to_string(),
+      return Err(ApiRes {
+        success: false,
+        status: StatusCode::INTERNAL_SERVER_ERROR,
+        cookies: None,
+        data: None,
+        error: Some("Can't generate refresh token".to_string()),
       })
     }
   };
@@ -92,26 +100,37 @@ pub async fn gen_refresh_token(
         Ok(_) => {
           match sqlx::query!("UPDATE refresh_tokens SET revoked = 1 WHERE id != ? AND user_id = ?", jti, user_id).execute(&connection).await {
             Ok(_) => Ok(token),
-            Err(_) => Err(ApiError {
-              code: StatusCode::INTERNAL_SERVER_ERROR,
-              message: "Can't generate refresh token".to_string(),
+            Err(_) => Err(ApiRes {
+              success: false,
+              status: StatusCode::INTERNAL_SERVER_ERROR,
+              cookies: None,
+              data: None,
+              error: Some("Can't generate refresh token".to_string()),
             })
           }
         },
-        Err(_) => Err(ApiError {
-          code: StatusCode::INTERNAL_SERVER_ERROR,
-          message: "Can't generate refresh token".to_string(),
+        Err(_) =>Err(ApiRes {
+          success: false,
+          status: StatusCode::INTERNAL_SERVER_ERROR,
+          cookies: None,
+          data: None,
+          error: Some("Can't generate refresh token".to_string()),
         })
       }
     },
-    Err(_) => Err(ApiError {
-      code: StatusCode::INTERNAL_SERVER_ERROR,
-      message: "Can't generate refresh token".to_string(),
-    }),
+    Err(_) => Err(ApiRes {
+      success: false,
+      status: StatusCode::INTERNAL_SERVER_ERROR,
+      cookies: None,
+      data: None,
+      error: Some("Can't generate refresh token".to_string()),
+    })
   }
 }
 
-pub fn verify_access_token(token: String) -> Result<AccessTokenClaims, ApiError> {
+pub fn verify_access_token(
+  token: String,
+) -> Result<AccessTokenClaims, ApiRes<'static, String, String>> {
   match decode::<AccessTokenClaims>(
     &token,
     &DecodingKey::from_secret(
@@ -122,9 +141,12 @@ pub fn verify_access_token(token: String) -> Result<AccessTokenClaims, ApiError>
     &Validation::default(),
   ) {
     Ok(token) => Ok(token.claims),
-    Err(_) => Err(ApiError {
-      code: StatusCode::UNAUTHORIZED,
-      message: "Access token could not be verified".to_string(),
+    Err(_) => Err(ApiRes {
+      success: false,
+      status: StatusCode::UNAUTHORIZED,
+      cookies: None,
+      data: None,
+      error: Some("Access token could not be verified".to_string()),
     }),
   }
 }
@@ -133,14 +155,20 @@ pub fn verify_access_token(token: String) -> Result<AccessTokenClaims, ApiError>
 pub async fn verify_refresh_token(
   token: String,
   connection: &sqlx::Pool<sqlx::Sqlite>,
-) -> Result<(RefreshTokenClaims, String), ApiError> {
-  let auth_error = ApiError {
-    code: StatusCode::UNAUTHORIZED,
-    message: "Error refreshing tokens (unauthorized)".to_string(),
+) -> Result<(RefreshTokenClaims, String), ApiRes<'static, String, String>> {
+  let auth_error = ApiRes {
+    success: false,
+    status: StatusCode::UNAUTHORIZED,
+    cookies: None,
+    data: None,
+    error: Some("Error refreshing tokens (unauthorized)".to_string()),
   };
-  let server_error = ApiError {
-    code: StatusCode::INTERNAL_SERVER_ERROR,
-    message: "Error refreshing tokens".to_string(),
+  let server_error = ApiRes {
+    success: false,
+    status: StatusCode::INTERNAL_SERVER_ERROR,
+    cookies: None,
+    data: None,
+    error: Some("Error refreshing tokens".to_string()),
   };
   match decode::<RefreshTokenClaims>(
     &token,
@@ -153,7 +181,7 @@ pub async fn verify_refresh_token(
   ) {
     Ok(token) => {
       match sqlx::query!(
-        "SELECT * FROM users u WHERE u.id = (SELECT rt.user_id FROM refresh_tokens rt WHERE rt.id = ? AND rt.user_id = ? AND revoked = 0)",
+        "SELECT role FROM users u WHERE u.id = (SELECT rt.user_id FROM refresh_tokens rt WHERE rt.id = ? AND rt.user_id = ? AND revoked = 0)",
         token.claims.jti,
         token.claims.user_id
       )

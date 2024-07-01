@@ -1,9 +1,10 @@
 use axum::{
   body::Body,
-  http::StatusCode,
+  http::{header::SET_COOKIE, StatusCode},
   response::{IntoResponse, Response},
   Router,
 };
+use axum_extra::extract::cookie::Cookie;
 use serde::Serialize;
 use serde_json::json;
 
@@ -39,51 +40,55 @@ pub struct OkRes<T> {
   data: T,
 }
 
-pub struct ApiRes<D, E> {
-  success: bool,
-  status: StatusCode,
-  data: Option<D>,
-  error: Option<E>,
+pub struct ApiRes<'c, D, E> {
+  pub success: bool,
+  pub cookies: Option<Vec<Cookie<'c>>>,
+  pub status: StatusCode,
+  pub data: Option<D>,
+  pub error: Option<E>,
 }
 
-impl<D, E> IntoResponse for ApiRes<D, E>
+impl<'c, D, E> IntoResponse for ApiRes<'c, D, E>
 where
   D: Serialize,
   E: Serialize,
 {
   fn into_response(self) -> Response {
+    let mut builder = Response::builder()
+      .status(self.status)
+      .header("Content-Type", "application/json");
+
+    let header_map = builder.headers_mut().expect("Failed to get headers");
+    if let Some(cookies) = self.cookies {
+      for cookie in cookies {
+        header_map.append(
+          SET_COOKIE,
+          cookie
+            .encoded()
+            .to_string()
+            .parse()
+            .expect("Failed to encode cookie"),
+        );
+      }
+    }
     if self.success {
       if let Some(d) = self.data {
         Response::builder()
-          .status(self.status)
-          .header("Content-Type", "application/json")
           .body(Body::from(json!({"success": true, "data": d}).to_string()))
-          .unwrap()
+          .expect("Failed to build response")
       } else {
         Response::builder()
-          .status(self.status)
-          .header("Content-Type", "application/json")
           .body(Body::from(
             json!({"success": true, "data": null}).to_string(),
           ))
-          .unwrap()
+          .expect("Failed to build response")
       }
-    } else if let Some(e) = self.error {
-      Response::builder()
-        .status(self.status)
-        .header("Content-Type", "application/json")
-        .body(Body::from(
-          json!({"success": false, "error": e}).to_string(),
-        ))
-        .unwrap()
     } else {
       Response::builder()
-        .status(self.status)
-        .header("Content-Type", "application/json")
         .body(Body::from(
-          json!({"success": false, "error": null}).to_string(),
+          json!({"success": false, "error": self.error}).to_string(),
         ))
-        .unwrap()
+        .expect("Failed to build response")
     }
   }
 }

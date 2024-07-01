@@ -1,6 +1,7 @@
 use crate::{
   db::{gen_id, hash_password, verify_password},
   jwt::{gen_access_token, gen_refresh_token, verify_refresh_token},
+  routes::ApiRes,
   AppState,
 };
 use axum::{extract::State, http::StatusCode, routing::post, Form, Router};
@@ -37,18 +38,24 @@ pub async fn login(
   State(state): State<crate::AppState>,
   jar: CookieJar,
   Form(user_details): Form<LoginReq>,
-) -> Result<(StatusCode, CookieJar, String), ApiError> {
+) -> ApiRes<'static, String, String> {
   if user_details.email.is_none() && user_details.username.is_none() {
-    return Err(ApiError {
-      code: StatusCode::BAD_REQUEST,
-      message: "Email or username not provided".to_string(),
-    });
+    return ApiRes {
+      success: false,
+      status: StatusCode::BAD_REQUEST,
+      cookies: None,
+      data: None,
+      error: Some("Email or username not provided".to_string()),
+    };
   }
   if user_details.validate().err().is_some() {
-    return Err(ApiError {
-      code: StatusCode::BAD_REQUEST,
-      message: "Details provided have an invalid format.".to_string(), // TODO: Try to also tell which fields are invalid.
-    });
+    return ApiRes {
+      success: false,
+      status: StatusCode::BAD_REQUEST,
+      cookies: None,
+      data: None,
+      error: Some("User details provided have an invalid format.".to_string()), // TODO: Try to also tell which fields are invalid.
+    };
   }
   match sqlx::query!(
     "SELECT * FROM users WHERE username = ? OR email = ?",
@@ -66,22 +73,31 @@ pub async fn login(
             Err(e) => Err(e),
           }
         } else {
-          Err(ApiError {
-            code: StatusCode::UNAUTHORIZED,
-            message: "Invalid username/password combo.".to_string(),
-          })
+          ApiRes {
+            success: false,
+            status: StatusCode::UNAUTHORIZED,
+            cookies: None,
+            data: None,
+            error: Some("Invalid username/password combo".to_string()),
+          }
         }
       }
       Err(e) => Err(e),
     },
-    Err(sqlx::Error::RowNotFound) => Err(ApiError {
-      code: StatusCode::UNAUTHORIZED,
-      message: "Invalid username/password combo.".to_string(),
-    }),
-    Err(_) => Err(ApiError {
-      code: StatusCode::INTERNAL_SERVER_ERROR,
-      message: "Internal server error while looking up user".to_string(),
-    }),
+    Err(sqlx::Error::RowNotFound) => ApiRes {
+      success: false,
+      status: StatusCode::UNAUTHORIZED,
+      cookies: None,
+      data: None,
+      error: Some("Invalid username/password combo".to_string()),
+    },
+    Err(_) => ApiRes {
+      success: false,
+      status: StatusCode::INTERNAL_SERVER_ERROR,
+      cookies: None,
+      data: None,
+      error: Some("Internal server error while looking up user".to_string()),
+    },
   }
 }
 
@@ -133,7 +149,7 @@ pub async fn register(
           Ok(_) => {
             match set_tokens(id, role.to_string(), jar, state.db_pool).await {
               Ok(tokens) => Ok((StatusCode::OK, tokens.0, tokens.1)),
-              Err(e) => Err(e),
+              Err(e) => e,
             }
           },
           Err(_) => Err(ApiError {
@@ -158,22 +174,25 @@ pub async fn register(
 pub async fn refresh_tokens(
   State(state): State<crate::AppState>,
   jar: CookieJar,
-) -> Result<(StatusCode, CookieJar, String), ApiError> {
+) -> ApiRes<'static, String, String> {
   let refresh_token = match jar.get("refresh_token") {
     Some(token) => token.value().to_owned(),
     None => {
-      return Err(ApiError {
-        code: StatusCode::UNAUTHORIZED,
-        message: "Refresh token not found".to_string(),
-      })
+      return ApiRes {
+        success: false,
+        status: StatusCode::UNAUTHORIZED,
+        cookies: None,
+        data: None,
+        error: Some("Refresh token not found".to_string()),
+      };
     }
   };
   match verify_refresh_token(refresh_token, &state.db_pool).await {
     Ok(data) => match set_tokens(data.0.user_id, data.1, jar, state.db_pool).await {
       Ok(tokens) => Ok((StatusCode::OK, tokens.0, tokens.1)),
-      Err(e) => Err(e),
+      Err(e) => e,
     },
-    Err(e) => Err(e),
+    Err(e) => e,
   }
 }
 
@@ -182,21 +201,24 @@ async fn set_tokens(
   user_role: String,
   jar: CookieJar,
   db: sqlx::Pool<sqlx::Sqlite>,
-) -> Result<(CookieJar, String), ApiError> {
+) -> ApiRes<'static, String, String> {
   let access_token = match gen_access_token(user_id.clone(), user_role) {
     Ok(token) => token,
-    Err(e) => return Err(e),
+    Err(e) => return e,
   };
   let refresh_token = match gen_refresh_token(user_id, db).await {
     Ok(token) => token,
-    Err(e) => return Err(e),
+    Err(e) => return e,
   };
   let refresh_cookie = Cookie::build(("refresh_token", refresh_token))
     .secure(true)
     .http_only(true)
     .same_site(SameSite::Strict);
-  Ok((
-    jar.add(refresh_cookie),
-    json!({"success": true, "data": {"access_token": access_token}}).to_string(),
-  ))
+  ApiRes {
+    success: true,
+    status: ,
+    cookies: Some(vec![refresh_cookie.into()]),
+    data: Some(json!({"access_token": access_token}).to_string()),
+    error: None
+  }
 }

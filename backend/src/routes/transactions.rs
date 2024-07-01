@@ -1,4 +1,4 @@
-use super::{ApiError, ApiRes, OkRes};
+use super::ApiRes;
 use crate::{db::gen_id, jwt::AccessTokenClaims, AppState};
 use axum::{
   extract::State,
@@ -48,66 +48,101 @@ pub async fn new(
   State(state): State<crate::AppState>,
   user: AccessTokenClaims,
   Json(transaction): Json<TransactionReq>,
-) -> Result<(StatusCode, String), ApiError> {
+) -> ApiRes<'static, String, String> {
   if transaction.validate().err().is_some() {
-    return Err(ApiError {
-      code: StatusCode::BAD_REQUEST,
-      message: "Details provided have an invalid format.".to_string(), // TODO: Try to also tell which fields are invalid.
-    });
+    return ApiRes {
+      success: false,
+      status: StatusCode::BAD_REQUEST,
+      cookies: None,
+      data: None,
+      error: Some("Transaction details provided have an invalid format.".to_string()), // TODO: Try to also tell which fields are invalid.
+    };
   }
   let transaction_id = match gen_id(crate::db::Tables::Transactions, &state.db_pool).await {
     Ok(id) => id,
-    Err(e) => return Err(e),
+    Err(e) => {
+      return ApiRes {
+        success: false,
+        status: e.code,
+        cookies: None,
+        data: None,
+        error: Some(e.message),
+      }
+    }
   };
   let amount = transaction.amount.to_f32();
   match sqlx::query!("INSERT INTO transactions (id, user_id, description, date, amount, type, merchant, category, payment_source) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);", transaction_id, user.id, transaction.desc, transaction.date, amount, transaction.r#type, transaction.merchant, transaction.category, transaction.payment_source).execute(&state.db_pool).await{
     Ok(_) => {
       if let Some(items) = transaction.items {
         if items.is_empty() {
-          Ok((
-            StatusCode::OK,
-            json!({"success": true, "data": {"transaction_id": transaction_id}}).to_string(),
-          ))
+          ApiRes {
+            success: true,
+            status: StatusCode::OK,
+            cookies: None,
+            data: Some(json!({"transaction_id": transaction_id}).to_string()),
+            error: None
+          }
         } else{
-        let mut errors: Vec<String> = Vec::new();
+        let mut errors: Vec<&str> = Vec::new();
         for item in items.iter() {
           let item_id = match gen_id(crate::db::Tables::TransactionItems, &state.db_pool).await {
             Ok(id) => id,
-            Err(e) => return Err(e),
+            Err(e) => return ApiRes {
+              success: false,
+              status: e.code,
+              cookies: None,
+              data: None,
+              error: Some(e.message),
+            },
           };
           let amount = item.amount.to_f32();
           match sqlx::query!("INSERT INTO transaction_items (id, transaction_id, description, amount, category) VALUES (?, ?, ?, ?, ?)", item_id, transaction_id, item.desc, amount, item.category).execute(&state.db_pool).await {
             Ok(_) => continue,
-            Err(_) => errors.push(item_id)
+            Err(_) => errors.push(item.desc.as_str())
           }
           if errors.is_empty() {
-            return Ok((
-              StatusCode::OK,
-              json!({"success": true, "data": {"transaction_id": transaction_id}}).to_string(),
-            ));
+            return ApiRes {
+              success: true,
+              status: StatusCode::OK,
+              cookies: None,
+              data: Some(json!({"transaction_id": transaction_id}).to_string()),
+              error: None
+            };
           } else {
-            return Ok((
-              StatusCode::OK,
-              json!({"success": false, "data": {"transaction_id": transaction_id, "failed_items": errors}}).to_string(),
-            ));
+            return ApiRes {
+              success: true,
+              status: StatusCode::OK,
+              cookies: None,
+              data: Some(json!({"transaction_id": transaction_id, "failed_items": errors}).to_string()),
+              error: None
+            };
           }
         }
-        Ok(( // Assume everthing is okay and just return this...
-          StatusCode::OK,
-          json!({"success": true, "data": {"transaction_id": transaction_id}}).to_string(),
-        ))
+        ApiRes {
+          success: true,
+          status: StatusCode::OK,
+          cookies: None,
+          data: Some(json!({"transaction_id": transaction_id}).to_string()),
+          error: None
+        }
       }
       } else {
-        Ok((
-          StatusCode::OK,
-          json!({"success": true, "data": {"transaction_id": transaction_id}}).to_string(),
-        ))
+        ApiRes {
+          success: true,
+          status: StatusCode::OK,
+          cookies: None,
+          data: Some(json!({"transaction_id": transaction_id}).to_string()),
+          error: None
+        }
       }
     },
-    Err(_) => Err(ApiError {
-      code: StatusCode::INTERNAL_SERVER_ERROR,
-      message: "Error registering user".to_string(),
-    }),
+    Err(_) => ApiRes {
+      success: true,
+      status: StatusCode::INTERNAL_SERVER_ERROR,
+      cookies: None,
+      data: None,
+      error: Some("Error registering user".to_string())
+    }
   }
 }
 
@@ -160,7 +195,7 @@ pub struct TransactionItem {
 pub async fn get_transactions(
   State(state): State<crate::AppState>,
   user: AccessTokenClaims,
-) -> ApiRes<Vec<TransactionsRes>, String> {
+) -> ApiRes<'static, Vec<TransactionsRes>, String> {
   let mut results: Vec<TransactionsRes> = Vec::new();
   match sqlx::query_as!(TransactionRow, "SELECT id, description AS desc, date, amount, type, merchant, category, payment_source FROM transactions WHERE user_id = ?;", user.id).fetch_all(&state.db_pool).await {
     Ok(rows) => {
@@ -171,15 +206,15 @@ pub async fn get_transactions(
           }
           Err(e) => match e {
             sqlx::Error::RowNotFound => results.push(TransactionsRes{transaction: row.clone(), items: None}),
-            _ => return ApiRes { success: false, status: StatusCode::INTERNAL_SERVER_ERROR, data: None, error: Some("Could not fetch transaction items from database".to_string()) }
+            _ => return ApiRes { success: false, status: StatusCode::INTERNAL_SERVER_ERROR, cookies: None, data: None, error: Some("Could not fetch transaction items from database".to_string()) }
           }
         }
       }
-      ApiRes{ success: true, status: StatusCode::OK, data: Some(results), error: None}
+      ApiRes{ success: true, status: StatusCode::OK, cookies: None, data: Some(results), error: None}
     },
     Err(e) => match e {
-      sqlx::Error::RowNotFound => ApiRes{ success: true, status: StatusCode::OK, data: Some(results), error: None},
-      _ => ApiRes { success: false, status: StatusCode::INTERNAL_SERVER_ERROR, data: None, error: Some("Could not fetch transactions from database".to_string()) }
+      sqlx::Error::RowNotFound => ApiRes{ success: true, status: StatusCode::OK, cookies: None, data: Some(results), error: None},
+      _ => ApiRes { success: false, status: StatusCode::INTERNAL_SERVER_ERROR, cookies: None, data: None, error: Some("Could not fetch transactions from database".to_string()) }
     }
   }
 }

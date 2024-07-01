@@ -4,7 +4,7 @@ use crate::{
   routes::{ApiResponse, ResponseType},
   AppState,
 };
-use axum::{extract::State, http::StatusCode, routing::post, Form, Router};
+use axum::{extract::State, http::StatusCode, routing::post, Json, Router};
 use axum_extra::extract::{
   cookie::{self, SameSite},
   CookieJar,
@@ -34,7 +34,7 @@ pub struct LoginReq {
 #[axum::debug_handler]
 pub async fn login(
   State(state): State<crate::AppState>,
-  Form(user_details): Form<LoginReq>,
+  Json(user_details): Json<LoginReq>,
 ) -> ApiResponse<'static, String, String> {
   if user_details.email.is_none() && user_details.username.is_none() {
     return ApiResponse {
@@ -106,7 +106,7 @@ pub struct RegisterReq {
 
 pub async fn register(
   State(state): State<crate::AppState>,
-  Form(user_details): Form<RegisterReq>,
+  Json(user_details): Json<RegisterReq>,
 ) -> ApiResponse<'static, String, String> {
   if user_details.validate().err().is_some() {
     return ApiResponse {

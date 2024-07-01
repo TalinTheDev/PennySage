@@ -14,7 +14,7 @@ impl<S> FromRequestParts<S> for AccessTokenClaims
 where
   S: Send + Sync,
 {
-  type Rejection = ApiResponse<'static, (), String>;
+  type Rejection = ApiResponse<'static, String, String>;
 
   async fn from_request_parts(parts: &mut Parts, _state: &S) -> Result<Self, Self::Rejection> {
     // Extract the token from the authorization header

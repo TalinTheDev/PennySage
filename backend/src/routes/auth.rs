@@ -34,7 +34,6 @@ pub struct LoginReq {
 #[axum::debug_handler]
 pub async fn login(
   State(state): State<crate::AppState>,
-  jar: CookieJar,
   Form(user_details): Form<LoginReq>,
 ) -> ApiResponse<'static, String, String> {
   if user_details.email.is_none() && user_details.username.is_none() {
@@ -65,7 +64,7 @@ pub async fn login(
     Ok(user) => match verify_password(user_details.password, user.password) {
       Ok(valid) => {
         if valid {
-          set_tokens(user.id, user.role, jar, state.db_pool).await
+          set_tokens(user.id, user.role, state.db_pool).await
         } else {
           return ApiResponse {
             status: StatusCode::UNAUTHORIZED,
@@ -107,7 +106,6 @@ pub struct RegisterReq {
 
 pub async fn register(
   State(state): State<crate::AppState>,
-  jar: CookieJar,
   Form(user_details): Form<RegisterReq>,
 ) -> ApiResponse<'static, String, String> {
   if user_details.validate().err().is_some() {
@@ -139,7 +137,7 @@ pub async fn register(
         };
         let role = "user";
         match sqlx::query!("INSERT INTO users (id, username, first_name, last_name, email, password, role) VALUES (?, ?, ?, ?, ?, ?, ?);", id, user_details.username, user_details.first_name, user_details.last_name, user_details.email, password, role).execute(&state.db_pool).await{
-          Ok(_) => set_tokens(id, role.to_string(), jar, state.db_pool).await,
+          Ok(_) => set_tokens(id, role.to_string(), state.db_pool).await,
           Err(_) => ApiResponse {
             status: StatusCode::INTERNAL_SERVER_ERROR,
             cookies: None,
@@ -181,7 +179,7 @@ pub async fn refresh_tokens(
   };
 
   match verify_refresh_token(refresh_token, &state.db_pool).await {
-    Ok(data) => set_tokens(data.0.user_id, data.1, jar, state.db_pool).await,
+    Ok(data) => set_tokens(data.0.user_id, data.1, state.db_pool).await,
     Err(e) => e,
   }
 }
@@ -189,7 +187,6 @@ pub async fn refresh_tokens(
 async fn set_tokens(
   user_id: String,
   user_role: String,
-  jar: CookieJar,
   db: sqlx::Pool<sqlx::Sqlite>,
 ) -> ApiResponse<'static, String, String> {
   let access_token = match gen_access_token(user_id.clone(), user_role) {

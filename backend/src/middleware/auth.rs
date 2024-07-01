@@ -1,6 +1,7 @@
 use crate::jwt::verify_access_token;
 use crate::jwt::AccessTokenClaims;
-use crate::routes::ApiError;
+use crate::routes::ApiResponse;
+use crate::routes::ResponseType;
 use axum::http::request::Parts;
 use axum::RequestPartsExt;
 use axum::{async_trait, extract::FromRequestParts, http::StatusCode};
@@ -13,16 +14,17 @@ impl<S> FromRequestParts<S> for AccessTokenClaims
 where
   S: Send + Sync,
 {
-  type Rejection = ApiError;
+  type Rejection = ApiResponse<'static, (), String>;
 
   async fn from_request_parts(parts: &mut Parts, _state: &S) -> Result<Self, Self::Rejection> {
     // Extract the token from the authorization header
     let TypedHeader(Authorization(bearer)) = parts
       .extract::<TypedHeader<Authorization<Bearer>>>()
       .await
-      .map_err(|_| ApiError {
-        code: StatusCode::UNAUTHORIZED,
-        message: "Access token not found.".to_string(),
+      .map_err(|_| ApiResponse {
+        status: StatusCode::UNAUTHORIZED,
+        cookies: None,
+        response: ResponseType::Failure(Some("Access token not found.".to_string())),
       })?;
     // Decode the user data
     let token_data = verify_access_token(bearer.token().to_string())?;

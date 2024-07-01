@@ -7,7 +7,7 @@ use nanoid::nanoid;
 use serde::{Deserialize, Serialize};
 use sqlx::Error;
 
-use crate::routes::ApiError;
+use crate::routes::{ApiResponse, ResponseType};
 
 #[derive(Serialize, Deserialize)]
 pub enum Roles {
@@ -27,7 +27,7 @@ pub enum Tables {
 pub async fn gen_id(
   table: Tables,
   connection: &sqlx::Pool<sqlx::Sqlite>,
-) -> Result<String, ApiError> {
+) -> Result<String, ApiResponse<'static, String, String>> {
   let mut id;
   let mut query = "SELECT * FROM".to_owned();
   match table {
@@ -45,36 +45,48 @@ pub async fn gen_id(
       Ok(_) => continue,
       Err(Error::RowNotFound) => return Ok(id),
       Err(_) => {
-        return Err(ApiError {
-          code: StatusCode::INTERNAL_SERVER_ERROR,
-          message: "Error registering user".to_string(),
+        return Err(ApiResponse {
+          status: StatusCode::INTERNAL_SERVER_ERROR,
+          cookies: None,
+          response: ResponseType::Failure(Some(
+            "Internal server error generating user id".to_string(),
+          )),
         })
       }
     }
   }
 }
 
-pub fn hash_password(password: String) -> Result<String, ApiError> {
+pub fn hash_password(password: String) -> Result<String, ApiResponse<'static, String, String>> {
   let salt = SaltString::generate(&mut OsRng);
   let argon2 = Argon2::default();
   let hashed_password = argon2.hash_password(password.as_bytes(), &salt);
 
   match hashed_password {
     Ok(hp) => Ok(hp.to_string()),
-    Err(_) => Err(ApiError {
-      code: StatusCode::INTERNAL_SERVER_ERROR,
-      message: "Error registering user".to_string(),
+    Err(_) => Err(ApiResponse {
+      status: StatusCode::INTERNAL_SERVER_ERROR,
+      cookies: None,
+      response: ResponseType::Failure(Some(
+        "Internal server error hashing user password".to_string(),
+      )),
     }),
   }
 }
 
-pub fn verify_password(password: String, hash: String) -> Result<bool, ApiError> {
+pub fn verify_password(
+  password: String,
+  hash: String,
+) -> Result<bool, ApiResponse<'static, String, String>> {
   let parsed_hash = match PasswordHash::new(&hash) {
     Ok(hash) => hash,
     Err(_) => {
-      return Err(ApiError {
-        code: StatusCode::INTERNAL_SERVER_ERROR,
-        message: "Internal server error while authenticating user".to_string(),
+      return Err(ApiResponse {
+        status: StatusCode::INTERNAL_SERVER_ERROR,
+        cookies: None,
+        response: ResponseType::Failure(Some(
+          "Internal server error authenticating user".to_string(),
+        )),
       });
     }
   };

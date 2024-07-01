@@ -18,47 +18,29 @@ pub fn app() -> Router<AppState> {
     .nest("/transactions", transactions::routes())
 }
 
-pub struct ApiError {
-  pub code: StatusCode,
-  pub message: String,
-}
-
-impl IntoResponse for ApiError {
-  fn into_response(self) -> Response {
-    (
-      self.code,
-      json!({"success": false, "message": format!("Something went wrong: {}", self.message)})
-        .to_string(),
-    )
-      .into_response()
-  }
-}
-
-#[derive(Serialize)]
-pub struct OkRes<T> {
-  success: bool,
-  data: T,
-}
-
-pub struct ApiRes<'c, D, E> {
-  pub success: bool,
-  pub cookies: Option<Vec<Cookie<'c>>>,
+pub struct ApiResponse<'a, D, E> {
   pub status: StatusCode,
-  pub data: Option<D>,
-  pub error: Option<E>,
+  pub cookies: Option<Vec<Cookie<'a>>>,
+  pub response: ResponseType<D, E>,
 }
 
-impl<'c, D, E> IntoResponse for ApiRes<'c, D, E>
+pub enum ResponseType<D, E> {
+  Success(Option<D>),
+  Failure(Option<E>),
+}
+
+impl<'a, D, E> IntoResponse for ApiResponse<'a, D, E>
 where
   D: Serialize,
   E: Serialize,
 {
   fn into_response(self) -> Response {
-    let mut builder = Response::builder()
+    let mut res_builder = Response::builder()
       .status(self.status)
       .header("Content-Type", "application/json");
 
-    let header_map = builder.headers_mut().expect("Failed to get headers");
+    let header_map = res_builder.headers_mut().expect("Failed to get headers");
+
     if let Some(cookies) = self.cookies {
       for cookie in cookies {
         header_map.append(
@@ -71,24 +53,16 @@ where
         );
       }
     }
-    if self.success {
-      if let Some(d) = self.data {
-        Response::builder()
-          .body(Body::from(json!({"success": true, "data": d}).to_string()))
-          .expect("Failed to build response")
-      } else {
-        Response::builder()
-          .body(Body::from(
-            json!({"success": true, "data": null}).to_string(),
-          ))
-          .expect("Failed to build response")
+
+    let body = match self.response {
+      ResponseType::Success(data) => {
+        Body::from(json!({"success": true, "data": data }).to_string())
       }
-    } else {
-      Response::builder()
-        .body(Body::from(
-          json!({"success": false, "error": self.error}).to_string(),
-        ))
-        .expect("Failed to build response")
-    }
+      ResponseType::Failure(error) => {
+        Body::from(json!({"success": false, "error": error }).to_string())
+      }
+    };
+
+    res_builder.body(body).unwrap()
   }
 }

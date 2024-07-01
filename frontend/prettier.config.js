@@ -6,7 +6,7 @@ const config = {
   singleQuote: false,
   bracketSameLine: true,
   proseWrap: "always",
-  vueIndentScriptAndStyle: true,
+  vueIndentScriptAndStyle: true
 };
 
 export default config;

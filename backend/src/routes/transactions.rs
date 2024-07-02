@@ -1,4 +1,4 @@
-use super::{ApiResponse, ResponseType};
+use super::{ApiError, ApiResponse};
 use crate::{db::gen_id, jwt::AccessTokenClaims, AppState};
 use axum::{
   extract::State,
@@ -11,6 +11,7 @@ use rust_decimal::prelude::ToPrimitive;
 use rust_decimal::Decimal;
 use serde::{Deserialize, Serialize};
 use serde_json::json;
+use sqlx::Row;
 use validator::{Validate, ValidationError};
 
 pub fn routes() -> Router<AppState> {
@@ -48,15 +49,12 @@ pub async fn new(
   State(state): State<crate::AppState>,
   user: AccessTokenClaims,
   Json(transaction): Json<TransactionReq>,
-) -> ApiResponse<'static, String, String> {
+) -> ApiResponse {
   if transaction.validate().err().is_some() {
     // TODO: Tell which fields are invalid
-    return ApiResponse {
+    return ApiResponse::Failure {
       status: StatusCode::BAD_REQUEST,
-      cookies: None,
-      response: ResponseType::Failure(Some(
-        "Transaction details provided have an invalid format".to_string(),
-      )),
+      error: ApiError::Simple("Transaction details provided have an invalid format".to_owned()),
     };
   }
   let transaction_id = match gen_id(crate::db::Tables::Transactions, &state.db_pool).await {
@@ -68,11 +66,7 @@ pub async fn new(
     Ok(_) => {
       if let Some(items) = transaction.items {
         if items.is_empty() {
-          ApiResponse {
-            status: StatusCode::OK,
-            cookies: None,
-            response: ResponseType::Success(Some(json!({"transaction_id": transaction_id}).to_string())),
-          }
+          ApiResponse::Success { status: StatusCode::OK, data: Box::new(json!({"transaction_id": transaction_id})) }
         } else{
         let mut errors: Vec<&str> = Vec::new();
         for item in items.iter() {
@@ -86,37 +80,20 @@ pub async fn new(
             Err(_) => errors.push(item.desc.as_str())
           }
           if errors.is_empty() {
-            return ApiResponse {
-              status: StatusCode::OK,
-              cookies: None,
-              response: ResponseType::Success(Some(json!({"transaction_id": transaction_id}).to_string())),
-            };
+            return ApiResponse::Success { status: StatusCode::OK, data: Box::new(json!({"transaction_id": transaction_id})) };
           } else {
-            return ApiResponse {
-              status: StatusCode::OK,
-              cookies: None,
-              response: ResponseType::Success(Some(json!({"transaction_id": transaction_id, "failed_items": errors}).to_string())),
-            }
+            return ApiResponse::Success { status: StatusCode::OK, data: Box::new(json!({"transaction_id": transaction_id, "failed_items": errors})) }
           }
         }
-        ApiResponse {
-          status: StatusCode::OK,
-          cookies: None,
-          response: ResponseType::Success(Some(json!({"transaction_id": transaction_id}).to_string())),
-        }
+        ApiResponse::Success { status: StatusCode::OK, data: Box::new(json!({"transaction_id": transaction_id})) }
       }
       } else {
-        ApiResponse {
-          status: StatusCode::OK,
-          cookies: None,
-          response: ResponseType::Success(Some(json!({"transaction_id": transaction_id}).to_string())),
-        }
+        ApiResponse::Success { status: StatusCode::OK, data: Box::new(json!({"transaction_id": transaction_id}))}
       }
     },
-    Err(_) => ApiResponse {
-      status: StatusCode::INTERNAL_SERVER_ERROR,
-      cookies: None,
-      response: ResponseType::Success(Some("Internal server error adding transaction".to_string())),
+    Err(_) => ApiResponse::Failure {
+      status: StatusCode::UNAUTHORIZED,
+      error: ApiError::Simple("Internal server error while adding transaction".to_owned()),
     }
   }
 }
@@ -170,7 +147,7 @@ pub struct TransactionItem {
 pub async fn get_transactions(
   State(state): State<crate::AppState>,
   user: AccessTokenClaims,
-) -> ApiResponse<'static, Vec<TransactionsRes>, String> {
+) -> ApiResponse {
   let mut results: Vec<TransactionsRes> = Vec::new();
   match sqlx::query_as!(TransactionRow, "SELECT id, description AS desc, date, amount, type, merchant, category, payment_source FROM transactions WHERE user_id = ?;", user.id).fetch_all(&state.db_pool).await {
     Ok(rows) => {
@@ -181,15 +158,15 @@ pub async fn get_transactions(
           }
           Err(e) => match e {
             sqlx::Error::RowNotFound => results.push(TransactionsRes{transaction: row.clone(), items: None}),
-            _ => return ApiResponse { status: StatusCode::INTERNAL_SERVER_ERROR, cookies: None, response: ResponseType::Failure(Some("Could not fetch transaction items from database (internal server error)".to_string())) }
+            _ => return ApiResponse::Failure { status: StatusCode::INTERNAL_SERVER_ERROR, error: ApiError::Simple("Could not fetch transaction items from database (internal server error)".to_owned()) }
           }
         }
       }
-      ApiResponse { status: StatusCode::OK, cookies: None, response: ResponseType::Success(Some(results))}
+      ApiResponse::Success { status: StatusCode::OK, data: Box::new(results) }
     },
     Err(e) => match e {
-      sqlx::Error::RowNotFound => ApiResponse { status: StatusCode::OK, cookies: None, response: ResponseType::Success(Some(results))},
-      _ => ApiResponse { status: StatusCode::INTERNAL_SERVER_ERROR, cookies: None, response: ResponseType::Failure(Some("Could not fetch transactions from database (internal server error)".to_string()))}
+      sqlx::Error::RowNotFound => ApiResponse::Success { status: StatusCode::OK, data: Box::new(results) },
+      _ => ApiResponse::Failure { status: StatusCode::INTERNAL_SERVER_ERROR, error: ApiError::Simple("Could not fetch transactions from database (internal server error)".to_owned()) }
     }
   }
 }

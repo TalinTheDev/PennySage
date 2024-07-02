@@ -2,7 +2,7 @@ use std::env;
 
 use crate::{
   db::gen_id,
-  routes::{ApiResponse, ResponseType},
+  routes::{ApiError, ApiResponse},
 };
 use axum::http::StatusCode;
 use chrono::{Duration, Local};
@@ -25,10 +25,7 @@ pub struct RefreshTokenClaims {
   pub user_id: String,
 }
 
-pub fn gen_access_token(
-  user_id: String,
-  role: String,
-) -> Result<String, ApiResponse<'static, String, String>> {
+pub fn gen_access_token(user_id: String, role: String) -> Result<String, ApiResponse> {
   let expiration = match Local::now().checked_add_signed(Duration::minutes(5)) {
     Some(time) => time.timestamp(),
     None => Local::now().timestamp(),
@@ -51,12 +48,9 @@ pub fn gen_access_token(
     ),
   ) {
     Ok(token) => Ok(token),
-    Err(_) => Err(ApiResponse {
+    Err(_) => Err(ApiResponse::Failure {
       status: StatusCode::INTERNAL_SERVER_ERROR,
-      cookies: None,
-      response: ResponseType::Failure(Some(
-        "Can't generate access token (internal server error)".to_string(),
-      )),
+      error: ApiError::Simple("Can't generate access token (internal server error)".to_string()),
     }),
   }
 }
@@ -64,7 +58,7 @@ pub fn gen_access_token(
 pub async fn gen_refresh_token(
   user_id: String,
   connection: sqlx::Pool<sqlx::Sqlite>,
-) -> Result<String, ApiResponse<'static, String, String>> {
+) -> Result<String, ApiResponse> {
   let expiration = match Local::now().checked_add_signed(Duration::days(7)) {
     Some(time) => time.timestamp(),
     None => Local::now().timestamp(),
@@ -74,12 +68,9 @@ pub async fn gen_refresh_token(
   let jti = match gen_id(crate::db::Tables::RefreshTokens, &connection).await {
     Ok(jti) => jti,
     Err(_) => {
-      return Err(ApiResponse {
+      return Err(ApiResponse::Failure {
         status: StatusCode::INTERNAL_SERVER_ERROR,
-        cookies: None,
-        response: ResponseType::Failure(Some(
-          "Can't generate refresh token (internal server error)".to_string(),
-        )),
+        error: ApiError::Simple("Can't generate refresh token (internal server error)".to_string()),
       })
     }
   };
@@ -103,31 +94,26 @@ pub async fn gen_refresh_token(
         Ok(_) => {
           match sqlx::query!("UPDATE refresh_tokens SET revoked = 1 WHERE id != ? AND user_id = ?", jti, user_id).execute(&connection).await {
             Ok(_) => Ok(token),
-            Err(_) => Err(ApiResponse {
+            Err(_) => Err(ApiResponse::Failure {
               status: StatusCode::INTERNAL_SERVER_ERROR,
-              cookies: None,
-              response: ResponseType::Failure(Some("Can't generate refresh token (internal server error)".to_string())),
+              error: ApiError::Simple("Can't generate refresh token (internal server error)".to_string()),
             })
           }
         },
-        Err(_) => Err(ApiResponse {
+        Err(_) => Err(ApiResponse::Failure {
           status: StatusCode::INTERNAL_SERVER_ERROR,
-          cookies: None,
-          response: ResponseType::Failure(Some("Can't generate refresh token (internal server error)".to_string())),
+          error: ApiError::Simple("Can't generate refresh token (internal server error)".to_string()),
         })
       }
     },
-    Err(_) => Err(ApiResponse {
+    Err(_) => Err(ApiResponse::Failure {
       status: StatusCode::INTERNAL_SERVER_ERROR,
-      cookies: None,
-      response: ResponseType::Failure(Some("Can't generate refresh token (internal server error)".to_string())),
+      error: ApiError::Simple("Can't generate refresh token (internal server error)".to_string()),
     })
   }
 }
 
-pub fn verify_access_token(
-  token: String,
-) -> Result<AccessTokenClaims, ApiResponse<'static, String, String>> {
+pub fn verify_access_token(token: String) -> Result<AccessTokenClaims, ApiResponse> {
   match decode::<AccessTokenClaims>(
     &token,
     &DecodingKey::from_secret(
@@ -138,10 +124,9 @@ pub fn verify_access_token(
     &Validation::default(),
   ) {
     Ok(token) => Ok(token.claims),
-    Err(_) => Err(ApiResponse {
+    Err(_) => Err(ApiResponse::Failure {
       status: StatusCode::UNAUTHORIZED,
-      cookies: None,
-      response: ResponseType::Success(Some("Access token could not be verified".to_string())),
+      error: ApiError::Simple("Access token could not be verified".to_string()),
     }),
   }
 }
@@ -150,18 +135,14 @@ pub fn verify_access_token(
 pub async fn verify_refresh_token(
   token: String,
   connection: &sqlx::Pool<sqlx::Sqlite>,
-) -> Result<(RefreshTokenClaims, String), ApiResponse<'static, String, String>> {
-  let auth_error = ApiResponse {
+) -> Result<(RefreshTokenClaims, String), ApiResponse> {
+  let auth_error = ApiResponse::Failure {
     status: StatusCode::UNAUTHORIZED,
-    cookies: None,
-    response: ResponseType::Failure(Some("Error refreshing tokens (unauthorized)".to_string())),
+    error: ApiError::Simple("Error refreshing tokens (unauthorized)".to_string()),
   };
-  let server_error = ApiResponse {
+  let server_error = ApiResponse::Failure {
     status: StatusCode::INTERNAL_SERVER_ERROR,
-    cookies: None,
-    response: ResponseType::Failure(Some(
-      "Internal server error while refreshing tokens".to_string(),
-    )),
+    error: ApiError::Simple("Error refreshing tokens (internal server error)".to_string()),
   };
   match decode::<RefreshTokenClaims>(
     &token,

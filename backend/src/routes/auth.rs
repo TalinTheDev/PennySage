@@ -1,7 +1,7 @@
 use crate::{
   db::{gen_id, hash_password, verify_password},
   jwt::{gen_access_token, gen_refresh_token, verify_refresh_token},
-  routes::{ApiResponse, ResponseType},
+  routes::{ApiError, ApiResponse},
   AppState,
 };
 use axum::{extract::State, http::StatusCode, routing::post, Json, Router};
@@ -35,22 +35,18 @@ pub struct LoginReq {
 pub async fn login(
   State(state): State<crate::AppState>,
   Json(user_details): Json<LoginReq>,
-) -> ApiResponse<'static, String, String> {
+) -> ApiResponse {
   if user_details.email.is_none() && user_details.username.is_none() {
-    return ApiResponse {
+    return ApiResponse::Failure {
       status: StatusCode::BAD_REQUEST,
-      cookies: None,
-      response: ResponseType::Failure(Some("Email or username not provided".to_string())),
+      error: ApiError::Simple("Email or username not provided".to_owned()),
     };
   }
   if user_details.validate().err().is_some() {
     // TODO: Tell which fields are invalid
-    return ApiResponse {
+    return ApiResponse::Failure {
       status: StatusCode::BAD_REQUEST,
-      cookies: None,
-      response: ResponseType::Failure(Some(
-        "User details provided have an invalid format".to_string(),
-      )),
+      error: ApiError::Simple("User details provided have an invalid format".to_owned()),
     };
   }
   match sqlx::query!(
@@ -66,26 +62,21 @@ pub async fn login(
         if valid {
           set_tokens(user.id, user.role, state.db_pool).await
         } else {
-          return ApiResponse {
+          return ApiResponse::Failure {
             status: StatusCode::UNAUTHORIZED,
-            cookies: None,
-            response: ResponseType::Failure(Some("Invalid username/password combo".to_string())),
+            error: ApiError::Simple("Invalid username/password combo".to_owned()),
           };
         }
       }
       Err(e) => e,
     },
-    Err(sqlx::Error::RowNotFound) => ApiResponse {
+    Err(sqlx::Error::RowNotFound) => ApiResponse::Failure {
       status: StatusCode::UNAUTHORIZED,
-      cookies: None,
-      response: ResponseType::Failure(Some("Invalid username/password combo".to_string())),
+      error: ApiError::Simple("Invalid username/password combo".to_owned()),
     },
-    Err(_) => ApiResponse {
-      status: StatusCode::INTERNAL_SERVER_ERROR,
-      cookies: None,
-      response: ResponseType::Failure(Some(
-        "Internal server error while looking up user".to_string(),
-      )),
+    Err(_) => ApiResponse::Failure {
+      status: StatusCode::UNAUTHORIZED,
+      error: ApiError::Simple("Internal server error while looking up user".to_owned()),
     },
   }
 }
@@ -107,14 +98,11 @@ pub struct RegisterReq {
 pub async fn register(
   State(state): State<crate::AppState>,
   Json(user_details): Json<RegisterReq>,
-) -> ApiResponse<'static, String, String> {
+) -> ApiResponse {
   if user_details.validate().err().is_some() {
-    return ApiResponse {
+    return ApiResponse::Failure {
       status: StatusCode::BAD_REQUEST,
-      cookies: None,
-      response: ResponseType::Failure(Some(
-        "User details provided have an invalid format".to_string(),
-      )),
+      error: ApiError::Simple("User details provided have an invalid format".to_owned()),
     };
   }
   match sqlx::query!(
@@ -138,42 +126,33 @@ pub async fn register(
         let role = "user";
         match sqlx::query!("INSERT INTO users (id, username, first_name, last_name, email, password, role) VALUES (?, ?, ?, ?, ?, ?, ?);", id, user_details.username, user_details.first_name, user_details.last_name, user_details.email, password, role).execute(&state.db_pool).await{
           Ok(_) => set_tokens(id, role.to_string(), state.db_pool).await,
-          Err(_) => ApiResponse {
-            status: StatusCode::INTERNAL_SERVER_ERROR,
-            cookies: None,
-            response: ResponseType::Failure(Some("Internal server error while registering user".to_string()))
+          Err(_) => ApiResponse::Failure {
+            status: StatusCode::UNAUTHORIZED,
+            error: ApiError::Simple("Internal server error while registering user".to_owned()),
           }
         }
       } else {
-        ApiResponse {
+        ApiResponse::Failure {
           status: StatusCode::CONFLICT,
-          cookies: None,
-          response: ResponseType::Failure(Some("Email or username already exists".to_string())),
+          error: ApiError::Simple("Username/email already exists".to_owned()),
         }
       }
     }
-    Err(_) => ApiResponse {
-      status: StatusCode::INTERNAL_SERVER_ERROR,
-      cookies: None,
-      response: ResponseType::Failure(Some(
-        "Internal server error while registering user".to_string(),
-      )),
+    Err(_) => ApiResponse::Failure {
+      status: StatusCode::UNAUTHORIZED,
+      error: ApiError::Simple("Internal server error while registering user".to_owned()),
     },
   }
 }
 
 #[axum::debug_handler]
-pub async fn refresh_tokens(
-  State(state): State<crate::AppState>,
-  jar: CookieJar,
-) -> ApiResponse<'static, String, String> {
+pub async fn refresh_tokens(State(state): State<crate::AppState>, jar: CookieJar) -> ApiResponse {
   let refresh_token = match jar.get("refresh_token") {
     Some(token) => token.value().to_owned(),
     None => {
-      return ApiResponse {
+      return ApiResponse::Failure {
         status: StatusCode::UNAUTHORIZED,
-        cookies: None,
-        response: ResponseType::Failure(Some("Refresh token not found".to_string())),
+        error: ApiError::Simple("Refresh token not found".to_owned()),
       };
     }
   };
@@ -188,7 +167,7 @@ async fn set_tokens(
   user_id: String,
   user_role: String,
   db: sqlx::Pool<sqlx::Sqlite>,
-) -> ApiResponse<'static, String, String> {
+) -> ApiResponse {
   let access_token = match gen_access_token(user_id.clone(), user_role) {
     Ok(token) => token,
     Err(e) => return e,
@@ -200,10 +179,13 @@ async fn set_tokens(
   let refresh_cookie = Cookie::build(("refresh_token", refresh_token))
     .secure(true)
     .http_only(true)
-    .same_site(SameSite::Strict);
-  ApiResponse {
+    .same_site(SameSite::Strict)
+    .build()
+    .encoded()
+    .to_string();
+  ApiResponse::SuccessWithCookies {
     status: StatusCode::OK,
-    cookies: Some(vec![refresh_cookie.into()]),
-    response: ResponseType::Success(Some(json!({"access_token": access_token}).to_string())),
+    data: Box::new(json!({"access_token": access_token})),
+    cookies: vec![refresh_cookie],
   }
 }

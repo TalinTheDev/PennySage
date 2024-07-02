@@ -74,20 +74,20 @@ pub enum ApiResponse {
   #[serde(with = "http_serde::status_code")]
   Simple(StatusCode),
   Success {
-    data: Box<dyn ErasedSerialize>,
     #[serde(with = "http_serde::status_code")]
     status: StatusCode,
+    data: Box<dyn ErasedSerialize + Send>,
   },
   SuccessWithCookies {
-    data: Box<dyn ErasedSerialize>,
-    cookies: Vec<String>,
     #[serde(with = "http_serde::status_code")]
     status: StatusCode,
+    data: Box<dyn ErasedSerialize + Send>,
+    cookies: Vec<String>,
   },
   Failure {
-    error: ApiError,
     #[serde(with = "http_serde::status_code")]
     status: StatusCode,
+    error: ApiError,
   },
 }
 
@@ -96,7 +96,7 @@ pub enum ApiError {
   Simple(String),
   Complex {
     message: String,
-    error: Box<dyn ErasedSerialize>,
+    error: Box<dyn ErasedSerialize + Send>,
   },
 }
 
@@ -108,7 +108,9 @@ impl IntoResponse for ApiResponse {
       ApiResponse::Simple(status) => res_builder.status(status).body(Body::empty()).unwrap(),
       ApiResponse::Success { data, status } => res_builder
         .status(status)
-        .body(Body::from(json!(*data).to_string()))
+        .body(Body::from(
+          json!({"success": true, "data": *data}).to_string(),
+        ))
         .unwrap(),
       ApiResponse::SuccessWithCookies {
         data,
@@ -122,13 +124,25 @@ impl IntoResponse for ApiResponse {
         }
         res_builder
           .status(status)
-          .body(Body::from(json!(*data).to_string()))
+          .body(Body::from(
+            json!({"success": true, "data": *data}).to_string(),
+          ))
           .unwrap()
       }
-      ApiResponse::Failure { error, status } => res_builder
-        .status(status)
-        .body(Body::from(json!(error).to_string()))
-        .unwrap(),
+      ApiResponse::Failure { error, status } => match error {
+        ApiError::Simple(e) => res_builder
+          .status(status)
+          .body(Body::from(
+            json!({"success": false, "error": e}).to_string(),
+          ))
+          .unwrap(),
+        ApiError::Complex { message, error } => res_builder
+          .status(status)
+          .body(Body::from(
+            json!({"success": false, "message": message, "error": *error}).to_string(),
+          ))
+          .unwrap(),
+      },
     }
   }
 }

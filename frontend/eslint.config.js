@@ -4,7 +4,7 @@ import tseslint from "typescript-eslint";
 import prettierConfig from "eslint-config-prettier";
 import pluginVue from "eslint-plugin-vue";
 
-require("@rushstack/eslint-patch/modern-module-resolution");
+import "@rushstack/eslint-patch/modern-module-resolution.js";
 
 export default [
   { files: ["**/*.{js,mjs,cjs,ts,vue}"] },

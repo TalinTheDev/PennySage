@@ -93,6 +93,8 @@ pub struct RegisterReq {
   first_name: String,
   #[validate(length(min = 1, message = "Invalid last name format"))]
   last_name: String,
+  #[validate(length(min = 1, message = "Invalid family name format"))]
+  family_name: Option<String>,
 }
 
 pub async fn register(
@@ -115,7 +117,7 @@ pub async fn register(
   {
     Ok(rows) => {
       if rows.is_empty() {
-        let id = match gen_id(crate::db::Tables::Users, &state.db_pool).await {
+        let user_id = match gen_id(crate::db::Tables::Users, &state.db_pool).await {
           Ok(id) => id,
           Err(e) => return e,
         };
@@ -124,10 +126,59 @@ pub async fn register(
           Err(e) => return e,
         };
         let role = "user";
-        match sqlx::query!("INSERT INTO users (id, username, first_name, last_name, email, password, role) VALUES (?, ?, ?, ?, ?, ?, ?);", id, user_details.username, user_details.first_name, user_details.last_name, user_details.email, password, role).execute(&state.db_pool).await{
-          Ok(_) => set_tokens(id, role.to_string(), state.db_pool).await,
+        let mut transaction = match state.db_pool.begin().await {
+          Ok(tx) => tx,
+          Err(_) => {
+            return ApiResponse::Failure {
+              status: StatusCode::INTERNAL_SERVER_ERROR,
+              error: ApiError::Simple(
+                "Internal server error while preparing transaction to register user".to_owned(),
+              ),
+            }
+          }
+        };
+        match sqlx::query!("INSERT INTO users (id, username, first_name, last_name, email, password, role) VALUES (?, ?, ?, ?, ?, ?, ?);", user_id, user_details.username, user_details.first_name, user_details.last_name, user_details.email, password, role).execute(&mut *transaction).await{
+          Ok(_) => {
+            let family_id = match gen_id(crate::db::Tables::Users, &state.db_pool).await {
+              Ok(id) => id,
+              Err(e) => return e,
+            };
+            if let Some(name) = user_details.family_name {
+            match sqlx::query!("INSERT INTO families (id, admin_id, name) VALUES (?, ?, ?);", family_id, user_id, name).execute(&mut *transaction).await {
+              Ok(_) => {
+                match transaction.commit().await {
+                  Ok(_) => return set_tokens(user_id, role.to_string(), state.db_pool).await,
+                  Err(_) => return ApiResponse::Failure {
+                    status: StatusCode::INTERNAL_SERVER_ERROR,
+                    error: ApiError::Simple("Internal server error while registering user".to_owned()),
+                  }
+                }
+              },
+              Err(_) => {
+                match transaction.rollback().await {
+                  Ok(_) => return ApiResponse::Failure {
+                    status: StatusCode::INTERNAL_SERVER_ERROR,
+                    error: ApiError::Simple("Internal server error while registering user".to_owned()),
+                  },
+                  Err(_) => return ApiResponse::Failure {
+                    status: StatusCode::INTERNAL_SERVER_ERROR,
+                    error: ApiError::Simple("Internal server error while registering user".to_owned()),
+                  }
+                }
+              }
+            }
+          } else {
+            match transaction.commit().await {
+              Ok(_) => return set_tokens(user_id, role.to_string(), state.db_pool).await,
+              Err(_) => return ApiResponse::Failure {
+                status: StatusCode::INTERNAL_SERVER_ERROR,
+                error: ApiError::Simple("Internal server error while registering user".to_owned()),
+              }
+            }
+          }
+          },
           Err(_) => ApiResponse::Failure {
-            status: StatusCode::UNAUTHORIZED,
+            status: StatusCode::INTERNAL_SERVER_ERROR,
             error: ApiError::Simple("Internal server error while registering user".to_owned()),
           }
         }

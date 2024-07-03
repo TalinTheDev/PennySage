@@ -3,12 +3,11 @@ import { createApp } from "vue";
 import App from "./App.vue";
 import router from "./router";
 import { createPinia } from "pinia";
-import { plugin, defaultConfig } from "@formkit/vue";
 import axios from "./plugins/axios";
 import { useUserStore } from "./stores/useUserStore";
 
 let app = createApp(App);
-app.use(createPinia()).use(router).use(plugin, defaultConfig).mount("#app");
+app.use(createPinia()).use(router).mount("#app");
 
 let userStore = useUserStore();
 app.provide("userStore", userStore);

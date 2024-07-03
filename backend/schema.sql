@@ -30,7 +30,7 @@ CREATE TABLE IF NOT EXISTS transactions (
 CREATE TABLE IF NOT EXISTS families (
 	id TEXT NOT NULL UNIQUE PRIMARY KEY, -- Family ID
 	admin_id TEXT NOT NULL, -- Admin User
-	name TEXT NOT NULL UNIQUE, -- Family name
+	name TEXT NOT NULL, -- Family name
 
 	FOREIGN KEY(admin_id) REFERENCES users(id) ON UPDATE CASCADE ON DELETE RESTRICT
 );

@@ -3,6 +3,10 @@ import { computed, ref } from "vue";
 
 export const useUserStore = defineStore("user", () => {
   const access_token = ref("");
+
+  const getToken = computed(() =>
+    access_token.value === "" ? access_token.value : ""
+  );
   const user = ref({
     username: "",
     email: "",
@@ -22,5 +26,5 @@ export const useUserStore = defineStore("user", () => {
 
   const isLoggedIn = computed(() => access_token.value !== "");
 
-  return { access_token, user, logout, isLoggedIn };
+  return { getToken, user, logout, isLoggedIn };
 });

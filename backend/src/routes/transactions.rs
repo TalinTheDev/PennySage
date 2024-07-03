@@ -11,7 +11,6 @@ use rust_decimal::prelude::ToPrimitive;
 use rust_decimal::Decimal;
 use serde::{Deserialize, Serialize};
 use serde_json::json;
-use sqlx::Row;
 use validator::{Validate, ValidationError};
 
 pub fn routes() -> Router<AppState> {
@@ -62,30 +61,52 @@ pub async fn new(
     Err(e) => return e,
   };
   let amount = transaction.amount.to_f32();
-  match sqlx::query!("INSERT INTO transactions (id, user_id, description, date, amount, type, merchant, category, payment_source) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);", transaction_id, user.id, transaction.desc, transaction.date, amount, transaction.r#type, transaction.merchant, transaction.category, transaction.payment_source).execute(&state.db_pool).await{
+  let mut tx = match state.db_pool.begin().await {
+    Ok(tx) => tx,
+    Err(_) => {
+      return ApiResponse::Failure {
+        status: StatusCode::INTERNAL_SERVER_ERROR,
+        error: ApiError::Simple(
+          "Internal server error while preparing transaction to add transaction".to_owned(),
+        ),
+      }
+    }
+  };
+  match sqlx::query!("INSERT INTO transactions (id, user_id, description, date, amount, type, merchant, category, payment_source) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);", transaction_id, user.id, transaction.desc, transaction.date, amount, transaction.r#type, transaction.merchant, transaction.category, transaction.payment_source).execute(&mut *tx).await{
     Ok(_) => {
       if let Some(items) = transaction.items {
         if items.is_empty() {
           ApiResponse::Success { status: StatusCode::OK, data: Box::new(json!({"transaction_id": transaction_id})) }
         } else{
-        let mut errors: Vec<&str> = Vec::new();
         for item in items.iter() {
           let item_id = match gen_id(crate::db::Tables::TransactionItems, &state.db_pool).await {
             Ok(id) => id,
             Err(e) => { return e; }
           };
           let amount = item.amount.to_f32();
-          match sqlx::query!("INSERT INTO transaction_items (id, transaction_id, description, amount, category) VALUES (?, ?, ?, ?, ?)", item_id, transaction_id, item.desc, amount, item.category).execute(&state.db_pool).await {
+          match sqlx::query!("INSERT INTO transaction_items (id, transaction_id, description, amount, category) VALUES (?, ?, ?, ?, ?)", item_id, transaction_id, item.desc, amount, item.category).execute(&mut *tx).await {
             Ok(_) => continue,
-            Err(_) => errors.push(item.desc.as_str())
-          }
-          if errors.is_empty() {
-            return ApiResponse::Success { status: StatusCode::OK, data: Box::new(json!({"transaction_id": transaction_id})) };
-          } else {
-            return ApiResponse::Success { status: StatusCode::OK, data: Box::new(json!({"transaction_id": transaction_id, "failed_items": errors})) }
+            Err(_) => {
+              match tx.rollback().await {
+                Ok(_) => return ApiResponse::Failure {
+                  status: StatusCode::INTERNAL_SERVER_ERROR,
+                  error: ApiError::Simple("Internal server error while adding transaction".to_owned()),
+                },
+                Err(_) => return ApiResponse::Failure {
+                  status: StatusCode::INTERNAL_SERVER_ERROR,
+                  error: ApiError::Simple("Internal server error while adding transaction".to_owned()),
+                }
+              }
+            }
           }
         }
-        ApiResponse::Success { status: StatusCode::OK, data: Box::new(json!({"transaction_id": transaction_id})) }
+        match tx.commit().await {
+          Ok(_) => return ApiResponse::Success { status: StatusCode::OK, data: Box::new(json!({"transaction_id": transaction_id})) },
+          Err(_) => return ApiResponse::Failure {
+            status: StatusCode::INTERNAL_SERVER_ERROR,
+            error: ApiError::Simple("Internal server error while adding transaction".to_owned()),
+          }
+        }
       }
       } else {
         ApiResponse::Success { status: StatusCode::OK, data: Box::new(json!({"transaction_id": transaction_id}))}

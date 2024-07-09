@@ -14,6 +14,10 @@ export const useUserStore = defineStore("user", () => {
     lastName: ""
   });
 
+  function login(token: String) {
+    access_token.value = token;
+  }
+
   function logout() {
     access_token.value = "";
     user.value = {
@@ -26,5 +30,5 @@ export const useUserStore = defineStore("user", () => {
 
   const isLoggedIn = computed(() => access_token.value !== "");
 
-  return { getToken, user, logout, isLoggedIn };
+  return { getToken, user, login, logout, isLoggedIn };
 });

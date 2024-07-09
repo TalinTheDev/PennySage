@@ -8,7 +8,7 @@ interface AxiosOptions {
 
 export default {
   install: (app: App, options: AxiosOptions) => {
-    app.config.globalProperties.$axios = axios.create({
+    return axios.create({
       baseURL: options.baseUrl,
       headers: {
         Authorization: options.token ? `Bearer ${options.token}` : ""

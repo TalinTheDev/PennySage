@@ -1,5 +1,26 @@
 <script setup>
-  const handleLogin = () => {};
+  import { ref, inject } from "vue";
+  import { useRouter } from "vue-router";
+
+  let api = inject("api");
+  let userStore = inject("userStore");
+  let router = useRouter();
+  let user = ref("");
+  let password = ref("");
+  const handleLogin = () => {
+    api
+      .post("/auth/login", {
+        username: user.value,
+        password: password.value
+      })
+      .then((data) => {
+        userStore.login(data.data.access_token);
+        router.push({ name: "Home" });
+      })
+      .catch((errors) => {
+        alert(errors.message);
+      });
+  };
 </script>
 
 <template>
@@ -10,8 +31,10 @@
     <div class="container">
       <h2>Login</h2>
       <div class="form">
-        <input type="text" placeholder="Email or Username" /> <br />
-        <input type="password" placeholder="Password" /> <br />
+        <input type="text" placeholder="Email or Username" v-model="user" />
+        <br />
+        <input type="password" placeholder="Password" v-model="password" />
+        <br />
         <button @click="handleLogin">Login</button>
       </div>
     </div>

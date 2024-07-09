@@ -1,6 +1,7 @@
 use axum::Router;
 use sqlx::{sqlite::SqlitePoolOptions, Sqlite};
 use std::{env, time::Duration};
+use tower_http::cors::CorsLayer;
 mod db;
 mod jwt;
 mod middleware;
@@ -33,6 +34,7 @@ async fn main() {
   println!("listening on {}", listener.local_addr().unwrap());
   let app = Router::new()
     .nest("/api", routes::app())
+    .layer(CorsLayer::permissive())
     .with_state(AppState { db_pool: pool });
   // Serve app
   axum::serve(listener, app).await.unwrap();

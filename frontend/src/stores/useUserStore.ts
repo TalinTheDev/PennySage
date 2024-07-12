@@ -14,7 +14,7 @@ export const useUserStore = defineStore("user", () => {
     lastName: ""
   });
 
-  function login(token: String) {
+  function login(token: string) {
     access_token.value = token;
   }
 

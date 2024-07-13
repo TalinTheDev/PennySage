@@ -57,9 +57,7 @@ impl IntoResponse for ApiResponse {
       ApiResponse::Simple(status) => res_builder.status(status).body(Body::empty()).unwrap(),
       ApiResponse::Success { data, status } => res_builder
         .status(status)
-        .body(Body::from(
-          json!({"success": true, "data": *data}).to_string(),
-        ))
+        .body(Body::from(json!(*data).to_string()))
         .unwrap(),
       ApiResponse::SuccessWithCookies {
         data,
@@ -73,22 +71,18 @@ impl IntoResponse for ApiResponse {
         }
         res_builder
           .status(status)
-          .body(Body::from(
-            json!({"success": true, "data": *data}).to_string(),
-          ))
+          .body(Body::from(json!(*data).to_string()))
           .unwrap()
       }
       ApiResponse::Failure { error, status } => match error {
         ApiError::Simple(e) => res_builder
           .status(status)
-          .body(Body::from(
-            json!({"success": false, "error": e}).to_string(),
-          ))
+          .body(Body::from(json!({ "message": e }).to_string()))
           .unwrap(),
         ApiError::Complex { message, error } => res_builder
           .status(status)
           .body(Body::from(
-            json!({"success": false, "message": message, "error": *error}).to_string(),
+            json!({"message": message, "error": *error}).to_string(),
           ))
           .unwrap(),
       },

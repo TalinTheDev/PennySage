@@ -3,12 +3,27 @@
   import { RouterLink } from "vue-router";
   import InputBox from "@/components/InputBox.vue";
   import AuthLayout from "../layouts/AuthLayout.vue";
+  import { useApiStore } from "@/stores/useApiStore";
+  import { useUserStore } from "@/stores/useUserStore";
+
+  const api = useApiStore();
+  const user = useUserStore();
+
+  const username = ref("");
+  const password = ref("");
 
   const handleLogin = () => {
     if (errors.value.size !== 0) {
       return;
     }
-    alert("Login");
+    api
+      .post("/auth/login", {
+        username: username.value,
+        password: password.value
+      })
+      .then(({ data }) => {
+        user.login(data);
+      });
   };
 
   const errors = ref(new Set());
@@ -25,8 +40,12 @@
   <AuthLayout>
     <h2>Login <RouterLink to="register" class="registerLink">Or Register</RouterLink></h2>
     <div class="form">
-      <InputBox type="text" placeholder="Username" />
-      <InputBox type="text" placeholder="Password" @keydown.enter="handleLogin" />
+      <InputBox type="text" placeholder="Username" v-model="username" />
+      <InputBox
+        type="text"
+        placeholder="Password"
+        @keydown.enter="handleLogin"
+        v-model="password" />
       <button @click="handleLogin">Login</button>
     </div>
   </AuthLayout>

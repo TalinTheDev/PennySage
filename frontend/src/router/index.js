@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from "vue-router";
 import LoginView from "@/views/LoginView.vue";
 import DashboardView from "@/views/DashboardView.vue";
+import { useUserStore } from "@/stores/useUserStore";
 
 const router = createRouter({
   history: createWebHistory(),
@@ -8,9 +9,6 @@ const router = createRouter({
     {
       path: "/login",
       name: "login",
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
       component: LoginView
     },
     {
@@ -24,6 +22,19 @@ const router = createRouter({
       component: DashboardView
     }
   ]
+});
+
+router.beforeEach((to, from) => {
+  let user = useUserStore();
+
+  if (
+    from.path !== "/login" &&
+    from.path !== "/register" &&
+    to.name !== "login" &&
+    !user.checkLoggedIn
+  ) {
+    return { name: "login" };
+  }
 });
 
 export default router;

@@ -1,0 +1,23 @@
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap");
+@import "./reset.css";
+
+:root {
+  --white: hsl(0 0 100);
+  --light-grey: hsl(0 0 75);
+  --grey: hsl(0 0 50);
+  --dark-grey: hsl(0 0 25);
+  --black: hsl(0 0 0);
+
+  font-size: 1.1rem;
+}
+
+body {
+  background-color: var(--white);
+  color: var(--black);
+  font-family: "Oswald", monospace;
+}
+
+#app {
+  width: 100%;
+  height: 100%;
+}

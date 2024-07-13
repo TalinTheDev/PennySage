@@ -1,0 +1,35 @@
+<template>
+  <div class="page">
+    <div class="header">
+      <h1>PennySage</h1>
+    </div>
+    <div class="content">
+      <slot />
+    </div>
+  </div>
+</template>
+
+<style scoped>
+  .page {
+    width: 100%;
+    height: 100%;
+    display: flex;
+  }
+  .header {
+    position: absolute;
+    top: 25px;
+    left: 35px;
+  }
+
+  .content {
+    background-color: var(--white);
+    box-shadow: 0px 0px 5px 1px var(--light-grey);
+    border: 1px solid var(--light-grey);
+    border-radius: 12px;
+    width: 35vw;
+    height: fit-content;
+    max-height: 75%;
+    margin: auto;
+    padding: 25px;
+  }
+</style>

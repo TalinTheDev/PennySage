@@ -31,6 +31,16 @@ pub struct LoginReq {
   password: String,
 }
 
+pub struct UserRow {
+  pub id: String,
+  pub username: String,
+  pub email: String,
+  pub password: String,
+  pub first_name: String,
+  pub last_name: String,
+  pub role: String,
+}
+
 #[axum::debug_handler]
 pub async fn login(
   State(state): State<crate::AppState>,
@@ -49,18 +59,19 @@ pub async fn login(
       error: ApiError::Simple("User details provided have an invalid format".to_owned()),
     };
   }
-  match sqlx::query!(
-    "SELECT * FROM users WHERE username = ? OR email = ?",
+  match sqlx::query_as!(
+    UserRow,
+    "SELECT id, username, email, password, first_name, last_name, role FROM users WHERE username = ? OR email = ?",
     user_details.username,
     user_details.email
   )
   .fetch_one(&state.db_pool)
   .await
   {
-    Ok(user) => match verify_password(user_details.password, user.password) {
+    Ok(user) => match verify_password(user_details.password, user.password.as_str().to_owned()) {
       Ok(valid) => {
         if valid {
-          set_tokens(user.id, user.role, state.db_pool).await
+          set_tokens(user, state.db_pool).await
         } else {
           return ApiResponse::Failure {
             status: StatusCode::UNAUTHORIZED,
@@ -121,7 +132,7 @@ pub async fn register(
           Ok(id) => id,
           Err(e) => return e,
         };
-        let password = match hash_password(user_details.password) {
+        let hashed_password = match hash_password(user_details.password) {
           Ok(p) => p,
           Err(e) => return e,
         };
@@ -137,17 +148,29 @@ pub async fn register(
             }
           }
         };
-        match sqlx::query!("INSERT INTO users (id, username, first_name, last_name, email, password, role) VALUES (?, ?, ?, ?, ?, ?, ?);", user_id, user_details.username, user_details.first_name, user_details.last_name, user_details.email, password, role).execute(&mut *transaction).await{
+        match sqlx::query!("INSERT INTO users (id, username, first_name, last_name, email, password, role) VALUES (?, ?, ?, ?, ?, ?, ?);", user_id, user_details.username, user_details.first_name, user_details.last_name, user_details.email, hashed_password, role).execute(&mut *transaction).await{
           Ok(_) => {
-            let family_id = match gen_id(crate::db::Tables::Users, &state.db_pool).await {
-              Ok(id) => id,
-              Err(e) => return e,
+            let user_row = UserRow {
+              id: user_id.clone(),
+              username: user_details.username,
+              email: user_details.email,
+              password: hashed_password,
+              first_name: user_details.first_name,
+              last_name: user_details.last_name,
+              role: role.to_owned(),
             };
+
             if let Some(name) = user_details.family_name {
+              let family_id = match gen_id(crate::db::Tables::Users, &state.db_pool).await {
+                Ok(id) => id,
+                Err(e) => return e,
+              };
             match sqlx::query!("INSERT INTO families (id, admin_id, name) VALUES (?, ?, ?);", family_id, user_id, name).execute(&mut *transaction).await {
               Ok(_) => {
                 match transaction.commit().await {
-                  Ok(_) => return set_tokens(user_id, role.to_string(), state.db_pool).await,
+                  Ok(_) => {
+                    return set_tokens(user_row, state.db_pool).await
+                  },
                   Err(_) => return ApiResponse::Failure {
                     status: StatusCode::INTERNAL_SERVER_ERROR,
                     error: ApiError::Simple("Internal server error while registering user".to_owned()),
@@ -169,7 +192,7 @@ pub async fn register(
             }
           } else {
             match transaction.commit().await {
-              Ok(_) => return set_tokens(user_id, role.to_string(), state.db_pool).await,
+              Ok(_) => return set_tokens(user_row, state.db_pool).await,
               Err(_) => return ApiResponse::Failure {
                 status: StatusCode::INTERNAL_SERVER_ERROR,
                 error: ApiError::Simple("Internal server error while registering user".to_owned()),
@@ -209,21 +232,17 @@ pub async fn refresh_tokens(State(state): State<crate::AppState>, jar: CookieJar
   };
 
   match verify_refresh_token(refresh_token, &state.db_pool).await {
-    Ok(data) => set_tokens(data.0.user_id, data.1, state.db_pool).await,
+    Ok(data) => set_tokens(data.1, state.db_pool).await,
     Err(e) => e,
   }
 }
 
-async fn set_tokens(
-  user_id: String,
-  user_role: String,
-  db: sqlx::Pool<sqlx::Sqlite>,
-) -> ApiResponse {
-  let access_token = match gen_access_token(user_id.clone(), user_role) {
+async fn set_tokens(user_data: UserRow, db: sqlx::Pool<sqlx::Sqlite>) -> ApiResponse {
+  let access_token = match gen_access_token(user_data.id.clone(), user_data.role.clone()) {
     Ok(token) => token,
     Err(e) => return e,
   };
-  let refresh_token = match gen_refresh_token(user_id, db).await {
+  let refresh_token = match gen_refresh_token(user_data.id, db).await {
     Ok(token) => token,
     Err(e) => return e,
   };
@@ -236,7 +255,13 @@ async fn set_tokens(
     .to_string();
   ApiResponse::SuccessWithCookies {
     status: StatusCode::OK,
-    data: Box::new(json!({"access_token": access_token})),
+    data: Box::new(json!({"access_token": access_token, "user_data": {
+      "username": user_data.username,
+      "email": user_data.email,
+      "first_name": user_data.first_name,
+      "last_name": user_data.last_name,
+      "role": user_data.role
+    }})),
     cookies: vec![refresh_cookie],
   }
 }

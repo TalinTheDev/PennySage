@@ -9,7 +9,7 @@ use erased_serde::Serialize as ErasedSerialize;
 use serde::Serialize;
 use serde_json::json;
 
-mod auth;
+pub mod auth;
 mod transactions;
 
 pub fn app() -> Router<AppState> {

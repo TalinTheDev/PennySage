@@ -1,5 +1,6 @@
 use std::env;
 
+use crate::routes::auth::UserRow;
 use crate::{
   db::gen_id,
   routes::{ApiError, ApiResponse},
@@ -8,7 +9,6 @@ use axum::http::StatusCode;
 use chrono::{Duration, Local};
 use jsonwebtoken::{decode, encode, DecodingKey, EncodingKey, Header, Validation};
 use serde::{Deserialize, Serialize};
-
 #[derive(Serialize, Deserialize)]
 pub struct AccessTokenClaims {
   exp: i64, // Expiry
@@ -135,7 +135,7 @@ pub fn verify_access_token(token: String) -> Result<AccessTokenClaims, ApiRespon
 pub async fn verify_refresh_token(
   token: String,
   connection: &sqlx::Pool<sqlx::Sqlite>,
-) -> Result<(RefreshTokenClaims, String), ApiResponse> {
+) -> Result<(RefreshTokenClaims, UserRow), ApiResponse> {
   let auth_error = ApiResponse::Failure {
     status: StatusCode::UNAUTHORIZED,
     error: ApiError::Simple("Error refreshing tokens (unauthorized)".to_string()),
@@ -154,15 +154,15 @@ pub async fn verify_refresh_token(
     &Validation::default(),
   ) {
     Ok(token) => {
-      match sqlx::query!(
-        "SELECT role FROM users u WHERE u.id = (SELECT rt.user_id FROM refresh_tokens rt WHERE rt.id = ? AND rt.user_id = ? AND revoked = 0)",
+      match sqlx::query_as!(UserRow,
+        "SELECT id, username, email, password, first_name, last_name, role FROM users u WHERE u.id = (SELECT rt.user_id FROM refresh_tokens rt WHERE rt.id = ? AND rt.user_id = ? AND revoked = 0)",
         token.claims.jti,
         token.claims.user_id
       )
       .fetch_one(connection)
       .await
       {
-        Ok(user) => Ok((token.claims, user.role)),
+        Ok(user) => Ok((token.claims, user)),
         Err(e) => {
           match e {
             sqlx::Error::RowNotFound => Err(auth_error),

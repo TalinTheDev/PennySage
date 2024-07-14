@@ -93,7 +93,6 @@
     padding: 10px;
     margin-top: 10px;
     border: 1px solid var(--black);
-    border-radius: 50px;
 
     &:hover {
       cursor: pointer;

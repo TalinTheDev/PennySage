@@ -1,10 +1,11 @@
 <script setup>
-  import { ref, provide } from "vue";
+  import { ref, provide, watchEffect } from "vue";
   import AppLayout from "@/layouts/AppLayout.vue";
   import InputBox from "@/components/InputBox.vue";
 
   const description = ref("");
-  const date = ref("");
+  const dateInput = ref(new Date().toISOString().slice(0, 10));
+  let date = 0;
   const amount = ref("");
   const transactionType = ref("debit");
   const merchant = ref("");
@@ -13,8 +14,12 @@
   const items = ref([]);
 
   const errors = ref(new Map());
-
-  const validateText = (target, name) => {
+  const validateAmount = (target) => {
+    fixAmount(target);
+    validate(target, "Amount");
+  };
+  const fixAmount = (target) => (target.value = parseFloat(amount.value).toFixed(2));
+  const validate = (target, name) => {
     if (!target.checkValidity()) {
       errors.value.set(`${name}Err`, target.validationMessage);
     } else {
@@ -22,6 +27,10 @@
     }
   };
   provide("errors", errors);
+
+  watchEffect(() => {
+    date = new Date(dateInput.value).getTime() / 1000;
+  });
 </script>
 <template>
   <AppLayout>
@@ -33,7 +42,7 @@
           required
           placeholder="Description"
           v-model="description"
-          @blur="validateText($event.target, 'Description')" />
+          @blur="validate($event.target, 'Description')" />
       </InputBox>
       <div class="columns">
         <InputBox name="Date">
@@ -41,8 +50,8 @@
             type="date"
             required
             placeholder="Date"
-            v-model="date"
-            @blur="validateText($event.target, 'Date')" />
+            v-model="dateInput"
+            @blur="validate($event.target, 'Date')" />
         </InputBox>
 
         <InputBox name="Amount">
@@ -53,14 +62,14 @@
             step="0.01"
             placeholder="Amount"
             v-model="amount"
-            @blur="validateText($event.target, 'Amount')" />
+            @blur="validateAmount($event.target)" />
         </InputBox>
         <InputBox name="Type">
           <select
             required
             placeholder="Transaction Type"
             v-model="transactionType"
-            @blur="validateText($event.target, 'Type')">
+            @blur="validate($event.target, 'Type')">
             <option value="placeholder" disabled hidden>Select Transaction Type</option>
             <option value="debit">Debit</option>
             <option value="credit">Credit</option>
@@ -75,7 +84,7 @@
             required
             placeholder="Merchant"
             v-model="merchant"
-            @blur="validateText($event.target, 'Merchant')" />
+            @blur="validate($event.target, 'Merchant')" />
         </InputBox>
         <InputBox name="Category">
           <input
@@ -83,7 +92,7 @@
             required
             placeholder="Category"
             v-model="category"
-            @blur="validateText($event.target, 'Category')" />
+            @blur="validate($event.target, 'Category')" />
         </InputBox>
         <InputBox name="Payment Source">
           <input
@@ -91,9 +100,11 @@
             required
             placeholder="Payment Source"
             v-model="paymentSource"
-            @blur="validateText($event.target, 'Payment Source')" />
+            @blur="validate($event.target, 'Payment Source')" />
         </InputBox>
       </div>
+
+      <button @click="handleAddTransaction">Add Transaction</button>
     </div>
   </AppLayout>
 </template>
@@ -118,6 +129,18 @@
     }
     &:has(+ .errorMsg:is(.invalidLabel)) {
       border-color: red;
+    }
+  }
+  button {
+    background-color: inherit;
+    font-size: 1.2rem;
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    border: 1px solid var(--black);
+
+    &:hover {
+      cursor: pointer;
     }
   }
 </style>

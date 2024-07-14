@@ -24,7 +24,6 @@
     background-color: var(--white);
     box-shadow: 0px 0px 5px 1px var(--light-grey);
     border: 1px solid var(--light-grey);
-    border-radius: 12px;
     width: 35vw;
     height: fit-content;
     max-height: 75%;

@@ -7,8 +7,6 @@ use axum::{
   Json, Router,
 };
 use chrono::DateTime;
-use rust_decimal::prelude::ToPrimitive;
-use rust_decimal::Decimal;
 use serde::{Deserialize, Serialize};
 use serde_json::json;
 use validator::{Validate, ValidationError};
@@ -24,7 +22,7 @@ pub struct TransactionItemReq {
   #[validate(length(min = 1))]
   desc: String,
   #[validate(custom(function = "validate_amount"))]
-  amount: Decimal,
+  amount: String,
   category: String,
 }
 
@@ -35,7 +33,7 @@ pub struct TransactionReq {
   #[validate(custom(function = "validate_date"))]
   date: i64,
   #[validate(custom(function = "validate_amount"))]
-  amount: Decimal,
+  amount: String,
   #[validate(custom(function = "validate_type"))]
   r#type: String,
   merchant: String,
@@ -60,7 +58,6 @@ pub async fn new(
     Ok(id) => id,
     Err(e) => return e,
   };
-  let amount = transaction.amount.to_f32();
   let mut tx = match state.db_pool.begin().await {
     Ok(tx) => tx,
     Err(_) => {
@@ -72,7 +69,7 @@ pub async fn new(
       }
     }
   };
-  match sqlx::query!("INSERT INTO transactions (id, user_id, description, date, amount, type, merchant, category, payment_source) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);", transaction_id, user.id, transaction.desc, transaction.date, amount, transaction.r#type, transaction.merchant, transaction.category, transaction.payment_source).execute(&mut *tx).await{
+  match sqlx::query!("INSERT INTO transactions (id, user_id, description, date, amount, type, merchant, category, payment_source) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);", transaction_id, user.id, transaction.desc, transaction.date, transaction.amount, transaction.r#type, transaction.merchant, transaction.category, transaction.payment_source).execute(&mut *tx).await{
     Ok(_) => {
       if let Some(items) = transaction.items {
         if items.is_empty() {
@@ -83,8 +80,7 @@ pub async fn new(
             Ok(id) => id,
             Err(e) => { return e; }
           };
-          let amount = item.amount.to_f32();
-          match sqlx::query!("INSERT INTO transaction_items (id, transaction_id, description, amount, category) VALUES (?, ?, ?, ?, ?)", item_id, transaction_id, item.desc, amount, item.category).execute(&mut *tx).await {
+          match sqlx::query!("INSERT INTO transaction_items (id, transaction_id, description, amount, category) VALUES (?, ?, ?, ?, ?)", item_id, transaction_id, item.desc, item.amount, item.category).execute(&mut *tx).await {
             Ok(_) => continue,
             Err(_) => {
               match tx.rollback().await {
@@ -126,8 +122,8 @@ pub fn validate_date(date: i64) -> Result<(), ValidationError> {
   Ok(())
 }
 
-pub fn validate_amount(amount: &Decimal) -> Result<(), ValidationError> {
-  if amount == &Decimal::new(0, 0) {
+pub fn validate_amount(amount: &String) -> Result<(), ValidationError> {
+  if amount == "0.00" {
     return Err(ValidationError::new("Amount cannot be $0"));
   }
   Ok(())

@@ -14,6 +14,15 @@
   const username = ref("");
   const password = ref("");
 
+  const errors = ref(new Map());
+  const validate = (target, name) => {
+    if (!target.checkValidity()) {
+      errors.value.set(`${name}Err`, target.validationMessage);
+    } else {
+      errors.value.delete(`${name}Err`);
+    }
+  };
+  provide("errors", errors);
   const handleLogin = () => {
     if (errors.value.size !== 0) {
       return;
@@ -31,27 +40,29 @@
         alert(`Error: ${error.response.data.message}`);
       });
   };
-
-  const errors = ref(new Set());
-  const addError = (field) => {
-    errors.value.add(field);
-  };
-  const removeError = (field) => {
-    errors.value.delete(field);
-  };
-  provide("errors", { addError, removeError });
 </script>
 
 <template>
   <AuthLayout>
     <h2>Login <RouterLink to="register" class="registerLink">Or Register</RouterLink></h2>
     <div class="form">
-      <InputBox type="text" placeholder="Username" v-model="username" />
-      <InputBox
-        type="password"
-        placeholder="Password"
-        @keydown.enter="handleLogin"
-        v-model="password" />
+      <InputBox name="Username">
+        <input
+          type="text"
+          required
+          placeholder="Username"
+          v-model="username"
+          @blur="validate($event.target, 'Description')" />
+      </InputBox>
+      <InputBox name="Password">
+        <input
+          type="password"
+          required
+          placeholder="Password"
+          @keydown.enter="handleLogin"
+          v-model="password"
+          @blur="validate($event.target, 'Password')" />
+      </InputBox>
       <button @click="handleLogin">Login</button>
     </div>
   </AuthLayout>
@@ -63,6 +74,20 @@
     text-align: center;
   }
 
+  input {
+    background-color: transparent;
+    border: 0;
+    width: 100%;
+    border-bottom: 2px solid var(--dark-grey);
+    padding: 10px 0px;
+
+    &:focus {
+      outline: none;
+    }
+    &:has(+ .errorMsg:is(.invalidLabel)) {
+      border-color: red;
+    }
+  }
   button {
     background-color: inherit;
     font-size: 1.2rem;

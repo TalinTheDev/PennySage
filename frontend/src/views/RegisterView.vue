@@ -20,8 +20,21 @@
   const password = ref("");
   const confirmPassword = ref("");
 
+  const errors = ref(new Map());
+  const validate = (target, name) => {
+    if (!target.checkValidity()) {
+      errors.value.set(`${name}Err`, target.validationMessage);
+    } else {
+      errors.value.delete(`${name}Err`);
+    }
+  };
+  provide("errors", errors);
+
   const handleRegister = () => {
-    if (errors.value.size !== 0 || password.value !== confirmPassword.value) {
+    if (password.value !== confirmPassword.value) {
+      errors.value.set("Confirm PasswordErr", "Passwords do not match");
+    }
+    if (errors.value.size !== 0) {
       return;
     }
     api
@@ -40,34 +53,64 @@
         alert(`Error: ${error.response.data.message}`);
       });
   };
-
-  const errors = ref(new Set());
-  const addError = (field) => {
-    errors.value.add(field);
-  };
-  const removeError = (field) => {
-    errors.value.delete(field);
-  };
-  provide("errors", { addError, removeError });
 </script>
 
 <template>
   <AuthLayout>
     <h2>Register <RouterLink to="login" class="loginLink">Or Login</RouterLink></h2>
     <div class="form">
-      <InputBox type="text" placeholder="Username" v-model="username" />
-      <InputBox type="email" placeholder="Email" v-model="email" />
-      <div class="double-column">
-        <InputBox type="text" placeholder="First Name" v-model="firstName" />
-        <InputBox type="text" placeholder="Last Name" v-model="lastName" />
+      <InputBox name="Username">
+        <input
+          type="text"
+          required
+          placeholder="Username"
+          v-model="username"
+          @blur="validate($event.target, 'Username')" />
+      </InputBox>
+      <InputBox name="Email">
+        <input
+          type="email"
+          required
+          placeholder="Email"
+          v-model="email"
+          @blur="validate($event.target, 'Email')" />
+      </InputBox>
+      <div class="columns">
+        <InputBox name="First Name">
+          <input
+            type="text"
+            required
+            placeholder="First Name"
+            v-model="firstName"
+            @blur="validate($event.target, 'First Name')" />
+        </InputBox>
+        <InputBox name="Last Name">
+          <input
+            type="text"
+            required
+            placeholder="Last Name"
+            v-model="lastName"
+            @blur="validate($event.target, 'Last Name')" />
+        </InputBox>
       </div>
-      <div class="double-column">
-        <InputBox type="password" placeholder="Password" v-model="password" />
-        <InputBox
-          type="password"
-          placeholder="Confirm Password"
-          v-model="confirmPassword"
-          @keydown.enter="handleRegister" />
+      <div class="columns">
+        <InputBox name="Password">
+          <input
+            type="password"
+            required
+            placeholder="Password"
+            v-model="password"
+            @blur="validate($event.target, 'Password')" />
+        </InputBox>
+        <InputBox name="Confirm Password">
+          <input
+            type="password"
+            required
+            placeholder="Confirm Password"
+            @keydown.enter="handleLogin"
+            v-model="confirmPassword"
+            @blur="validate($event.target, 'Confirm Password')" />
+        </InputBox>
       </div>
       <button @click="handleRegister">Register</button>
     </div>
@@ -80,12 +123,25 @@
     text-align: center;
   }
 
-  .double-column {
+  .columns {
     display: flex;
     flex-direction: row;
     column-gap: 2%;
   }
+  input {
+    background-color: transparent;
+    border: 0;
+    width: 100%;
+    border-bottom: 2px solid var(--dark-grey);
+    padding: 10px 0px;
 
+    &:focus {
+      outline: none;
+    }
+    &:has(+ .errorMsg:is(.invalidLabel)) {
+      border-color: red;
+    }
+  }
   button {
     background-color: inherit;
     font-size: 1.2rem;

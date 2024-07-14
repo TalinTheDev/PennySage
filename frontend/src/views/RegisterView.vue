@@ -62,9 +62,9 @@
         <InputBox type="text" placeholder="Last Name" v-model="lastName" />
       </div>
       <div class="double-column">
-        <InputBox type="text" placeholder="Password" v-model="password" />
+        <InputBox type="password" placeholder="Password" v-model="password" />
         <InputBox
-          type="text"
+          type="password"
           placeholder="Confirm Password"
           v-model="confirmPassword"
           @keydown.enter="handleRegister" />

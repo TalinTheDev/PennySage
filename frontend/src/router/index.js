@@ -1,6 +1,10 @@
 import { createRouter, createWebHistory } from "vue-router";
 import LoginView from "@/views/LoginView.vue";
 import DashboardView from "@/views/DashboardView.vue";
+import AddView from "@/views/AddView.vue";
+import ViewView from "@/views/ViewView.vue";
+import SettingsView from "@/views/SettingsView.vue";
+
 import { useUserStore } from "@/stores/useUserStore";
 
 const router = createRouter({
@@ -20,6 +24,21 @@ const router = createRouter({
       path: "/",
       name: "dashboard",
       component: DashboardView
+    },
+    {
+      path: "/add",
+      name: "add",
+      component: AddView
+    },
+    {
+      path: "/view",
+      name: "view",
+      component: ViewView
+    },
+    {
+      path: "/settings",
+      name: "settings",
+      component: SettingsView
     }
   ]
 });

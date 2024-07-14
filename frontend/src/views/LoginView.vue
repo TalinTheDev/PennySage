@@ -48,7 +48,7 @@
     <div class="form">
       <InputBox type="text" placeholder="Username" v-model="username" />
       <InputBox
-        type="text"
+        type="password"
         placeholder="Password"
         @keydown.enter="handleLogin"
         v-model="password" />

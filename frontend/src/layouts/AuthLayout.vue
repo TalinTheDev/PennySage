@@ -16,9 +16,8 @@
     display: flex;
   }
   .header {
-    position: absolute;
-    top: 25px;
-    left: 35px;
+    margin-top: 2%;
+    margin-left: 3%;
   }
 
   .content {

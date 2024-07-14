@@ -19,6 +19,8 @@ export const useUserStore = defineStore("useUserStore", () => {
   const getRole = computed(() => role.value);
 
   const login = (user, token) => {
+    let { api } = useApiStore();
+
     username.value = user.username;
     email.value = user.email;
     firstName.value = user.firstName;
@@ -28,9 +30,35 @@ export const useUserStore = defineStore("useUserStore", () => {
     accessToken.value = token;
     Cookies.set("username", user.username);
     Cookies.set("role", user.role);
+
+    api.interceptors.request.use((config) => {
+      if (user.checkLoggedIn) {
+        config.headers.Authorization = `Bearer ${user.getAccessToken}`;
+      }
+      return config;
+    });
+
+    api.interceptors.response.use(
+      (response) => {
+        return response;
+      },
+      (error) => {
+        if (user.checkLoggedIn && error.response.status == 401) {
+          api
+            .post("/auth/refresh_tokens")
+            .then((data) => {
+              user.login(data.data.user_details, data.data.access_token);
+            })
+            .catch((error) => {
+              return Promise.reject(error);
+            });
+        }
+      }
+    );
   };
 
   const logout = async () => {
+    let { api } = useApiStore();
     username.value = "";
     email.value = "";
     firstName.value = "";
@@ -41,7 +69,9 @@ export const useUserStore = defineStore("useUserStore", () => {
     Cookies.delete("username");
     Cookies.delete("role");
 
-    await useApiStore().api.post("/auth/logout");
+    await api.post("/auth/logout");
+    api.interceptors.request.clear();
+    api.interceptors.response.clear();
   };
 
   const checkLoggedIn = computed(() => {

@@ -31,6 +31,7 @@ router.beforeEach((to, from) => {
     from.path !== "/login" &&
     from.path !== "/register" &&
     to.name !== "login" &&
+    to.name !== "register" &&
     !user.checkLoggedIn
   ) {
     return { name: "login" };

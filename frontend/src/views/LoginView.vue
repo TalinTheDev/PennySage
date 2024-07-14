@@ -5,9 +5,11 @@
   import AuthLayout from "../layouts/AuthLayout.vue";
   import { useApiStore } from "@/stores/useApiStore";
   import { useUserStore } from "@/stores/useUserStore";
+  import { useRouter } from "vue-router";
 
-  const api = useApiStore();
-  const user = useUserStore();
+  const api = useApiStore().api;
+  const userStore = useUserStore();
+  const router = useRouter();
 
   const username = ref("");
   const password = ref("");
@@ -21,8 +23,12 @@
         username: username.value,
         password: password.value
       })
-      .then(({ data }) => {
-        user.login(data);
+      .then((data) => {
+        userStore.login(data.data.user_details, data.data.access_token);
+        router.push({ name: "dashboard" });
+      })
+      .catch((error) => {
+        alert(`Error: ${error.response.data.message}`);
       });
   };
 

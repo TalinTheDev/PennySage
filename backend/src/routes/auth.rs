@@ -17,16 +17,15 @@ use validator::Validate;
 pub fn routes() -> Router<AppState> {
   Router::new()
     .route("/login", post(login))
+    .route("/logout", post(logout))
     .route("/register", post(register))
     .route("/refresh_tokens", post(refresh_tokens))
 }
 
 #[derive(Deserialize, Validate)]
 pub struct LoginReq {
-  #[validate(email(message = "Invalid Email"))]
-  email: Option<String>,
   #[validate(length(min = 1, message = "Invalid username format"))]
-  username: Option<String>,
+  username: String,
   #[validate(length(min = 1, message = "Invalid password format"))]
   password: String,
 }
@@ -46,12 +45,6 @@ pub async fn login(
   State(state): State<crate::AppState>,
   Json(user_details): Json<LoginReq>,
 ) -> ApiResponse {
-  if user_details.email.is_none() && user_details.username.is_none() {
-    return ApiResponse::Failure {
-      status: StatusCode::BAD_REQUEST,
-      error: ApiError::Simple("Email or username not provided".to_owned()),
-    };
-  }
   if user_details.validate().err().is_some() {
     // TODO: Tell which fields are invalid
     return ApiResponse::Failure {
@@ -61,9 +54,8 @@ pub async fn login(
   }
   match sqlx::query_as!(
     UserRow,
-    "SELECT id, username, email, password, first_name, last_name, role FROM users WHERE username = ? OR email = ?",
-    user_details.username,
-    user_details.email
+    "SELECT id, username, email, password, first_name, last_name, role FROM users WHERE username = ?",
+    user_details.username
   )
   .fetch_one(&state.db_pool)
   .await
@@ -237,6 +229,14 @@ pub async fn refresh_tokens(State(state): State<crate::AppState>, jar: CookieJar
   }
 }
 
+pub async fn logout(jar: CookieJar) -> CookieJar {
+  jar.remove(
+    Cookie::build(("refresh_token", ""))
+      .same_site(SameSite::None)
+      .partitioned(true),
+  )
+}
+
 async fn set_tokens(user_data: UserRow, db: sqlx::Pool<sqlx::Sqlite>) -> ApiResponse {
   let access_token = match gen_access_token(user_data.id.clone(), user_data.role.clone()) {
     Ok(token) => token,
@@ -249,19 +249,21 @@ async fn set_tokens(user_data: UserRow, db: sqlx::Pool<sqlx::Sqlite>) -> ApiResp
   let refresh_cookie = Cookie::build(("refresh_token", refresh_token))
     .secure(true)
     .http_only(true)
-    .same_site(SameSite::Strict)
+    .same_site(SameSite::None) //TODO: CHANGE FOR PROD
+    .partitioned(true)
     .build()
     .encoded()
     .to_string();
   ApiResponse::SuccessWithCookies {
     status: StatusCode::OK,
-    data: Box::new(json!({"access_token": access_token, "user_data": {
-      "username": user_data.username,
-      "email": user_data.email,
-      "first_name": user_data.first_name,
-      "last_name": user_data.last_name,
-      "role": user_data.role
-    }})),
+    data: Box::new(json!({
+        "access_token": access_token, "user_details": {
+        "username": user_data.username,
+        "email": user_data.email,
+        "first_name": user_data.first_name,
+        "last_name": user_data.last_name,
+        "role": user_data.role}
+    })),
     cookies: vec![refresh_cookie],
   }
 }

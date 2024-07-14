@@ -1,5 +1,6 @@
 import { ref, computed } from "vue";
 import { defineStore } from "pinia";
+import { useApiStore } from "./useApiStore";
 import Cookies from "@/utils/Cookies.js";
 
 export const useUserStore = defineStore("useUserStore", () => {
@@ -29,7 +30,7 @@ export const useUserStore = defineStore("useUserStore", () => {
     Cookies.set("role", user.role);
   };
 
-  const logout = () => {
+  const logout = async () => {
     username.value = "";
     email.value = "";
     firstName.value = "";
@@ -39,6 +40,8 @@ export const useUserStore = defineStore("useUserStore", () => {
     accessToken.value = "";
     Cookies.delete("username");
     Cookies.delete("role");
+
+    await useApiStore().api.post("/auth/logout");
   };
 
   const checkLoggedIn = computed(() => {

@@ -34,7 +34,7 @@ async fn main() {
   println!("listening on {}", listener.local_addr().unwrap());
   let app = Router::new()
     .nest("/api", routes::app())
-    .layer(CorsLayer::permissive())
+    .layer(CorsLayer::very_permissive()) // TODO: Change this for prod
     .with_state(AppState { db_pool: pool });
   // Serve app
   axum::serve(listener, app).await.unwrap();

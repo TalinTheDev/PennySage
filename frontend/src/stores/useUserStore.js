@@ -1,6 +1,7 @@
 import { ref, computed } from "vue";
 import { defineStore } from "pinia";
 import { useApiStore } from "./useApiStore";
+import { useRouter } from "vue-router";}
 import Cookies from "@/utils/Cookies.js";
 
 export const useUserStore = defineStore("useUserStore", () => {
@@ -14,6 +15,7 @@ export const useUserStore = defineStore("useUserStore", () => {
 
   const login = (user, token) => {
     let { api } = useApiStore();
+    let router = useRouter();
 
     username.value = user.username;
     email.value = user.email;
@@ -30,7 +32,11 @@ export const useUserStore = defineStore("useUserStore", () => {
         return response;
       },
       (error) => {
-        console.log("In interceptor: " + checkLoggedIn.value);
+        if (Cookies.get("retryingAuth") === true) {
+          Cookies.set("retryingAuth", false);
+          router.push("/login");
+        }
+        Cookies.set("retryingAuth", true);
         if (checkLoggedIn.value && error.response.status == 401) {
           api
             .post("/auth/refresh_tokens")
@@ -57,6 +63,7 @@ export const useUserStore = defineStore("useUserStore", () => {
     Cookies.delete("username");
     Cookies.delete("role");
     Cookies.delete("accessToken");
+    Cookies.delete("retryingAuth");
 
     await api.post("/auth/logout");
     api.interceptors.request.clear();

@@ -4,19 +4,13 @@ import { useApiStore } from "./useApiStore";
 import Cookies from "@/utils/Cookies.js";
 
 export const useUserStore = defineStore("useUserStore", () => {
-  const accessToken = ref("");
-  const getAccessToken = computed(() => accessToken.value);
+  const accessToken = ref(Cookies.get("accessToken"));
 
   const username = ref("");
-  const getUsername = computed(() => username.value);
   const email = ref("");
-  const getEmail = computed(() => email.value);
   const firstName = ref("");
-  const getFirstName = computed(() => firstName.value);
   const lastName = ref("");
-  const getLastName = computed(() => lastName.value);
   const role = ref("");
-  const getRole = computed(() => role.value);
 
   const login = (user, token) => {
     let { api } = useApiStore();
@@ -27,27 +21,21 @@ export const useUserStore = defineStore("useUserStore", () => {
     lastName.value = user.lastName;
     role.value = user.role;
 
-    accessToken.value = token;
     Cookies.set("username", user.username);
     Cookies.set("role", user.role);
-
-    api.interceptors.request.use((config) => {
-      if (user.checkLoggedIn) {
-        config.headers.Authorization = `Bearer ${user.getAccessToken}`;
-      }
-      return config;
-    });
+    Cookies.set("accessToken", token);
 
     api.interceptors.response.use(
       (response) => {
         return response;
       },
       (error) => {
-        if (user.checkLoggedIn && error.response.status == 401) {
+        console.log("In interceptor: " + checkLoggedIn.value);
+        if (checkLoggedIn.value && error.response.status == 401) {
           api
             .post("/auth/refresh_tokens")
-            .then((data) => {
-              user.login(data.data.user_details, data.data.access_token);
+            .then(({ data }) => {
+              login(data.user_details, data.access_token);
             })
             .catch((error) => {
               return Promise.reject(error);
@@ -68,6 +56,7 @@ export const useUserStore = defineStore("useUserStore", () => {
     accessToken.value = "";
     Cookies.delete("username");
     Cookies.delete("role");
+    Cookies.delete("accessToken");
 
     await api.post("/auth/logout");
     api.interceptors.request.clear();
@@ -75,19 +64,20 @@ export const useUserStore = defineStore("useUserStore", () => {
   };
 
   const checkLoggedIn = computed(() => {
+    console.log("Checking logged in");
     if (accessToken.value) {
       return true;
     }
-    return Cookies.check("username");
+    return Cookies.check("accessToken");
   });
 
   return {
-    getAccessToken,
-    getUsername,
-    getEmail,
-    getFirstName,
-    getLastName,
-    getRole,
+    accessToken,
+    username,
+    email,
+    firstName,
+    lastName,
+    role,
     login,
     logout,
     checkLoggedIn

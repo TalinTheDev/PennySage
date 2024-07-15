@@ -2,7 +2,11 @@
   import { ref, provide, watchEffect } from "vue";
   import AppLayout from "@/layouts/AppLayout.vue";
   import InputBox from "@/components/InputBox.vue";
+  import { useApiStore } from "@/stores/useApiStore.js";
+  import { useRouter } from "vue-router";
 
+  const router = useRouter();
+  const api = useApiStore().api;
   const description = ref("");
   const dateInput = ref(new Date().toISOString().slice(0, 10));
   let date = 0;
@@ -18,7 +22,10 @@
     fixAmount(target);
     validate(target, "Amount");
   };
-  const fixAmount = (target) => (target.value = parseFloat(amount.value).toFixed(2));
+  const fixAmount = (target) => {
+    amount.value = parseFloat(amount.value).toFixed(2);
+    target.value = parseFloat(amount.value).toFixed(2);
+  };
   const validate = (target, name) => {
     if (!target.checkValidity()) {
       errors.value.set(`${name}Err`, target.validationMessage);
@@ -31,6 +38,30 @@
   watchEffect(() => {
     date = new Date(dateInput.value).getTime() / 1000;
   });
+
+  const handleAddTransaction = () => {
+    if (errors.value.size !== 0) {
+      return;
+    }
+
+    api
+      .post("/transactions/new", {
+        desc: description.value,
+        date: date,
+        amount: amount.value.toString(),
+        type: transactionType.value,
+        merchant: merchant.value,
+        category: category.value,
+        payment_source: paymentSource.value
+      })
+      .then(({ data }) => {
+        alert(`Transaction Added: ID ${data.transaction_id}`);
+        router.push({ name: "view" });
+      })
+      .catch((error) => {
+        alert(`Error: ${JSON.stringify(error)}`);
+      });
+  };
 </script>
 <template>
   <AppLayout>

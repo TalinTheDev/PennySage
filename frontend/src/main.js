@@ -12,8 +12,11 @@ const app = createApp(App);
 
 app.use(createPinia());
 
-if (Cookies.check("username")) {
-  useUserStore().login({ username: Cookies.get("username"), role: Cookies.get("role") }, "");
+if (Cookies.check("accessToken")) {
+  useUserStore().login(
+    { username: Cookies.get("username"), role: Cookies.get("role") },
+    Cookies.get("accessToken")
+  );
 }
 
 app.use(router);

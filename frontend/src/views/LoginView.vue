@@ -32,12 +32,12 @@
         username: username.value,
         password: password.value
       })
-      .then((data) => {
-        userStore.login(data.data.user_details, data.data.access_token);
+      .then(({ data }) => {
+        userStore.login(data.user_details, data.access_token);
         router.push({ name: "dashboard" });
       })
-      .catch((error) => {
-        alert(`Error: ${error.response.data.message}`);
+      .catch(({ response: { data } }) => {
+        alert(`Error: ${data.message}`);
       });
   };
 </script>

@@ -73,8 +73,14 @@ pub async fn new(
     Ok(_) => {
       if let Some(items) = transaction.items {
         if items.is_empty() {
-          ApiResponse::Success { status: StatusCode::OK, data: Box::new(json!({"transaction_id": transaction_id})) }
-        } else{
+            match tx.commit().await {
+              Ok(_) => return ApiResponse::Success { status: StatusCode::OK, data: Box::new(json!({"transaction_id": transaction_id})) },
+              Err(_) => return ApiResponse::Failure {
+                status: StatusCode::INTERNAL_SERVER_ERROR,
+                error: ApiError::Simple("Internal server error while adding transaction".to_owned()),
+              }
+            }
+        } else {
         for item in items.iter() {
           let item_id = match gen_id(crate::db::Tables::TransactionItems, &state.db_pool).await {
             Ok(id) => id,
@@ -105,7 +111,13 @@ pub async fn new(
         }
       }
       } else {
-        ApiResponse::Success { status: StatusCode::OK, data: Box::new(json!({"transaction_id": transaction_id}))}
+          match tx.commit().await {
+            Ok(_) => return ApiResponse::Success { status: StatusCode::OK, data: Box::new(json!({"transaction_id": transaction_id})) },
+            Err(_) => return ApiResponse::Failure {
+              status: StatusCode::INTERNAL_SERVER_ERROR,
+              error: ApiError::Simple("Internal server error while adding transaction".to_owned()),
+            }
+          }
       }
     },
     Err(_) => ApiResponse::Failure {

@@ -53,11 +53,11 @@
 <template>
   <AppLayout>
     <h2>View Transactions</h2>
-    <p v-if="!transactions.len">No Transactions Found</p>
-    <button @click="deleteTransactions" v-if="transactions.len">
+    <p v-if="transactions.length === 0">No Transactions Found</p>
+    <button @click="deleteTransactions" v-if="transactions.length > 0">
       Delete Selected Transactions
     </button>
-    <table class="table" v-if="transactions.len">
+    <table class="table" v-if="transactions.length > 0">
       <thead>
         <tr>
           <th><input type="checkbox" @click="checkAll" v-model="allSelected" /></th>
@@ -79,7 +79,7 @@
           </td>
           <td>{{ transaction.transaction.desc }}</td>
           <td>{{ new Date(transaction.transaction.date * 1000).toLocaleDateString() }}</td>
-          <td>${{ transaction.transaction.amount }}</td>
+          <td>${{ parseFloat(transaction.transaction.amount).toFixed(2) }}</td>
           <td>{{ transaction.transaction.merchant }}</td>
           <td>{{ transaction.transaction.category }}</td>
           <td>{{ transaction.transaction.payment_source }}</td>

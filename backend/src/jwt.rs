@@ -26,7 +26,7 @@ pub struct RefreshTokenClaims {
 }
 
 pub fn gen_access_token(user_id: String, role: String) -> Result<String, ApiResponse> {
-  let expiration = match Local::now().checked_add_signed(Duration::minutes(5)) {
+  let expiration = match Local::now().checked_add_signed(Duration::seconds(15)) {
     Some(time) => time.timestamp(),
     None => Local::now().timestamp(),
   };
@@ -172,6 +172,7 @@ pub async fn verify_refresh_token(
       }
     }
     Err(e) => {
+        println!("Erorr verifying refresh token: {}", token);
       match e.into_kind() {
         jsonwebtoken::errors::ErrorKind::ExpiredSignature => Err(auth_error),
         jsonwebtoken::errors::ErrorKind::InvalidToken => Err(auth_error),

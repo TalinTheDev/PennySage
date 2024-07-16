@@ -1,7 +1,7 @@
 import { ref, computed } from "vue";
 import { defineStore } from "pinia";
 import { useApiStore } from "./useApiStore";
-import { useRouter } from "vue-router";}
+import { useRouter } from "vue-router";
 import Cookies from "@/utils/Cookies.js";
 
 export const useUserStore = defineStore("useUserStore", () => {
@@ -14,9 +14,7 @@ export const useUserStore = defineStore("useUserStore", () => {
   const role = ref("");
 
   const login = (user, token) => {
-    let { api } = useApiStore();
-    let router = useRouter();
-
+    accessToken.value = token;
     username.value = user.username;
     email.value = user.email;
     firstName.value = user.firstName;
@@ -26,29 +24,6 @@ export const useUserStore = defineStore("useUserStore", () => {
     Cookies.set("username", user.username);
     Cookies.set("role", user.role);
     Cookies.set("accessToken", token);
-
-    api.interceptors.response.use(
-      (response) => {
-        return response;
-      },
-      (error) => {
-        if (Cookies.get("retryingAuth") === true) {
-          Cookies.set("retryingAuth", false);
-          router.push("/login");
-        }
-        Cookies.set("retryingAuth", true);
-        if (checkLoggedIn.value && error.response.status == 401) {
-          api
-            .post("/auth/refresh_tokens")
-            .then(({ data }) => {
-              login(data.user_details, data.access_token);
-            })
-            .catch((error) => {
-              return Promise.reject(error);
-            });
-        }
-      }
-    );
   };
 
   const logout = async () => {
@@ -66,7 +41,6 @@ export const useUserStore = defineStore("useUserStore", () => {
     Cookies.delete("retryingAuth");
 
     await api.post("/auth/logout");
-    api.interceptors.request.clear();
     api.interceptors.response.clear();
   };
 

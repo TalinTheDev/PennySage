@@ -6,9 +6,14 @@
   const transactions = ref("");
   const api = useApiStore().api;
 
-  api.get("/transactions/all").then(({ data }) => {
-    transactions.value = data;
-  });
+  api
+    .get("/transactions/all")
+    .then(({ data }) => {
+      transactions.value = data;
+    })
+    .catch((error) => {
+      alert(`Error: ${JSON.stringify(error)}`);
+    });
 </script>
 <template>
   <AppLayout>

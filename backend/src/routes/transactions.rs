@@ -3,7 +3,7 @@ use crate::{db::gen_id, jwt::AccessTokenClaims, AppState};
 use axum::{
   extract::State,
   http::StatusCode,
-  routing::{get, post},
+  routing::{delete, get, post},
   Json, Router,
 };
 use chrono::DateTime;
@@ -15,6 +15,7 @@ pub fn routes() -> Router<AppState> {
   Router::new()
     .route("/new", post(new))
     .route("/all", get(get_transactions))
+    .route("/delete", delete(delete_transactions))
 }
 
 #[derive(Deserialize, Validate)]
@@ -197,5 +198,79 @@ pub async fn get_transactions(
       sqlx::Error::RowNotFound => ApiResponse::Success { status: StatusCode::OK, data: Box::new(results) },
       _ => ApiResponse::Failure { status: StatusCode::INTERNAL_SERVER_ERROR, error: ApiError::Simple("Could not fetch transactions from database (internal server error)".to_owned()) }
     }
+  }
+}
+
+#[derive(Deserialize)]
+pub struct DeleteReq {
+  transactions: Vec<String>,
+}
+
+pub async fn delete_transactions(
+  State(state): State<crate::AppState>,
+  user: AccessTokenClaims,
+  Json(data): Json<DeleteReq>,
+) -> ApiResponse {
+  if data.transactions.len() != 0 {
+    let mut tx = match state.db_pool.begin().await {
+      Ok(tx) => tx,
+      Err(_) => {
+        return ApiResponse::Failure {
+          status: StatusCode::INTERNAL_SERVER_ERROR,
+          error: ApiError::Simple(
+            "Internal server error while preparing transaction to delete transactions".to_owned(),
+          ),
+        }
+      }
+    };
+    for transaction in data.transactions {
+      match sqlx::query!(
+        "DELETE FROM transactions WHERE id = ? AND user_id = ?;",
+        transaction,
+        user.id
+      )
+      .execute(&mut *tx)
+      .await
+      {
+        Ok(_) => continue,
+        Err(_) => match tx.rollback().await {
+          Ok(_) => {
+            return ApiResponse::Failure {
+              status: StatusCode::INTERNAL_SERVER_ERROR,
+              error: ApiError::Simple(
+                "Internal server error while deleting transaction".to_owned(),
+              ),
+            }
+          }
+          Err(_) => {
+            return ApiResponse::Failure {
+              status: StatusCode::INTERNAL_SERVER_ERROR,
+              error: ApiError::Simple(
+                "Internal server error while deleting transaction".to_owned(),
+              ),
+            }
+          }
+        },
+      }
+    }
+    match tx.commit().await {
+      Ok(_) => {
+        return ApiResponse::Success {
+          status: StatusCode::OK,
+          data: Box::new("Transactions deleted successfully"),
+        }
+      }
+      Err(_) => {
+        return ApiResponse::Failure {
+          status: StatusCode::INTERNAL_SERVER_ERROR,
+          error: ApiError::Simple("Internal server error while deleting transactions".to_owned()),
+        }
+      }
+    }
+  } else {
+    return ApiResponse::Success {
+      status: StatusCode::OK,
+      data: Box::new("No transactions to delete"),
+    };
   }
 }

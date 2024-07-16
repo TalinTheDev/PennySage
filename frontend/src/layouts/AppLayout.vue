@@ -8,11 +8,6 @@
   const router = useRouter();
   const page = ref(router.currentRoute.value.name);
 
-  const logout = async () => {
-    await user.logout();
-    router.push({ name: "login" });
-  };
-
   const changeActivePage = (pageName) => {
     page.value = pageName;
   };
@@ -53,7 +48,7 @@
             @click="changeActivePage('settings')"
             >Settings</RouterLink
           >
-          <a to="javascript:void(0)" class="navLink button" @click="logout">Logout</a>
+          <a to="javascript:void(0)" class="navLink button" @click="user.logout()">Logout</a>
         </div>
       </nav>
     </div>

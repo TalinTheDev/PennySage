@@ -1,10 +1,12 @@
 import { ref, computed } from "vue";
 import { defineStore } from "pinia";
 import { useApiStore } from "./useApiStore";
-import { useRouter } from "vue-router";
 import Cookies from "@/utils/Cookies.js";
+import { useRouter } from "vue-router";
 
 export const useUserStore = defineStore("useUserStore", () => {
+  const { api } = useApiStore();
+  const router = useRouter();
   const accessToken = ref(Cookies.get("accessToken"));
 
   const username = ref("");
@@ -26,8 +28,7 @@ export const useUserStore = defineStore("useUserStore", () => {
     Cookies.set("accessToken", token);
   };
 
-  const logout = async () => {
-    let { api } = useApiStore();
+  async function logout() {
     username.value = "";
     email.value = "";
     firstName.value = "";
@@ -41,11 +42,10 @@ export const useUserStore = defineStore("useUserStore", () => {
     Cookies.delete("retryingAuth");
 
     await api.post("/auth/logout");
-    api.interceptors.response.clear();
-  };
+    router.push({ name: "login" });
+  }
 
   const checkLoggedIn = computed(() => {
-    console.log("Checking logged in");
     if (accessToken.value) {
       return true;
     }

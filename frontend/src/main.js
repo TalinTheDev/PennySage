@@ -10,7 +10,9 @@ import { useUserStore } from "./stores/useUserStore";
 
 const app = createApp(App);
 
-app.use(createPinia());
+const pinia = createPinia();
+app.use(pinia);
+app.use(router);
 
 if (Cookies.check("accessToken")) {
   useUserStore().login(
@@ -18,7 +20,5 @@ if (Cookies.check("accessToken")) {
     Cookies.get("accessToken")
   );
 }
-
-app.use(router);
 
 app.mount("#app");

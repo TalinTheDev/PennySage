@@ -26,7 +26,6 @@ where
         error: ApiError::Simple("Access token not found".to_owned()),
       })?;
     // Decode the user data
-    println!("Access token {}", bearer.token().to_string());
     let token_data = verify_access_token(bearer.token().to_string())?;
 
     Ok(token_data)

@@ -172,7 +172,6 @@ pub async fn verify_refresh_token(
       }
     }
     Err(e) => {
-        println!("Erorr verifying refresh token: {}", token);
       match e.into_kind() {
         jsonwebtoken::errors::ErrorKind::ExpiredSignature => Err(auth_error),
         jsonwebtoken::errors::ErrorKind::InvalidToken => Err(auth_error),

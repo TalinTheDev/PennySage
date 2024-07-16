@@ -15,7 +15,7 @@
   const merchant = ref("");
   const category = ref("");
   const paymentSource = ref("");
-  const items = ref([]);
+  // const items = ref([]);
 
   const errors = ref(new Map());
   const validateAmount = (target) => {
@@ -54,7 +54,7 @@
         category: category.value,
         payment_source: paymentSource.value
       })
-      .then(({ data }) => {
+      .then((data) => {
         alert(`Transaction Added: ID ${data.transaction_id}`);
         router.push({ name: "view" });
       })

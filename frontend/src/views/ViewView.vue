@@ -8,11 +8,11 @@
 
   api
     .get("/transactions/all")
-    .then(({ data }) => {
+    .then((data) => {
       transactions.value = data;
     })
     .catch((error) => {
-      alert(`Error: ${JSON.stringify(error)}`);
+      alert(`Error: ${JSON.stringify(error.message)}`);
     });
 </script>
 <template>

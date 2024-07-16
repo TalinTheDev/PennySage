@@ -45,7 +45,6 @@ const router = createRouter({
 
 router.beforeEach((to, from) => {
   let user = useUserStore();
-
   if (
     from.path !== "/login" &&
     from.path !== "/register" &&

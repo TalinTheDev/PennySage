@@ -232,8 +232,12 @@ pub async fn refresh_tokens(State(state): State<crate::AppState>, jar: CookieJar
 pub async fn logout(jar: CookieJar) -> CookieJar {
   jar.remove(
     Cookie::build(("refresh_token", ""))
-      .same_site(SameSite::None)
-      .partitioned(true),
+      .secure(true)
+      .http_only(true)
+      .path("/api")
+      .same_site(SameSite::None) //TODO: CHANGE FOR PROD
+      .partitioned(true)
+      .build(),
   )
 }
 
@@ -249,6 +253,7 @@ async fn set_tokens(user_data: UserRow, db: sqlx::Pool<sqlx::Sqlite>) -> ApiResp
   let refresh_cookie = Cookie::build(("refresh_token", refresh_token))
     .secure(true)
     .http_only(true)
+    .path("/api")
     .same_site(SameSite::None) //TODO: CHANGE FOR PROD
     .partitioned(true)
     .build()

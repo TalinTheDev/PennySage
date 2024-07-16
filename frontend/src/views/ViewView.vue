@@ -1,5 +1,7 @@
 <script setup>
   import AppLayout from "@/layouts/AppLayout.vue";
+  import DebitChip from "@/components/DebitChip.vue";
+  import CreditChip from "@/components/CreditChip.vue";
   import { ref, onMounted } from "vue";
   import { useApiStore } from "@/stores/useApiStore.js";
 
@@ -64,6 +66,7 @@
           <th>Description</th>
           <th>Date</th>
           <th>Amount</th>
+          <th>Payment Type</th>
           <th>Merchant</th>
           <th>Category</th>
           <th>Payment Source</th>
@@ -80,6 +83,7 @@
           <td>{{ transaction.transaction.desc }}</td>
           <td>{{ new Date(transaction.transaction.date * 1000).toLocaleDateString() }}</td>
           <td>${{ parseFloat(transaction.transaction.amount).toFixed(2) }}</td>
+          <td><DebitChip v-if="transaction.transaction.type == 'debit'" /><CreditChip v-else /></td>
           <td>{{ transaction.transaction.merchant }}</td>
           <td>{{ transaction.transaction.category }}</td>
           <td>{{ transaction.transaction.payment_source }}</td>

@@ -37,7 +37,7 @@
         router.push({ name: "dashboard" });
       })
       .catch((error) => {
-        alert(`Error at login: ${error}`);
+        alert(`Error: ${JSON.stringify(error)}`);
       });
   };
 </script>

@@ -50,7 +50,7 @@
         router.push({ name: "dashboard" });
       })
       .catch((error) => {
-        alert(`Error: ${error.message}`);
+        alert(`Error: ${JSON.stringify(error)}`);
       });
   };
 </script>

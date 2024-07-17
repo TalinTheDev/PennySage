@@ -36,7 +36,7 @@
   provide("errors", errors);
 
   watchEffect(() => {
-    date = new Date(dateInput.value).getTime() / 1000;
+    date = new Date(dateInput.value.split("-")).setHours(0, 0, 0, 0);
   });
 
   const handleAddTransaction = () => {

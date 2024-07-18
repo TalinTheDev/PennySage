@@ -1,5 +1,6 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap");
 @import "./reset.css";
-@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap");
+
 :root {
   --white: hsl(0 0 100);
   --light-grey: hsl(0 0 75);
@@ -7,8 +8,8 @@
   --dark-grey: hsl(0 0 25);
   --black: hsl(0 0 0);
 
-  --header-font: "Oswald";
-  --body-font: sans-serif;
+  --header-font: "Montserrat", sans-serif;
+  --body-font: "Open Sans", sans-serif;
 
   font-size: 1.1rem;
 }

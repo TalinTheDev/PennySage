@@ -85,7 +85,6 @@
 </script>
 <template>
   <AppLayout>
-    <h2>View Transactions</h2>
     <DataTable
       :value="transactions"
       tableStyle="min-width: 50rem"
@@ -105,6 +104,7 @@
       ]"
       v-model:selection="selectedTransactions">
       <template #header>
+        <h2>View Transactions</h2>
         <InputText v-model="filters['global'].value" placeholder="Keyword Search" />
         <Button type="button" label="Clear Filters" outlined @click="initFilters()" />
         <Button

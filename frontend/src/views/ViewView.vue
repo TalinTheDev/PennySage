@@ -6,6 +6,9 @@
   import Column from "primevue/column";
   import InputText from "primevue/InputText";
   import DatePicker from "primevue/datepicker";
+
+  import Select from "primevue/select";
+
   import Button from "primevue/button";
   import Tag from "primevue/tag";
 
@@ -16,6 +19,10 @@
   const transactions = ref([]);
   const api = useApiStore().api;
   const selectedTransactions = ref();
+  const typeFilterOptions = ref([
+    { label: "Debit", value: "debit" },
+    { label: "Credit", value: "credit" }
+  ]);
   const filters = ref({
     global: { value: null, matchMode: FilterMatchMode.CONTAINS },
     "transaction.desc": { value: null, matchMode: FilterMatchMode.CONTAINS },
@@ -79,7 +86,7 @@
       size="small"
       v-model:filters="filters"
       dataKey="transaction.id"
-      filterDisplay="row"
+      filterDisplay="menu"
       :globalFilterFields="[
         'transaction.desc',
         'transaction.amount',
@@ -129,6 +136,15 @@
         <template #body="{ data }">
           <Tag severity="danger" value="Debit" v-if="data.transaction.type === 'debit'"></Tag>
           <Tag severity="success" value="Credit" v-if="data.transaction.type === 'credit'"></Tag>
+        </template>
+        <template #filter="{ filterModel, filterCallback }">
+          <Select
+            v-model="filterModel.value"
+            optionLabel="label"
+            optionValue="value"
+            :options="typeFilterOptions"
+            placeholder="Filter by Type"
+            @change="filterCallback()" />
         </template>
       </Column>
       <Column field="transaction.merchant" sortable header="Merchant">

@@ -5,6 +5,7 @@
   import DataTable from "primevue/datatable";
   import Column from "primevue/column";
   import InputText from "primevue/InputText";
+  import DatePicker from "primevue/datepicker";
   import Button from "primevue/button";
 
   import { FilterMatchMode } from "@primevue/core/api";
@@ -16,7 +17,8 @@
   const selectedTransactions = ref();
   const filters = ref({
     global: { value: null, matchMode: FilterMatchMode.CONTAINS },
-    "transaction.desc": { value: null, matchMode: FilterMatchMode.CONTAINS }
+    "transaction.desc": { value: null, matchMode: FilterMatchMode.CONTAINS },
+    "transaction.date": { value: null, matchMode: FilterMatchMode.DATE_IS }
   });
 
   const getTransactions = () => {
@@ -24,10 +26,7 @@
       .get("/transactions/all")
       .then((data) => {
         data.forEach((transaction) => {
-          transaction.transaction.date = new Date(
-            transaction.transaction.date
-          ).toLocaleDateString();
-          transaction.transaction.amount = `$${parseFloat(transaction.transaction.amount).toFixed(2)}`;
+          transaction.transaction.date = new Date(transaction.transaction.date);
         });
         transactions.value = data;
       })
@@ -40,10 +39,14 @@
     if (selectedTransactions.value.length === 0) {
       return;
     }
+    let transactions = [];
+    selectedTransactions.value.forEach((transaction) => {
+      transactions.push(transaction.transaction.id);
+    });
     api
       .delete("/transactions/delete", {
         data: {
-          transactions: selectedTransactions.value
+          transactions: transactions
         }
       })
       .then((data) => {
@@ -69,7 +72,13 @@
       v-model:filters="filters"
       dataKey="transaction.id"
       filterDisplay="row"
-      :globalFilterFields="['transaction.desc', 'transaction.merchant']"
+      :globalFilterFields="[
+        'transaction.desc',
+        'transaction.amount',
+        'transaction.merchant',
+        'transaction.category',
+        'transaction.payment_source'
+      ]"
       v-model:selection="selectedTransactions">
       <template #header>
         <InputText v-model="filters['global'].value" placeholder="Keyword Search" />
@@ -81,16 +90,23 @@
       </template>
       <template #empty> No transactions found. </template>
       <Column selectionMode="multiple" headerStyle="width: 3rem"></Column>
-      <Column field="transaction.desc" header="Description" style="min-width: 12rem">
+      <Column field="transaction.desc" header="Description">
         <template #filter="{ filterModel, filterCallback }">
           <InputText
             v-model="filterModel.value"
             type="text"
             @input="filterCallback()"
-            placeholder="Search by name" />
+            placeholder="Search by description" />
         </template>
       </Column>
-      <Column field="transaction.date" sortable header="Date"></Column>
+      <Column field="transaction.date" header="Date" dataType="date">
+        <template #body="{ data }">
+          {{ new Date(data.transaction.date).toLocaleDateString() }}
+        </template>
+        <template #filter="{ filterModel, filterCallback }">
+          <DatePicker v-model="filterModel.value" @date-select="filterCallback()" />
+        </template>
+      </Column>
       <Column field="transaction.amount" sortable header="Amount"></Column>
       <Column field="transaction.type" header="Type"></Column>
       <Column field="transaction.merchant" sortable header="Merchant"></Column>

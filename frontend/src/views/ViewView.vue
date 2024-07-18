@@ -13,7 +13,7 @@
   import Tag from "primevue/tag";
 
   import { FilterMatchMode } from "@primevue/core/api";
-  import { ref, onMounted } from "vue";
+  import { ref, onBeforeMount, onMounted } from "vue";
   import { useApiStore } from "@/stores/useApiStore.js";
 
   const transactions = ref([]);
@@ -23,16 +23,20 @@
     { label: "Debit", value: "debit" },
     { label: "Credit", value: "credit" }
   ]);
-  const filters = ref({
-    global: { value: null, matchMode: FilterMatchMode.CONTAINS },
-    "transaction.desc": { value: null, matchMode: FilterMatchMode.CONTAINS },
-    "transaction.date": { value: null, matchMode: FilterMatchMode.DATE_IS },
-    "transaction.amount": { value: null, matchMode: FilterMatchMode.CONTAINS },
-    "transaction.type": { value: null, matchMode: FilterMatchMode.EQUALS },
-    "transaction.merchant": { value: null, matchMode: FilterMatchMode.CONTAINS },
-    "transaction.category": { value: null, matchMode: FilterMatchMode.CONTAINS },
-    "transaction.payment_source": { value: null, matchMode: FilterMatchMode.CONTAINS }
-  });
+  const filters = ref();
+
+  const initFilters = () => {
+    filters.value = {
+      global: { value: null, matchMode: FilterMatchMode.CONTAINS },
+      "transaction.desc": { value: null, matchMode: FilterMatchMode.CONTAINS },
+      "transaction.date": { value: null, matchMode: FilterMatchMode.DATE_IS },
+      "transaction.amount": { value: null, matchMode: FilterMatchMode.CONTAINS },
+      "transaction.type": { value: null, matchMode: FilterMatchMode.EQUALS },
+      "transaction.merchant": { value: null, matchMode: FilterMatchMode.CONTAINS },
+      "transaction.category": { value: null, matchMode: FilterMatchMode.CONTAINS },
+      "transaction.payment_source": { value: null, matchMode: FilterMatchMode.CONTAINS }
+    };
+  };
 
   const getTransactions = () => {
     api
@@ -72,7 +76,12 @@
       });
   };
 
-  onMounted(getTransactions);
+  onBeforeMount(() => {
+    initFilters();
+  });
+  onMounted(() => {
+    getTransactions();
+  });
 </script>
 <template>
   <AppLayout>
@@ -97,6 +106,7 @@
       v-model:selection="selectedTransactions">
       <template #header>
         <InputText v-model="filters['global'].value" placeholder="Keyword Search" />
+        <Button type="button" label="Clear Filters" outlined @click="initFilters()" />
         <Button
           @click="deleteTransactions"
           label="Delete Selected Transactions"
@@ -112,7 +122,7 @@
             v-model="filterModel.value"
             type="text"
             @input="filterCallback()"
-            placeholder="Search by description" />
+            placeholder="Filter by description" />
         </template>
       </Column>
       <Column field="transaction.date" header="Date" sortable dataType="date">
@@ -129,7 +139,7 @@
             v-model="filterModel.value"
             type="text"
             @input="filterCallback()"
-            placeholder="Search by amount" />
+            placeholder="Filter by amount" />
         </template>
       </Column>
       <Column field="transaction.type" header="Type" sortable>
@@ -153,7 +163,7 @@
             v-model="filterModel.value"
             type="text"
             @input="filterCallback()"
-            placeholder="Search by merchant" />
+            placeholder="Filter by merchant" />
         </template>
       </Column>
       <Column field="transaction.category" sortable header="Category">
@@ -162,7 +172,7 @@
             v-model="filterModel.value"
             type="text"
             @input="filterCallback()"
-            placeholder="Search by category" />
+            placeholder="Filter by category" />
         </template>
       </Column>
       <Column field="transaction.payment_source" sortable header="Payment Source">
@@ -171,7 +181,7 @@
             v-model="filterModel.value"
             type="text"
             @input="filterCallback()"
-            placeholder="Search by payment source" />
+            placeholder="Filter by payment source" />
         </template>
       </Column>
     </DataTable>

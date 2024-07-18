@@ -1,4 +1,6 @@
 <script setup>
+  import Button from "primevue/button";
+
   import { RouterLink } from "vue-router";
   import { ref } from "vue";
   import { useUserStore } from "@/stores/useUserStore.js";
@@ -18,37 +20,37 @@
       <h1>PennySage</h1>
       <nav>
         <div class="leftLinks">
-          <RouterLink
+          <Button
+            as="router-link"
+            label="Dashboard"
             to="/"
             class="navLink"
             :class="{ activeLink: page === 'dashboard' }"
-            @click="changeActivePage('dashbaord')"
-            >Dashboard</RouterLink
-          >
-          <RouterLink
+            link />
+          <Button
+            as="router-link"
+            label="Add Transaction"
             to="/add"
             class="navLink"
             :class="{ activeLink: page === 'add' }"
-            @click="changeActivePage('add')"
-            >Add Transaction</RouterLink
-          >
-          <RouterLink
+            link />
+          <Button
+            as="router-link"
+            label="View Transactions"
             to="/view"
             class="navLink"
             :class="{ activeLink: page === 'view' }"
-            @click="changeActivePage('view')"
-            >View Transactions</RouterLink
-          >
+            link />
         </div>
         <div class="rightLinks">
-          <RouterLink
+          <Button
+            as="router-link"
+            label="Settings"
             to="/settings"
             class="navLink"
             :class="{ activeLink: page === 'settings' }"
-            @click="changeActivePage('settings')"
-            >Settings</RouterLink
-          >
-          <a to="javascript:void(0)" class="navLink button" @click="user.logout()">Logout</a>
+            link />
+          <Button label="Logout" class="navLink button" unstyled @click="user.logout()" />
         </div>
       </nav>
     </div>
@@ -104,7 +106,8 @@
 
       .navLink.button {
         border: 1px solid var(--black);
-        padding: 0px 2%;
+        background-color: transparent;
+        padding: 0 2%;
 
         &:hover,
         &:focus {

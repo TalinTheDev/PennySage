@@ -7,6 +7,7 @@
   import InputText from "primevue/InputText";
   import DatePicker from "primevue/datepicker";
   import Button from "primevue/button";
+  import Tag from "primevue/tag";
 
   import { FilterMatchMode } from "@primevue/core/api";
   import { ref, onMounted } from "vue";
@@ -18,7 +19,12 @@
   const filters = ref({
     global: { value: null, matchMode: FilterMatchMode.CONTAINS },
     "transaction.desc": { value: null, matchMode: FilterMatchMode.CONTAINS },
-    "transaction.date": { value: null, matchMode: FilterMatchMode.DATE_IS }
+    "transaction.date": { value: null, matchMode: FilterMatchMode.DATE_IS },
+    "transaction.amount": { value: null, matchMode: FilterMatchMode.CONTAINS },
+    "transaction.type": { value: null, matchMode: FilterMatchMode.EQUALS },
+    "transaction.merchant": { value: null, matchMode: FilterMatchMode.CONTAINS },
+    "transaction.category": { value: null, matchMode: FilterMatchMode.CONTAINS },
+    "transaction.payment_source": { value: null, matchMode: FilterMatchMode.CONTAINS }
   });
 
   const getTransactions = () => {
@@ -27,6 +33,7 @@
       .then((data) => {
         data.forEach((transaction) => {
           transaction.transaction.date = new Date(transaction.transaction.date);
+          transaction.transaction.amount = `$${parseFloat(transaction.transaction.amount).toFixed(2)}`;
         });
         transactions.value = data;
       })
@@ -69,6 +76,7 @@
       showGridlines
       sortMode="multiple"
       removableSort
+      size="small"
       v-model:filters="filters"
       dataKey="transaction.id"
       filterDisplay="row"
@@ -90,7 +98,8 @@
       </template>
       <template #empty> No transactions found. </template>
       <Column selectionMode="multiple" headerStyle="width: 3rem"></Column>
-      <Column field="transaction.desc" header="Description">
+      <Column field="transaction.id" hidden />
+      <Column field="transaction.desc" header="Description" sortable>
         <template #filter="{ filterModel, filterCallback }">
           <InputText
             v-model="filterModel.value"
@@ -99,7 +108,7 @@
             placeholder="Search by description" />
         </template>
       </Column>
-      <Column field="transaction.date" header="Date" dataType="date">
+      <Column field="transaction.date" header="Date" sortable dataType="date">
         <template #body="{ data }">
           {{ new Date(data.transaction.date).toLocaleDateString() }}
         </template>
@@ -107,11 +116,48 @@
           <DatePicker v-model="filterModel.value" @date-select="filterCallback()" />
         </template>
       </Column>
-      <Column field="transaction.amount" sortable header="Amount"></Column>
-      <Column field="transaction.type" header="Type"></Column>
-      <Column field="transaction.merchant" sortable header="Merchant"></Column>
-      <Column field="transaction.category" sortable header="Category"></Column>
-      <Column field="transaction.payment_source" sortable header="Payment Source"></Column>
+      <Column field="transaction.amount" sortable header="Amount">
+        <template #filter="{ filterModel, filterCallback }">
+          <InputText
+            v-model="filterModel.value"
+            type="text"
+            @input="filterCallback()"
+            placeholder="Search by amount" />
+        </template>
+      </Column>
+      <Column field="transaction.type" header="Type" sortable>
+        <template #body="{ data }">
+          <Tag severity="danger" value="Debit" v-if="data.transaction.type === 'debit'"></Tag>
+          <Tag severity="success" value="Credit" v-if="data.transaction.type === 'credit'"></Tag>
+        </template>
+      </Column>
+      <Column field="transaction.merchant" sortable header="Merchant">
+        <template #filter="{ filterModel, filterCallback }">
+          <InputText
+            v-model="filterModel.value"
+            type="text"
+            @input="filterCallback()"
+            placeholder="Search by merchant" />
+        </template>
+      </Column>
+      <Column field="transaction.category" sortable header="Category">
+        <template #filter="{ filterModel, filterCallback }">
+          <InputText
+            v-model="filterModel.value"
+            type="text"
+            @input="filterCallback()"
+            placeholder="Search by category" />
+        </template>
+      </Column>
+      <Column field="transaction.payment_source" sortable header="Payment Source">
+        <template #filter="{ filterModel, filterCallback }">
+          <InputText
+            v-model="filterModel.value"
+            type="text"
+            @input="filterCallback()"
+            placeholder="Search by payment source" />
+        </template>
+      </Column>
     </DataTable>
 
     <!-- <table class="table" v-if="transactions.length > 0">

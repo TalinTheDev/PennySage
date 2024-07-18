@@ -9,11 +9,17 @@
   const api = useApiStore().api;
   const checkedTransactions = ref([]);
   const allSelected = ref(false);
+
+  // Filters
   const descriptionSearch = ref("");
   const dateSearch = ref();
   const merchantSearch = ref("");
   const categorySearch = ref("");
   const sourceSearch = ref("");
+
+  // Sorting settings
+  const sortDesc = ref(1);
+  const sortDate = ref(1);
 
   const getTransactions = () => {
     api
@@ -63,7 +69,7 @@
         return transaction.transaction.desc
           .toString()
           .toLowerCase()
-          .includes(descriptionSearch.value);
+          .includes(descriptionSearch.value.toString().toLowerCase());
       });
     }
   };
@@ -87,7 +93,7 @@
         return transaction.transaction.merchant
           .toString()
           .toLowerCase()
-          .includes(merchantSearch.value);
+          .includes(merchantSearch.value.toString().toLowerCase());
       });
     }
   };
@@ -100,7 +106,7 @@
         return transaction.transaction.category
           .toString()
           .toLowerCase()
-          .includes(categorySearch.value);
+          .includes(categorySearch.value.toString().toLowerCase());
       });
     }
   };
@@ -113,7 +119,7 @@
         return transaction.transaction.payment_source
           .toString()
           .toLowerCase()
-          .includes(sourceSearch.value);
+          .includes(sourceSearch.value.toString().toLowerCase());
       });
     }
   };
@@ -126,6 +132,82 @@
         .intersection(new Set(categorySearchFilter()))
         .intersection(new Set(sourceSearchFilter()))
     );
+  });
+
+  const descSort = (array, type) => {
+    if (type === "a") {
+      return array.toSorted((a, b) => {
+        const transactionA = a.transaction.desc.toUpperCase();
+        const transactionB = b.transaction.desc.toUpperCase();
+        if (transactionA < transactionB) {
+          return -1;
+        }
+        if (transactionA > transactionB) {
+          return 1;
+        }
+        return 0;
+      });
+    } else if (type === "d") {
+      return array.toSorted((a, b) => {
+        const transactionA = a.transaction.desc.toUpperCase();
+        const transactionB = b.transaction.desc.toUpperCase();
+        if (transactionA > transactionB) {
+          return -1;
+        }
+        if (transactionA < transactionB) {
+          return 1;
+        }
+        return 0;
+      });
+    }
+  };
+
+  const dateSort = (array, type) => {
+    if (type === "a") {
+      return array.toSorted((a, b) => {
+        const transactionA = a.transaction.date;
+        const transactionB = b.transaction.date;
+        if (transactionA < transactionB) {
+          return -1;
+        }
+        if (transactionA > transactionB) {
+          return 1;
+        }
+        return 0;
+      });
+    } else if (type === "d") {
+      return array.toSorted((a, b) => {
+        const transactionA = a.transaction.date;
+        const transactionB = b.transaction.date;
+        if (transactionA > transactionB) {
+          return -1;
+        }
+        if (transactionA < transactionB) {
+          return 1;
+        }
+        return 0;
+      });
+    }
+  };
+
+  const sortedTransactions = computed(() => {
+    let transactions = filteredTransactions;
+    let sorted = transactions.value;
+    if (sortDesc.value === 1) {
+      sorted = descSort(transactions.value, "a");
+    } else if (sortDesc.value === -1) {
+      sorted = descSort(transactions.value, "d");
+    } else {
+      sorted = transactions.value;
+    }
+    if (sortDate.value === 1) {
+      sorted = dateSort(sorted, "a");
+    } else if (sortDate.value === -1) {
+      sorted = dateSort(sorted, "d");
+    } else {
+      sorted = transactions.value;
+    }
+    return sorted;
   });
 
   onMounted(getTransactions);
@@ -182,8 +264,34 @@
         </tr>
         <tr>
           <th><input type="checkbox" @click="checkAll" v-model="allSelected" /></th>
-          <th>Description</th>
-          <th>Date</th>
+          <th
+            @click="
+              () => {
+                if (sortDesc === 0) {
+                  sortDesc = 1;
+                } else if (sortDesc === 1) {
+                  sortDesc = -1;
+                } else {
+                  sortDesc = 0;
+                }
+              }
+            ">
+            Description {{ sortDesc }}
+          </th>
+          <th
+            @click="
+              () => {
+                if (sortDate === 0) {
+                  sortDate = 1;
+                } else if (sortDate === 1) {
+                  sortDate = -1;
+                } else {
+                  sortDate = 0;
+                }
+              }
+            ">
+            Date {{ sortDate }}
+          </th>
           <th>Amount</th>
           <th>Payment Type</th>
           <th>Merchant</th>
@@ -192,7 +300,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="transaction in filteredTransactions" :key="transaction.transaction.id">
+        <tr v-for="transaction in sortedTransactions" :key="transaction.transaction.id">
           <td>
             <input
               type="checkbox"

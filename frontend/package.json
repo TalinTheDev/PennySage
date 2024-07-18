@@ -11,6 +11,7 @@
     "format": "prettier --write src/"
   },
   "dependencies": {
+    "@primevue/core": "^4.0.0",
     "@primevue/themes": "^4.0.0",
     "axios": "^1.7.2",
     "pinia": "^2.1.7",

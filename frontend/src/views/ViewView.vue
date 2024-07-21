@@ -1,15 +1,11 @@
 <script setup>
   import AppLayout from "@/layouts/AppLayout.vue";
-  // import DebitChip from "@/components/DebitChip.vue";
-  // import CreditChip from "@/components/CreditChip.vue";
   import DataTable from "primevue/datatable";
   import Column from "primevue/column";
   import InputText from "primevue/InputText";
   import DatePicker from "primevue/datepicker";
 
   import Select from "primevue/select";
-
-  import Button from "primevue/button";
   import Tag from "primevue/tag";
 
   import { FilterMatchMode } from "@primevue/core/api";
@@ -91,6 +87,7 @@
       showGridlines
       sortMode="multiple"
       removableSort
+      :multiSortMeta="[{ field: 'transaction.date', order: -1 }]"
       size="small"
       v-model:filters="filters"
       dataKey="transaction.id"
@@ -106,12 +103,8 @@
       <template #header>
         <h2>View Transactions</h2>
         <InputText v-model="filters['global'].value" placeholder="Keyword Search" />
-        <Button type="button" label="Clear Filters" outlined @click="initFilters()" />
-        <Button
-          @click="deleteTransactions"
-          label="Delete Selected Transactions"
-          severity="danger"
-          outlined />
+        <button @click="initFilters">Clear Filters</button>
+        <button @click="deleteTransactions">Delete Selected Transactions</button>
       </template>
       <template #empty> No transactions found. </template>
       <Column selectionMode="multiple" headerStyle="width: 3rem"></Column>
@@ -185,150 +178,20 @@
         </template>
       </Column>
     </DataTable>
-
-    <!-- <table class="table" v-if="transactions.length > 0">
-      <thead>
-        <tr class="searchBoxes">
-          <th></th>
-          <th>
-            <input
-              type="text"
-              @input="descriptionSearchFilter"
-              v-model="descriptionSearch"
-              placeholder="Description Search" />
-          </th>
-          <th>
-            <input
-              type="date"
-              @input="dateSearchFilter"
-              v-model="dateSearch"
-              placeholder="Date Search" />
-          </th>
-          <th></th>
-          <th></th>
-          <th>
-            <input
-              type="text"
-              @input="merchantSearchFilter"
-              v-model="merchantSearch"
-              placeholder="Merchant Search" />
-          </th>
-          <th>
-            <input
-              type="text"
-              @input="categorySearchFilter"
-              v-model="categorySearch"
-              placeholder="Category Search" />
-          </th>
-          <th>
-            <input
-              type="text"
-              @input="sourceSearchFilter"
-              v-model="sourceSearch"
-              placeholder="Source Search" />
-          </th>
-        </tr>
-        <tr>
-          <th><input type="checkbox" @click="checkAll" v-model="allSelected" /></th>
-          <th
-            @click="
-              () => {
-                if (sortDesc === 0) {
-                  sortDesc = 1;
-                } else if (sortDesc === 1) {
-                  sortDesc = -1;
-                } else {
-                  sortDesc = 0;
-                }
-              }
-            ">
-            Description {{ sortDesc }}
-          </th>
-          <th
-            @click="
-              () => {
-                if (sortDate === 0) {
-                  sortDate = 1;
-                } else if (sortDate === 1) {
-                  sortDate = -1;
-                } else {
-                  sortDate = 0;
-                }
-              }
-            ">
-            Date {{ sortDate }}
-          </th>
-          <th>Amount</th>
-          <th>Payment Type</th>
-          <th>Merchant</th>
-          <th>Category</th>
-          <th>Payment Source</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr v-for="transaction in sortedTransactions" :key="transaction.transaction.id">
-          <td>
-            <input
-              type="checkbox"
-              v-model="checkedTransactions"
-              :value="transaction.transaction.id" />
-          </td>
-          <td>{{ transaction.transaction.desc }}</td>
-          <td>{{ new Date(transaction.transaction.date).toLocaleDateString() }}</td>
-          <td>${{ parseFloat(transaction.transaction.amount).toFixed(2) }}</td>
-          <td><DebitChip v-if="transaction.transaction.type == 'debit'" /><CreditChip v-else /></td>
-          <td>{{ transaction.transaction.merchant }}</td>
-          <td>{{ transaction.transaction.category }}</td>
-          <td>{{ transaction.transaction.payment_source }}</td>
-        </tr>
-      </tbody>
-    </table> -->
   </AppLayout>
 </template>
 
 <style scoped>
-  /* .table {
-    border: 1px solid var(--black);
-    border-collapse: collapse;
-    width: 100%;
-    margin-top: 1%;
-
-    th,
-    td {
-      border: 1px solid var(--black);
-      padding: 5px 10px;
-      text-align: center;
-      display: table-cell;
-      vertical-align: middle;
-    }
-
-    .searchBoxes th {
-      border: none;
-    }
-  }
-  input:not([type="checkbox"]) {
-    background-color: transparent;
-    border: 0;
-    width: 85%;
-    font-size: 0.8rem;
-    text-align: center;
-    border-bottom: 2px solid var(--dark-grey);
-    padding: 5px 5px;
-
-    &:focus {
-      outline: none;
-    }
-  }
   button {
     background-color: inherit;
-    font-size: 0.8rem;
+    font-size: 0.9rem;
     width: 20%;
     padding: 5px;
-    margin: 10px 0px;
+    margin: 10px 10px;
     border: 1px solid var(--black);
 
     &:hover {
       cursor: pointer;
     }
-  } */
+  }
 </style>

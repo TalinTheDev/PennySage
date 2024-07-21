@@ -20,16 +20,6 @@
             }
           },
           {
-            "id": "5ce74534dbbcc1e7",
-            "type": "leaf",
-            "state": {
-              "type": "release-notes",
-              "state": {
-                "currentVersion": "1.6.3"
-              }
-            }
-          },
-          {
             "id": "c52d0e064ebcbe0d",
             "type": "leaf",
             "state": {
@@ -41,8 +31,7 @@
               }
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -170,7 +159,7 @@
       "obsidian-excalidraw-plugin:Create new drawing": false
     }
   },
-  "active": "5ce74534dbbcc1e7",
+  "active": "db49bba4c69768ee",
   "lastOpenFiles": [
     "Frontend.md",
     "Backend.md",

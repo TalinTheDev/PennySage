@@ -131,7 +131,8 @@
             required
             placeholder="Payment Source"
             v-model="paymentSource"
-            @blur="validate($event.target, 'Payment Source')" />
+            @blur="validate($event.target, 'Payment Source')"
+            @keydown.enter="handleAddTransaction" />
         </InputBox>
       </div>
 

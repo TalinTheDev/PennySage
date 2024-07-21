@@ -1,5 +1,4 @@
 <script setup>
-  import { RouterLink } from "vue-router";
   import { ref } from "vue";
   import { useUserStore } from "@/stores/useUserStore.js";
   import { useRouter } from "vue-router";
@@ -7,10 +6,6 @@
   const user = useUserStore();
   const router = useRouter();
   const page = ref(router.currentRoute.value.name);
-
-  const changeActivePage = (pageName) => {
-    page.value = pageName;
-  };
 </script>
 <template>
   <div class="page">
@@ -18,36 +13,20 @@
       <h1>PennySage</h1>
       <nav>
         <div class="leftLinks">
-          <RouterLink
-            to="/"
-            class="navLink"
-            :class="{ activeLink: page === 'dashboard' }"
-            @click="changeActivePage('dashbaord')"
-            >Dashboard</RouterLink
-          >
-          <RouterLink
-            to="/add"
-            class="navLink"
-            :class="{ activeLink: page === 'add' }"
-            @click="changeActivePage('add')"
-            >Add Transaction</RouterLink
-          >
-          <RouterLink
-            to="/view"
-            class="navLink"
-            :class="{ activeLink: page === 'view' }"
-            @click="changeActivePage('view')"
-            >View Transactions</RouterLink
-          >
+          <RouterLink to="/" class="navLink" :class="{ activeLink: page === 'dashboard' }">
+            Dashboard
+          </RouterLink>
+          <RouterLink to="/add" class="navLink" :class="{ activeLink: page === 'add' }">
+            Add Transaction
+          </RouterLink>
+          <RouterLink to="/view" class="navLink" :class="{ activeLink: page === 'view' }">
+            View Transactions
+          </RouterLink>
         </div>
         <div class="rightLinks">
-          <RouterLink
-            to="/settings"
-            class="navLink"
-            :class="{ activeLink: page === 'settings' }"
-            @click="changeActivePage('settings')"
-            >Settings</RouterLink
-          >
+          <RouterLink to="/settings" class="navLink" :class="{ activeLink: page === 'settings' }">
+            Settings
+          </RouterLink>
           <a to="javascript:void(0)" class="navLink button" @click="user.logout()">Logout</a>
         </div>
       </nav>
@@ -104,7 +83,7 @@
 
       .navLink.button {
         border: 1px solid var(--black);
-        padding: 0px 2%;
+        padding: 0 3%;
 
         &:hover,
         &:focus {

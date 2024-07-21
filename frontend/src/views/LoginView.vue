@@ -52,7 +52,7 @@
           required
           placeholder="Username"
           v-model="username"
-          @blur="validate($event.target, 'Description')" />
+          @blur="validate($event.target, 'Username')" />
       </InputBox>
       <InputBox name="Password">
         <input

@@ -11,8 +11,11 @@
     "format": "prettier --write src/"
   },
   "dependencies": {
+    "@primevue/core": "^4.0.0",
+    "@primevue/themes": "^4.0.0",
     "axios": "^1.7.2",
     "pinia": "^2.1.7",
+    "primevue": "^4.0.0",
     "vue": "^3.4.29",
     "vue-router": "^4.3.3"
   },
@@ -24,6 +27,6 @@
     "eslint-plugin-vue": "^9.23.0",
     "prettier": "^3.2.5",
     "vite": "^5.3.1",
-    "vite-plugin-vue-devtools": "^7.3.1"
+    "vite-plugin-vue-devtools": "^7.3.6"
   }
 }

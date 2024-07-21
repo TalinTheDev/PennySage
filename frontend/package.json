@@ -1,33 +1,32 @@
 {
   "name": "pennysage-frontend",
-  "private": true,
   "version": "0.1.0",
+  "private": true,
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vue-tsc -b && vite build",
+    "build": "vite build",
     "preview": "vite preview",
-    "lint": "pnpm eslint src",
-    "lint:fix": "pnpm run lint -- --fix",
-    "prettier": "pnpm prettier src --check",
-    "prettier:fix": "pnpm run prettier -- --write",
-    "format": "pnpm run prettier:fix && pnpm run lint:fix"
+    "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore",
+    "format": "prettier --write src/"
   },
   "dependencies": {
-    "vue": "^3.4.29"
+    "@primevue/core": "^4.0.0",
+    "@primevue/themes": "^4.0.0",
+    "axios": "^1.7.2",
+    "pinia": "^2.1.7",
+    "primevue": "^4.0.0",
+    "vue": "^3.4.29",
+    "vue-router": "^4.3.3"
   },
   "devDependencies": {
-    "@eslint/js": "^9.5.0",
+    "@rushstack/eslint-patch": "^1.8.0",
     "@vitejs/plugin-vue": "^5.0.5",
-    "eslint": "^9.5.0",
-    "eslint-config-prettier": "^9.1.0",
-    "eslint-plugin-vue": "^9.26.0",
-    "globals": "^15.6.0",
-    "prettier": "^3.3.2",
-    "tslint-config-prettier": "^1.18.0",
-    "typescript": "^5.2.2",
-    "typescript-eslint": "^7.13.1",
+    "@vue/eslint-config-prettier": "^9.0.0",
+    "eslint": "^8.57.0",
+    "eslint-plugin-vue": "^9.23.0",
+    "prettier": "^3.2.5",
     "vite": "^5.3.1",
-    "vue-tsc": "^2.0.21"
+    "vite-plugin-vue-devtools": "^7.3.6"
   }
 }

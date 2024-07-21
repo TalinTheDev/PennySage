@@ -109,6 +109,7 @@
       &:hover,
       &:focus {
         background-color: var(--black);
+        cursor: pointer;
         color: var(--white);
       }
     }

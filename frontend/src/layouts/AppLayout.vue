@@ -22,9 +22,9 @@
             to="/"
             class="navLink"
             :class="{ activeLink: page === 'dashboard' }"
-            @click="changeActivePage('dashbaord')"
-            >Dashboard</RouterLink
-          >
+            @click="changeActivePage('dashboard')">
+            Dashboard
+          </RouterLink>
           <RouterLink
             to="/add"
             class="navLink"

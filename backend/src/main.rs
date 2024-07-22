@@ -18,7 +18,7 @@ async fn main() {
   dotenvy::dotenv().expect("env file should be present");
 
   // Start DB Pool
-  let db_url = env::var("DATABASE_URL").expect("Databse URL should be set in env file");
+  let db_url = env::var("DATABASE_URL").expect("Database URL should be set in env file");
   let pool = SqlitePoolOptions::new()
     .max_connections(5)
     .acquire_timeout(Duration::from_secs(3))

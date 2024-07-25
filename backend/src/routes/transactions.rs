@@ -275,7 +275,14 @@ pub async fn delete_transactions(
   }
 }
 
-pub fn edit_transaction() -> ApiResponse {
+#[derive(Deserialize)]
+pub struct EditReq(Vec<(String, Vec<(String, String)>)>);
+
+pub fn edit_transaction(
+  State(state): State<crate::AppState>,
+  user: AccessTokenClaims,
+  Json(data): Json<EditReq>,
+) -> ApiResponse {
   ApiResponse::Success {
     status: StatusCode::OK,
     data: Box::new("Transaction edited successfully"),

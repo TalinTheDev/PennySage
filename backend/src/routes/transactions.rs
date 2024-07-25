@@ -274,3 +274,10 @@ pub async fn delete_transactions(
     };
   }
 }
+
+pub fn edit_transaction() -> ApiResponse {
+  ApiResponse::Success {
+    status: StatusCode::OK,
+    data: Box::new("Transaction edited successfully"),
+  }
+}

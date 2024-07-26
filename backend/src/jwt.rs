@@ -26,7 +26,7 @@ pub struct RefreshTokenClaims {
 }
 
 pub fn gen_access_token(user_id: String, role: String) -> Result<String, ApiResponse> {
-  let expiration = match Local::now().checked_add_signed(Duration::seconds(15)) {
+  let expiration = match Local::now().checked_add_signed(Duration::minutes(5)) {
     Some(time) => time.timestamp(),
     None => Local::now().timestamp(),
   };

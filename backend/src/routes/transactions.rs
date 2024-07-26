@@ -3,7 +3,7 @@ use crate::{db::gen_id, jwt::AccessTokenClaims, AppState};
 use axum::{
   extract::State,
   http::StatusCode,
-  routing::{delete, get, post},
+  routing::{delete, get, patch, post},
   Json, Router,
 };
 use chrono::DateTime;
@@ -16,6 +16,7 @@ pub fn routes() -> Router<AppState> {
     .route("/new", post(new))
     .route("/all", get(get_transactions))
     .route("/delete", delete(delete_transactions))
+    .route("/edit", patch(edit_transaction))
 }
 
 #[derive(Deserialize, Validate)]
@@ -275,14 +276,44 @@ pub async fn delete_transactions(
   }
 }
 
-#[derive(Deserialize)]
-pub struct EditReq(Vec<(String, Vec<(String, String)>)>);
+#[derive(Deserialize, Validate)]
+pub struct EditReq {
+  #[validate(length(min = 1))]
+  id: String,
+  edits: Vec<(String, String)>,
+}
 
-pub fn edit_transaction(
+#[axum::debug_handler]
+pub async fn edit_transaction(
   State(state): State<crate::AppState>,
   user: AccessTokenClaims,
   Json(data): Json<EditReq>,
 ) -> ApiResponse {
+  if data.edits.len() == 0 {
+    return ApiResponse::Success {
+      status: StatusCode::OK,
+      data: Box::new(format!("Nothing to update in transaction #{}", data.id)),
+    };
+  } else {
+    let mut query = "UPDATE transactions SET".to_owned();
+    for edit in data.edits {
+      query = format!("{} {} = '{}',", query, edit.0, edit.1);
+    }
+    let _ = query.split_off(query.len() - 1);
+    query = format!(
+      "{} WHERE id = '{}' AND user_id = '{}';",
+      query, data.id, user.id
+    );
+    if let Err(e) = sqlx::query(&query).execute(&state.db_pool).await {
+      return ApiResponse::Failure {
+        status: StatusCode::INTERNAL_SERVER_ERROR,
+        error: ApiError::Complex {
+          message: "Internal server error while editing transaction".to_owned(),
+          error: Box::new(e.to_string()),
+        },
+      };
+    }
+  }
   ApiResponse::Success {
     status: StatusCode::OK,
     data: Box::new("Transaction edited successfully"),

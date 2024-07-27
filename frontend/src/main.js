@@ -16,7 +16,10 @@ app.use(pinia);
 app.use(router);
 app.use(PrimeVue, {
   theme: {
-    preset: Nora
+    preset: Nora,
+    options: {
+      darkModeSelector: ".theme-dark"
+    }
   }
 });
 

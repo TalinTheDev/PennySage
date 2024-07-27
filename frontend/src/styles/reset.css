@@ -36,6 +36,7 @@ select,
 a {
   font: inherit;
   outline: none;
+  color: inherit;
 }
 
 p,

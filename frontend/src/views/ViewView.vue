@@ -2,7 +2,7 @@
   import AppLayout from "@/layouts/AppLayout.vue";
   import DataTable from "primevue/datatable";
   import Column from "primevue/column";
-  import InputText from "primevue/InputText";
+  import InputText from "primevue/inputtext";
   import DatePicker from "primevue/datepicker";
 
   import Select from "primevue/select";

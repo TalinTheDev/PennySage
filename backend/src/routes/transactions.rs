@@ -72,61 +72,61 @@ pub async fn new(
     }
   };
   match sqlx::query!("INSERT INTO transactions (id, user_id, description, date, amount, type, merchant, category, payment_source) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);", transaction_id, user.id, transaction.desc, transaction.date, transaction.amount, transaction.r#type, transaction.merchant, transaction.category, transaction.payment_source).execute(&mut *tx).await{
-    Ok(_) => {
-      if let Some(items) = transaction.items {
-        if items.is_empty() {
-            match tx.commit().await {
-              Ok(_) => return ApiResponse::Success { status: StatusCode::OK, data: Box::new(json!({"transaction_id": transaction_id})) },
-              Err(_) => return ApiResponse::Failure {
-                status: StatusCode::INTERNAL_SERVER_ERROR,
-                error: ApiError::Simple("Internal server error while adding transaction".to_owned()),
-              }
-            }
-        } else {
-        for item in items.iter() {
-          let item_id = match gen_id(crate::db::Tables::TransactionItems, &state.db_pool).await {
-            Ok(id) => id,
-            Err(e) => { return e; }
-          };
-          match sqlx::query!("INSERT INTO transaction_items (id, transaction_id, description, amount, category) VALUES (?, ?, ?, ?, ?)", item_id, transaction_id, item.desc, item.amount, item.category).execute(&mut *tx).await {
-            Ok(_) => continue,
-            Err(_) => {
-              match tx.rollback().await {
-                Ok(_) => return ApiResponse::Failure {
-                  status: StatusCode::INTERNAL_SERVER_ERROR,
-                  error: ApiError::Simple("Internal server error while adding transaction".to_owned()),
-                },
-                Err(_) => return ApiResponse::Failure {
-                  status: StatusCode::INTERNAL_SERVER_ERROR,
-                  error: ApiError::Simple("Internal server error while adding transaction".to_owned()),
+        Ok(_) => {
+            if let Some(items) = transaction.items {
+                if items.is_empty() {
+                    match tx.commit().await {
+                        Ok(_) => return ApiResponse::Success { status: StatusCode::OK, data: Box::new(json!({"transaction_id": transaction_id})) },
+                        Err(_) => return ApiResponse::Failure {
+                            status: StatusCode::INTERNAL_SERVER_ERROR,
+                            error: ApiError::Simple("Internal server error while adding transaction".to_owned()),
+                        }
+                    }
+                } else {
+                    for item in items.iter() {
+                        let item_id = match gen_id(crate::db::Tables::TransactionItems, &state.db_pool).await {
+                            Ok(id) => id,
+                            Err(e) => { return e; }
+                        };
+                        match sqlx::query!("INSERT INTO transaction_items (id, transaction_id, description, amount, category) VALUES (?, ?, ?, ?, ?)", item_id, transaction_id, item.desc, item.amount, item.category).execute(&mut *tx).await {
+                            Ok(_) => continue,
+                            Err(_) => {
+                                match tx.rollback().await {
+                                    Ok(_) => return ApiResponse::Failure {
+                                        status: StatusCode::INTERNAL_SERVER_ERROR,
+                                        error: ApiError::Simple("Internal server error while adding transaction".to_owned()),
+                                    },
+                                    Err(_) => return ApiResponse::Failure {
+                                        status: StatusCode::INTERNAL_SERVER_ERROR,
+                                        error: ApiError::Simple("Internal server error while adding transaction".to_owned()),
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    match tx.commit().await {
+                        Ok(_) => return ApiResponse::Success { status: StatusCode::OK, data: Box::new(json!({"transaction_id": transaction_id})) },
+                        Err(_) => return ApiResponse::Failure {
+                            status: StatusCode::INTERNAL_SERVER_ERROR,
+                            error: ApiError::Simple("Internal server error while adding transaction".to_owned()),
+                        }
+                    }
                 }
-              }
+            } else {
+                match tx.commit().await {
+                    Ok(_) => return ApiResponse::Success { status: StatusCode::OK, data: Box::new(json!({"transaction_id": transaction_id})) },
+                    Err(_) => return ApiResponse::Failure {
+                        status: StatusCode::INTERNAL_SERVER_ERROR,
+                        error: ApiError::Simple("Internal server error while adding transaction".to_owned()),
+                    }
+                }
             }
-          }
-        }
-        match tx.commit().await {
-          Ok(_) => return ApiResponse::Success { status: StatusCode::OK, data: Box::new(json!({"transaction_id": transaction_id})) },
-          Err(_) => return ApiResponse::Failure {
-            status: StatusCode::INTERNAL_SERVER_ERROR,
+        },
+        Err(_) => ApiResponse::Failure {
+            status: StatusCode::UNAUTHORIZED,
             error: ApiError::Simple("Internal server error while adding transaction".to_owned()),
-          }
         }
-      }
-      } else {
-          match tx.commit().await {
-            Ok(_) => return ApiResponse::Success { status: StatusCode::OK, data: Box::new(json!({"transaction_id": transaction_id})) },
-            Err(_) => return ApiResponse::Failure {
-              status: StatusCode::INTERNAL_SERVER_ERROR,
-              error: ApiError::Simple("Internal server error while adding transaction".to_owned()),
-            }
-          }
-      }
-    },
-    Err(_) => ApiResponse::Failure {
-      status: StatusCode::UNAUTHORIZED,
-      error: ApiError::Simple("Internal server error while adding transaction".to_owned()),
     }
-  }
 }
 
 pub fn validate_date(date: i64) -> Result<(), ValidationError> {
@@ -163,9 +163,21 @@ pub struct TransactionRow {
 }
 
 #[derive(Clone, Serialize)]
+pub struct TransactionRowWithItems {
+  pub id: String,
+  pub desc: String,
+  pub date: i64,
+  pub amount: f64,
+  pub r#type: String,
+  pub merchant: String,
+  pub category: String,
+  pub payment_source: String,
+  pub items: Option<Vec<TransactionItem>>,
+}
+
+#[derive(Clone, Serialize)]
 pub struct TransactionsRes {
-  transaction: TransactionRow,
-  items: Option<Vec<TransactionItem>>,
+  transaction: TransactionRowWithItems,
 }
 
 #[derive(Clone, Serialize)]
@@ -179,27 +191,34 @@ pub async fn get_transactions(
   State(state): State<crate::AppState>,
   user: AccessTokenClaims,
 ) -> ApiResponse {
-  let mut results: Vec<TransactionsRes> = Vec::new();
+  let mut results: Vec<TransactionRowWithItems> = Vec::new();
   match sqlx::query_as!(TransactionRow, "SELECT id, description AS desc, date, amount, type, merchant, category, payment_source FROM transactions WHERE user_id = ?;", user.id).fetch_all(&state.db_pool).await {
-    Ok(rows) => {
-      for row in rows.iter(){
-        match sqlx::query_as!(TransactionItem, "SELECT description as desc, amount, category FROM transaction_items WHERE transaction_id = ?", row.id).fetch_all(&state.db_pool).await {
-          Ok(items) => {
-            results.push(TransactionsRes{transaction: row.clone(), items: Some(items)});
-          }
-          Err(e) => match e {
-            sqlx::Error::RowNotFound => results.push(TransactionsRes{transaction: row.clone(), items: None}),
-            _ => return ApiResponse::Failure { status: StatusCode::INTERNAL_SERVER_ERROR, error: ApiError::Simple("Could not fetch transaction items from database (internal server error)".to_owned()) }
-          }
+        Ok(rows) => {
+            for row in rows.iter(){
+                match sqlx::query_as!(TransactionItem, "SELECT description as desc, amount, category FROM transaction_items WHERE transaction_id = ?", row.id).fetch_all(&state.db_pool).await {
+                    Ok(items) => {
+                        let transaction = row.clone();
+                        results.push(TransactionRowWithItems {
+                                id: transaction.id, desc: transaction.desc, date: transaction.date, amount: transaction.amount, merchant: transaction.merchant, category: transaction.category, payment_source: transaction.payment_source, r#type: transaction.r#type, items: Some(items)
+                            }
+                        );
+                    }
+                    Err(e) => match e {
+                        sqlx::Error::RowNotFound =>{let transaction = row.clone(); results.push(TransactionRowWithItems {
+                                id: transaction.id, desc: transaction.desc, date: transaction.date, amount: transaction.amount, merchant: transaction.merchant, category: transaction.category, payment_source: transaction.payment_source, r#type: transaction.r#type, items: None
+                            }
+                        );},
+                        _ => return ApiResponse::Failure { status: StatusCode::INTERNAL_SERVER_ERROR, error: ApiError::Simple("Could not fetch transaction items from database (internal server error)".to_owned()) }
+                    }
+                }
+            }
+            ApiResponse::Success { status: StatusCode::OK, data: Box::new(results) }
+        },
+        Err(e) => match e {
+            sqlx::Error::RowNotFound => ApiResponse::Success { status: StatusCode::OK, data: Box::new(results) },
+            _ => ApiResponse::Failure { status: StatusCode::INTERNAL_SERVER_ERROR, error: ApiError::Simple("Could not fetch transactions from database (internal server error)".to_owned()) }
         }
-      }
-      ApiResponse::Success { status: StatusCode::OK, data: Box::new(results) }
-    },
-    Err(e) => match e {
-      sqlx::Error::RowNotFound => ApiResponse::Success { status: StatusCode::OK, data: Box::new(results) },
-      _ => ApiResponse::Failure { status: StatusCode::INTERNAL_SERVER_ERROR, error: ApiError::Simple("Could not fetch transactions from database (internal server error)".to_owned()) }
     }
-  }
 }
 
 #[derive(Deserialize)]
@@ -277,10 +296,16 @@ pub async fn delete_transactions(
 }
 
 #[derive(Deserialize, Validate)]
+pub struct EditField {
+    field: String,
+    value: String
+}
+
+#[derive(Deserialize, Validate)]
 pub struct EditReq {
   #[validate(length(min = 1))]
   id: String,
-  edits: Vec<(String, String)>,
+  edits: Vec<EditField>,
 }
 
 #[axum::debug_handler]
@@ -297,7 +322,7 @@ pub async fn edit_transaction(
   } else {
     let mut query = "UPDATE transactions SET".to_owned();
     for edit in data.edits {
-      query = format!("{} {} = '{}',", query, edit.0, edit.1);
+      query = format!("{} {} = '{}',", query, edit.field, edit.value);
     }
     let _ = query.split_off(query.len() - 1);
     query = format!(

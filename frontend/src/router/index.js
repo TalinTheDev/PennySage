@@ -4,6 +4,7 @@ import DashboardView from "@/views/DashboardView.vue";
 import AddView from "@/views/AddView.vue";
 import ViewView from "@/views/ViewView.vue";
 import SettingsView from "@/views/SettingsView.vue";
+import test from "@/views/test.vue";
 
 import { useUserStore } from "@/stores/useUserStore";
 
@@ -24,6 +25,11 @@ const router = createRouter({
       path: "/",
       name: "dashboard",
       component: DashboardView
+    },
+    {
+      path: "/test",
+      name: "test",
+      component: test
     },
     {
       path: "/add",

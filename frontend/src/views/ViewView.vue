@@ -3,6 +3,7 @@
   import DataTable from "primevue/datatable";
   import Column from "primevue/column";
   import InputText from "primevue/inputtext";
+  import InputNumber from "primevue/inputnumber";
   import DatePicker from "primevue/datepicker";
 
   import Select from "primevue/select";
@@ -12,7 +13,7 @@
   import { ref, onBeforeMount, onMounted } from "vue";
   import { useApiStore } from "@/stores/useApiStore.js";
 
-  const transactions = ref([]);
+  const transactions = ref();
   const api = useApiStore().api;
   const selectedTransactions = ref();
   const typeFilterOptions = ref([
@@ -20,17 +21,18 @@
     { label: "Credit", value: "credit" }
   ]);
   const filters = ref();
+  const editingRows = ref([]);
 
   const initFilters = () => {
     filters.value = {
       global: { value: null, matchMode: FilterMatchMode.CONTAINS },
-      "transaction.desc": { value: null, matchMode: FilterMatchMode.CONTAINS },
-      "transaction.date": { value: null, matchMode: FilterMatchMode.DATE_IS },
-      "transaction.amount": { value: null, matchMode: FilterMatchMode.CONTAINS },
-      "transaction.type": { value: null, matchMode: FilterMatchMode.EQUALS },
-      "transaction.merchant": { value: null, matchMode: FilterMatchMode.CONTAINS },
-      "transaction.category": { value: null, matchMode: FilterMatchMode.CONTAINS },
-      "transaction.payment_source": { value: null, matchMode: FilterMatchMode.CONTAINS }
+      desc: { value: null, matchMode: FilterMatchMode.CONTAINS },
+      date: { value: null, matchMode: FilterMatchMode.DATE_IS },
+      amount: { value: null, matchMode: FilterMatchMode.CONTAINS },
+      type: { value: null, matchMode: FilterMatchMode.EQUALS },
+      merchant: { value: null, matchMode: FilterMatchMode.CONTAINS },
+      category: { value: null, matchMode: FilterMatchMode.CONTAINS },
+      payment_source: { value: null, matchMode: FilterMatchMode.CONTAINS }
     };
   };
 
@@ -39,8 +41,7 @@
       .get("/transactions/all")
       .then((data) => {
         data.forEach((transaction) => {
-          transaction.transaction.date = new Date(transaction.transaction.date);
-          transaction.transaction.amount = `$${parseFloat(transaction.transaction.amount).toFixed(2)}`;
+          transaction.date = new Date(transaction.date);
         });
         transactions.value = data;
       })
@@ -55,7 +56,7 @@
     }
     let transactions = [];
     selectedTransactions.value.forEach((transaction) => {
-      transactions.push(transaction.transaction.id);
+      transactions.push(transaction.id);
     });
     api
       .delete("/transactions/delete", {
@@ -72,6 +73,30 @@
       });
   };
 
+  const editTransaction = (event) => {
+    let { newData, index } = event;
+    let oldData = transactions.value[index];
+    transactions.value[index] = newData;
+    let edits = Object.fromEntries(Object.entries(newData).filter(([k, v]) => oldData[k] !== v));
+    edits = Object.keys(edits).map((key) => [{ field: key, value: edits[key].toString() }]);
+    edits.forEach((edit, index) => {
+      edits[index] = edit[0];
+      if (edits[index].field == "desc") edits[index].field = "description";
+    });
+    api
+      .patch("/transactions/edit", {
+        id: newData.id,
+        edits: edits
+      })
+      .then((data) => {
+        alert(data);
+      })
+      .catch((error) => {
+        alert(`Error: ${JSON.stringify(error)}`);
+        transactions.value[index] = oldData;
+      });
+  };
+
   onBeforeMount(() => {
     initFilters();
   });
@@ -83,23 +108,19 @@
   <AppLayout>
     <DataTable
       :value="transactions"
-      tableStyle="min-width: 50rem"
       showGridlines
       sortMode="multiple"
       removableSort
-      :multiSortMeta="[{ field: 'transaction.date', order: -1 }]"
+      :multiSortMeta="[{ field: 'date', order: -1 }]"
       size="small"
       v-model:filters="filters"
-      dataKey="transaction.id"
+      dataKey="id"
       filterDisplay="menu"
-      :globalFilterFields="[
-        'transaction.desc',
-        'transaction.amount',
-        'transaction.merchant',
-        'transaction.category',
-        'transaction.payment_source'
-      ]"
-      v-model:selection="selectedTransactions">
+      :globalFilterFields="['desc', 'amount', 'merchant', 'category', 'payment_source']"
+      v-model:selection="selectedTransactions"
+      v-model:editingRows="editingRows"
+      editMode="row"
+      @row-edit-save="editTransaction">
       <template #header>
         <h2>View Transactions</h2>
         <InputText v-model="filters['global'].value" placeholder="Keyword Search" />
@@ -107,9 +128,9 @@
         <button @click="deleteTransactions">Delete Selected Transactions</button>
       </template>
       <template #empty> No transactions found. </template>
-      <Column selectionMode="multiple" headerStyle="width: 3rem"></Column>
-      <Column field="transaction.id" hidden />
-      <Column field="transaction.desc" header="Description" sortable>
+      <Column selectionMode="multiple"></Column>
+      <Column field="id" hidden />
+      <Column field="desc" header="Description" sortable>
         <template #filter="{ filterModel, filterCallback }">
           <InputText
             v-model="filterModel.value"
@@ -117,16 +138,22 @@
             @input="filterCallback()"
             placeholder="Filter by description" />
         </template>
+        <template #editor="{ data, field }">
+          <InputText v-model="data[field]" fluid />
+        </template>
       </Column>
-      <Column field="transaction.date" header="Date" sortable dataType="date">
+      <Column field="date" header="Date" sortable dataType="date">
         <template #body="{ data }">
-          {{ new Date(data.transaction.date).toLocaleDateString() }}
+          {{ new Date(data.date).toLocaleDateString() }}
         </template>
         <template #filter="{ filterModel, filterCallback }">
           <DatePicker v-model="filterModel.value" @date-select="filterCallback()" />
         </template>
+        <template #editor="{ data, field }">
+          <DatePicker v-model="data[field]" fluid />
+        </template>
       </Column>
-      <Column field="transaction.amount" sortable header="Amount">
+      <Column field="amount" sortable header="Amount">
         <template #filter="{ filterModel, filterCallback }">
           <InputText
             v-model="filterModel.value"
@@ -134,11 +161,15 @@
             @input="filterCallback()"
             placeholder="Filter by amount" />
         </template>
+        <template #body="{ data }"> ${{ parseFloat(data.amount).toFixed(2) }} </template>
+        <template #editor="{ data, field }">
+          <InputNumber mode="currency" currency="USD" v-model="data[field]" fluid />
+        </template>
       </Column>
-      <Column field="transaction.type" header="Type" sortable>
+      <Column field="type" header="Type" sortable>
         <template #body="{ data }">
-          <Tag severity="danger" value="Debit" v-if="data.transaction.type === 'debit'"></Tag>
-          <Tag severity="success" value="Credit" v-if="data.transaction.type === 'credit'"></Tag>
+          <Tag severity="danger" value="Debit" v-if="data.type === 'debit'"></Tag>
+          <Tag severity="success" value="Credit" v-if="data.type === 'credit'"></Tag>
         </template>
         <template #filter="{ filterModel, filterCallback }">
           <Select
@@ -149,8 +180,16 @@
             placeholder="Filter by Type"
             @change="filterCallback()" />
         </template>
+        <template #editor="{ data, field }">
+          <Select
+            v-model="data[field]"
+            fluid
+            :options="typeFilterOptions"
+            optionLabel="label"
+            optionValue="value" />
+        </template>
       </Column>
-      <Column field="transaction.merchant" sortable header="Merchant">
+      <Column field="merchant" sortable header="Merchant">
         <template #filter="{ filterModel, filterCallback }">
           <InputText
             v-model="filterModel.value"
@@ -158,8 +197,11 @@
             @input="filterCallback()"
             placeholder="Filter by merchant" />
         </template>
+        <template #editor="{ data, field }">
+          <InputText v-model="data[field]" fluid />
+        </template>
       </Column>
-      <Column field="transaction.category" sortable header="Category">
+      <Column field="category" sortable header="Category">
         <template #filter="{ filterModel, filterCallback }">
           <InputText
             v-model="filterModel.value"
@@ -167,8 +209,11 @@
             @input="filterCallback()"
             placeholder="Filter by category" />
         </template>
+        <template #editor="{ data, field }">
+          <InputText v-model="data[field]" fluid />
+        </template>
       </Column>
-      <Column field="transaction.payment_source" sortable header="Payment Source">
+      <Column field="payment_source" sortable header="Payment Source">
         <template #filter="{ filterModel, filterCallback }">
           <InputText
             v-model="filterModel.value"
@@ -176,7 +221,11 @@
             @input="filterCallback()"
             placeholder="Filter by payment source" />
         </template>
+        <template #editor="{ data, field }">
+          <InputText v-model="data[field]" fluid />
+        </template>
       </Column>
+      <Column :rowEditor="true" bodyStyle="text-align:center"></Column>
     </DataTable>
   </AppLayout>
 </template>

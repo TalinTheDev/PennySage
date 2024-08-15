@@ -199,14 +199,14 @@ pub async fn get_transactions(
                     Ok(items) => {
                         let transaction = row.clone();
                         results.push(TransactionRowWithItems {
-                                id: transaction.id, desc: transaction.desc, date: transaction.date, amount: transaction.amount, merchant: transaction.merchant, category: transaction.category, payment_source: transaction.payment_source, r#type: transaction.r#type, items: Some(items)
-                            }
+                            id: transaction.id, desc: transaction.desc, date: transaction.date, amount: transaction.amount, merchant: transaction.merchant, category: transaction.category, payment_source: transaction.payment_source, r#type: transaction.r#type, items: Some(items)
+                        }
                         );
                     }
                     Err(e) => match e {
                         sqlx::Error::RowNotFound =>{let transaction = row.clone(); results.push(TransactionRowWithItems {
-                                id: transaction.id, desc: transaction.desc, date: transaction.date, amount: transaction.amount, merchant: transaction.merchant, category: transaction.category, payment_source: transaction.payment_source, r#type: transaction.r#type, items: None
-                            }
+                            id: transaction.id, desc: transaction.desc, date: transaction.date, amount: transaction.amount, merchant: transaction.merchant, category: transaction.category, payment_source: transaction.payment_source, r#type: transaction.r#type, items: None
+                        }
                         );},
                         _ => return ApiResponse::Failure { status: StatusCode::INTERNAL_SERVER_ERROR, error: ApiError::Simple("Could not fetch transaction items from database (internal server error)".to_owned()) }
                     }
@@ -297,8 +297,8 @@ pub async fn delete_transactions(
 
 #[derive(Deserialize, Validate)]
 pub struct EditField {
-    field: String,
-    value: String
+  field: String,
+  value: String,
 }
 
 #[derive(Deserialize, Validate)]
@@ -320,16 +320,32 @@ pub async fn edit_transaction(
       data: Box::new(format!("Nothing to update in transaction #{}", data.id)),
     };
   } else {
-    let mut query = "UPDATE transactions SET".to_owned();
-    for edit in data.edits {
-      query = format!("{} {} = '{}',", query, edit.field, edit.value);
+    let mut query: sqlx::QueryBuilder<'_, sqlx::Sqlite> =
+      sqlx::QueryBuilder::new("UPDATE transactions SET ".to_owned());
+    for (i, edit) in data.edits.iter().enumerate() {
+      if i > 0 {
+        query.push(", ");
+      }
+      match edit.field.as_str() {
+        "desc" => query.push("description = "),
+        "date" => {
+                    println!("Date: {}", edit.value);
+                    query.push("date = ")
+        },
+        "amount" => query.push("amount = "),
+        "merchant" => query.push("merchant = "),
+        "category" => query.push("category = "),
+        "payment_source" => query.push("payment_source = "),
+        "type" => query.push("type = "),
+        &_ => continue,
+      };
+      query.push_bind(edit.value.clone());
     }
-    let _ = query.split_off(query.len() - 1);
-    query = format!(
-      "{} WHERE id = '{}' AND user_id = '{}';",
-      query, data.id, user.id
-    );
-    if let Err(e) = sqlx::query(&query).execute(&state.db_pool).await {
+    query.push(" WHERE id = ");
+    query.push_bind(data.id);
+    query.push(" AND user_id = ");
+    query.push_bind(user.id);
+    if let Err(e) = query.build().execute(&state.db_pool).await {
       return ApiResponse::Failure {
         status: StatusCode::INTERNAL_SERVER_ERROR,
         error: ApiError::Complex {

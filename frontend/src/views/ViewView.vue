@@ -41,6 +41,7 @@
       .get("/transactions/all")
       .then((data) => {
         data.forEach((transaction) => {
+          console.log(transaction.date);
           transaction.date = new Date(transaction.date);
         });
         transactions.value = data;
@@ -81,7 +82,9 @@
     edits = Object.keys(edits).map((key) => [{ field: key, value: edits[key].toString() }]);
     edits.forEach((edit, index) => {
       edits[index] = edit[0];
-      if (edits[index].field == "desc") edits[index].field = "description";
+      if (edits[index].field == "date") {
+        edits[index].value = new Date(edits[index].value).getTime().toString();
+      }
     });
     api
       .patch("/transactions/edit", {

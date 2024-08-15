@@ -329,9 +329,9 @@ pub async fn edit_transaction(
       match edit.field.as_str() {
         "desc" => query.push("description = "),
         "date" => {
-                    println!("Date: {}", edit.value);
-                    query.push("date = ")
-        },
+          println!("Date: {}", edit.value);
+          query.push("date = ")
+        }
         "amount" => query.push("amount = "),
         "merchant" => query.push("merchant = "),
         "category" => query.push("category = "),

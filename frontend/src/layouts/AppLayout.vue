@@ -53,7 +53,7 @@
     align-items: baseline;
 
     nav {
-      padding: 0% 2rem;
+      padding: 0% 1.5rem;
       flex-grow: 1;
       display: flex;
       justify-content: space-between;
@@ -62,10 +62,12 @@
     .leftLinks,
     .rightLinks {
       display: flex;
+      align-items: center;
+
       flex-grow: 1;
 
       .navLink {
-        margin: 0% 2rem;
+        margin: 0% 1.5rem;
         color: initial;
         text-decoration: none;
         text-underline-offset: 10%;
@@ -83,8 +85,8 @@
       .navLink.button {
         border: 1px solid var(--black);
         padding: 0.5rem 1.5rem;
-        position: relative;
-        top: -0.5rem;
+        margin-left: 0;
+        margin-right: 0px;
 
         &:hover,
         &:focus {

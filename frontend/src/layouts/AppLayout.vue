@@ -46,15 +46,14 @@
   }
 
   .header {
-    margin-top: 2%;
-    margin-left: 3%;
+    margin: 2rem 2rem 0 2rem;
     flex-grow: 0;
     flex-shrink: 1;
     display: flex;
     align-items: baseline;
 
     nav {
-      padding: 0% 2%;
+      padding: 0% 2rem;
       flex-grow: 1;
       display: flex;
       justify-content: space-between;
@@ -66,7 +65,7 @@
       flex-grow: 1;
 
       .navLink {
-        margin: 0% 2%;
+        margin: 0% 2rem;
         color: initial;
         text-decoration: none;
         text-underline-offset: 10%;
@@ -83,12 +82,16 @@
 
       .navLink.button {
         border: 1px solid var(--black);
-        padding: 0 3%;
+        padding: 0.5rem 1.5rem;
+        position: relative;
+        top: -0.5rem;
 
         &:hover,
         &:focus {
-          background-color: var(--black);
+          background-color: var(--dark-grey);
+          border-color: var(--dark-grey);
           color: var(--white);
+          cursor: pointer;
         }
       }
     }

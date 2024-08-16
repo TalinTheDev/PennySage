@@ -16,6 +16,7 @@
   const transactions = ref();
   const api = useApiStore().api;
   const selectedTransactions = ref();
+  const loading = ref(false);
   const typeFilterOptions = ref([
     { label: "Debit", value: "debit" },
     { label: "Credit", value: "credit" }
@@ -37,6 +38,7 @@
   };
 
   const getTransactions = () => {
+    loading.value = true;
     api
       .get("/transactions/all")
       .then((data) => {
@@ -45,9 +47,11 @@
           transaction.date = new Date(transaction.date);
         });
         transactions.value = data;
+        loading.value = false;
       })
       .catch((error) => {
         alert(`Error: ${JSON.stringify(error.message)}`);
+        loading.value = false;
       });
   };
 
@@ -59,6 +63,7 @@
     selectedTransactions.value.forEach((transaction) => {
       transactions.push(transaction.id);
     });
+    loading.value = true;
     api
       .delete("/transactions/delete", {
         data: {
@@ -71,6 +76,7 @@
       })
       .catch((error) => {
         alert(`Error: ${JSON.stringify(error.message)}`);
+        loading.value = false;
       });
   };
 
@@ -86,6 +92,7 @@
         edits[index].value = new Date(edits[index].value).getTime().toString();
       }
     });
+    loading.value = true;
     api
       .patch("/transactions/edit", {
         id: newData.id,
@@ -93,10 +100,12 @@
       })
       .then((data) => {
         alert(data);
+        getTransactions();
       })
       .catch((error) => {
         alert(`Error: ${JSON.stringify(error)}`);
         transactions.value[index] = oldData;
+        loading.value = false;
       });
   };
 
@@ -111,14 +120,15 @@
   <AppLayout>
     <DataTable
       :value="transactions"
-      showGridlines
       sortMode="multiple"
       removableSort
       :multiSortMeta="[{ field: 'date', order: -1 }]"
       size="small"
       v-model:filters="filters"
       dataKey="id"
+      :loading="loading"
       filterDisplay="menu"
+      rowHover
       :globalFilterFields="['desc', 'amount', 'merchant', 'category', 'payment_source']"
       v-model:selection="selectedTransactions"
       v-model:editingRows="editingRows"

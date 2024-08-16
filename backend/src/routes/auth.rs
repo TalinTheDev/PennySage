@@ -42,7 +42,7 @@ pub struct UserRow {
 
 #[axum::debug_handler]
 pub async fn login(
-  State(state): State<crate::AppState>,
+  State(state): State<AppState>,
   Json(user_details): Json<LoginReq>,
 ) -> ApiResponse {
   if user_details.validate().err().is_some() {

@@ -30,7 +30,8 @@ async fn main() {
     tokio::net::TcpListener::bind(env::var("HOST_URL").unwrap_or("127.0.0.1:3000".to_owned()))
       .await
       .unwrap();
-  println!("listening on {}", listener.local_addr().unwrap());
+  print!("{esc}c", esc = 27 as char);
+  println!("App listening on {}", listener.local_addr().unwrap());
   let app = Router::new()
     .nest("/api", routes::app())
     .layer(CorsLayer::very_permissive()) // TODO: Change this for prod

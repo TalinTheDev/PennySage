@@ -10,12 +10,14 @@ use serde::Serialize;
 use serde_json::json;
 
 pub mod auth;
+mod settings;
 mod transactions;
 
 pub fn app() -> Router<AppState> {
   Router::new()
     .nest("/auth", auth::routes())
     .nest("/transactions", transactions::routes())
+    .nest("/settings", settings::routes())
 }
 
 #[derive(Serialize)]

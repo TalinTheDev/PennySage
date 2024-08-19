@@ -2,6 +2,7 @@
   import { ref } from "vue";
   import { useUserStore } from "@/stores/useUserStore.js";
   import { useRouter } from "vue-router";
+  import NavDropdown from "@/components/NavDropdown.vue";
 
   const user = useUserStore();
   const router = useRouter();
@@ -10,25 +11,33 @@
 <template>
   <div class="page">
     <nav>
-      <div class="logo">
-        <a class="">PennySage</a>
+      <div class="top">
+        <a>Penny Sage</a> <span @click="user.logout()">Logout</span>
+        <input placeholder="Search" />
       </div>
       <div class="links">
-        <RouterLink to="/" class="navLink" :class="{ activeLink: page === 'dashboard' }">
-          Dashboard
+        <RouterLink to="/">
+          <div class="navLink" :class="{ activeLink: page === 'dashboard' }">Dashboard</div>
         </RouterLink>
-        <RouterLink to="/add" class="navLink" :class="{ activeLink: page === 'add' }">
-          New
-        </RouterLink>
-        <RouterLink to="/view" class="navLink" :class="{ activeLink: page === 'view' }">
-          Transactions
+        <NavDropdown
+          title="Transactions"
+          :active="page === 'add' || page === 'view'"
+          class="navGroup">
+          <RouterLink to="/add" class="">
+            <div class="navLink" :class="{ activeLink: page === 'add' }">Add</div>
+          </RouterLink>
+          <RouterLink to="/view">
+            <div class="navLink" :class="{ activeLink: page === 'view' }">View</div>
+          </RouterLink>
+        </NavDropdown>
+        <RouterLink to="/add">
+          <div class="navLink" :class="{ activeLink: page === 'analytics' }">Analytics</div>
         </RouterLink>
       </div>
-      <div class="misc">
-        <RouterLink to="/settings" class="navLink" :class="{ activeLink: page === 'settings' }">
-          ⚙️
+      <div class="bottomActions">
+        <RouterLink to="/settings">
+          <div class="navLink" :class="{ activeLink: page === 'settings' }">Settings</div>
         </RouterLink>
-        <a to="javascript:void(0)" class="navLink button" @click="user.logout()">👋</a>
       </div>
     </nav>
     <div class="content">
@@ -41,70 +50,75 @@
   .page {
     width: 100%;
     height: 100%;
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: 20% 80%;
+    grid-template-areas: "nav content";
   }
 
   nav {
-    padding: 1.5rem;
+    grid-area: nav;
     display: grid;
-    grid-template-columns: 1fr 2fr 1fr;
-    grid-template-areas: "logo links misc";
-  }
+    grid-template-rows: 20% 70% 10%;
+    grid-template-areas:
+      "top"
+      "links"
+      "bottomActions";
+    padding: 10% 10% 0% 10%;
 
-  .logo {
-    grid-area: logo;
-    display: flex;
-    align-items: center;
-    a {
-      font-size: 1.5rem;
-      font-weight: bold;
+    .top {
+      grid-area: top;
+
+      input {
+        width: 100%;
+        border-radius: 10px;
+        padding: 10px 15px;
+        margin: 15px 0;
+        border: 0px;
+        background-color: var(--grey);
+      }
+
+      a {
+        font-size: 1.2rem;
+        font-weight: bold;
+      }
+    }
+    .links {
+      grid-area: links;
+
+      .navGroup > *:not(.navGroupHeader):not(.groupActive) {
+        display: none;
+      }
+    }
+    .bottomActions {
+      grid-area: bottomActions;
+    }
+
+    .links,
+    .bottomActions {
+      a,
+      span {
+        display: block;
+        font-weight: bold;
+        text-decoration: none;
+        color: var(--dark-grey);
+        margin: 5px 0px;
+
+        .navLink {
+          margin: 0 auto;
+          padding: 5px 10px;
+          border-radius: 10px;
+        }
+      }
+
+      .activeLink {
+        background-color: var(--white);
+        color: var(--black);
+      }
     }
   }
 
-  .links {
-    grid-area: links;
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-
-    a {
-      font-size: 1rem;
-    }
-  }
-
-  .misc {
-    grid-area: misc;
-    display: flex;
-    align-items: center;
-    justify-content: end;
-
-    a {
-      margin: 0px 5px;
-    }
-  }
-
-  .navLink {
-    color: var(--dark-grey);
-    font-weight: bold;
-    text-decoration: none;
-    text-underline-offset: 10%;
-    cursor: pointer;
-    padding: 10px 20px;
-    border-radius: 4px;
-  }
-
-  .navLink.activeLink {
-    background-color: CornflowerBlue;
-    color: var(--white);
-  }
-
-  .navLink.button {
-  }
   .content {
-    background-color: var(--white);
-    width: 100%;
-    flex-grow: 1;
-    padding: 0 1.5rem;
+    grid-area: content;
+    padding: 5vh 2vw 5vh 2vw;
   }
 </style>

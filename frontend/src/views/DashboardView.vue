@@ -6,6 +6,14 @@
 </script>
 <template>
   <AppLayout>
-    <h3>Welcome {{ user.firstName }}</h3>
+    <span class="header">Hey, {{ user.firstName }}</span>
   </AppLayout>
 </template>
+
+<style scoped>
+  .header {
+    font-weight: bold;
+    font-size: 1.25rem;
+    display: block;
+  }
+</style>

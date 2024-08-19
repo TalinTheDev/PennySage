@@ -153,7 +153,7 @@
     background-color: transparent;
     border: 0;
     width: 100%;
-    border-bottom: 2px solid var(--neutral-950);
+    border-bottom: 2px solid var(--neutral-500);
     padding: 10px 0px;
 
     &:focus {
@@ -169,7 +169,7 @@
     width: 100%;
     padding: 10px;
     margin-top: 10px;
-    border: 1px solid var(--neutral-950);
+    border: 1px solid var(--neutral-500);
 
     &:hover {
       cursor: pointer;

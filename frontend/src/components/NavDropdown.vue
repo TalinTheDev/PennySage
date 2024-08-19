@@ -14,7 +14,7 @@
   .header {
     font-weight: 500;
     text-decoration: none;
-    color: var(--dark-grey);
+    color: var(--neutral-500);
     position: relative;
     left: -5%;
 

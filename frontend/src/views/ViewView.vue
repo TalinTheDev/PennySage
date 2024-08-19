@@ -251,7 +251,7 @@
     width: 20%;
     padding: 5px;
     margin: 10px 10px;
-    border: 1px solid var(--black);
+    border: 1px solid var(--neutral-950);
 
     &:hover {
       cursor: pointer;

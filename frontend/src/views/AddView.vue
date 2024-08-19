@@ -153,14 +153,14 @@
     background-color: transparent;
     border: 0;
     width: 100%;
-    border-bottom: 2px solid var(--dark-grey);
+    border-bottom: 2px solid var(--neutral-950);
     padding: 10px 0px;
 
     &:focus {
       outline: none;
     }
     &:has(+ .errorMsg:is(.invalidLabel)) {
-      border-color: red;
+      border-color: var(--red-600);
     }
   }
   button {
@@ -169,7 +169,7 @@
     width: 100%;
     padding: 10px;
     margin-top: 10px;
-    border: 1px solid var(--black);
+    border: 1px solid var(--neutral-950);
 
     &:hover {
       cursor: pointer;

@@ -46,11 +46,13 @@
   }
 
   .header {
-    margin: 2rem 2rem 0 2rem;
+    margin: 1rem 2rem 0rem 2rem;
     flex-grow: 0;
     flex-shrink: 1;
     display: flex;
     align-items: baseline;
+    border-bottom: 1px solid var(--light-grey);
+    padding-bottom: 1rem;
 
     nav {
       padding: 0% 1.5rem;

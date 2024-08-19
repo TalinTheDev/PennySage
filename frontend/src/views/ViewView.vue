@@ -119,6 +119,7 @@
 <template>
   <AppLayout>
     <DataTable
+      :dt="{ header: { border: { width: '0px' } } }"
       :value="transactions"
       sortMode="multiple"
       removableSort

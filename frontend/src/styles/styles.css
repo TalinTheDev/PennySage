@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap");
 @import "./reset.css";
+@import "./colors.css";
 
 :root {
   --white: hsl(0 0 100);
@@ -29,8 +30,8 @@ h3 {
 }
 
 body {
-  background-color: var(--light-grey);
-  color: var(--black);
+  background-color: var(--neutral-100);
+  color: var(--neutral-950);
   font-family: var(--body-font);
 }
 

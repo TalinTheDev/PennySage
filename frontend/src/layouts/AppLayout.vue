@@ -30,7 +30,7 @@
             <div class="navLink" :class="{ activeLink: page === 'view' }">View</div>
           </RouterLink>
         </NavDropdown>
-        <RouterLink to="/add">
+        <RouterLink to="/analytics">
           <div class="navLink" :class="{ activeLink: page === 'analytics' }">Analytics</div>
         </RouterLink>
       </div>
@@ -74,7 +74,7 @@
         padding: 10px 15px;
         margin: 15px 0;
         border: 0px;
-        background-color: var(--grey);
+        background-color: var(--neutral-200);
       }
 
       a {
@@ -100,7 +100,7 @@
         display: block;
         font-weight: bold;
         text-decoration: none;
-        color: var(--dark-grey);
+        color: var(--neutral-500);
         margin: 5px 0px;
 
         .navLink {
@@ -111,8 +111,9 @@
       }
 
       .activeLink {
-        background-color: var(--white);
-        color: var(--black);
+        background-color: var(--neutral-50);
+        box-shadow: 0px 2px 2px 0px var(--neutral-400);
+        color: var(--neutral-950);
       }
     }
   }

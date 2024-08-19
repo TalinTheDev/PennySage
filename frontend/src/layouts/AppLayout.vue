@@ -51,7 +51,6 @@
     flex-shrink: 1;
     display: flex;
     align-items: baseline;
-    border-bottom: 1px solid var(--light-grey);
     padding-bottom: 1rem;
 
     nav {

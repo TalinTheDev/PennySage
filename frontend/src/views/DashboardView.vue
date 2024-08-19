@@ -6,7 +6,6 @@
 </script>
 <template>
   <AppLayout>
-    <h2>Dashboard</h2>
-    <h3>Welcome {{ user.getUsername }}</h3>
+    <h3>Welcome {{ user.firstName }}</h3>
   </AppLayout>
 </template>

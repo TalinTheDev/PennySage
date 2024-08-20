@@ -75,102 +75,107 @@
       </template>
     </PageHeader>
     <Card>
-      <InputBox name="Description">
-        <InputText
-          id="description"
-          v-model="description"
-          unstyled
-          placeholder="Description"
-          required
-          :pt:root:onBlur="
-            (event) => {
-              validate(event.target, 'Description');
-            }
-          " />
-      </InputBox>
-      <div class="columns">
-        <InputBox name="Date">
-          <DatePicker
-            required
-            fluid
-            v-model="dateInput"
-            dateFormat="mm/dd/yy"
-            :pt:root:onBlur="
-              (event) => {
-                validate(event.target, 'Date');
-              }
-            "
-            showButtonBar
-            showIcon
-            iconDisplay="input" />
-        </InputBox>
-
-        <InputBox name="Amount">
-          <input
-            type="number"
-            required
-            min="0"
-            step="0.01"
-            placeholder="Amount"
-            v-model="amount"
-            @blur="validateAmount($event.target)" />
-        </InputBox>
-        <InputBox name="Type">
-          <select
-            required
-            placeholder="Transaction Type"
-            v-model="transactionType"
-            @blur="validate($event.target, 'Type')">
-            <option value="placeholder" disabled hidden>Select Transaction Type</option>
-            <option value="debit">Debit</option>
-            <option value="credit">Credit</option>
-          </select>
-        </InputBox>
-      </div>
-
-      <div class="columns">
-        <InputBox name="Merchant">
+      <template #header>
+        <span class="formHeader">Transaction Details</span>
+      </template>
+      <template #content>
+        <InputBox name="Description">
           <InputText
-            id="merchant"
-            v-model="merchant"
+            id="description"
+            v-model="description"
             unstyled
-            placeholder="Merchant"
+            placeholder="Description"
             required
             :pt:root:onBlur="
               (event) => {
-                validate(event.target, 'Merchant');
+                validate(event.target, 'Description');
               }
             " />
         </InputBox>
-        <InputBox name="Category">
-          <InputText
-            id="category"
-            v-model="category"
-            unstyled
-            placeholder="Category"
-            required
-            :pt:root:onBlur="
-              (event) => {
-                validate(event.target, 'Category');
-              }
-            " />
-        </InputBox>
-        <InputBox name="Payment Source">
-          <InputText
-            id="paymentSource"
-            v-model="paymentSource"
-            unstyled
-            placeholder="Payment Source"
-            required
-            :pt:root:onBlur="
-              (event) => {
-                validate(event.target, 'Payment Source');
-              }
-            " />
-        </InputBox>
-      </div>
+        <div class="columns">
+          <InputBox name="Date">
+            <DatePicker
+              required
+              fluid
+              v-model="dateInput"
+              dateFormat="mm/dd/yy"
+              :pt:root:onBlur="
+                (event) => {
+                  validate(event.target, 'Date');
+                }
+              "
+              showButtonBar
+              showIcon
+              iconDisplay="input" />
+          </InputBox>
 
-      <button @click="handleAddTransaction">Add Transaction</button>
+          <InputBox name="Amount">
+            <input
+              type="number"
+              required
+              min="0"
+              step="0.01"
+              placeholder="Amount"
+              v-model="amount"
+              @blur="validateAmount($event.target)" />
+          </InputBox>
+          <InputBox name="Type">
+            <select
+              required
+              placeholder="Transaction Type"
+              v-model="transactionType"
+              @blur="validate($event.target, 'Type')">
+              <option value="placeholder" disabled hidden>Select Transaction Type</option>
+              <option value="debit">Debit</option>
+              <option value="credit">Credit</option>
+            </select>
+          </InputBox>
+        </div>
+
+        <div class="columns">
+          <InputBox name="Merchant">
+            <InputText
+              id="merchant"
+              v-model="merchant"
+              unstyled
+              placeholder="Merchant"
+              required
+              :pt:root:onBlur="
+                (event) => {
+                  validate(event.target, 'Merchant');
+                }
+              " />
+          </InputBox>
+          <InputBox name="Category">
+            <InputText
+              id="category"
+              v-model="category"
+              unstyled
+              placeholder="Category"
+              required
+              :pt:root:onBlur="
+                (event) => {
+                  validate(event.target, 'Category');
+                }
+              " />
+          </InputBox>
+          <InputBox name="Payment Source">
+            <InputText
+              id="paymentSource"
+              v-model="paymentSource"
+              unstyled
+              placeholder="Payment Source"
+              required
+              :pt:root:onBlur="
+                (event) => {
+                  validate(event.target, 'Payment Source');
+                }
+              " />
+          </InputBox>
+        </div>
+
+        <button @click="handleAddTransaction">Add Transaction</button>
+      </template>
     </Card>
   </AppLayout>
 </template>
@@ -179,8 +184,9 @@
   .columns {
     display: flex;
     flex-direction: row;
-    column-gap: 2%;
+    column-gap: 1rem;
   }
+
   input,
   select,
   .input {

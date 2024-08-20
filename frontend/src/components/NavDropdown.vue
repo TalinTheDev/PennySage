@@ -1,19 +1,16 @@
 <script setup>
-  import { ref } from "vue";
-  const props = defineProps(["title", "active"]);
-
-  let active = ref(props.active || false);
-  //let active = props.active || ref(false);
+  const props = defineProps(["title"]);
 </script>
 <template>
-  <span class="header navLink" @click="active = !active">{{ props.title }}</span>
-  <slot v-if="active" />
+  <span class="header">{{ props.title }}</span>
+  <slot />
 </template>
 
 <style scoped>
   .header {
-    font-weight: 500;
     text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: bold;
     color: var(--neutral-500);
     position: relative;
     left: -5%;

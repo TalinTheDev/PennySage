@@ -15,19 +15,23 @@
   <div class="page">
     <nav>
       <div class="top">
-        <a>Penny Sage</a> <i class="pi pi-sign-out" @click="user.logout()"></i>
+        <div class="logo">
+          <span>Penny Sage</span> <i class="pi pi-sign-out" @click="user.logout()"></i>
+        </div>
         <IconField>
           <InputIcon class="pi pi-search" />
           <InputText v-model="search" placeholder="Search" />
         </IconField>
       </div>
       <div class="links">
-        <RouterLink to="/">
-          <div class="navLink" :class="{ activeLink: page === 'dashboard' }">
-            <i class="pi pi-home"></i>
-            Dashboard
-          </div>
-        </RouterLink>
+        <NavDropdown title="Home">
+          <RouterLink to="/">
+            <div class="navLink" :class="{ activeLink: page === 'dashboard' }">
+              <i class="pi pi-home"></i>
+              Dashboard
+            </div>
+          </RouterLink>
+        </NavDropdown>
         <NavDropdown
           title="Transactions"
           :active="page === 'add' || page === 'view'"
@@ -45,12 +49,14 @@
             </div>
           </RouterLink>
         </NavDropdown>
-        <RouterLink to="/analytics">
-          <div class="navLink" :class="{ activeLink: page === 'analytics' }">
-            <i class="pi pi-chart-bar"></i>
-            Analytics
-          </div>
-        </RouterLink>
+        <NavDropdown title="Insights">
+          <RouterLink to="/analytics">
+            <div class="navLink" :class="{ activeLink: page === 'analytics' }">
+              <i class="pi pi-chart-bar"></i>
+              Analytics
+            </div>
+          </RouterLink>
+        </NavDropdown>
       </div>
       <div class="bottomActions">
         <RouterLink to="/settings">
@@ -75,6 +81,11 @@
     grid-template-areas: "nav content";
   }
 
+  i.pi {
+    /* Icons */
+    margin-right: 0.5rem;
+  }
+
   nav {
     grid-area: nav;
     display: grid;
@@ -87,18 +98,30 @@
 
     .top {
       grid-area: top;
+      margin-bottom: 1rem;
 
       input {
+        /* Search */
         width: 100%;
         border-radius: 10px;
         margin: 15px 0;
         border: 0px;
         background-color: var(--neutral-200);
       }
+      .logo {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
 
-      a {
-        font-size: 1.2rem;
-        font-weight: bold;
+        span {
+          /* Logo */
+          font-size: 1.2rem;
+          font-weight: bold;
+        }
+
+        i {
+          margin-right: 0;
+        }
       }
     }
     .links {
@@ -112,12 +135,15 @@
       grid-area: bottomActions;
       display: flex;
       align-items: end;
+
+      i {
+        margin-right: 0;
+      }
     }
 
     .links,
     .bottomActions {
-      a,
-      span {
+      a {
         display: block;
         font-weight: bold;
         text-decoration: none;

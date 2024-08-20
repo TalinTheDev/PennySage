@@ -162,20 +162,19 @@
         .navLink {
           margin: 0 auto;
           padding: 5px 10px;
-          border-radius: 10px;
 
-          &:hover {
-            background-color: var(--neutral-50);
+          &:hover:not(.activeLink) {
             box-shadow: 0px 2px 2px 0px var(--neutral-400);
-            color: var(--neutral-950);
+            color: var(--teal-800);
+            border-left: 5px solid var(--teal-800);
           }
         }
       }
 
       .activeLink {
-        background-color: var(--neutral-50);
         box-shadow: 0px 2px 2px 0px var(--neutral-400);
-        color: var(--neutral-950);
+        color: var(--teal-700);
+        border-left: 5px solid var(--teal-700);
       }
     }
   }

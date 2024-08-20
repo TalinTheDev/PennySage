@@ -51,7 +51,7 @@
     width: 100%;
     height: 100%;
     display: grid;
-    grid-template-columns: 20% 80%;
+    grid-template-columns: clamp(100px, 20%, 400px) 80%;
     grid-template-areas: "nav content";
   }
 
@@ -120,6 +120,6 @@
 
   .content {
     grid-area: content;
-    padding: 5vh 2vw 5vh 2vw;
+    padding: 2rem 2rem 2rem;
   }
 </style>

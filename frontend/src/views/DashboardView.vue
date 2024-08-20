@@ -1,6 +1,7 @@
 <script setup>
   import { ref } from "vue";
   import AppLayout from "@/layouts/AppLayout.vue";
+  import PageHeader from "@/components/PageHeader.vue";
 
   import { useUserStore } from "@/stores/useUserStore.js";
   const user = useUserStore();
@@ -16,11 +17,15 @@
   );
 </script>
 <template>
-  <AppLayout
-    ><div class="header">
-      <h1>Hey, {{ user.firstName }}</h1>
-      <span class="subheader">{{ date }}</span>
-    </div>
+  <AppLayout>
+    <PageHeader>
+      <template #header>
+        <span>Hey, {{ user.firstName }}</span>
+      </template>
+      <template #subheader>
+        <span>{{ date }}</span>
+      </template>
+    </PageHeader>
   </AppLayout>
 </template>
 

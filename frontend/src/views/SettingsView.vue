@@ -1,8 +1,13 @@
 <script setup>
   import AppLayout from "@/layouts/AppLayout.vue";
+  import PageHeader from "@/components/PageHeader.vue";
 </script>
 <template>
   <AppLayout>
-    <h1>Settings</h1>
+    <PageHeader>
+      <template #header>
+        <span>Settings</span>
+      </template>
+    </PageHeader>
   </AppLayout>
 </template>

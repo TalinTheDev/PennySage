@@ -1,6 +1,7 @@
 <script setup>
   import { ref, provide, watchEffect } from "vue";
   import AppLayout from "@/layouts/AppLayout.vue";
+  import PageHeader from "@/components/PageHeader.vue";
   import InputBox from "@/components/InputBox.vue";
   import { useApiStore } from "@/stores/useApiStore.js";
   import { useRouter } from "vue-router";
@@ -67,9 +68,11 @@
 </script>
 <template>
   <AppLayout>
-    <div class="header">
-      <h1>Add Transaction</h1>
-    </div>
+    <PageHeader>
+      <template #header>
+        <span>Add Transaction</span>
+      </template>
+    </PageHeader>
     <div class="form">
       <InputBox name="Description">
         <InputText

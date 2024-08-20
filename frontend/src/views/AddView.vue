@@ -4,11 +4,13 @@
   import InputBox from "@/components/InputBox.vue";
   import { useApiStore } from "@/stores/useApiStore.js";
   import { useRouter } from "vue-router";
+  import InputText from "primevue/inputtext";
+  import DatePicker from "primevue/datepicker";
 
   const router = useRouter();
   const api = useApiStore().api;
   const description = ref("");
-  const dateInput = ref(new Date().toISOString().slice(0, 10));
+  const dateInput = ref();
   let date = 0;
   const amount = ref("");
   const transactionType = ref("debit");
@@ -36,7 +38,7 @@
   provide("errors", errors);
 
   watchEffect(() => {
-    date = new Date(dateInput.value.split("-")).setHours(0, 0, 0, 0);
+    date = new Date(dateInput.value).setHours(0, 0, 0, 0);
   });
 
   const handleAddTransaction = () => {
@@ -65,24 +67,38 @@
 </script>
 <template>
   <AppLayout>
-    <h1>Add Transaction</h1>
+    <div class="header">
+      <h1>Add Transaction</h1>
+    </div>
     <div class="form">
       <InputBox name="Description">
-        <input
-          type="text"
-          required
-          placeholder="Description"
+        <InputText
+          id="description"
           v-model="description"
-          @blur="validate($event.target, 'Description')" />
+          unstyled
+          placeholder="Description"
+          required
+          :pt:root:onBlur="
+            (event) => {
+              validate(event.target, 'Description');
+            }
+          " />
       </InputBox>
       <div class="columns">
         <InputBox name="Date">
-          <input
-            type="date"
+          <DatePicker
             required
-            placeholder="Date"
+            fluid
             v-model="dateInput"
-            @blur="validate($event.target, 'Date')" />
+            dateFormat="mm/dd/yy"
+            :pt:root:onBlur="
+              (event) => {
+                validate(event.target, 'Date');
+              }
+            "
+            showButtonBar
+            showIcon
+            iconDisplay="input" />
         </InputBox>
 
         <InputBox name="Amount">
@@ -110,29 +126,43 @@
 
       <div class="columns">
         <InputBox name="Merchant">
-          <input
-            type="text"
-            required
-            placeholder="Merchant"
+          <InputText
+            id="merchant"
             v-model="merchant"
-            @blur="validate($event.target, 'Merchant')" />
+            unstyled
+            placeholder="Merchant"
+            required
+            :pt:root:onBlur="
+              (event) => {
+                validate(event.target, 'Merchant');
+              }
+            " />
         </InputBox>
         <InputBox name="Category">
-          <input
-            type="text"
-            required
-            placeholder="Category"
+          <InputText
+            id="category"
             v-model="category"
-            @blur="validate($event.target, 'Category')" />
+            unstyled
+            placeholder="Category"
+            required
+            :pt:root:onBlur="
+              (event) => {
+                validate(event.target, 'Category');
+              }
+            " />
         </InputBox>
         <InputBox name="Payment Source">
-          <input
-            type="text"
-            required
-            placeholder="Payment Source"
+          <InputText
+            id="paymentSource"
             v-model="paymentSource"
-            @blur="validate($event.target, 'Payment Source')"
-            @keydown.enter="handleAddTransaction" />
+            unstyled
+            placeholder="Payment Source"
+            required
+            :pt:root:onBlur="
+              (event) => {
+                validate(event.target, 'Payment Source');
+              }
+            " />
         </InputBox>
       </div>
 
@@ -142,19 +172,34 @@
 </template>
 
 <style scoped>
+  .header {
+    width: 100vw;
+    padding: 1rem 2rem;
+    background-color: var(--white);
+    box-shadow: 0px 3px 3px 0px var(--neutral-300);
+    z-index: -1;
+    position: relative;
+    margin-bottom: 2rem;
+  }
+  .form {
+    background-color: var(--white);
+    border-radius: 25px;
+    width: max-content;
+    padding: 25px;
+    margin: 2rem;
+  }
   .columns {
     display: flex;
     flex-direction: row;
     column-gap: 2%;
   }
-
   input,
-  select {
+  select,
+  .input {
     background-color: transparent;
-    border: 0;
     width: 100%;
-    border-bottom: 2px solid var(--neutral-500);
-    padding: 10px 0px;
+    border: 2px solid var(--neutral-500);
+    padding: 10px;
 
     &:focus {
       outline: none;

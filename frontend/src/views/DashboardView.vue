@@ -16,13 +16,24 @@
   );
 </script>
 <template>
-  <AppLayout>
-    <h1>Hey, {{ user.firstName }}</h1>
-    <span class="subheader">{{ date }}</span>
+  <AppLayout
+    ><div class="header">
+      <h1>Hey, {{ user.firstName }}</h1>
+      <span class="subheader">{{ date }}</span>
+    </div>
   </AppLayout>
 </template>
 
 <style scoped>
+  .header {
+    width: 100vw;
+    padding: 1rem 2rem;
+    background-color: var(--white);
+    box-shadow: 0px 3px 3px 0px var(--neutral-300);
+    z-index: -1;
+    position: relative;
+    margin-bottom: 2rem;
+  }
   .subheader {
     color: var(--neutral-500);
     font-size: 0.9rem;

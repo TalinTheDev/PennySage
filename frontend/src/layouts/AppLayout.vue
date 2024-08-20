@@ -92,6 +92,8 @@
       "links"
       "bottomActions";
     padding: 1.25rem;
+    background-color: var(--white);
+    box-shadow: 3px 0px 3px 0px var(--neutral-300);
 
     .top {
       grid-area: top;
@@ -180,6 +182,5 @@
 
   .content {
     grid-area: content;
-    padding: 2rem 2rem 2rem;
   }
 </style>

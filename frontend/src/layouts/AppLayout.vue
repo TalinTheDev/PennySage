@@ -20,7 +20,7 @@
         </div>
         <IconField>
           <InputIcon class="pi pi-search" />
-          <InputText v-model="search" placeholder="Search" />
+          <InputText v-model="search" placeholder="Search" unstyled />
         </IconField>
       </div>
       <div class="links">
@@ -97,13 +97,19 @@
       grid-area: top;
       margin-bottom: 1rem;
 
+      .p-inputicon {
+        color: var(--neutral-950);
+      }
+
       input {
         /* Search */
         width: 100%;
         border-radius: 10px;
         margin: 15px 0;
+        padding: clamp(5px, 0.75rem, 10px) clamp(10px, 1rem, 15px) clamp(5px, 0.75rem, 10px) 2.25rem;
         border: 0px;
         background-color: var(--neutral-200);
+        color: var(--neutral-950);
       }
       .logo {
         display: flex;

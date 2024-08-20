@@ -3,6 +3,7 @@
   import AppLayout from "@/layouts/AppLayout.vue";
   import PageHeader from "@/components/PageHeader.vue";
   import InputBox from "@/components/InputBox.vue";
+  import Card from "@/components/Card.vue";
   import { useApiStore } from "@/stores/useApiStore.js";
   import { useRouter } from "vue-router";
   import InputText from "primevue/inputtext";
@@ -73,7 +74,7 @@
         <span>Add Transaction</span>
       </template>
     </PageHeader>
-    <div class="form">
+    <Card>
       <InputBox name="Description">
         <InputText
           id="description"
@@ -170,27 +171,11 @@
       </div>
 
       <button @click="handleAddTransaction">Add Transaction</button>
-    </div>
+    </Card>
   </AppLayout>
 </template>
 
 <style scoped>
-  .header {
-    width: 100vw;
-    padding: 1rem 2rem;
-    background-color: var(--white);
-    box-shadow: 0px 3px 3px 0px var(--neutral-300);
-    z-index: -1;
-    position: relative;
-    margin-bottom: 2rem;
-  }
-  .form {
-    background-color: var(--white);
-    border-radius: 25px;
-    width: max-content;
-    padding: 25px;
-    margin: 2rem;
-  }
   .columns {
     display: flex;
     flex-direction: row;

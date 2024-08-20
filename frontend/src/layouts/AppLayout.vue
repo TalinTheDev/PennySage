@@ -3,6 +3,9 @@
   import { useUserStore } from "@/stores/useUserStore.js";
   import { useRouter } from "vue-router";
   import NavDropdown from "@/components/NavDropdown.vue";
+  import IconField from "primevue/iconfield";
+  import InputIcon from "primevue/inputicon";
+  import InputText from "primevue/inputtext";
 
   const user = useUserStore();
   const router = useRouter();
@@ -12,8 +15,11 @@
   <div class="page">
     <nav>
       <div class="top">
-        <a>Penny Sage</a> <span @click="user.logout()">Logout</span>
-        <input placeholder="Search" />
+        <a>Penny Sage</a> <i class="pi pi-sign-out" @click="user.logout()"></i>
+        <IconField>
+          <InputIcon class="pi pi-search" />
+          <InputText v-model="search" placeholder="Search" />
+        </IconField>
       </div>
       <div class="links">
         <RouterLink to="/">
@@ -72,7 +78,7 @@
   nav {
     grid-area: nav;
     display: grid;
-    grid-template-rows: 20% 70% 10%;
+    grid-template-rows: min-content 1fr min-content;
     grid-template-areas:
       "top"
       "links"
@@ -85,7 +91,6 @@
       input {
         width: 100%;
         border-radius: 10px;
-        padding: 10px 15px;
         margin: 15px 0;
         border: 0px;
         background-color: var(--neutral-200);

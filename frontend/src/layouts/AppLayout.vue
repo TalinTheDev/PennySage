@@ -17,26 +17,40 @@
       </div>
       <div class="links">
         <RouterLink to="/">
-          <div class="navLink" :class="{ activeLink: page === 'dashboard' }">Dashboard</div>
+          <div class="navLink" :class="{ activeLink: page === 'dashboard' }">
+            <i class="pi pi-home"></i>
+            Dashboard
+          </div>
         </RouterLink>
         <NavDropdown
           title="Transactions"
           :active="page === 'add' || page === 'view'"
           class="navGroup">
           <RouterLink to="/add" class="">
-            <div class="navLink" :class="{ activeLink: page === 'add' }">Add</div>
+            <div class="navLink" :class="{ activeLink: page === 'add' }">
+              <i class="pi pi-plus"></i>
+              Add
+            </div>
           </RouterLink>
           <RouterLink to="/view">
-            <div class="navLink" :class="{ activeLink: page === 'view' }">View</div>
+            <div class="navLink" :class="{ activeLink: page === 'view' }">
+              <i class="pi pi-table"></i>
+              View
+            </div>
           </RouterLink>
         </NavDropdown>
         <RouterLink to="/analytics">
-          <div class="navLink" :class="{ activeLink: page === 'analytics' }">Analytics</div>
+          <div class="navLink" :class="{ activeLink: page === 'analytics' }">
+            <i class="pi pi-chart-bar"></i>
+            Analytics
+          </div>
         </RouterLink>
       </div>
       <div class="bottomActions">
         <RouterLink to="/settings">
-          <div class="navLink" :class="{ activeLink: page === 'settings' }">Settings</div>
+          <div class="navLink" :class="{ activeLink: page === 'settings' }">
+            <i class="pi pi-cog"></i>
+          </div>
         </RouterLink>
       </div>
     </nav>
@@ -63,7 +77,7 @@
       "top"
       "links"
       "bottomActions";
-    padding: 10% 10% 0% 10%;
+    padding: 1.25rem;
 
     .top {
       grid-area: top;
@@ -91,6 +105,8 @@
     }
     .bottomActions {
       grid-area: bottomActions;
+      display: flex;
+      align-items: end;
     }
 
     .links,

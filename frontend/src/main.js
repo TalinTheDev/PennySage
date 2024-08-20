@@ -8,6 +8,7 @@ import App from "./App.vue";
 import router from "./router";
 import Cookies from "./utils/Cookies";
 import { useUserStore } from "./stores/useUserStore";
+import "primeicons/primeicons.css";
 
 const app = createApp(App);
 

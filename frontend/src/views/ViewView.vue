@@ -136,7 +136,7 @@
       editMode="row"
       @row-edit-save="editTransaction">
       <template #header>
-        <h2>View Transactions</h2>
+        <h1>View Transactions</h1>
         <InputText v-model="filters['global'].value" placeholder="Keyword Search" />
         <button @click="initFilters">Clear Filters</button>
         <button @click="deleteTransactions">Delete Selected Transactions</button>

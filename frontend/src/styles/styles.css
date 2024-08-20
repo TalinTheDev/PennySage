@@ -21,7 +21,9 @@ html {
   transition: 200ms;
 }
 h1 {
-  font-size: 2.2rem;
+  font-weight: bold;
+  font-size: 1.25rem;
+  display: block;
 }
 h2 {
   font-size: 1.6rem;
@@ -43,7 +45,6 @@ h4,
 h5,
 h6 {
   font-family: var(--header-font);
-  font-weight: 500;
 }
 
 #app {

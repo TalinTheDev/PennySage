@@ -57,7 +57,7 @@
 
 <template>
   <AuthLayout>
-    <h2>Register <RouterLink to="login" class="loginLink">Or Login</RouterLink></h2>
+    <h1>Register <RouterLink to="login" class="loginLink">Or Login</RouterLink></h1>
     <div class="form">
       <InputBox name="Username">
         <input

@@ -99,6 +99,7 @@
 
       .p-inputicon {
         color: var(--neutral-950);
+        font-size: 0.9rem;
       }
 
       input {
@@ -110,8 +111,10 @@
         border: 0px;
         background-color: var(--neutral-200);
         color: var(--neutral-950);
+        font-size: 0.9rem;
       }
       .logo {
+        margin-bottom: 0.2rem;
         display: flex;
         align-items: center;
         justify-content: space-between;
@@ -149,7 +152,7 @@
     .bottomActions {
       a {
         display: block;
-        font-weight: bold;
+        font-weight: 650;
         text-decoration: none;
         color: var(--neutral-500);
         margin: 5px 0px;

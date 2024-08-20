@@ -65,7 +65,7 @@
 </script>
 <template>
   <AppLayout>
-    <h2>Add Transaction</h2>
+    <h1>Add Transaction</h1>
     <div class="form">
       <InputBox name="Description">
         <input

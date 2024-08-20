@@ -32,10 +32,7 @@
             </div>
           </RouterLink>
         </NavDropdown>
-        <NavDropdown
-          title="Transactions"
-          :active="page === 'add' || page === 'view'"
-          class="navGroup">
+        <NavDropdown title="Transactions">
           <RouterLink to="/add" class="">
             <div class="navLink" :class="{ activeLink: page === 'add' }">
               <i class="pi pi-plus"></i>
@@ -77,7 +74,7 @@
     width: 100%;
     height: 100%;
     display: grid;
-    grid-template-columns: clamp(100px, 20%, 400px) 80%;
+    grid-template-columns: clamp(100px, 20%, 350px) 80%;
     grid-template-areas: "nav content";
   }
 
@@ -126,10 +123,6 @@
     }
     .links {
       grid-area: links;
-
-      .navGroup > *:not(.navGroupHeader):not(.groupActive) {
-        display: none;
-      }
     }
     .bottomActions {
       grid-area: bottomActions;

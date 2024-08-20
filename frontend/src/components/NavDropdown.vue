@@ -2,16 +2,21 @@
   const props = defineProps(["title"]);
 </script>
 <template>
-  <span class="header">{{ props.title }}</span>
-  <slot />
+  <div class="linkGroup">
+    <span class="header">{{ props.title }}</span>
+    <slot />
+  </div>
 </template>
 
 <style scoped>
+  .linkGroup {
+    margin-bottom: 1rem;
+  }
   .header {
     text-decoration: none;
     font-size: 0.9rem;
     font-weight: bold;
-    color: var(--neutral-500);
+    color: var(--neutral-700);
     position: relative;
     left: -5%;
 

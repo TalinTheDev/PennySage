@@ -124,6 +124,11 @@
 
         i {
           margin-right: 0;
+          cursor: pointer;
+
+          &:hover {
+            color: var(--neutral-500);
+          }
         }
       }
     }
@@ -153,6 +158,12 @@
           margin: 0 auto;
           padding: 5px 10px;
           border-radius: 10px;
+
+          &:hover {
+            background-color: var(--neutral-50);
+            box-shadow: 0px 2px 2px 0px var(--neutral-400);
+            color: var(--neutral-950);
+          }
         }
       }
 

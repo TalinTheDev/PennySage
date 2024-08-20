@@ -25,15 +25,8 @@ h1 {
   font-size: 1.25rem;
   display: block;
 }
-h2 {
-  font-size: 1.6rem;
-}
-h3 {
-  font-size: 1.3rem;
-}
-
 body {
-  background-color: var(--neutral-100);
+  background-color: var(--neutral-50);
   color: var(--neutral-950);
   font-family: var(--body-font);
 }

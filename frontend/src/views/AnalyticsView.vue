@@ -8,6 +8,6 @@
       <template #header>
         <span>Analytics</span>
       </template>
-    </PageHeader></AppLayout
-  >
+    </PageHeader>
+  </AppLayout>
 </template>

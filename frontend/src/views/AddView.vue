@@ -14,9 +14,9 @@
   const router = useRouter();
   const api = useApiStore().api;
   const description = ref("");
-  const dateInput = ref();
+  const dateInput = ref(new Date());
   let date = 0;
-  const amount = ref(0.01);
+  const amount = ref(0.0);
   const transactionType = ref("debit");
   const merchant = ref("");
   const category = ref("");
@@ -36,7 +36,6 @@
     if (!target.checkValidity()) {
       errors.value.set(`${name}Err`, target.validationMessage);
     } else {
-      alert("valid");
       errors.value.delete(`${name}Err`);
     }
   };
@@ -46,12 +45,41 @@
     date = new Date(dateInput.value).setHours(0, 0, 0, 0);
   });
 
-  const handleAddTransaction = () => {
+  const checkEmptyValues = () => {
+    if (description.value == "") {
+      errors.value.set("DescriptionErr", "Please enter a description");
+    } else {
+      errors.value.delete("DescriptionErr");
+    }
     if (date == 0) {
-      errors.value.set("DateErr", "Please enter valid date");
+      errors.value.set("DateErr", "Please enter a valid date");
     } else {
       errors.value.delete("DateErr");
     }
+    if (!(parseFloat(amount.value) > 0)) {
+      errors.value.set("AmountErr", "Amount must be greater than $0.00");
+    } else {
+      errors.value.delete("AmountErr");
+    }
+    if (merchant.value == "") {
+      errors.value.set("MerchantErr", "Please enter a Merchant");
+    } else {
+      errors.value.delete("MerchantErr");
+    }
+    if (category.value == "") {
+      errors.value.set("CategoryErr", "Please enter a category");
+    } else {
+      errors.value.delete("CategoryErr");
+    }
+    if (paymentSource.value == "") {
+      errors.value.set("Payment SourceErr", "Please enter a payment source");
+    } else {
+      errors.value.delete("Payment SourceErr");
+    }
+  };
+
+  const handleAddTransaction = () => {
+    checkEmptyValues();
     if (errors.value.size !== 0) {
       return;
     }
@@ -124,8 +152,6 @@
             locale="en-US"
             fluid
             showButtons
-            :min="0.01"
-            :pt:root:required="true"
             @blur="
               ({ originalEvent }) => {
                 validateAmount(originalEvent.target, 'Amount');
@@ -137,7 +163,6 @@
             v-model="transactionType"
             optionLabel="name"
             optionValue="value"
-            fluid
             :pt:root:onBlur="
               (event) => {
                 validate(event.target, 'Type');
@@ -191,7 +216,11 @@
     </Card>
   </AppLayout>
 </template>
-
+<style>
+  .p-inputtext:enabled:focus {
+    outline: none !important;
+  }
+</style>
 <style scoped>
   button {
     background-color: inherit;

@@ -1,50 +1,52 @@
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
+@layer reset {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
 
-* {
-  margin: 0px;
-  padding: 0px;
-}
+  * {
+    margin: 0px;
+    padding: 0px;
+  }
 
-body {
-  -webkit-font-smoothing: antialiased;
-  width: 100vw;
-  height: 100vh;
-}
+  body {
+    -webkit-font-smoothing: antialiased;
+    width: 100vw;
+    height: 100vh;
+  }
 
-img,
-picture,
-video,
-canvas,
-svg {
-  display: block;
-  max-width: 100%;
-}
+  img,
+  picture,
+  video,
+  canvas,
+  svg {
+    display: block;
+    max-width: 100%;
+  }
 
-input,
-button,
-textarea,
-select,
-a {
-  font: inherit;
-  outline: none;
-  color: inherit;
-}
+  input,
+  button,
+  textarea,
+  select,
+  a {
+    font: inherit;
+    outline: none;
+    color: inherit;
+  }
 
-p,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  overflow-wrap: break-word;
-}
+  p,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    overflow-wrap: break-word;
+  }
 
-#root,
-#__next {
-  isolation: isolate;
+  #root,
+  #__next {
+    isolation: isolate;
+  }
 }

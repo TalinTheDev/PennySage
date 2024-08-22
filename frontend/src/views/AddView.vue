@@ -218,7 +218,7 @@
 </template>
 <style>
   .p-inputtext:enabled:focus {
-    outline: none !important;
+    outline: none;
   }
 </style>
 <style scoped>

@@ -2,6 +2,8 @@
 @import "./reset.css";
 @import "./colors.css";
 
+@layer reset,primevue;
+
 :root {
   --white: hsl(0 0 100);
   --light-grey: hsl(0 0 96);

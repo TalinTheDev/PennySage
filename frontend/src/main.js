@@ -19,7 +19,11 @@ app.use(PrimeVue, {
   theme: {
     preset: Nora,
     options: {
-      darkModeSelector: ".theme-dark"
+      darkModeSelector: ".theme-dark",
+      cssLayer: {
+        name: "primevue",
+        order: "reset, primevue"
+      }
     }
   }
 });

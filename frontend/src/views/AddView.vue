@@ -28,8 +28,13 @@
   ]);
 
   const errors = ref(new Map());
-  const validateAmount = (target) => {
-    validate(target, "Amount");
+  const validateDate = (value) => {
+    console.log(value);
+    if (value == null) {
+      errors.value.set("DateErr", "Please enter a valid date");
+    } else {
+      errors.value.delete("DateErr");
+    }
   };
 
   const validate = (target, name) => {
@@ -51,7 +56,7 @@
     } else {
       errors.value.delete("DescriptionErr");
     }
-    if (date == 0) {
+    if (date < 0 || dateInput.value == null) {
       errors.value.set("DateErr", "Please enter a valid date");
     } else {
       errors.value.delete("DateErr");
@@ -128,109 +133,131 @@
               }
             " />
         </InputBox>
-        <InputBox name="Date">
-          <DatePicker
-            required
-            fluid
-            v-model="dateInput"
-            dateFormat="mm/dd/yy"
-            :pt:root:onBlur="
-              (event) => {
-                validate(event.target, 'Date');
-              }
-            "
-            showButtonBar
-            showIcon
-            iconDisplay="input" />
-        </InputBox>
+        <div class="columns">
+          <InputBox name="Date">
+            <DatePicker
+              required
+              fluid
+              v-model="dateInput"
+              dateFormat="mm/dd/yy"
+              @update:model-value="validateDate"
+              showButtonBar
+              showIcon
+              iconDisplay="input" />
+          </InputBox>
 
-        <InputBox name="Amount">
-          <InputNumber
-            v-model="amount"
-            mode="currency"
-            currency="USD"
-            locale="en-US"
-            fluid
-            showButtons
-            @blur="
-              ({ originalEvent }) => {
-                validateAmount(originalEvent.target, 'Amount');
-              }
-            " />
-        </InputBox>
-        <InputBox name="Type">
-          <SelectButton
-            v-model="transactionType"
-            optionLabel="name"
-            optionValue="value"
-            :pt:root:onBlur="
-              (event) => {
-                validate(event.target, 'Type');
-              }
-            "
-            :options="typeOptions" />
-        </InputBox>
-
-        <InputBox name="Merchant">
-          <InputText
-            fluid
-            id="merchant"
-            v-model="merchant"
-            placeholder="Merchant"
-            required
-            :pt:root:onBlur="
-              (event) => {
-                validate(event.target, 'Merchant');
-              }
-            " />
-        </InputBox>
-        <InputBox name="Category">
-          <InputText
-            fluid
-            id="category"
-            v-model="category"
-            placeholder="Category"
-            required
-            :pt:root:onBlur="
-              (event) => {
-                validate(event.target, 'Category');
-              }
-            " />
-        </InputBox>
-        <InputBox name="Payment Source">
-          <InputText
-            fluid
-            id="paymentSource"
-            v-model="paymentSource"
-            placeholder="Payment Source"
-            required
-            :pt:root:onBlur="
-              (event) => {
-                validate(event.target, 'Payment Source');
-              }
-            " />
-        </InputBox>
-
+          <InputBox name="Amount">
+            <InputNumber
+              v-model="amount"
+              mode="currency"
+              currency="USD"
+              locale="en-US"
+              fluid
+              showButtons
+              @blur="
+                ({ originalEvent }) => {
+                  validate(originalEvent.target, 'Amount');
+                }
+              " />
+          </InputBox>
+          <InputBox name="Type">
+            <SelectButton
+              v-model="transactionType"
+              optionLabel="name"
+              optionValue="value"
+              pt:root:class="typeButton"
+              :pt:root:onBlur="
+                (event) => {
+                  validate(event.target, 'Type');
+                }
+              "
+              :options="typeOptions" />
+          </InputBox>
+        </div>
+        <div class="columns">
+          <InputBox name="Merchant">
+            <InputText
+              fluid
+              id="merchant"
+              v-model="merchant"
+              placeholder="Merchant"
+              required
+              :pt:root:onBlur="
+                (event) => {
+                  validate(event.target, 'Merchant');
+                }
+              " />
+          </InputBox>
+          <InputBox name="Category">
+            <InputText
+              fluid
+              id="category"
+              v-model="category"
+              placeholder="Category"
+              required
+              :pt:root:onBlur="
+                (event) => {
+                  validate(event.target, 'Category');
+                }
+              " />
+          </InputBox>
+          <InputBox name="Payment Source">
+            <InputText
+              fluid
+              id="paymentSource"
+              v-model="paymentSource"
+              placeholder="Payment Source"
+              required
+              :pt:root:onBlur="
+                (event) => {
+                  validate(event.target, 'Payment Source');
+                }
+              " />
+          </InputBox>
+        </div>
         <button @click="handleAddTransaction">Add Transaction</button>
       </template>
     </Card>
   </AppLayout>
 </template>
 <style>
-  .p-inputtext:enabled:focus {
+  .p-inputtext {
     outline: none;
+    border: 1px solid var(--neutral-500);
+  }
+  .p-inputtext:has(+ .invalidLabel),
+  .p-inputwrapper:has(+ .invalidLabel) {
+    border: 2px solid var(--red-600);
+  }
+
+  .p-inputwrapper:has(+ .invalidLabel) .p-inputnumber-input,
+  .p-inputwrapper:has(+ .invalidLabel) .p-datepicker-input {
+    border: none;
+  }
+
+  .typeButton {
+    width: 100%;
+
+    button {
+      width: 50%;
+    }
   }
 </style>
 <style scoped>
+  .columns {
+    display: flex;
+    column-gap: 1rem;
+  }
   button {
-    background-color: inherit;
-    font-size: 1.2rem;
+    background-color: var(--teal-600);
+    color: var(--white);
     width: 100%;
-    padding: 10px;
+    padding: 0.5rem;
     margin-top: 10px;
-    border: 1px solid var(--neutral-500);
+    border: none;
 
     &:hover {
+      background-color: var(--teal-700);
       cursor: pointer;
     }
   }

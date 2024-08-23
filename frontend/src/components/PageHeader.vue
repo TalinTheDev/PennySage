@@ -16,7 +16,7 @@
     box-shadow: 0px 3px 3px 0px var(--neutral-300);
     z-index: -1;
     position: relative;
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
   }
   .header > * {
     font-weight: bold;

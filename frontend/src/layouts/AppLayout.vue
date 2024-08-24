@@ -107,7 +107,7 @@
       "links"
       "bottomActions";
     background-color: var(--white);
-    box-shadow: 3px 0px 3px 0px var(--neutral-300);
+    box-shadow: 3px 0px 3px 0px var(--border);
 
     .top {
       padding: 1.25rem 1.25rem 0;
@@ -145,7 +145,7 @@
         }
         .userEmail {
           font-size: 0.8rem;
-          color: var(--neutral-500);
+          color: var(--light-grey);
         }
       }
       .userActions {
@@ -158,13 +158,13 @@
             width: 0.3rem;
             height: 0.3rem;
             border-radius: 100%;
-            background-color: var(--neutral-950);
+            background-color: var(--black);
           }
         }
 
         .userActionsContent {
           background-color: var(--white);
-          border: 1px solid var(--neutral-400);
+          border: 1px solid var(--border);
           width: 10rem;
           padding: 1rem 1rem;
           position: fixed;
@@ -184,7 +184,7 @@
         display: block;
         font-weight: 650;
         text-decoration: none;
-        color: var(--neutral-500);
+        color: var(--light-grey);
         margin: 5px 0px;
 
         .navLink {
@@ -192,7 +192,7 @@
           padding: 5px 10px;
 
           &:hover:not(.activeLink) {
-            box-shadow: 0px 2px 2px 0px var(--neutral-400);
+            box-shadow: 0px 2px 2px 0px var(--border);
             color: var(--teal-800);
             border-left: 5px solid var(--teal-800);
           }
@@ -200,7 +200,7 @@
       }
 
       .activeLink {
-        box-shadow: 0px 2px 2px 0px var(--neutral-400);
+        box-shadow: 0px 2px 2px 0px var(--border);
         color: var(--teal-700);
         border-left: 5px solid var(--teal-700);
       }

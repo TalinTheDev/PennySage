@@ -16,7 +16,7 @@
     text-decoration: none;
     font-size: 0.9rem;
     font-weight: bold;
-    color: var(--neutral-700);
+    color: var(--dark-grey);
     position: relative;
     left: -5%;
 

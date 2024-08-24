@@ -228,7 +228,7 @@
 <style>
   .p-inputtext {
     outline: none;
-    border: 1px solid var(--neutral-500);
+    border: 1px solid var(--light-grey);
   }
   :is(.p-inputtext, .p-inputwrapper):has(+ .invalidLabel) {
     border-radius: var(--p-form-field-border-radius);

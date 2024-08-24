@@ -14,7 +14,7 @@
     display: inline-block;
     border-radius: 10px;
     background-color: var(--white);
-    border: 1px solid var(--neutral-300);
+    border: 1px solid var(--border);
     margin: 1rem;
     width: calc(100% - 2rem);
 
@@ -24,7 +24,7 @@
       font-weight: 500;
       width: 100%;
       display: block;
-      border-bottom: 1px solid var(--neutral-300);
+      border-bottom: 1px solid var(--border);
     }
     .content {
       padding: 1.5rem;

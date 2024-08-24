@@ -100,7 +100,7 @@
 <style>
   .p-inputtext {
     outline: none;
-    border: 1px solid var(--neutral-500);
+    border: 1px solid var(--light-grey);
     background-color: transparent;
   }
   :is(.p-inputtext, .p-inputwrapper):has(+ .invalidLabel) {

@@ -109,6 +109,7 @@
       "links"
       "bottomActions";
     background-color: var(--white);
+    border-right: 3px solid var(--border);
     box-shadow: 3px 0px 3px 0px var(--border);
 
     .top {

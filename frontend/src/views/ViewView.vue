@@ -1,5 +1,6 @@
 <script setup>
   import AppLayout from "@/layouts/AppLayout.vue";
+  import Button from "@/components/Button.vue";
   import DataTable from "primevue/datatable";
   import Column from "primevue/column";
   import InputText from "primevue/inputtext";

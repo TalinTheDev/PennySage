@@ -199,11 +199,6 @@
 </template>
 
 <style scoped>
-  .form {
-    width: 100%;
-    text-align: center;
-  }
-
   .columns {
     display: flex;
     column-gap: 1rem;

@@ -57,9 +57,11 @@
         </div>
         <div class="userActions">
           <div class="ellipses" @click="showUserActions = !showUserActions">
-            <div class="ellipse" v-for="x in 3" />
+            <div class="ellipse" />
+            <div class="ellipse" />
+            <div class="ellipse" />
           </div>
-          <div class="userActionsContent" v-if="showUserActions">
+          <div class="userActionsContent" v-show="showUserActions">
             <div class="userAction">
               <RouterLink to="/settings">
                 <div>

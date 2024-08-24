@@ -3,25 +3,20 @@
   import { useUserStore } from "@/stores/useUserStore.js";
   import { useRouter } from "vue-router";
   import NavDropdown from "@/components/NavDropdown.vue";
-  import IconField from "primevue/iconfield";
-  import InputIcon from "primevue/inputicon";
-  import InputText from "primevue/inputtext";
 
   const user = useUserStore();
   const router = useRouter();
   const page = ref(router.currentRoute.value.name);
+
+  const showUserActions = ref(false);
 </script>
 <template>
   <div class="page">
     <nav>
       <div class="top">
         <div class="logo">
-          <span>Penny Sage</span> <i class="pi pi-sign-out" @click="user.logout()"></i>
+          <span>Penny Sage</span>
         </div>
-        <IconField>
-          <InputIcon class="pi pi-search" />
-          <InputText v-model="search" placeholder="Search" unstyled />
-        </IconField>
       </div>
       <div class="links">
         <NavDropdown title="Home">
@@ -56,11 +51,31 @@
         </NavDropdown>
       </div>
       <div class="bottomActions">
-        <RouterLink to="/settings">
-          <div class="navLink" :class="{ activeLink: page === 'settings' }">
-            <i class="pi pi-cog"></i>
+        <div class="userDetails">
+          <span class="username">{{ user.firstName }}</span>
+          <span class="userEmail">{{ user.email }}</span>
+        </div>
+        <div class="userActions">
+          <div class="ellipses" @click="showUserActions = !showUserActions">
+            <div class="ellipse" v-for="x in 3" />
           </div>
-        </RouterLink>
+          <div class="userActionsContent" v-if="showUserActions">
+            <div class="userAction">
+              <RouterLink to="/settings">
+                <div>
+                  <i class="pi pi-cog"></i>
+                  Settings
+                </div>
+              </RouterLink>
+            </div>
+            <div class="userAction">
+              <a href="#" @click="user.logout()">
+                <i class="pi pi-sign-out"></i>
+                Logout
+              </a>
+            </div>
+          </div>
+        </div>
       </div>
     </nav>
     <div class="content">
@@ -91,62 +106,75 @@
       "top"
       "links"
       "bottomActions";
-    padding: 1.25rem;
     background-color: var(--white);
     box-shadow: 3px 0px 3px 0px var(--neutral-300);
 
     .top {
+      padding: 1.25rem 1.25rem 0;
       grid-area: top;
       margin-bottom: 1rem;
 
-      .p-inputicon {
-        color: var(--neutral-950);
-        font-size: 0.9rem;
-      }
-
-      input {
-        /* Search */
-        width: 100%;
-        border-radius: 10px;
-        margin: 15px 0;
-        padding: clamp(5px, 0.75rem, 10px) clamp(10px, 1rem, 15px) clamp(5px, 0.75rem, 10px) 2.25rem;
-        border: 0px;
-        background-color: var(--neutral-200);
-        color: var(--neutral-950);
-        font-size: 0.9rem;
-      }
       .logo {
         margin-bottom: 0.2rem;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
 
         span {
           /* Logo */
-          font-size: 1.2rem;
+          font-size: 1.5rem;
           font-weight: bold;
-        }
-
-        i {
-          margin-right: 0;
-          cursor: pointer;
-
-          &:hover {
-            color: var(--neutral-500);
-          }
         }
       }
     }
     .links {
+      padding: 0 1.25rem 1.25rem;
       grid-area: links;
     }
     .bottomActions {
+      padding: 1.25rem;
       grid-area: bottomActions;
       display: flex;
-      align-items: end;
+      align-items: center;
+      justify-content: space-between;
 
-      i {
-        margin-right: 0;
+      .userDetails {
+        display: flex;
+        flex-direction: column;
+
+        .username {
+          font-weight: bold;
+          font-size: 1rem;
+        }
+        .userEmail {
+          font-size: 0.8rem;
+          color: var(--neutral-500);
+        }
+      }
+      .userActions {
+        .ellipses {
+          padding: 1rem;
+          display: flex;
+          column-gap: 0.1rem;
+
+          .ellipse {
+            width: 0.3rem;
+            height: 0.3rem;
+            border-radius: 100%;
+            background-color: var(--neutral-950);
+          }
+        }
+
+        .userActionsContent {
+          background-color: var(--white);
+          border: 1px solid var(--neutral-400);
+          width: 10rem;
+          padding: 1rem 1rem;
+          position: fixed;
+          bottom: 4rem;
+          left: clamp(250px, 15rem, 400px);
+          display: flex;
+          flex-direction: column;
+          row-gap: 1rem;
+          align-items: center;
+        }
       }
     }
 

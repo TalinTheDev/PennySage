@@ -29,14 +29,19 @@
 
   const errors = ref(new Map());
   const validateDate = (value) => {
-    console.log(value);
     if (value == null) {
       errors.value.set("DateErr", "Please enter a valid date");
     } else {
       errors.value.delete("DateErr");
     }
   };
-
+  const validateAmount = (value) => {
+    if (!(parseFloat(value.substring(1)) > 0)) {
+      errors.value.set("AmountErr", "Amount must be greater than $0.00");
+    } else {
+      errors.value.delete("AmountErr");
+    }
+  };
   const validate = (target, name) => {
     if (!target.checkValidity()) {
       errors.value.set(`${name}Err`, target.validationMessage);
@@ -127,7 +132,7 @@
             v-model="description"
             placeholder="Description"
             required
-            :pt:root:onBlur="
+            @blur="
               (event) => {
                 validate(event.target, 'Description');
               }
@@ -155,8 +160,8 @@
               fluid
               showButtons
               @blur="
-                ({ originalEvent }) => {
-                  validate(originalEvent.target, 'Amount');
+                ({ value }) => {
+                  validateAmount(value);
                 }
               " />
           </InputBox>
@@ -166,7 +171,7 @@
               optionLabel="name"
               optionValue="value"
               pt:root:class="typeButton"
-              :pt:root:onBlur="
+              @blur="
                 (event) => {
                   validate(event.target, 'Type');
                 }
@@ -182,7 +187,7 @@
               v-model="merchant"
               placeholder="Merchant"
               required
-              :pt:root:onBlur="
+              @blur="
                 (event) => {
                   validate(event.target, 'Merchant');
                 }
@@ -195,7 +200,7 @@
               v-model="category"
               placeholder="Category"
               required
-              :pt:root:onBlur="
+              @blur="
                 (event) => {
                   validate(event.target, 'Category');
                 }
@@ -208,7 +213,7 @@
               v-model="paymentSource"
               placeholder="Payment Source"
               required
-              :pt:root:onBlur="
+              @blur="
                 (event) => {
                   validate(event.target, 'Payment Source');
                 }
@@ -225,8 +230,8 @@
     outline: none;
     border: 1px solid var(--neutral-500);
   }
-  .p-inputtext:has(+ .invalidLabel),
-  .p-inputwrapper:has(+ .invalidLabel) {
+  :is(.p-inputtext, .p-inputwrapper):has(+ .invalidLabel) {
+    border-radius: var(--p-form-field-border-radius);
     border: 2px solid var(--red-600);
   }
 

@@ -2,6 +2,9 @@
   import { ref, provide } from "vue";
   import { RouterLink } from "vue-router";
   import InputBox from "@/components/InputBox.vue";
+  import Card from "@/components/Card.vue";
+  import InputText from "primevue/inputtext";
+  import Password from "primevue/password";
   import AuthLayout from "../layouts/AuthLayout.vue";
   import { useApiStore } from "@/stores/useApiStore";
   import { useUserStore } from "@/stores/useUserStore";
@@ -23,7 +26,21 @@
     }
   };
   provide("errors", errors);
+
+  const checkEmptyValues = () => {
+    if (username.value == "") {
+      errors.value.set("UsernameErr", "Please enter your username");
+    } else {
+      errors.value.delete("UsernameErr");
+    }
+    if (password.value == "") {
+      errors.value.set("PasswordErr", "Please enter your password");
+    } else {
+      errors.value.delete("PasswordErr");
+    }
+  };
   const handleLogin = () => {
+    checkEmptyValues();
     if (errors.value.size !== 0) {
       return;
     }
@@ -44,66 +61,80 @@
 
 <template>
   <AuthLayout>
-    <h1>Login <RouterLink to="register" class="registerLink">Or Register</RouterLink></h1>
-    <div class="form">
-      <InputBox name="Username">
-        <input
-          type="text"
-          required
-          placeholder="Username"
-          v-model="username"
-          @blur="validate($event.target, 'Username')" />
-      </InputBox>
-      <InputBox name="Password">
-        <input
-          type="password"
-          required
-          placeholder="Password"
-          @keydown.enter="handleLogin"
-          v-model="password"
-          @blur="validate($event.target, 'Password')" />
-      </InputBox>
-      <button @click="handleLogin">Login</button>
-    </div>
+    <Card>
+      <template #header>
+        <h1>Login <RouterLink to="register" class="registerLink">Or Register</RouterLink></h1>
+      </template>
+      <template #content>
+        <InputBox name="Username">
+          <InputText
+            fluid
+            v-model="username"
+            placeholder="Username"
+            required
+            @blur="
+              (event) => {
+                validate(event.target, 'Username');
+              }
+            " />
+        </InputBox>
+        <InputBox name="Password">
+          <Password
+            fluid
+            v-model="password"
+            :feedback="false"
+            required
+            placeholder="Password"
+            @keydown.enter="handleLogin"
+            @blur="
+              (event) => {
+                validate(event.target, 'Password');
+              }
+            " />
+        </InputBox>
+        <button @click="handleLogin">Login</button>
+      </template>
+    </Card>
   </AuthLayout>
 </template>
+<style>
+  .p-inputtext {
+    outline: none;
+    border: 1px solid var(--neutral-500);
+    background-color: transparent;
+  }
+  :is(.p-inputtext, .p-inputwrapper):has(+ .invalidLabel) {
+    border-radius: var(--p-form-field-border-radius);
+    border: 2px solid var(--red-600);
+  }
+  .p-inputwrapper:has(+ .invalidLabel) .p-password-input {
+    border: none;
+  }
+</style>
 
 <style scoped>
-  .form {
-    width: 100%;
-    text-align: center;
-  }
-
-  input {
-    background-color: transparent;
-    border: 0;
-    width: 100%;
-    border-bottom: 2px solid var(--neutral-500);
-    padding: 10px 0px;
-
-    &:focus {
-      outline: none;
-    }
-    &:has(+ .errorMsg:is(.invalidLabel)) {
-      border-color: var(--red-600);
-    }
-  }
   button {
-    background-color: inherit;
-    font-size: 1.2rem;
+    background-color: var(--teal-600);
+    color: var(--white);
     width: 100%;
-    padding: 10px;
+    padding: 0.5rem;
     margin-top: 10px;
-    border: 1px solid var(--neutral-500);
+    border: none;
 
     &:hover {
+      background-color: var(--teal-700);
       cursor: pointer;
     }
   }
 
   .registerLink {
-    font-size: 0.8rem;
+    font-size: 0.75rem;
     color: inherit;
-    text-underline-offset: 10%;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+      text-underline-offset: 50%;
+    }
   }
 </style>

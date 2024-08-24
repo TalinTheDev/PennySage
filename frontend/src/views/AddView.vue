@@ -66,7 +66,7 @@
     } else {
       errors.value.delete("DateErr");
     }
-    if (!(parseFloat(amount.value) > 0)) {
+    if (!(parseFloat(amount.value) > 0) || amount.value == null) {
       errors.value.set("AmountErr", "Amount must be greater than $0.00");
     } else {
       errors.value.delete("AmountErr");

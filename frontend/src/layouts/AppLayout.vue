@@ -191,16 +191,16 @@
 
           &:hover:not(.activeLink) {
             box-shadow: 0px 2px 2px 0px var(--border);
-            color: var(--teal-800);
-            border-left: 5px solid var(--teal-800);
+            color: var(--accent-hover);
+            border-left: 5px solid var(--accent-hover);
           }
         }
       }
 
       .activeLink {
         box-shadow: 0px 2px 2px 0px var(--border);
-        color: var(--teal-700);
-        border-left: 5px solid var(--teal-700);
+        color: var(--accent-highlight);
+        border-left: 5px solid var(--accent-highlight);
       }
     }
   }

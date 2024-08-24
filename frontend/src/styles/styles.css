@@ -45,3 +45,28 @@ h6 {
   width: 100%;
   height: 100%;
 }
+
+.p-inputtext {
+  outline: none;
+  border: 1px solid var(--light-grey);
+  background-color: transparent;
+}
+
+:is(.p-inputtext, .p-inputwrapper):has(+ .invalidLabel) {
+  border-radius: var(--p-form-field-border-radius);
+  border: 2px solid var(--error);
+}
+
+.p-inputwrapper:has(+ .invalidLabel) .p-inputnumber-input,
+.p-inputwrapper:has(+ .invalidLabel) .p-datepicker-input,
+.p-inputwrapper:has(+ .invalidLabel) .p-password-input {
+  border: none;
+}
+
+.typeButton {
+  width: 100%;
+
+  button {
+    width: 50%;
+  }
+}

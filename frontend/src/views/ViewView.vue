@@ -128,8 +128,8 @@
     </PageHeader>
     <div class="tableHeader">
       <div class="actions">
-        <button @click="initFilters">Clear Filters</button>
-        <button @click="deleteTransactions">Delete Selected Transactions</button>
+        <Button @click="initFilters">Clear Filters</Button>
+        <Button @click="deleteTransactions">Delete Selected Transactions</Button>
       </div>
       <div class="search">
         <IconField>
@@ -277,18 +277,6 @@
   }
 </style>
 <style scoped>
-  button {
-    background-color: var(--teal-600);
-    color: var(--white);
-    padding: 0.5rem 2rem;
-    margin-top: 10px;
-    border: none;
-
-    &:hover {
-      background-color: var(--teal-700);
-      cursor: pointer;
-    }
-  }
   .tableHeader {
     width: calc(100% - 4rem);
     margin: 2rem auto 0;

@@ -3,6 +3,7 @@
   import { RouterLink } from "vue-router";
   import InputBox from "@/components/InputBox.vue";
   import Card from "@/components/Card.vue";
+  import Button from "@/components/Button.vue";
   import InputText from "primevue/inputtext";
   import Password from "primevue/password";
   import AuthLayout from "../layouts/AuthLayout.vue";
@@ -92,41 +93,13 @@
               }
             " />
         </InputBox>
-        <button @click="handleLogin">Login</button>
+        <Button @click="handleLogin">Login</Button>
       </template>
     </Card>
   </AuthLayout>
 </template>
-<style>
-  .p-inputtext {
-    outline: none;
-    border: 1px solid var(--light-grey);
-    background-color: transparent;
-  }
-  :is(.p-inputtext, .p-inputwrapper):has(+ .invalidLabel) {
-    border-radius: var(--p-form-field-border-radius);
-    border: 2px solid var(--red-600);
-  }
-  .p-inputwrapper:has(+ .invalidLabel) .p-password-input {
-    border: none;
-  }
-</style>
 
 <style scoped>
-  button {
-    background-color: var(--teal-600);
-    color: var(--white);
-    width: 100%;
-    padding: 0.5rem;
-    margin-top: 10px;
-    border: none;
-
-    &:hover {
-      background-color: var(--teal-700);
-      cursor: pointer;
-    }
-  }
-
   .registerLink {
     font-size: 0.75rem;
     color: inherit;

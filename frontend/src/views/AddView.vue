@@ -4,6 +4,7 @@
   import PageHeader from "@/components/PageHeader.vue";
   import InputBox from "@/components/InputBox.vue";
   import Card from "@/components/Card.vue";
+  import Button from "@/components/Button.vue";
   import { useApiStore } from "@/stores/useApiStore.js";
   import { useRouter } from "vue-router";
   import InputText from "primevue/inputtext";
@@ -220,50 +221,14 @@
               " />
           </InputBox>
         </div>
-        <button @click="handleAddTransaction">Add Transaction</button>
+        <Button @click="handleAddTransaction">Add Transaction</Button>
       </template>
     </Card>
   </AppLayout>
 </template>
-<style>
-  .p-inputtext {
-    outline: none;
-    border: 1px solid var(--light-grey);
-  }
-  :is(.p-inputtext, .p-inputwrapper):has(+ .invalidLabel) {
-    border-radius: var(--p-form-field-border-radius);
-    border: 2px solid var(--red-600);
-  }
-
-  .p-inputwrapper:has(+ .invalidLabel) .p-inputnumber-input,
-  .p-inputwrapper:has(+ .invalidLabel) .p-datepicker-input {
-    border: none;
-  }
-
-  .typeButton {
-    width: 100%;
-
-    button {
-      width: 50%;
-    }
-  }
-</style>
 <style scoped>
   .columns {
     display: flex;
     column-gap: 1rem;
-  }
-  button {
-    background-color: var(--teal-600);
-    color: var(--white);
-    width: 100%;
-    padding: 0.5rem;
-    margin-top: 10px;
-    border: none;
-
-    &:hover {
-      background-color: var(--teal-700);
-      cursor: pointer;
-    }
   }
 </style>

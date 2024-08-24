@@ -24,7 +24,7 @@
     display: block;
 
     .errorMsg {
-      color: var(--red-600);
+      color: var(--error-text);
       font-size: 0.7rem;
       display: block;
       position: relative;

@@ -5,6 +5,7 @@
   import { RouterLink } from "vue-router";
   import InputBox from "@/components/InputBox.vue";
   import Card from "@/components/Card.vue";
+  import Button from "@/components/Button.vue";
   import AuthLayout from "../layouts/AuthLayout.vue";
   import InputText from "primevue/inputtext";
   import Password from "primevue/password";
@@ -192,7 +193,7 @@
               " />
           </InputBox>
         </div>
-        <button @click="handleRegister">Register</button>
+        <Button @click="handleRegister">Register</Button>
       </template>
     </Card>
   </AuthLayout>
@@ -202,20 +203,6 @@
   .columns {
     display: flex;
     column-gap: 1rem;
-  }
-
-  button {
-    background-color: var(--teal-600);
-    color: var(--white);
-    width: 100%;
-    padding: 0.5rem;
-    margin-top: 10px;
-    border: none;
-
-    &:hover {
-      background-color: var(--teal-700);
-      cursor: pointer;
-    }
   }
 
   .loginLink {

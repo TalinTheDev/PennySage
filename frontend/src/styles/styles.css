@@ -54,7 +54,7 @@ h6 {
 
 :is(.p-inputtext, .p-inputwrapper):has(+ .invalidLabel) {
   border-radius: var(--p-form-field-border-radius);
-  border: 2px solid var(--error);
+  border: 2px solid var(--error-border);
 }
 
 .p-inputwrapper:has(+ .invalidLabel) .p-inputnumber-input,

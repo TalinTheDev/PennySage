@@ -1,6 +1,7 @@
 <script setup>
   import AppLayout from "@/layouts/AppLayout.vue";
   import Button from "@/components/Button.vue";
+  import TransactionTypeChip from "@/components/TransactionTypeChip.vue";
   import DataTable from "primevue/datatable";
   import Column from "primevue/column";
   import InputText from "primevue/inputtext";
@@ -199,8 +200,8 @@
       </Column>
       <Column field="type" header="Type" sortable>
         <template #body="{ data }">
-          <Tag severity="danger" value="Debit" v-if="data.type === 'debit'"></Tag>
-          <Tag severity="success" value="Credit" v-if="data.type === 'credit'"></Tag>
+          <TransactionTypeChip type="credit" v-if="data.type === 'credit'" />
+          <TransactionTypeChip type="debit" v-if="data.type === 'debit'" />
         </template>
         <template #filter="{ filterModel, filterCallback }">
           <Select

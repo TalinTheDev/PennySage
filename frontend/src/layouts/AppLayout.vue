@@ -165,15 +165,13 @@
         .userActionsContent {
           background-color: var(--white);
           border: 1px solid var(--border);
-          width: 10rem;
-          padding: 1rem 1rem;
+          padding: 1.2rem;
           position: fixed;
           bottom: 4rem;
           left: clamp(250px, 15rem, 400px);
           display: flex;
           flex-direction: column;
-          row-gap: 1rem;
-          align-items: center;
+          row-gap: 0.8rem;
         }
       }
     }

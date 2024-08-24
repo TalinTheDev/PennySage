@@ -17,7 +17,7 @@
 }
 
 html {
-  font-size: calc(60% + 0.8vmin);
+  font-size: calc(60% + 0.75vmin);
 }
 * {
   font-size: 1rem;
@@ -33,7 +33,7 @@ h3 {
   font-size: 1.3rem;
 }
 body {
-  background-color: var(--grey);
+  background-color: var(--white);
   color: var(--neutral-950);
   font-family: var(--body-font);
 }

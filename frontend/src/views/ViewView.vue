@@ -4,6 +4,9 @@
   import Column from "primevue/column";
   import InputText from "primevue/inputtext";
   import InputNumber from "primevue/inputnumber";
+  import PageHeader from "@/components/PageHeader.vue";
+  import IconField from "primevue/iconfield";
+  import InputIcon from "primevue/inputicon";
   import DatePicker from "primevue/datepicker";
 
   import Select from "primevue/select";
@@ -118,8 +121,25 @@
 </script>
 <template>
   <AppLayout>
+    <PageHeader>
+      <template #header>
+        <span>View Transactions</span>
+      </template>
+    </PageHeader>
+    <div class="tableHeader">
+      <div class="actions">
+        <button @click="initFilters">Clear Filters</button>
+        <button @click="deleteTransactions">Delete Selected Transactions</button>
+      </div>
+      <div class="search">
+        <IconField>
+          <InputIcon class="pi pi-search" />
+          <InputText v-model="filters['global'].value" placeholder="Search" fluid />
+        </IconField>
+      </div>
+    </div>
+
     <DataTable
-      :dt="{ header: { border: { width: '0px' } } }"
       :value="transactions"
       sortMode="multiple"
       removableSort
@@ -134,13 +154,9 @@
       v-model:selection="selectedTransactions"
       v-model:editingRows="editingRows"
       editMode="row"
-      @row-edit-save="editTransaction">
-      <template #header>
-        <h1>View Transactions</h1>
-        <InputText v-model="filters['global'].value" placeholder="Keyword Search" />
-        <button @click="initFilters">Clear Filters</button>
-        <button @click="deleteTransactions">Delete Selected Transactions</button>
-      </template>
+      @row-edit-save="editTransaction"
+      pt:thead:class="thead"
+      pt:table:class="table">
       <template #empty> No transactions found. </template>
       <Column selectionMode="multiple"></Column>
       <Column field="id" hidden />
@@ -244,17 +260,51 @@
   </AppLayout>
 </template>
 
+<style>
+  table {
+    width: calc(100% - 4rem);
+    margin: 2rem auto;
+    border-collapse: collapse;
+
+    td {
+      font-weight: 400;
+      font-size: 0.85rem;
+    }
+  }
+  thead th div span {
+    font-weight: 400;
+    font-size: 0.85rem;
+  }
+</style>
 <style scoped>
   button {
-    background-color: inherit;
-    font-size: 0.9rem;
-    width: 20%;
-    padding: 5px;
-    margin: 10px 10px;
-    border: 1px solid var(--neutral-500);
+    background-color: var(--teal-600);
+    color: var(--white);
+    padding: 0.5rem 2rem;
+    margin-top: 10px;
+    border: none;
 
     &:hover {
+      background-color: var(--teal-700);
       cursor: pointer;
+    }
+  }
+  .tableHeader {
+    width: calc(100% - 4rem);
+    margin: 2rem auto 0;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-template-areas: "actions search";
+
+    .actions {
+      grid-area: "actions";
+      display: flex;
+      column-gap: 0.5rem;
+    }
+
+    .search {
+      grid-area: "search";
+      margin: auto 5rem;
     }
   }
 </style>

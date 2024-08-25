@@ -1,0 +1,24 @@
+:root {
+  --white: #fff;
+
+  --border: #cbd5e1;
+  --light-grey: #64748b;
+  --dark-grey: #334155;
+  --black: #020617;
+
+  --error-background: rgb(238, 168, 166);
+  --error-text: #be1a1a;
+  --error-border: #b91c1c;
+
+  --warning-background: #;
+  --warning-text: #ca8a04;
+  --warning-border: #a16207;
+
+  --success-background: #a5e4d0;
+  --success-text: #067552;
+  --success-border: #047857;
+
+  --accent: #0d9488;
+  --accent-hover: #0f766e;
+  --accent-highlight: #115e59;
+}

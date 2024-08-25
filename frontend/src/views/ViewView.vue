@@ -1,9 +1,14 @@
 <script setup>
   import AppLayout from "@/layouts/AppLayout.vue";
+  import Button from "@/components/Button.vue";
+  import TransactionTypeChip from "@/components/TransactionTypeChip.vue";
   import DataTable from "primevue/datatable";
   import Column from "primevue/column";
   import InputText from "primevue/inputtext";
   import InputNumber from "primevue/inputnumber";
+  import PageHeader from "@/components/PageHeader.vue";
+  import IconField from "primevue/iconfield";
+  import InputIcon from "primevue/inputicon";
   import DatePicker from "primevue/datepicker";
 
   import Select from "primevue/select";
@@ -118,8 +123,25 @@
 </script>
 <template>
   <AppLayout>
+    <PageHeader>
+      <template #header>
+        <span>View Transactions</span>
+      </template>
+    </PageHeader>
+    <div class="tableHeader">
+      <div class="actions">
+        <Button @click="initFilters">Clear Filters</Button>
+        <Button @click="deleteTransactions">Delete Selected Transactions</Button>
+      </div>
+      <div class="search">
+        <IconField>
+          <InputIcon class="pi pi-search" />
+          <InputText v-model="filters['global'].value" placeholder="Search" fluid />
+        </IconField>
+      </div>
+    </div>
+
     <DataTable
-      :dt="{ header: { border: { width: '0px' } } }"
       :value="transactions"
       sortMode="multiple"
       removableSort
@@ -134,13 +156,9 @@
       v-model:selection="selectedTransactions"
       v-model:editingRows="editingRows"
       editMode="row"
-      @row-edit-save="editTransaction">
-      <template #header>
-        <h2>View Transactions</h2>
-        <InputText v-model="filters['global'].value" placeholder="Keyword Search" />
-        <button @click="initFilters">Clear Filters</button>
-        <button @click="deleteTransactions">Delete Selected Transactions</button>
-      </template>
+      @row-edit-save="editTransaction"
+      pt:thead:class="thead"
+      pt:table:class="table">
       <template #empty> No transactions found. </template>
       <Column selectionMode="multiple"></Column>
       <Column field="id" hidden />
@@ -182,8 +200,8 @@
       </Column>
       <Column field="type" header="Type" sortable>
         <template #body="{ data }">
-          <Tag severity="danger" value="Debit" v-if="data.type === 'debit'"></Tag>
-          <Tag severity="success" value="Credit" v-if="data.type === 'credit'"></Tag>
+          <TransactionTypeChip type="credit" v-if="data.type === 'credit'" />
+          <TransactionTypeChip type="debit" v-if="data.type === 'debit'" />
         </template>
         <template #filter="{ filterModel, filterCallback }">
           <Select
@@ -244,17 +262,39 @@
   </AppLayout>
 </template>
 
-<style scoped>
-  button {
-    background-color: inherit;
-    font-size: 0.9rem;
-    width: 20%;
-    padding: 5px;
-    margin: 10px 10px;
-    border: 1px solid var(--black);
+<style>
+  table {
+    width: calc(100% - 4rem);
+    margin: 2rem auto;
+    border-collapse: collapse;
 
-    &:hover {
-      cursor: pointer;
+    td {
+      font-weight: 400;
+      font-size: 0.85rem;
+    }
+  }
+  thead th div span {
+    font-weight: 400;
+    font-size: 0.85rem;
+  }
+</style>
+<style scoped>
+  .tableHeader {
+    width: calc(100% - 4rem);
+    margin: 2rem auto 0;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-template-areas: "actions search";
+
+    .actions {
+      grid-area: "actions";
+      display: flex;
+      column-gap: 0.5rem;
+    }
+
+    .search {
+      grid-area: "search";
+      margin: auto 5rem;
     }
   }
 </style>

@@ -4,7 +4,11 @@
   import { ref, provide } from "vue";
   import { RouterLink } from "vue-router";
   import InputBox from "@/components/InputBox.vue";
+  import Card from "@/components/Card.vue";
+  import Button from "@/components/Button.vue";
   import AuthLayout from "../layouts/AuthLayout.vue";
+  import InputText from "primevue/inputtext";
+  import Password from "primevue/password";
   import { useApiStore } from "@/stores/useApiStore.js";
   import { useUserStore } from "@/stores/useUserStore.js";
   import { useRouter } from "vue-router";
@@ -21,19 +25,66 @@
   const confirmPassword = ref("");
 
   const errors = ref(new Map());
+
   const validate = (target, name) => {
     if (!target.checkValidity()) {
       errors.value.set(`${name}Err`, target.validationMessage);
     } else {
-      errors.value.delete(`${name}Err`);
+      if (name == "Confirm Password") {
+        if (password.value !== confirmPassword.value) {
+          errors.value.set(`${name}Err`, "Passwords do not match");
+        } else {
+          errors.value.delete(`${name}Err`);
+        }
+      } else {
+        errors.value.delete(`${name}Err`);
+      }
     }
   };
   provide("errors", errors);
+
+  const checkEmptyValues = () => {
+    if (username.value == "") {
+      errors.value.set("UsernameErr", "Please enter your username");
+    } else {
+      errors.value.delete("UsernameErr");
+    }
+    if (email.value == "") {
+      errors.value.set("EmailErr", "Please enter your email address");
+    } else {
+      if (!errors.value.has("EmailErr")) {
+        errors.value.delete("EmailErr");
+      }
+    }
+    if (firstName.value == "") {
+      errors.value.set("First NameErr", "Please enter your first name");
+    } else {
+      errors.value.delete("First NameErr");
+    }
+    if (lastName.value == "") {
+      errors.value.set("Last NameErr", "Please enter your last name");
+    } else {
+      errors.value.delete("Last NameErr");
+    }
+    if (password.value == "") {
+      errors.value.set("PasswordErr", "Please enter your password");
+    } else {
+      errors.value.delete("PasswordErr");
+    }
+    if (confirmPassword.value == "") {
+      errors.value.set("Confirm PasswordErr", "Please confirm your password");
+    } else {
+      if (!errors.value.has("Confirm PasswordErr")) {
+        errors.value.delete("Confirm PasswordErr");
+      }
+    }
+  };
 
   const handleRegister = () => {
     if (password.value !== confirmPassword.value) {
       errors.value.set("Confirm PasswordErr", "Passwords do not match");
     }
+    checkEmptyValues();
     if (errors.value.size !== 0) {
       return;
     }
@@ -57,107 +108,111 @@
 
 <template>
   <AuthLayout>
-    <h2>Register <RouterLink to="login" class="loginLink">Or Login</RouterLink></h2>
-    <div class="form">
-      <InputBox name="Username">
-        <input
-          type="text"
-          required
-          placeholder="Username"
-          v-model="username"
-          @blur="validate($event.target, 'Username')" />
-      </InputBox>
-      <InputBox name="Email">
-        <input
-          type="email"
-          required
-          placeholder="Email"
-          v-model="email"
-          @blur="validate($event.target, 'Email')" />
-      </InputBox>
-      <div class="columns">
-        <InputBox name="First Name">
-          <input
-            type="text"
+    <Card>
+      <template #header>
+        <h1>Register <RouterLink to="login" class="loginLink">Or Login</RouterLink></h1>
+      </template>
+      <template #content>
+        <InputBox name="Username">
+          <InputText
+            fluid
+            v-model="username"
+            placeholder="Username"
             required
-            placeholder="First Name"
-            v-model="firstName"
-            @blur="validate($event.target, 'First Name')" />
+            @blur="
+              (event) => {
+                validate(event.target, 'Username');
+              }
+            " />
         </InputBox>
-        <InputBox name="Last Name">
-          <input
-            type="text"
+        <InputBox name="Email">
+          <InputText
+            fluid
+            v-model="email"
+            placeholder="Email"
             required
-            placeholder="Last Name"
-            v-model="lastName"
-            @blur="validate($event.target, 'Last Name')" />
+            pt:root:type="email"
+            @blur="
+              (event) => {
+                validate(event.target, 'Email');
+              }
+            " />
         </InputBox>
-      </div>
-      <div class="columns">
-        <InputBox name="Password">
-          <input
-            type="password"
-            required
-            placeholder="Password"
-            v-model="password"
-            @blur="validate($event.target, 'Password')" />
-        </InputBox>
-        <InputBox name="Confirm Password">
-          <input
-            type="password"
-            required
-            placeholder="Confirm Password"
-            @keydown.enter="handleLogin"
-            v-model="confirmPassword"
-            @blur="validate($event.target, 'Confirm Password')" />
-        </InputBox>
-      </div>
-      <button @click="handleRegister">Register</button>
-    </div>
+        <div class="columns">
+          <InputBox name="First Name">
+            <InputText
+              fluid
+              v-model="firstName"
+              placeholder="First Name"
+              required
+              @blur="
+                (event) => {
+                  validate(event.target, 'First Name');
+                }
+              " />
+          </InputBox>
+          <InputBox name="Last Name">
+            <InputText
+              fluid
+              v-model="lastName"
+              placeholder="Last Name"
+              required
+              @blur="
+                (event) => {
+                  validate(event.target, 'Last Name');
+                }
+              " />
+          </InputBox>
+        </div>
+        <div class="columns">
+          <InputBox name="Password">
+            <Password
+              fluid
+              v-model="password"
+              :feedback="false"
+              required
+              placeholder="Password"
+              @blur="
+                (event) => {
+                  validate(event.target, 'Password');
+                }
+              " />
+          </InputBox>
+          <InputBox name="Confirm Password">
+            <Password
+              fluid
+              v-model="confirmPassword"
+              :feedback="false"
+              required
+              placeholder="Confirm Password"
+              @keydown.enter="handleRegister"
+              @blur="
+                (event) => {
+                  validate(event.target, 'Confirm Password');
+                }
+              " />
+          </InputBox>
+        </div>
+        <Button @click="handleRegister">Register</Button>
+      </template>
+    </Card>
   </AuthLayout>
 </template>
 
 <style scoped>
-  .form {
-    width: 100%;
-    text-align: center;
-  }
-
   .columns {
     display: flex;
-    flex-direction: row;
-    column-gap: 2%;
-  }
-  input {
-    background-color: transparent;
-    border: 0;
-    width: 100%;
-    border-bottom: 2px solid var(--dark-grey);
-    padding: 10px 0px;
-
-    &:focus {
-      outline: none;
-    }
-    &:has(+ .errorMsg:is(.invalidLabel)) {
-      border-color: red;
-    }
-  }
-  button {
-    background-color: inherit;
-    font-size: 1.2rem;
-    width: 100%;
-    padding: 10px;
-    margin-top: 10px;
-    border: 1px solid var(--black);
-
-    &:hover {
-      cursor: pointer;
-    }
+    column-gap: 1rem;
   }
 
   .loginLink {
-    font-size: 0.8rem;
+    font-size: 0.75rem;
     color: inherit;
-    text-underline-offset: 10%;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+      text-underline-offset: 50%;
+    }
   }
 </style>

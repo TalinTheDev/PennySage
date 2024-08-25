@@ -19,14 +19,16 @@
 
 <style scoped>
   .inputField {
-    margin: 1% 0;
     width: 100%;
+    margin: 0.5em 0;
     display: block;
 
     .errorMsg {
-      color: red;
-      font-size: 0.8rem;
+      color: var(--error-text);
+      font-size: 0.7rem;
       display: block;
+      position: relative;
+      top: 0.2rem;
       text-align: start;
 
       &:not(.invalidLabel) {

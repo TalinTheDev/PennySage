@@ -2,6 +2,10 @@
   import { ref, provide } from "vue";
   import { RouterLink } from "vue-router";
   import InputBox from "@/components/InputBox.vue";
+  import Card from "@/components/Card.vue";
+  import Button from "@/components/Button.vue";
+  import InputText from "primevue/inputtext";
+  import Password from "primevue/password";
   import AuthLayout from "../layouts/AuthLayout.vue";
   import { useApiStore } from "@/stores/useApiStore";
   import { useUserStore } from "@/stores/useUserStore";
@@ -23,7 +27,21 @@
     }
   };
   provide("errors", errors);
+
+  const checkEmptyValues = () => {
+    if (username.value == "") {
+      errors.value.set("UsernameErr", "Please enter your username");
+    } else {
+      errors.value.delete("UsernameErr");
+    }
+    if (password.value == "") {
+      errors.value.set("PasswordErr", "Please enter your password");
+    } else {
+      errors.value.delete("PasswordErr");
+    }
+  };
   const handleLogin = () => {
+    checkEmptyValues();
     if (errors.value.size !== 0) {
       return;
     }
@@ -44,66 +62,52 @@
 
 <template>
   <AuthLayout>
-    <h2>Login <RouterLink to="register" class="registerLink">Or Register</RouterLink></h2>
-    <div class="form">
-      <InputBox name="Username">
-        <input
-          type="text"
-          required
-          placeholder="Username"
-          v-model="username"
-          @blur="validate($event.target, 'Username')" />
-      </InputBox>
-      <InputBox name="Password">
-        <input
-          type="password"
-          required
-          placeholder="Password"
-          @keydown.enter="handleLogin"
-          v-model="password"
-          @blur="validate($event.target, 'Password')" />
-      </InputBox>
-      <button @click="handleLogin">Login</button>
-    </div>
+    <Card>
+      <template #header>
+        <h1>Login <RouterLink to="register" class="registerLink">Or Register</RouterLink></h1>
+      </template>
+      <template #content>
+        <InputBox name="Username">
+          <InputText
+            fluid
+            v-model="username"
+            placeholder="Username"
+            required
+            @blur="
+              (event) => {
+                validate(event.target, 'Username');
+              }
+            " />
+        </InputBox>
+        <InputBox name="Password">
+          <Password
+            fluid
+            v-model="password"
+            :feedback="false"
+            required
+            placeholder="Password"
+            @keydown.enter="handleLogin"
+            @blur="
+              (event) => {
+                validate(event.target, 'Password');
+              }
+            " />
+        </InputBox>
+        <Button @click="handleLogin">Login</Button>
+      </template>
+    </Card>
   </AuthLayout>
 </template>
 
 <style scoped>
-  .form {
-    width: 100%;
-    text-align: center;
-  }
-
-  input {
-    background-color: transparent;
-    border: 0;
-    width: 100%;
-    border-bottom: 2px solid var(--dark-grey);
-    padding: 10px 0px;
-
-    &:focus {
-      outline: none;
-    }
-    &:has(+ .errorMsg:is(.invalidLabel)) {
-      border-color: red;
-    }
-  }
-  button {
-    background-color: inherit;
-    font-size: 1.2rem;
-    width: 100%;
-    padding: 10px;
-    margin-top: 10px;
-    border: 1px solid var(--black);
+  .registerLink {
+    font-size: 0.75rem;
+    color: inherit;
+    text-decoration: none;
 
     &:hover {
-      cursor: pointer;
+      text-decoration: underline;
+      text-underline-offset: 50%;
     }
-  }
-
-  .registerLink {
-    font-size: 0.8rem;
-    color: inherit;
-    text-underline-offset: 10%;
   }
 </style>

@@ -10,7 +10,8 @@ export const useApiStore = defineStore("useApiStore", () => {
 
   const api = ref(
     axios.create({
-      baseURL: "http://192.168.1.33:3000/api/",
+      // baseURL: "http://192.168.1.33:3000/api/",
+      baseURL: "http://localhost:3000/api/",
       responseType: "json",
       withCredentials: true,
       headers: {

@@ -1242,6 +1242,7 @@ dependencies = [
  "chrono",
  "dotenvy",
  "erased-serde",
+ "http",
  "http-serde",
  "jsonwebtoken",
  "nanoid",

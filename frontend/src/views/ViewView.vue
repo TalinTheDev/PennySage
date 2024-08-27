@@ -12,13 +12,13 @@
   import DatePicker from "primevue/datepicker";
 
   import Select from "primevue/select";
-  import Tag from "primevue/tag";
 
   import { FilterMatchMode } from "@primevue/core/api";
   import { ref, onBeforeMount, onMounted } from "vue";
   import { useApiStore } from "@/stores/useApiStore.js";
 
   const transactions = ref();
+  const mappedTransactions = ref(new Map());
   const api = useApiStore().api;
   const selectedTransactions = ref();
   const loading = ref(false);
@@ -48,10 +48,10 @@
       .get("/transactions/all")
       .then((data) => {
         data.forEach((transaction) => {
-          console.log(transaction.date);
           transaction.date = new Date(transaction.date);
+          mappedTransactions.value.set(transaction.id, transaction);
         });
-        transactions.value = data;
+        transactions.value = Array.from(mappedTransactions.value.values());
         loading.value = false;
       })
       .catch((error) => {
@@ -78,6 +78,7 @@
       .then((data) => {
         alert(data);
         getTransactions();
+        loading.value = true;
       })
       .catch((error) => {
         alert(`Error: ${JSON.stringify(error.message)}`);
@@ -85,18 +86,38 @@
       });
   };
 
+  const compareTransactions = (oldTransaction, newTransaction) => {
+    let diff = [];
+    if (oldTransaction.desc !== newTransaction.desc) {
+      diff.push({ field: "desc", value: newTransaction.desc });
+    }
+    if (oldTransaction.date !== newTransaction.date) {
+      diff.push({ field: "date", value: new Date(newTransaction.date).getTime().toString() });
+    }
+    if (oldTransaction.amount !== newTransaction.amount) {
+      diff.push({ field: "amount", value: newTransaction.amount });
+    }
+    if (oldTransaction.type !== newTransaction.type) {
+      diff.push({ field: "type", value: newTransaction.type });
+    }
+    if (oldTransaction.merchant !== newTransaction.merchant) {
+      diff.push({ field: "merchant", value: newTransaction.merchant });
+    }
+    if (oldTransaction.category !== newTransaction.category) {
+      diff.push({ field: "category", value: newTransaction.category });
+    }
+    if (oldTransaction.payment_source !== newTransaction.payment_source) {
+      diff.push({ field: "payment_source", value: newTransaction.payment_source });
+    }
+
+    return diff;
+  };
+
   const editTransaction = (event) => {
-    let { newData, index } = event;
-    let oldData = transactions.value[index];
-    transactions.value[index] = newData;
-    let edits = Object.fromEntries(Object.entries(newData).filter(([k, v]) => oldData[k] !== v));
-    edits = Object.keys(edits).map((key) => [{ field: key, value: edits[key].toString() }]);
-    edits.forEach((edit, index) => {
-      edits[index] = edit[0];
-      if (edits[index].field == "date") {
-        edits[index].value = new Date(edits[index].value).getTime().toString();
-      }
-    });
+    let { newData, data } = event;
+    mappedTransactions.value.set(data.id, newData);
+    transactions.value = Array.from(mappedTransactions.value.values());
+    let edits = compareTransactions(data, newData);
     loading.value = true;
     api
       .patch("/transactions/edit", {
@@ -109,7 +130,8 @@
       })
       .catch((error) => {
         alert(`Error: ${JSON.stringify(error)}`);
-        transactions.value[index] = oldData;
+        mappedTransactions.value.set(data.id, data);
+        transactions.value = Array.from(mappedTransactions.value.values());
         loading.value = false;
       });
   };

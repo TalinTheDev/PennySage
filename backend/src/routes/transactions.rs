@@ -323,15 +323,15 @@ pub async fn edit_transaction(
     let mut query: sqlx::QueryBuilder<'_, sqlx::Sqlite> =
       sqlx::QueryBuilder::new("UPDATE transactions SET ".to_owned());
     for (i, edit) in data.edits.iter().enumerate() {
+      if edit.field.as_str() == "id" {
+        continue;
+      }
       if i > 0 {
         query.push(", ");
       }
       match edit.field.as_str() {
         "desc" => query.push("description = "),
-        "date" => {
-          println!("Date: {}", edit.value);
-          query.push("date = ")
-        }
+        "date" => query.push("date = "),
         "amount" => query.push("amount = "),
         "merchant" => query.push("merchant = "),
         "category" => query.push("category = "),

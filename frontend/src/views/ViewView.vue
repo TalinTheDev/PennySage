@@ -64,21 +64,24 @@
     if (selectedTransactions.value.length === 0) {
       return;
     }
-    let transactions = [];
+    let transactionsToBeDeleted = [];
     selectedTransactions.value.forEach((transaction) => {
-      transactions.push(transaction.id);
+      transactionsToBeDeleted.push(transaction.id);
     });
     loading.value = true;
     api
       .delete("/transactions/delete", {
         data: {
-          transactions: transactions
+          transactions: transactionsToBeDeleted
         }
       })
       .then((data) => {
         alert(data);
-        getTransactions();
-        loading.value = true;
+        transactionsToBeDeleted.forEach((id) => {
+          mappedTransactions.value.delete(id);
+        });
+        transactions.value = Array.from(mappedTransactions.value.values());
+        loading.value = false;
       })
       .catch((error) => {
         alert(`Error: ${JSON.stringify(error.message)}`);

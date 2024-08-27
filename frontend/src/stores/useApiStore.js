@@ -7,11 +7,10 @@ import { useRouter } from "vue-router";
 export const useApiStore = defineStore("useApiStore", () => {
   const user = useUserStore();
   const router = useRouter();
-
+  const baseURL = "/api/";
   const api = ref(
     axios.create({
-      // baseURL: "http://192.168.1.33:3000/api/",
-      baseURL: "http://localhost:3000/api/",
+      baseURL: baseURL,
       responseType: "json",
       withCredentials: true,
       headers: {
@@ -22,7 +21,7 @@ export const useApiStore = defineStore("useApiStore", () => {
   );
 
   const refreshApiInstance = axios.create({
-    baseURL: "http://127.0.0.1:3000/api/",
+    baseURL: baseURL,
     responseType: "json",
     withCredentials: true,
     headers: {

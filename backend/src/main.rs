@@ -33,19 +33,9 @@ async fn main() {
       .unwrap();
   print!("{esc}c", esc = 27 as char);
   println!("App listening on {}", listener.local_addr().unwrap());
-  let _origins: [String; 2] = [
-    "http://192.168.1.33:5173".parse().unwrap(),
-    "http://localhost:5173".parse().unwrap(),
-  ]; // TODO: Change this for prod
+
   let app = Router::new()
     .nest("/api", routes::app())
-    .layer(
-      CorsLayer::very_permissive(), // CorsLayer::new()
-                                    //   .allow_origin(Any)
-                                    //   .allow_credentials(true)
-                                    //   .allow_headers(Any)
-                                    //   .allow_methods(Any),
-    )
     .with_state(AppState { db_pool: pool });
   // Serve app
   axum::serve(listener, app).await.unwrap();

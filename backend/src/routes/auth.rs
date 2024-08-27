@@ -222,7 +222,6 @@ pub async fn refresh_tokens(State(state): State<crate::AppState>, jar: CookieJar
       };
     }
   };
-
   match verify_refresh_token(refresh_token, &state.db_pool).await {
     Ok(data) => set_tokens(data.1, state.db_pool).await,
     Err(e) => e,
@@ -230,7 +229,17 @@ pub async fn refresh_tokens(State(state): State<crate::AppState>, jar: CookieJar
 }
 
 pub async fn logout(jar: CookieJar) -> CookieJar {
-  jar.remove(Cookie::build(("refresh_token", "")))
+  jar.remove(
+    Cookie::build(("refresh_token", ""))
+      .secure(true)
+      .http_only(true)
+      .path("/api")
+      .same_site(SameSite::Strict) //TODO: CHANGE FOR PROD
+      .partitioned(true)
+      .build()
+      .encoded()
+      .to_string(),
+  )
 }
 
 async fn set_tokens(user_data: UserRow, db: sqlx::Pool<sqlx::Sqlite>) -> ApiResponse {
@@ -246,7 +255,7 @@ async fn set_tokens(user_data: UserRow, db: sqlx::Pool<sqlx::Sqlite>) -> ApiResp
     .secure(true)
     .http_only(true)
     .path("/api")
-    .same_site(SameSite::None) //TODO: CHANGE FOR PROD
+    .same_site(SameSite::Strict) //TODO: CHANGE FOR PROD
     .partitioned(true)
     .build()
     .encoded()

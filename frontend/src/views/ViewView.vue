@@ -95,7 +95,7 @@
       diff.push({ field: "date", value: new Date(newTransaction.date).getTime().toString() });
     }
     if (oldTransaction.amount !== newTransaction.amount) {
-      diff.push({ field: "amount", value: newTransaction.amount });
+      diff.push({ field: "amount", value: newTransaction.amount.toString() });
     }
     if (oldTransaction.type !== newTransaction.type) {
       diff.push({ field: "type", value: newTransaction.type });

@@ -3,20 +3,21 @@ import "./styles/styles.css";
 import { createApp } from "vue";
 import { createPinia } from "pinia";
 import PrimeVue from "primevue/config";
-import Nora from "@primevue/themes/nora";
+import Aura from "@primevue/themes/aura";
 import { definePreset } from "@primevue/themes";
 import App from "./App.vue";
 import router from "./router";
 import Cookies from "./utils/Cookies";
 import { useUserStore } from "./stores/useUserStore";
 import "primeicons/primeicons.css";
+import ToastService from "primevue/toastservice";
 
 const app = createApp(App);
 
 const pinia = createPinia();
 app.use(pinia);
 app.use(router);
-const MyPreset = definePreset(Nora, {
+const MyPreset = definePreset(Aura, {
   semantic: {
     primary: {
       50: "{teal.50}",
@@ -46,7 +47,7 @@ app.use(PrimeVue, {
     }
   }
 });
-
+app.use(ToastService);
 if (Cookies.check("accessToken")) {
   useUserStore().login(
     { username: Cookies.get("username"), role: Cookies.get("role") },

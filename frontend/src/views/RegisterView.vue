@@ -12,7 +12,9 @@
   import { useApiStore } from "@/stores/useApiStore.js";
   import { useUserStore } from "@/stores/useUserStore.js";
   import { useRouter } from "vue-router";
+  import { useToast } from "primevue/usetoast";
 
+  const toast = useToast();
   const api = useApiStore().api;
   const userStore = useUserStore();
   const router = useRouter();
@@ -101,7 +103,12 @@
         router.push({ name: "dashboard" });
       })
       .catch((error) => {
-        alert(`Error: ${JSON.stringify(error)}`);
+        toast.add({
+          severity: "error",
+          summary: "Error registering",
+          detail: error.message,
+          life: 3000
+        });
       });
   };
 </script>

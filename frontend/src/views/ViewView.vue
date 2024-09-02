@@ -16,6 +16,9 @@
   import { FilterMatchMode } from "@primevue/core/api";
   import { ref, onBeforeMount, onMounted } from "vue";
   import { useApiStore } from "@/stores/useApiStore.js";
+  import { useToast } from "primevue/usetoast";
+
+  const toast = useToast();
 
   const transactions = ref();
   const mappedTransactions = ref(new Map());
@@ -55,7 +58,12 @@
         loading.value = false;
       })
       .catch((error) => {
-        alert(`Error: ${JSON.stringify(error.message)}`);
+        toast.add({
+          severity: "error",
+          summary: "Transactions Get Failed",
+          detail: error.message,
+          life: 3000
+        });
         loading.value = false;
       });
   };
@@ -76,7 +84,12 @@
         }
       })
       .then((data) => {
-        alert(data);
+        toast.add({
+          severity: "info",
+          summary: "Transaction Deleted",
+          detail: data,
+          life: 3000
+        });
         transactionsToBeDeleted.forEach((id) => {
           mappedTransactions.value.delete(id);
         });
@@ -84,7 +97,12 @@
         loading.value = false;
       })
       .catch((error) => {
-        alert(`Error: ${JSON.stringify(error.message)}`);
+        toast.add({
+          severity: "error",
+          summary: "Transactions Delete Failed",
+          detail: error.message,
+          life: 3000
+        });
         loading.value = false;
       });
   };
@@ -128,11 +146,22 @@
         edits: edits
       })
       .then((data) => {
-        alert(data);
+        toast.add({
+          severity: "info",
+          summary: "Transaction Edited",
+          detail: data,
+          life: 3000
+        });
+
         getTransactions();
       })
       .catch((error) => {
-        alert(`Error: ${JSON.stringify(error)}`);
+        toast.add({
+          severity: "error",
+          summary: "Transaction Edit Failed",
+          detail: error.message,
+          life: 3000
+        });
         mappedTransactions.value.set(data.id, data);
         transactions.value = Array.from(mappedTransactions.value.values());
         loading.value = false;

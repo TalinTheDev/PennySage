@@ -10,7 +10,9 @@
   import { useApiStore } from "@/stores/useApiStore";
   import { useUserStore } from "@/stores/useUserStore";
   import { useRouter } from "vue-router";
+  import { useToast } from "primevue/usetoast";
 
+  const toast = useToast();
   const api = useApiStore().api;
   const userStore = useUserStore();
   const router = useRouter();
@@ -55,7 +57,12 @@
         router.push({ name: "dashboard" });
       })
       .catch((error) => {
-        alert(`Error: ${JSON.stringify(error)}`);
+        toast.add({
+          severity: "error",
+          summary: "Error logging in",
+          detail: error.message,
+          life: 3000
+        });
       });
   };
 </script>

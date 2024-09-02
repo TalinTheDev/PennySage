@@ -11,7 +11,9 @@
   import DatePicker from "primevue/datepicker";
   import InputNumber from "primevue/inputnumber";
   import SelectButton from "primevue/selectbutton";
+  import { useToast } from "primevue/usetoast";
 
+  const toast = useToast();
   const router = useRouter();
   const api = useApiStore().api;
   const description = ref("");
@@ -106,11 +108,21 @@
         payment_source: paymentSource.value
       })
       .then((data) => {
-        alert(`Transaction Added: ID ${data.transaction_id}`);
+        toast.add({
+          severity: "info",
+          summary: "Transaction Added",
+          detail: `ID: ${data.transaction_id}`,
+          life: 3000
+        });
         router.push({ name: "view" });
       })
       .catch((error) => {
-        alert(`Error: ${JSON.stringify(error)}`);
+        toast.add({
+          severity: "error",
+          summary: "Error adding transaction",
+          detail: error.message,
+          life: 3000
+        });
       });
   };
 </script>

@@ -1,3 +1,5 @@
+use std::fmt::{self, Display};
+
 use crate::AppState;
 use axum::{
   body::Body,
@@ -51,6 +53,17 @@ pub enum ApiError {
   },
 }
 
+impl Display for ApiError {
+  fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+    match self {
+      ApiError::Simple(msg) => write!(f, "{}", msg),
+      ApiError::Complex { message, error } => {
+        write!(f, "Message: {}\nError: {}", message, json!(error))
+      }
+    }
+  }
+}
+
 impl IntoResponse for ApiResponse {
   fn into_response(self) -> Response {
     let mut res_builder = Response::builder().header("Content-Type", "application/json");
@@ -76,18 +89,21 @@ impl IntoResponse for ApiResponse {
           .body(Body::from(json!(*data).to_string()))
           .unwrap()
       }
-      ApiResponse::Failure { error, status } => match error {
-        ApiError::Simple(e) => res_builder
-          .status(status)
-          .body(Body::from(json!({ "message": e }).to_string()))
-          .unwrap(),
-        ApiError::Complex { message, error } => res_builder
-          .status(status)
-          .body(Body::from(
-            json!({"message": message, "error": *error}).to_string(),
-          ))
-          .unwrap(),
-      },
+      ApiResponse::Failure { error, status } => {
+        println!("Error occurred with status code ({}): {}", status, error);
+        match error {
+          ApiError::Simple(e) => res_builder
+            .status(status)
+            .body(Body::from(json!({ "message": e }).to_string()))
+            .unwrap(),
+          ApiError::Complex { message, error } => res_builder
+            .status(status)
+            .body(Body::from(
+              json!({"message": message, "error": *error}).to_string(),
+            ))
+            .unwrap(),
+        }
+      }
     }
   }
 }

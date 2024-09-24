@@ -2,6 +2,7 @@
   import AppLayout from "@/layouts/AppLayout.vue";
   import PageHeader from "@/components/PageHeader.vue";
   import InputText from "primevue/inputtext";
+  import Password from "primevue/password";
   import InputBox from "@/components/InputBox.vue";
   import Card from "@/components/Card.vue";
   import Button from "@/components/Button.vue";
@@ -15,6 +16,8 @@
   const api = useApiStore().api;
   const userStore = useUserStore();
   const errors = ref(new Map());
+  const oldPassword = ref("");
+  const newPassword = ref("");
 
   provide("errors", errors);
 
@@ -39,9 +42,8 @@
     }
   };
 
-  const compareTransactions = (oldD, newD) => {
+  const compareUserDetails = (oldD, newD) => {
     let diff = [];
-
     if (oldD.username !== newD.username) {
       diff.push({ field: "username", value: newD.username });
     }
@@ -59,26 +61,66 @@
   };
 
   const editUser = () => {
-    let edits = compareTransactions(oldDetails.value, newDetails.value);
+    let edits = compareUserDetails(oldDetails.value, newDetails.value);
+    if (edits.length > 0) {
+      api
+        .patch("/settings/editUser", {
+          edits: edits
+        })
+        .then((data) => {
+          toast.add({
+            severity: "info",
+            summary: "User Details Edited",
+            detail: "Details successfully edited",
+            life: 3000
+          });
+
+          userStore.login(data.user_details, data.access_token);
+          oldDetails.value = {
+            username: userStore.username,
+            email: userStore.email,
+            firstName: userStore.firstName,
+            lastName: userStore.lastName
+          };
+        })
+        .catch((error) => {
+          toast.add({
+            severity: "error",
+            summary: "User Detail Edit Failed",
+            detail: error.message,
+            life: 3000
+          });
+          newDetails.value = oldDetails.value;
+        });
+    } else {
+      toast.add({
+        severity: "info",
+        summary: "User Details Editing",
+        detail: "Nothing to update",
+        life: 3000
+      });
+    }
+  };
+
+  const updatePassword = () => {
     api
-      .patch("/settings/editUser", {
-        edits: edits
+      .patch("/settings/updatePassword", {
+        old: oldPassword.value,
+        new: newPassword.value
       })
-      .then((data) => {
+      .then(() => {
         toast.add({
           severity: "info",
-          summary: "User Details Edited",
-          detail: "Details edited successfully",
+          summary: "Password Updated",
+          detail: "Password successfully updated",
           life: 3000
         });
-
-        userStore.login(data.user_details, data.access_token);
       })
       .catch((error) => {
         toast.add({
           severity: "error",
-          summary: "User Detail Edit Failed",
-          detail: error.message,
+          summary: "Password Update Request Failed",
+          detail: error,
           life: 3000
         });
         newDetails.value = oldDetails.value;
@@ -156,6 +198,40 @@
           </InputBox>
         </div>
         <Button @click="editUser">Save User Details</Button>
+      </template>
+    </Card>
+    <Card>
+      <template #header>
+        <span class="formHeader">Security</span>
+      </template>
+      <template #content>
+        <InputBox name="Old Password">
+          <Password
+            fluid
+            v-model="oldPassword"
+            :feedback="false"
+            required
+            placeholder="Old Password"
+            @blur="
+              (event) => {
+                validate(event.target, 'Old Password');
+              }
+            " />
+        </InputBox>
+        <InputBox name="New Password">
+          <Password
+            fluid
+            v-model="newPassword"
+            :feedback="false"
+            required
+            placeholder="New Password"
+            @blur="
+              (event) => {
+                validate(event.target, 'New Password');
+              }
+            " />
+        </InputBox>
+        <Button @click="updatePassword">Update Password</Button>
       </template>
     </Card>
   </AppLayout>

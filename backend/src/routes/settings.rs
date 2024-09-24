@@ -1,5 +1,5 @@
 use crate::{jwt::AccessTokenClaims, AppState};
-use axum::{extract::State, routing::post, Json, Router};
+use axum::{extract::State, routing::patch, Json, Router};
 use http::StatusCode;
 use serde::{Deserialize, Serialize};
 use sqlx::Row;
@@ -11,7 +11,7 @@ use super::{
 };
 
 pub fn routes() -> Router<AppState> {
-  Router::new().route("/changeUsername", post(edit_user))
+  Router::new().route("/editUser", patch(edit_user))
 }
 
 #[derive(Deserialize, Validate)]
@@ -47,15 +47,15 @@ pub async fn edit_user(
         query.push(", ");
       }
       match edit.field.as_str() {
-        "firstName" => query.push("last_name = "),
-        "lastName" => query.push("first_name = "),
+        "firstName" => query.push("first_name = "),
+        "lastName" => query.push("last_name = "),
         "username" => query.push("username = "),
         "email" => query.push("email = "),
         &_ => continue,
       };
       query.push_bind(edit.value.clone());
     }
-    query.push(" WHERE user_id = ");
+    query.push(" WHERE id = ");
     query.push_bind(user.id);
     query.push(" RETURNING id, username, email, password, first_name, last_name, role");
     let result = query.build().fetch_one(&state.db_pool).await;

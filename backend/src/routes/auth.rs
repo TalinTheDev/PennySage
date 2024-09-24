@@ -242,7 +242,7 @@ pub async fn logout(jar: CookieJar) -> CookieJar {
   )
 }
 
-async fn set_tokens(user_data: UserRow, db: sqlx::Pool<sqlx::Sqlite>) -> ApiResponse {
+pub async fn set_tokens(user_data: UserRow, db: sqlx::Pool<sqlx::Sqlite>) -> ApiResponse {
   let access_token = match gen_access_token(user_data.id.clone(), user_data.role.clone()) {
     Ok(token) => token,
     Err(e) => return e,

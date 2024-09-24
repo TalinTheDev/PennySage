@@ -1,8 +1,6 @@
-use axum::{http::HeaderValue, Router};
-use http::header::{ACCEPT, AUTHORIZATION, CONTENT_TYPE};
+use axum::Router;
 use sqlx::{sqlite::SqlitePoolOptions, Sqlite};
 use std::{env, time::Duration};
-use tower_http::cors::{Any, Cors, CorsLayer};
 mod db;
 mod jwt;
 mod middleware;

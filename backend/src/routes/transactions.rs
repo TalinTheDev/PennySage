@@ -297,7 +297,9 @@ pub async fn delete_transactions(
 
 #[derive(Deserialize, Validate)]
 pub struct EditField {
+  #[validate(length(min = 1))]
   field: String,
+  #[validate(length(min = 1))]
   value: String,
 }
 

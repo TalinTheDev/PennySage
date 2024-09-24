@@ -61,6 +61,12 @@
   };
 
   const editUser = () => {
+    if (
+      errors.value.size !== 0 &&
+      !(errors.value.get("Old PasswordErr") || errors.value.get("New PasswordErr"))
+    ) {
+      return;
+    }
     let edits = compareUserDetails(oldDetails.value, newDetails.value);
     if (edits.length > 0) {
       api
@@ -103,6 +109,19 @@
   };
 
   const updatePassword = () => {
+    if (
+      (errors.value.size !== 0 &&
+        !(
+          errors.value.get("UsernameErr") ||
+          errors.value.get("EmailErr") ||
+          errors.value.get("First NameErr") ||
+          errors.value.get("Last NameErr")
+        )) ||
+      newPassword.value == "" ||
+      oldPassword.value == ""
+    ) {
+      return;
+    }
     api
       .patch("/settings/updatePassword", {
         old: oldPassword.value,

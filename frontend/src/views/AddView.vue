@@ -18,7 +18,7 @@
   const api = useApiStore().api;
   const description = ref("");
   const dateInput = ref(new Date());
-  let date = 0;
+  let date = "0000-00-00T00:00:00.000Z";
   const amount = ref(0.0);
   const transactionType = ref("debit");
   const merchant = ref("");

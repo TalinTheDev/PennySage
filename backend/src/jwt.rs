@@ -48,10 +48,7 @@ pub fn gen_access_token(user_id: String, role: i64) -> Result<String, ApiRespons
         .as_bytes(),
     ),
   ) {
-    Ok(token) => {
-      println!("{}", token);
-      return Ok(token);
-    }
+    Ok(token) => Ok(token),
     Err(_) => Err(ApiResponse::Failure {
       status: StatusCode::INTERNAL_SERVER_ERROR,
       error: ApiError::Simple("Can't generate access token (internal server error)".to_string()),
@@ -119,7 +116,6 @@ pub async fn gen_refresh_token(
 }
 
 pub fn verify_access_token(token: String) -> Result<AccessTokenClaims, ApiResponse> {
-  println!("\nToken: {}\n", &token);
   match decode::<AccessTokenClaims>(
     &token,
     &DecodingKey::from_secret(

@@ -55,7 +55,7 @@
   provide("errors", errors);
 
   watchEffect(() => {
-    date = new Date(dateInput.value).setHours(0, 0, 0, 0);
+    date = new Date(dateInput.value).toISOString();
   });
 
   const checkEmptyValues = () => {
@@ -64,7 +64,7 @@
     } else {
       errors.value.delete("DescriptionErr");
     }
-    if (date < 0 || dateInput.value == null) {
+    if (date == "0000-00-00T00:00:00.000Z" || dateInput.value == null) {
       errors.value.set("DateErr", "Please enter a valid date");
     } else {
       errors.value.delete("DateErr");

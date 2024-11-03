@@ -37,7 +37,7 @@ pub struct UserRow {
   pub password: String,
   pub first_name: String,
   pub last_name: String,
-  pub role: String,
+  pub role: i64,
 }
 
 #[axum::debug_handler]
@@ -128,7 +128,7 @@ pub async fn register(
           Ok(p) => p,
           Err(e) => return e,
         };
-        let role = "user";
+        let role = 0;
         let mut transaction = match state.db_pool.begin().await {
           Ok(tx) => tx,
           Err(_) => {
@@ -243,7 +243,7 @@ pub async fn logout(jar: CookieJar) -> CookieJar {
 }
 
 pub async fn set_tokens(user_data: UserRow, db: sqlx::Pool<sqlx::Sqlite>) -> ApiResponse {
-  let access_token = match gen_access_token(user_data.id.clone(), user_data.role.clone()) {
+  let access_token = match gen_access_token(user_data.id.clone(), user_data.role) {
     Ok(token) => token,
     Err(e) => return e,
   };
@@ -255,7 +255,7 @@ pub async fn set_tokens(user_data: UserRow, db: sqlx::Pool<sqlx::Sqlite>) -> Api
     .secure(true)
     .http_only(true)
     .path("/api")
-    .same_site(SameSite::Strict) //TODO: CHANGE FOR PROD
+    .same_site(SameSite::Strict)
     .partitioned(true)
     .build()
     .encoded()

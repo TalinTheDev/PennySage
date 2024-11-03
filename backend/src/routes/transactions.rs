@@ -33,7 +33,7 @@ pub struct TransactionReq {
   #[validate(length(min = 1))]
   desc: String,
   #[validate(custom(function = "validate_date"))]
-  date: i64,
+  date: String,
   #[validate(custom(function = "validate_amount"))]
   amount: String,
   #[validate(custom(function = "validate_type"))]
@@ -129,8 +129,8 @@ pub async fn new(
     }
 }
 
-pub fn validate_date(date: i64) -> Result<(), ValidationError> {
-  if DateTime::from_timestamp(date, 0).is_none() {
+pub fn validate_date(date: &String) -> Result<(), ValidationError> {
+  if DateTime::parse_from_rfc3339(date.as_str()).is_err() {
     return Err(ValidationError::new("Invalid date"));
   }
   Ok(())
@@ -154,7 +154,7 @@ pub fn validate_type(transaction_type: &String) -> Result<(), ValidationError> {
 pub struct TransactionRow {
   pub id: String,
   pub desc: String,
-  pub date: i64,
+  pub date: String,
   pub amount: f64,
   pub r#type: String,
   pub merchant: String,
@@ -166,7 +166,7 @@ pub struct TransactionRow {
 pub struct TransactionRowWithItems {
   pub id: String,
   pub desc: String,
-  pub date: i64,
+  pub date: String,
   pub amount: f64,
   pub r#type: String,
   pub merchant: String,

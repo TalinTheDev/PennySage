@@ -1,5 +1,3 @@
-use std::iter::Successors;
-
 use crate::{
   db::{hash_password, verify_password},
   jwt::AccessTokenClaims,

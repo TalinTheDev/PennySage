@@ -14,7 +14,7 @@ pub struct AccessTokenClaims {
   exp: i64, // Expiry
   iat: i64, // Issued At
   pub id: String,
-  pub role: String,
+  pub role: i64,
 }
 
 #[derive(Serialize, Deserialize)]
@@ -25,16 +25,17 @@ pub struct RefreshTokenClaims {
   pub user_id: String,
 }
 
-pub fn gen_access_token(user_id: String, role: String) -> Result<String, ApiResponse> {
-  let expiration = match Local::now().checked_add_signed(Duration::minutes(5)) {
-    Some(time) => time.timestamp(),
-    None => Local::now().timestamp(),
+pub fn gen_access_token(user_id: String, role: i64) -> Result<String, ApiResponse> {
+  let now = Local::now();
+  let expiration = match now.checked_add_signed(Duration::minutes(5)) {
+    Some(time) => time.format("%s").to_string(),
+    None => now.format("%s").to_string(),
   };
 
-  let issued_at = Local::now().timestamp();
+  let issued_at = now.format("%s").to_string();
   let claims = AccessTokenClaims {
-    exp: expiration,
-    iat: issued_at,
+    exp: expiration.parse().unwrap(),
+    iat: issued_at.parse().unwrap(),
     id: user_id,
     role,
   };
@@ -47,7 +48,10 @@ pub fn gen_access_token(user_id: String, role: String) -> Result<String, ApiResp
         .as_bytes(),
     ),
   ) {
-    Ok(token) => Ok(token),
+    Ok(token) => {
+      println!("{}", token);
+      return Ok(token);
+    }
     Err(_) => Err(ApiResponse::Failure {
       status: StatusCode::INTERNAL_SERVER_ERROR,
       error: ApiError::Simple("Can't generate access token (internal server error)".to_string()),
@@ -59,12 +63,13 @@ pub async fn gen_refresh_token(
   user_id: String,
   connection: sqlx::Pool<sqlx::Sqlite>,
 ) -> Result<String, ApiResponse> {
-  let expiration = match Local::now().checked_add_signed(Duration::days(7)) {
-    Some(time) => time.timestamp(),
-    None => Local::now().timestamp(),
+  let now = Local::now();
+  let expiration = match now.checked_add_signed(Duration::minutes(5)) {
+    Some(time) => time.format("%s").to_string(),
+    None => now.format("%s").to_string(),
   };
 
-  let issued_at = Local::now().timestamp();
+  let issued_at = now.format("%s").to_string();
   let jti = match gen_id(crate::db::Tables::RefreshTokens, &connection).await {
     Ok(jti) => jti,
     Err(_) => {
@@ -75,8 +80,8 @@ pub async fn gen_refresh_token(
     }
   };
   let claims = RefreshTokenClaims {
-    exp: expiration,
-    iat: issued_at,
+    exp: expiration.parse().unwrap(),
+    iat: issued_at.clone().parse().unwrap(),
     user_id: user_id.clone(),
     jti: jti.clone(),
   };
@@ -114,6 +119,7 @@ pub async fn gen_refresh_token(
 }
 
 pub fn verify_access_token(token: String) -> Result<AccessTokenClaims, ApiResponse> {
+  println!("\nToken: {}\n", &token);
   match decode::<AccessTokenClaims>(
     &token,
     &DecodingKey::from_secret(

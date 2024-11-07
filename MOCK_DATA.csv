@@ -1,0 +1,1001 @@
+description,date,amount,type,merchant,category,payment_source
+Jerusalem Artichoke,2024-01-17T07:36:13Z,75727.88,debit,Ferry LLC,car,mastercard
+Mix Pina Colada,2023-12-02T13:52:25Z,13960.23,credit,"Rowe, Kuhic and Mante",car,jcb
+Pastry - Raisin Muffin - Mini,2024-04-16T17:25:45Z,98257.5,debit,"Kulas, Barton and Goldner",utilities,switch
+Island Oasis - Raspberry,2024-11-09T04:53:58Z,75505.19,debit,"Ebert, Little and Huels",groceries,bankcard
+Chips - Potato Jalapeno,2024-08-27T02:07:19Z,74962.57,debit,"Sauer, McClure and Kulas",utilities,visa-electron
+Pie Shell - 5,2023-10-22T06:56:26Z,9009.99,debit,Ritchie Group,clothing,bankcard
+Hot Choc Vending,2024-11-30T07:07:10Z,11892.32,debit,Turner-Terry,classes,jcb
+Chocolate - Chips Compound,2024-02-27T15:52:26Z,30282.54,debit,"Thompson, Lockman and Dickens",classes,jcb
+Radish,2023-11-11T21:20:31Z,38639.75,credit,"Emard, Wisozk and Schiller",entertainment,jcb
+Syrup - Monin - Passion Fruit,2024-04-23T16:05:31Z,91737.48,debit,Jacobs-Fadel,utilities,china-unionpay
+Propel Sport Drink,2023-12-28T11:11:12Z,89416.97,credit,Daugherty-Langworth,entertainment,jcb
+Wiberg Cure,2023-11-06T19:46:30Z,18670.14,credit,Goldner-Corkery,groceries,switch
+Coffee - Egg Nog Capuccino,2024-07-28T20:26:27Z,8769.55,debit,"Bosco, Wisozk and Stokes",groceries,jcb
+Rice - Brown,2024-02-16T01:08:38Z,99165.44,debit,Hayes-Ernser,entertainment,maestro
+Pepper - Cayenne,2024-12-03T02:49:26Z,91344.95,debit,"Stanton, Mraz and Boyer",utilities,diners-club-us-ca
+Oysters - Smoked,2023-12-21T21:45:16Z,8593.6,credit,Bauch LLC,utilities,jcb
+Longos - Grilled Salmon With Bbq,2023-10-14T14:40:36Z,86441.56,debit,Jones-Sporer,utilities,jcb
+Spinach - Packaged,2023-11-23T07:57:26Z,5108.39,credit,"Beatty, Mueller and Jaskolski",car,jcb
+Coffee Cup 12oz 5342cd,2024-12-01T01:15:20Z,428.55,debit,"Gulgowski, Green and Hansen",car,jcb
+Wine - Saint Emilion Calvet,2024-07-18T07:08:20Z,23971.62,credit,Huels-Kautzer,utilities,americanexpress
+Bacardi Mojito,2023-12-21T18:16:48Z,69557.86,debit,Glover-Lockman,utilities,bankcard
+Ice Cream - Life Savers,2023-09-30T10:03:52Z,57411.0,credit,Gottlieb-Feil,classes,china-unionpay
+Wine - Pinot Noir Pond Haddock,2024-09-05T18:38:30Z,72011.84,debit,"Keebler, Stanton and Beahan",utilities,jcb
+Flax Seed,2024-02-12T18:46:35Z,11531.62,credit,Schoen-Crist,entertainment,visa-electron
+Wine - Sauvignon Blanc,2023-09-23T15:16:05Z,24239.21,debit,Pfannerstill-Homenick,utilities,diners-club-enroute
+Cheese Cloth No 100,2024-10-17T07:12:13Z,76616.52,credit,"Collins, Powlowski and Corkery",car,jcb
+Beef - Kobe Striploin,2024-12-06T19:28:34Z,13182.87,credit,"Sanford, Hessel and Aufderhar",clothing,jcb
+Sprouts - Corn,2024-02-16T21:00:17Z,2468.35,credit,Fritsch-Anderson,car,americanexpress
+Flavouring - Orange,2024-06-04T20:05:31Z,44341.55,debit,Hoeger and Sons,clothing,jcb
+Spring Roll Wrappers,2024-12-02T01:52:45Z,90723.36,debit,Hilll-Gibson,groceries,visa-electron
+Cookies - Fortune,2023-11-28T02:03:04Z,69904.81,credit,Quigley Group,groceries,maestro
+Olives - Morracan Dired,2023-12-01T18:16:50Z,90689.68,debit,Daugherty-Wisozk,classes,jcb
+Wine - Clavet Saint Emilion,2023-09-09T01:21:52Z,95763.57,debit,"Rohan, Runolfsdottir and Braun",clothing,jcb
+Water - Aquafina Vitamin,2024-10-04T21:22:14Z,70608.08,debit,Sipes-Reichert,car,china-unionpay
+"Cod - Salted, Boneless",2023-09-15T22:07:45Z,85662.72,debit,Abernathy-Medhurst,clothing,mastercard
+Bananas,2023-12-28T00:12:04Z,36764.87,credit,"Runolfsdottir, Roberts and Brown",entertainment,visa
+"Brocolinni - Gaylan, Chinese",2025-01-08T04:58:54Z,30132.8,credit,Witting Group,clothing,bankcard
+Ketchup - Tomato,2025-01-22T15:53:37Z,14755.09,credit,Casper and Sons,car,jcb
+Sun - Dried Tomatoes,2024-10-18T03:42:10Z,25873.03,debit,Armstrong Group,classes,mastercard
+Appetizer - Tarragon Chicken,2023-10-17T10:31:24Z,73230.53,debit,"Trantow, Dare and Nitzsche",classes,switch
+"Mushroom - Oyster, Fresh",2024-02-13T23:17:31Z,14880.14,credit,Anderson-McKenzie,entertainment,jcb
+Muffin Mix - Oatmeal,2023-12-11T07:00:58Z,30851.47,debit,Wehner LLC,classes,maestro
+Sprouts - Pea,2023-11-14T07:14:34Z,32630.94,debit,Rutherford Inc,clothing,jcb
+"Soup - Campbells, Spinach Crm",2023-11-11T07:06:03Z,74339.56,credit,"Cummings, Schuster and Hickle",utilities,instapayment
+Raisin - Dark,2024-05-27T03:18:33Z,24024.64,debit,"Glover, Parisian and Gleason",clothing,jcb
+"Schnappes - Peach, Walkers",2023-12-27T05:14:19Z,34971.84,debit,"Thiel, Nolan and Runolfsson",entertainment,jcb
+Emulsifier,2023-09-07T04:48:39Z,3385.85,debit,Kihn and Sons,clothing,jcb
+Jicama,2024-06-15T02:17:20Z,98754.61,credit,Reynolds-Roberts,entertainment,diners-club-enroute
+Apples - Sliced / Wedge,2024-05-16T10:28:12Z,54261.48,debit,"Collins, Tillman and Rice",clothing,jcb
+Lidsoupcont Rp12dn,2024-08-11T17:21:50Z,62061.93,debit,Quigley and Sons,classes,laser
+Salt - Celery,2024-09-08T00:34:51Z,15693.45,credit,Schamberger and Sons,utilities,jcb
+Calypso - Black Cherry Lemonade,2024-04-06T16:47:51Z,25712.6,debit,"Murray, Turner and Kiehn",entertainment,jcb
+Nantucket - Orange Mango Cktl,2024-02-27T06:57:21Z,86063.09,debit,"Kohler, Welch and Rosenbaum",car,jcb
+Pastry - French Mini Assorted,2024-10-23T13:55:34Z,48267.88,credit,Dare LLC,classes,maestro
+Salt And Pepper Mix - Black,2023-09-16T11:00:56Z,30046.66,debit,Frami-Harber,utilities,jcb
+Grenadillo,2024-02-19T02:00:31Z,68475.4,credit,Haley-Dooley,car,jcb
+Wine - Two Oceans Sauvignon,2024-05-19T12:23:56Z,51524.38,credit,Roberts and Sons,utilities,visa
+Wine - Duboeuf Beaujolais,2024-04-14T03:31:43Z,97492.38,credit,Conroy-Schaden,utilities,americanexpress
+Apple - Northern Spy,2024-09-11T19:08:33Z,39348.41,debit,"Leuschke, Larkin and Labadie",utilities,diners-club-carte-blanche
+Lettuce Romaine Chopped,2024-12-03T00:56:55Z,71682.17,debit,Von-Marvin,utilities,diners-club-enroute
+Muffin Mix - Morning Glory,2024-01-17T10:48:07Z,68114.8,debit,Altenwerth and Sons,groceries,jcb
+Sloe Gin - Mcguinness,2024-03-15T02:00:14Z,40333.87,credit,"Schaden, Auer and Veum",utilities,jcb
+Fork - Plastic,2024-10-13T14:02:22Z,8953.91,debit,Hintz-Krajcik,utilities,jcb
+Gloves - Goldtouch Disposable,2024-02-27T18:39:24Z,2868.33,credit,Ledner-Harris,entertainment,jcb
+Grapefruit - White,2023-09-29T13:55:16Z,28203.38,debit,"Prosacco, Hickle and Price",car,mastercard
+Juice - Lemon,2024-01-30T01:58:55Z,60999.4,debit,Huel-Kunde,car,maestro
+Compound - Mocha,2024-08-16T18:55:56Z,75841.57,credit,Bogan-Hickle,groceries,jcb
+Baking Powder,2024-07-29T23:50:19Z,79037.69,debit,Friesen Group,clothing,jcb
+"Beef - Ox Tail, Frozen",2024-03-07T22:34:21Z,13878.44,debit,Koepp Group,car,instapayment
+"Beef - Kindney, Whole",2024-03-27T13:56:25Z,23267.2,credit,Koch LLC,utilities,jcb
+"Chocolate - Semi Sweet, Calets",2024-10-31T02:47:51Z,9507.49,credit,"Oberbrunner, Treutel and Herman",entertainment,instapayment
+Milk - Homo,2024-08-02T08:47:55Z,18787.04,credit,Hoeger-Bednar,clothing,jcb
+"Capon - Breast, Wing On",2024-06-03T04:30:57Z,23269.01,credit,"Braun, Ernser and Erdman",groceries,jcb
+Beef - Striploin Aa,2023-10-23T08:36:00Z,47627.27,debit,Bergnaum-Stanton,clothing,jcb
+Food Colouring - Red,2023-11-12T01:29:27Z,67165.9,debit,Quitzon-Harber,clothing,jcb
+Juice - Cranberry 284ml,2024-04-05T16:58:19Z,43493.46,credit,Boehm-Sawayn,utilities,jcb
+"Pork - Loin, Center Cut",2024-06-06T19:44:33Z,64845.41,debit,Kovacek-Runte,clothing,diners-club-carte-blanche
+"Lemonade - Natural, 591 Ml",2024-03-14T11:31:24Z,39564.06,debit,Nicolas LLC,groceries,diners-club-enroute
+Flour - Bread,2024-07-15T18:43:52Z,30048.35,debit,"Wehner, Maggio and Morar",groceries,jcb
+Parsley Italian - Fresh,2024-04-27T20:38:23Z,51113.0,debit,"Weimann, Wilkinson and Keebler",clothing,americanexpress
+Gooseberry,2025-01-20T17:28:57Z,27835.91,debit,Corwin-Kerluke,groceries,jcb
+Dome Lid Clear P92008h,2024-11-18T09:47:03Z,86253.12,debit,Morissette-Rutherford,entertainment,jcb
+Pork - Kidney,2023-09-19T03:17:14Z,97292.58,credit,"Padberg, Hartmann and Mraz",utilities,jcb
+Hagen Daza - Dk Choocolate,2024-10-02T12:16:43Z,23795.0,credit,Kihn Group,clothing,mastercard
+Cloves - Ground,2024-03-09T15:50:11Z,20374.81,credit,Gorczany-Bauch,entertainment,jcb
+"Peas - Pigeon, Dry",2024-08-17T13:17:02Z,40065.39,credit,Swift LLC,classes,jcb
+Water - Spring 1.5lit,2024-06-03T18:58:18Z,12675.42,debit,Christiansen-Collins,entertainment,jcb
+Parsley Italian - Fresh,2024-04-23T09:38:28Z,797.8,credit,Pagac-Mayert,utilities,mastercard
+"Coconut - Shredded, Unsweet",2024-10-18T07:01:14Z,26310.59,credit,Jaskolski LLC,utilities,solo
+"Sauce - Black Current, Dry Mix",2024-01-12T06:54:51Z,13111.04,debit,"Ortiz, Tremblay and Haley",clothing,jcb
+"Coffee - Colombian, Portioned",2024-12-13T03:26:37Z,90054.34,credit,Koch Inc,entertainment,visa
+Sauce - Cranberry,2023-11-23T00:42:32Z,81664.76,debit,"Osinski, Brown and Walker",utilities,diners-club-enroute
+Paper - Brown Paper Mini Cups,2023-09-13T13:03:00Z,83224.33,credit,Douglas Inc,car,jcb
+"Wine - Red, Harrow Estates, Cab",2023-11-16T13:17:48Z,75543.11,credit,Kilback Group,utilities,jcb
+"Wine - Bourgogne 2002, La",2024-03-09T19:18:39Z,45823.48,debit,Schultz-Hahn,groceries,jcb
+Wine - Chateau Bonnet,2024-10-28T19:58:46Z,64963.15,debit,Rempel and Sons,utilities,maestro
+Apricots - Halves,2024-03-21T21:23:20Z,38880.41,credit,Zieme LLC,car,jcb
+Ice Cream Bar - Oreo Cone,2024-08-26T14:47:10Z,58377.18,debit,Marquardt-Wehner,entertainment,jcb
+Pork - Bones,2024-05-29T07:19:17Z,29193.31,debit,"Cruickshank, Lesch and Daniel",entertainment,diners-club-carte-blanche
+Graham Cracker Mix,2024-10-23T09:58:13Z,74386.46,credit,Reinger-Emmerich,entertainment,mastercard
+"Pork - Sausage, Medium",2024-06-22T07:20:07Z,44045.02,debit,Little Group,utilities,jcb
+Artichokes - Jerusalem,2024-04-17T18:00:41Z,16873.89,credit,Collier Inc,clothing,jcb
+Wine - Chablis J Moreau Et Fils,2024-06-01T17:09:22Z,2292.35,credit,Hilll-Green,classes,laser
+Food Colouring - Green,2024-08-01T05:29:21Z,52323.38,debit,Franecki-Turner,entertainment,maestro
+Cheese - Cambozola,2024-08-11T21:58:18Z,82586.61,debit,Rogahn Group,classes,jcb
+"Rum - White, Gg White",2024-12-23T02:07:22Z,49729.29,debit,Adams Group,car,mastercard
+"Pasta - Bauletti, Chicken White",2024-12-17T09:56:46Z,80135.85,debit,Strosin-Mayer,utilities,instapayment
+Tart - Pecan Butter Squares,2024-12-23T08:56:32Z,91625.76,debit,Mueller-Daugherty,utilities,switch
+Sansho Powder,2024-09-03T07:52:33Z,98323.7,credit,Nicolas and Sons,car,diners-club-carte-blanche
+"Tea - Darjeeling, Azzura",2024-10-03T21:43:14Z,88820.15,credit,Koelpin-Rolfson,clothing,americanexpress
+Steam Pan Full Lid,2024-01-16T22:54:29Z,51829.41,credit,Beahan-Doyle,groceries,bankcard
+Marjoram - Fresh,2023-12-05T16:36:28Z,92149.52,credit,Bergnaum-Walter,groceries,diners-club-carte-blanche
+"Bread - Bagels, Plain",2024-05-30T16:40:49Z,35937.32,debit,"Torphy, Bartoletti and Schumm",car,jcb
+Veal - Eye Of Round,2024-02-15T19:27:34Z,35418.69,debit,"Zieme, Wilderman and Kulas",utilities,mastercard
+Pepper - Pablano,2024-06-25T22:26:24Z,79233.98,debit,Gutmann Inc,car,mastercard
+Muffin Hinge 117n,2024-07-02T14:15:32Z,8445.31,debit,"Wuckert, Willms and Labadie",car,mastercard
+Beef - Top Butt Aaa,2024-01-16T01:46:16Z,8483.0,debit,"Spinka, Hamill and Zboncak",car,visa
+"Bread - Pumpernickle, Rounds",2024-05-31T15:27:15Z,18213.69,credit,"Frami, Barton and Cartwright",clothing,mastercard
+Rabbit - Legs,2024-05-26T02:18:38Z,58817.92,debit,"Herman, Corwin and Towne",entertainment,jcb
+"Soup - Campbells, Minestrone",2024-11-24T22:47:37Z,48956.72,debit,Schuppe Group,classes,jcb
+Turnip - Mini,2024-11-03T01:44:52Z,55228.19,debit,Hamill LLC,car,jcb
+Muffin Hinge - 211n,2024-01-22T19:22:34Z,97013.61,credit,Brown and Sons,entertainment,jcb
+Pineapple - Golden,2024-11-03T20:55:53Z,36726.75,credit,Nader Inc,groceries,maestro
+Pork - European Side Bacon,2024-02-19T08:12:18Z,38370.01,credit,Prohaska Group,entertainment,jcb
+Cloves - Ground,2024-09-06T01:02:33Z,85470.91,credit,"Anderson, Balistreri and Crona",clothing,diners-club-enroute
+Beans - Fine,2024-04-03T12:56:37Z,96.3,debit,"Mueller, Keeling and Simonis",car,americanexpress
+Glucose,2024-07-24T14:32:03Z,65646.31,credit,"Ledner, Grimes and Wilderman",utilities,bankcard
+"Nut - Pecan, Pieces",2023-11-20T06:55:31Z,60708.98,credit,"Rau, Mayer and Maggio",utilities,mastercard
+Salmon Steak - Cohoe 8 Oz,2024-09-14T17:12:36Z,73191.29,credit,"Roob, McCullough and Homenick",car,bankcard
+"Turkey - Breast, Double",2024-03-14T22:17:11Z,60166.28,credit,Wilkinson Group,groceries,jcb
+Sprite - 355 Ml,2023-11-29T23:01:40Z,25453.79,credit,Berge Group,car,jcb
+Huck Towels White,2023-09-24T11:40:03Z,87963.76,credit,"Bartell, Abernathy and Torphy",entertainment,jcb
+Mustard - Seed,2025-01-13T09:18:54Z,84374.42,debit,"Bergstrom, Fay and Bernhard",utilities,jcb
+Kohlrabi,2024-05-29T09:22:25Z,56292.7,debit,"Wisoky, Stoltenberg and Kertzmann",utilities,maestro
+"Tart Shells - Savory, 3",2024-10-04T08:02:50Z,74605.8,debit,Jakubowski Inc,car,visa-electron
+"Schnappes - Peach, Walkers",2024-04-01T12:11:47Z,17315.38,credit,Herzog-Marks,entertainment,jcb
+"Mushroom - Enoki, Fresh",2024-06-14T06:52:48Z,9497.81,credit,Russel Inc,utilities,jcb
+Pork - Back Ribs,2024-10-20T15:46:33Z,33221.81,credit,"Kuhic, Crist and Heidenreich",car,jcb
+"Soup - Campbells, Creamy",2025-01-24T10:21:36Z,86983.54,debit,Balistreri LLC,clothing,diners-club-us-ca
+Puree - Pear,2024-03-13T09:54:07Z,2350.6,debit,Ruecker Group,entertainment,jcb
+Sprouts Dikon,2024-03-23T10:14:09Z,42497.89,credit,"Effertz, Ankunding and Legros",groceries,jcb
+Monkfish Fresh - Skin Off,2024-10-14T09:04:32Z,59688.58,debit,"Lockman, Streich and Stiedemann",utilities,diners-club-international
+"Pork - Bacon,back Peameal",2024-04-07T03:39:27Z,57975.9,debit,Krajcik Group,groceries,maestro
+Eggplant Oriental,2024-11-22T00:49:35Z,55786.25,credit,Legros-Stanton,classes,maestro
+Tomato - Peeled Italian Canned,2024-03-07T21:30:32Z,96750.75,credit,Walker LLC,entertainment,jcb
+Pastry - Baked Scones - Mini,2024-07-04T09:38:44Z,27598.38,credit,Kling and Sons,groceries,jcb
+Flour - All Purpose,2025-01-24T08:05:21Z,50484.74,credit,Herman-Treutel,clothing,jcb
+Salt - Seasoned,2024-03-22T03:02:06Z,2628.14,credit,Ward Group,entertainment,visa
+Beef - Sushi Flat Iron Steak,2024-02-25T15:49:11Z,41195.49,debit,Dare Inc,entertainment,mastercard
+"Beets - Candy Cane, Organic",2024-09-15T08:12:13Z,90132.32,credit,Homenick-Raynor,utilities,jcb
+"Chicken - Wings, Tip Off",2023-09-29T14:16:24Z,35121.83,debit,"Sanford, Greenfelder and Gutmann",car,jcb
+"Wine - Red, Gallo, Merlot",2024-05-21T16:57:17Z,54821.05,credit,Gorczany-Turcotte,utilities,jcb
+Eggwhite Frozen,2024-08-01T18:58:08Z,75124.64,credit,Marks Inc,entertainment,solo
+Energy Drink - Franks Pineapple,2024-03-11T12:32:19Z,76718.02,debit,Casper Inc,groceries,americanexpress
+Rabbit - Legs,2024-01-24T15:21:32Z,5888.8,debit,"Cronin, Jacobi and Heathcote",entertainment,visa-electron
+Veal - Nuckle,2023-09-19T02:43:07Z,98586.58,debit,Schowalter Group,entertainment,mastercard
+"Carrots - Purple, Organic",2023-10-18T01:24:52Z,76653.57,credit,Hagenes-Lowe,entertainment,jcb
+Beef - Bresaola,2023-09-06T07:05:21Z,24522.53,debit,Brekke-Abshire,clothing,mastercard
+Tequila Rose Cream Liquor,2023-10-24T03:14:15Z,23160.19,credit,Runolfsdottir Group,car,mastercard
+Chicken - Whole,2024-10-30T01:38:25Z,72993.74,debit,Donnelly-Kessler,entertainment,mastercard
+Sausage - Breakfast,2024-12-03T05:46:10Z,2570.25,credit,"Quigley, Brekke and Kertzmann",car,jcb
+Cookie Dough - Oatmeal Rasin,2024-02-22T23:12:26Z,10866.78,credit,"Renner, Schaefer and Satterfield",groceries,jcb
+Wine - Mondavi Coastal Private,2024-12-31T14:18:45Z,8893.68,credit,McClure-Cruickshank,groceries,americanexpress
+V8 Splash Strawberry Kiwi,2024-05-05T15:46:06Z,86184.05,credit,Lehner Group,car,diners-club-carte-blanche
+"Wine - Red, Marechal Foch",2025-01-05T10:47:52Z,27990.55,debit,Greenfelder-Doyle,classes,jcb
+Sugar - Brown,2024-12-26T14:08:51Z,6384.19,debit,"Beahan, Hoppe and Fadel",classes,jcb
+"Nut - Hazelnut, Whole",2023-11-17T01:31:46Z,4819.36,credit,DuBuque LLC,car,china-unionpay
+Longos - Greek Salad,2024-08-11T10:20:01Z,1713.54,credit,Lesch-Rath,classes,jcb
+Wine - Zonnebloem Pinotage,2024-09-22T10:41:42Z,61735.13,debit,"Grant, Heidenreich and Boyer",car,diners-club-us-ca
+Beans - Fine,2024-08-15T11:26:13Z,88450.29,debit,Doyle Inc,classes,americanexpress
+"Juice - Apple, 341 Ml",2024-08-14T15:29:35Z,3704.45,debit,Rohan-White,entertainment,jcb
+Pate - Peppercorn,2024-11-27T05:38:10Z,32570.4,credit,Jast and Sons,classes,bankcard
+Wine - White Cab Sauv.on,2023-09-28T00:58:41Z,60196.8,credit,Cartwright and Sons,groceries,china-unionpay
+"Mop Head - Cotton, 24 Oz",2024-12-13T17:06:34Z,90809.2,debit,"Sauer, Ratke and Raynor",clothing,mastercard
+Muffin Mix - Corn Harvest,2024-02-17T20:14:59Z,88969.37,debit,Green and Sons,entertainment,jcb
+"Wine - White, Mosel Gold",2023-09-20T16:39:08Z,81630.72,credit,Tromp-Steuber,utilities,jcb
+Pumpkin,2023-11-10T02:20:48Z,97465.08,credit,Walsh and Sons,groceries,mastercard
+Coffee Cup 8oz 5338cd,2024-02-22T08:20:21Z,46522.25,debit,"Turner, Leffler and Lind",clothing,visa-electron
+Anisette - Mcguiness,2024-11-20T23:31:39Z,2281.69,credit,Goyette-Ernser,entertainment,diners-club-enroute
+Bread - Italian Roll With Herbs,2024-04-15T13:06:10Z,56774.05,credit,Reinger Group,groceries,visa-electron
+Longos - Grilled Chicken With,2024-06-19T11:17:10Z,53448.23,debit,"Howe, Little and Kreiger",classes,jcb
+Plate Foam Laminated 9in Blk,2024-04-14T18:17:25Z,23265.7,credit,"Fritsch, Jenkins and Ankunding",utilities,jcb
+Asparagus - Frozen,2024-11-01T20:28:25Z,56787.35,debit,"Lindgren, Ankunding and Heaney",groceries,jcb
+Beef - Ox Tongue,2024-06-14T16:35:03Z,73573.3,credit,Walsh Inc,classes,diners-club-carte-blanche
+Juice - Ocean Spray Cranberry,2023-09-09T13:21:27Z,7221.7,credit,Bradtke-Schmeler,entertainment,jcb
+Soup Campbells - Italian Wedding,2025-01-09T00:52:02Z,11863.73,debit,"Wolf, Stanton and Labadie",car,mastercard
+"Radish - Black, Winter, Organic",2024-08-06T12:09:22Z,40856.05,debit,"Labadie, Lynch and Schaden",car,jcb
+"Rum - Spiced, Captain Morgan",2024-06-05T19:58:27Z,78792.72,debit,Runte LLC,clothing,jcb
+"Lamb - Pieces, Diced",2024-11-23T16:22:29Z,31045.84,credit,Lemke-O'Keefe,entertainment,china-unionpay
+"Bread - Roll, Calabrese",2024-07-08T10:11:23Z,92092.96,debit,Morar and Sons,entertainment,diners-club-carte-blanche
+Sprouts - Brussel,2024-11-26T02:33:01Z,49110.21,credit,Boehm Inc,clothing,jcb
+Rosemary - Fresh,2025-01-03T23:48:35Z,35536.3,debit,Bailey-Strosin,entertainment,laser
+Lotus Leaves,2024-07-17T14:07:43Z,17809.61,debit,Bernhard-Hoppe,utilities,diners-club-us-ca
+Wine - Prosecco Valdobiaddene,2024-05-12T04:03:34Z,80391.8,credit,"Brakus, Schaefer and Parisian",classes,jcb
+Beer - Mcauslan Apricot,2024-02-14T01:16:29Z,22856.43,credit,Ortiz-Grady,classes,switch
+Dried Peach,2024-08-21T02:15:39Z,82870.43,debit,Schuppe LLC,car,mastercard
+Rootbeer,2024-08-04T18:26:39Z,97976.17,debit,Hyatt Group,car,switch
+Olives - Kalamata,2024-11-02T10:10:36Z,55988.71,debit,Parisian LLC,utilities,mastercard
+Cake - Lemon Chiffon,2024-02-24T02:18:31Z,58503.93,debit,"Homenick, Stroman and Kuphal",utilities,jcb
+Latex Rubber Gloves Size 9,2023-12-05T00:18:35Z,63476.17,credit,Russel Inc,car,switch
+Kirsch - Schloss,2023-09-14T05:54:16Z,92007.07,debit,Macejkovic-Quigley,clothing,jcb
+Bread - Kimel Stick Poly,2024-11-23T21:07:33Z,61294.66,debit,Lang Group,clothing,jcb
+Bag - Clear 7 Lb,2023-10-27T15:49:36Z,13684.86,debit,"Douglas, Reinger and Schmidt",utilities,jcb
+Nutmeg - Ground,2024-03-19T10:53:00Z,61589.45,credit,"Dare, Ruecker and Zboncak",entertainment,jcb
+Ham - Cooked Italian,2024-10-16T07:24:54Z,21175.0,debit,Daniel Group,car,solo
+Nut - Macadamia,2024-04-27T17:55:05Z,19015.06,debit,"Brekke, Wuckert and Reinger",clothing,jcb
+Wine - Placido Pinot Grigo,2024-08-31T09:01:52Z,27134.88,debit,"Hodkiewicz, Windler and Bernier",clothing,diners-club-us-ca
+Dried Apple,2024-02-09T22:10:25Z,4617.47,credit,Boyer Inc,entertainment,jcb
+Lid Tray - 16in Dome,2024-05-21T17:41:16Z,32003.83,credit,Schuster Group,classes,jcb
+Table Cloth 53x53 White,2023-11-16T14:35:29Z,60714.21,credit,Keebler Group,car,mastercard
+Fruit Salad Deluxe,2023-11-20T01:05:17Z,48018.22,debit,"Luettgen, McDermott and Lowe",groceries,laser
+Dry Ice,2024-11-04T00:05:47Z,63638.36,credit,Stoltenberg and Sons,utilities,diners-club-carte-blanche
+Chicken - Soup Base,2024-09-04T23:51:20Z,91067.32,credit,"Rippin, Huels and Erdman",classes,mastercard
+Wine - Crozes Hermitage E.,2024-12-21T20:57:32Z,34220.05,debit,Thompson LLC,entertainment,bankcard
+Fond - Chocolate,2024-12-08T18:25:50Z,41077.94,credit,Beier-Hilll,groceries,bankcard
+Sesame Seed Black,2024-05-22T17:12:15Z,56098.61,credit,Roob-Kunde,clothing,maestro
+Garbage Bag - Clear,2024-08-02T01:22:28Z,22285.2,debit,Schroeder-Moore,classes,jcb
+Filter - Coffee,2024-09-10T01:19:58Z,79837.49,credit,McCullough LLC,entertainment,diners-club-carte-blanche
+Wine - Winzer Krems Gruner,2024-01-03T06:03:50Z,6033.35,debit,Dietrich-Bahringer,entertainment,bankcard
+"Juice - Pineapple, 48 Oz",2024-11-03T01:03:09Z,216.01,credit,"Bechtelar, Tromp and Sipes",clothing,mastercard
+Wine - Prosecco Valdobiaddene,2024-06-13T22:18:05Z,47807.7,credit,"Cremin, Kuphal and Bode",classes,mastercard
+Wine - Penfolds Koonuga Hill,2024-09-21T23:03:44Z,97087.85,debit,Ortiz LLC,car,maestro
+Beer - Blue Light,2023-10-07T16:18:42Z,99305.69,debit,Deckow-MacGyver,clothing,americanexpress
+Pails With Lids,2024-09-06T21:46:17Z,64369.4,credit,"Nolan, Gottlieb and Willms",classes,visa-electron
+Soup - Verve - Chipotle Chicken,2024-12-02T23:54:35Z,11418.71,debit,Lakin Inc,utilities,jcb
+Mussels - Frozen,2024-01-21T17:19:03Z,70182.69,debit,"Langosh, Stark and Okuneva",classes,jcb
+Wine - Beringer Founders Estate,2025-01-05T23:04:41Z,46894.11,debit,"Windler, Mann and Langworth",clothing,jcb
+Myers Planters Punch,2024-09-23T23:22:30Z,61870.9,credit,Mayer Group,groceries,jcb
+Lamb Shoulder Boneless Nz,2024-11-10T17:02:10Z,73853.24,debit,DuBuque-Grant,clothing,jcb
+Coffee - Flavoured,2024-03-30T04:59:49Z,83422.2,credit,"McCullough, Towne and Fisher",utilities,jcb
+Cookies - Amaretto,2024-06-27T07:48:33Z,94914.44,credit,Kuhlman-Reinger,classes,jcb
+Cream - 35%,2024-05-06T07:28:42Z,1000.55,debit,Blick Group,classes,mastercard
+Anchovy Fillets,2024-07-23T04:17:24Z,92800.81,credit,Cummings-Bogisich,utilities,mastercard
+Bandage - Finger Cots,2024-02-09T00:20:56Z,64622.23,debit,"Mueller, Klocko and Larson",utilities,jcb
+Chicken - Ground,2023-10-30T08:22:13Z,61574.14,credit,Ankunding LLC,car,jcb
+Bagel - Everything Presliced,2024-11-20T20:02:45Z,72179.56,debit,Vandervort-Auer,clothing,visa-electron
+"Octopus - Baby, Cleaned",2024-10-03T03:14:53Z,65165.31,debit,Kessler-Hills,clothing,mastercard
+Ecolab - Mikroklene 4/4 L,2024-10-26T15:33:08Z,56858.26,debit,Walker-Nicolas,car,instapayment
+Shiratamako - Rice Flour,2023-12-10T07:26:26Z,1708.31,debit,Frami-Johns,car,china-unionpay
+Chicken - Whole,2024-06-08T09:24:11Z,42007.33,credit,"Runte, Boyer and Lakin",groceries,jcb
+Oil - Shortening - All - Purpose,2024-12-25T10:13:56Z,2647.32,credit,"Torp, Brekke and Barrows",clothing,instapayment
+Black Currants,2025-01-09T19:04:27Z,71550.01,debit,Hodkiewicz and Sons,groceries,jcb
+Cornflakes,2024-12-20T21:10:50Z,69954.8,credit,"Dare, Bins and Yundt",car,jcb
+Sauce Tomato Pouch,2025-01-29T21:18:59Z,13003.9,debit,"Gleason, Halvorson and Davis",utilities,jcb
+Remy Red Berry Infusion,2024-07-23T19:29:35Z,50223.96,credit,"Cremin, Adams and Pouros",groceries,switch
+"Wine - White, Chardonnay",2023-12-09T00:50:35Z,82205.82,debit,O'Connell and Sons,entertainment,jcb
+"Bread - Bagels, Plain",2024-04-03T23:31:34Z,74487.38,credit,"Mohr, Altenwerth and Romaguera",utilities,visa-electron
+English Muffin,2024-10-06T06:52:40Z,22677.14,debit,Schowalter LLC,entertainment,jcb
+"Trout - Hot Smkd, Dbl Fillet",2024-02-19T13:08:48Z,1697.1,debit,Braun-Nicolas,groceries,bankcard
+"Nut - Almond, Blanched, Ground",2024-08-21T00:16:46Z,91402.86,credit,Schowalter and Sons,utilities,diners-club-carte-blanche
+Bread - Rye,2024-08-07T20:52:41Z,56622.79,debit,"Gutmann, Rath and Barton",classes,china-unionpay
+Bandage - Fexible 1x3,2024-06-30T16:57:31Z,62337.47,credit,"Homenick, Gottlieb and Runolfsdottir",groceries,mastercard
+Wine - Tribal Sauvignon,2025-01-01T22:17:56Z,86118.88,debit,Walsh LLC,utilities,jcb
+Lettuce - Curly Endive,2024-07-01T10:53:37Z,59254.55,credit,Denesik-Mueller,entertainment,jcb
+Beef - Short Loin,2024-03-15T08:59:25Z,47538.96,credit,"Aufderhar, Herman and Nader",car,visa
+"Artichoke - Bottom, Canned",2024-03-27T14:44:13Z,32783.56,debit,Schamberger-Streich,classes,jcb
+"Soup - Campbells, Lentil",2024-08-22T13:44:28Z,6997.14,debit,Ziemann LLC,car,americanexpress
+"Plate - Foam, Bread And Butter",2025-01-29T22:37:57Z,78173.05,credit,"Sipes, Hammes and Senger",entertainment,visa
+Beer - Muskoka Cream Ale,2024-11-03T16:40:24Z,74540.16,debit,Fay-Wiza,groceries,maestro
+Skewers - Bamboo,2024-12-16T00:06:00Z,19031.52,credit,"Schamberger, Brekke and Wuckert",utilities,jcb
+Cheese - Bocconcini,2024-02-08T08:29:03Z,78838.97,credit,"Berge, Macejkovic and Larkin",car,jcb
+Pate - Peppercorn,2024-06-26T19:38:59Z,61372.78,credit,Schaden and Sons,car,jcb
+Cocoa Butter,2023-09-11T03:35:52Z,92371.39,debit,Kunze-Weimann,classes,jcb
+Duck - Breast,2025-01-29T19:01:16Z,4310.87,credit,Gislason Group,utilities,switch
+Cheese - Gouda,2024-09-06T04:39:27Z,68092.24,debit,Schneider-Hoppe,clothing,switch
+"Wine - White, French Cross",2024-11-19T02:07:19Z,43759.38,credit,Aufderhar-Sipes,entertainment,maestro
+Gatorade - Orange,2023-09-20T11:08:10Z,16354.74,debit,Cruickshank-Will,utilities,diners-club-carte-blanche
+Wine - Bouchard La Vignee Pinot,2024-06-18T19:26:16Z,18573.97,credit,Mante-Cummerata,clothing,jcb
+Tequila - Sauza Silver,2024-02-07T15:03:03Z,68192.65,credit,Dietrich-Hahn,groceries,jcb
+"Beans - Kidney, Red Dry",2024-11-28T16:37:43Z,26581.21,credit,"West, Metz and Sporer",clothing,switch
+Plums - Red,2024-09-03T05:45:24Z,48992.59,debit,Kunde-Lang,classes,maestro
+"Mushroom - Enoki, Fresh",2024-05-30T04:43:49Z,39973.49,debit,Bauch and Sons,classes,diners-club-enroute
+Beer - Tetleys,2023-09-14T09:09:53Z,8621.19,debit,"Osinski, Mante and Monahan",clothing,diners-club-carte-blanche
+"Coke - Classic, 355 Ml",2024-05-16T10:45:43Z,49840.84,debit,MacGyver Inc,classes,jcb
+"Veal - Chops, Split, Frenched",2023-12-25T13:34:12Z,17191.91,debit,Toy and Sons,clothing,bankcard
+"Mushroom - Trumpet, Dry",2024-02-23T11:07:38Z,7857.75,debit,Gusikowski LLC,groceries,visa-electron
+Sauce - Cranberry,2024-11-05T21:45:14Z,66100.1,credit,"Conn, Ruecker and Koelpin",groceries,mastercard
+Curry Paste - Madras,2024-09-08T20:05:45Z,88847.4,credit,Purdy-Kreiger,utilities,mastercard
+Muffin - Bran Ind Wrpd,2024-08-26T09:54:01Z,13819.87,credit,Lowe-Morar,car,visa
+Pork - Bacon Cooked Slcd,2024-07-23T01:00:54Z,42999.52,debit,"Nicolas, Jacobs and Feest",car,jcb
+Everfresh Products,2024-05-28T06:20:32Z,87629.53,credit,Lowe-Toy,car,visa
+"Tart Shells - Sweet, 2",2024-04-16T14:57:05Z,24636.44,debit,"Senger, Johnston and Armstrong",utilities,jcb
+Pastry - Plain Baked Croissant,2024-10-12T12:00:21Z,58075.48,credit,Fay Group,car,jcb
+Broom Handle,2024-04-03T13:42:20Z,86400.12,credit,Effertz-Tillman,car,jcb
+Steampan Lid,2024-09-01T07:23:42Z,51383.95,credit,Maggio-Ortiz,clothing,jcb
+Vodka - Smirnoff,2024-10-06T18:53:25Z,86526.07,debit,Cremin-Shields,clothing,americanexpress
+Beef - Ground Medium,2023-11-01T09:01:24Z,12928.46,debit,Collins-Schulist,classes,mastercard
+Steampan - Foil,2023-10-22T02:51:28Z,30602.23,debit,Turner-Konopelski,entertainment,jcb
+Shiratamako - Rice Flour,2024-03-19T20:53:52Z,354.96,debit,Von and Sons,entertainment,instapayment
+Clams - Canned,2024-12-29T02:10:44Z,62792.62,credit,"Goyette, Moore and Fahey",classes,maestro
+Pea - Snow,2024-01-07T07:09:28Z,8602.6,debit,"Medhurst, Schneider and Waters",classes,visa
+Bouillion - Fish,2023-10-31T02:17:44Z,42822.33,debit,Gorczany-Kreiger,groceries,jcb
+Cheese Cloth No 60,2023-10-17T00:02:39Z,85902.37,debit,Bode LLC,classes,jcb
+Pie Pecan,2024-09-23T14:49:23Z,40252.19,debit,"Kling, Greenfelder and Schoen",car,diners-club-carte-blanche
+Smoked Tongue,2023-10-20T21:00:08Z,59332.48,credit,"Hilll, Lindgren and O'Conner",entertainment,maestro
+Ginsing - Fresh,2024-11-08T09:21:35Z,10110.58,debit,"Moore, Reichert and Heaney",classes,jcb
+"Nut - Peanut, Roasted",2024-10-11T10:44:32Z,15628.11,credit,Schneider-Shanahan,entertainment,diners-club-us-ca
+Pears - Bartlett,2024-04-14T06:23:39Z,79951.4,credit,"Blick, Ledner and Baumbach",groceries,maestro
+Rabbit - Saddles,2024-03-30T04:31:57Z,83638.94,debit,"Ledner, Huels and Friesen",utilities,bankcard
+Yoplait Drink,2024-10-12T22:20:59Z,55810.44,debit,Ratke LLC,entertainment,jcb
+Onions Granulated,2024-01-16T07:01:33Z,92593.51,credit,Kuvalis LLC,classes,americanexpress
+Longos - Burritos,2023-10-13T13:52:39Z,59615.66,debit,Schmeler-Steuber,utilities,jcb
+Water - Tonic,2024-08-10T10:20:52Z,28591.8,debit,"Witting, Durgan and Hackett",car,diners-club-carte-blanche
+Flour - All Purpose,2024-07-25T16:26:28Z,26725.35,credit,Bogisich-Gottlieb,groceries,maestro
+Maintenance Removal Charge,2024-12-24T14:58:43Z,69631.87,debit,"Heller, Robel and Cormier",clothing,instapayment
+Zucchini - Green,2024-08-31T22:50:39Z,92140.64,debit,"Williamson, Bosco and Goyette",groceries,jcb
+Bagelers,2024-03-19T08:39:31Z,5219.66,debit,"Stanton, Lemke and Jerde",classes,jcb
+Cleaner - Comet,2024-01-04T10:45:43Z,75917.72,credit,"Kuhic, Kertzmann and Doyle",car,jcb
+"Lemonade - Black Cherry, 591 Ml",2024-11-06T04:08:47Z,85670.77,credit,"Dooley, Cormier and Feeney",utilities,americanexpress
+Beer - Sleeman Fine Porter,2024-12-02T15:30:06Z,49194.82,debit,Yost Group,entertainment,switch
+Mushroom - Morel Frozen,2024-12-11T00:40:38Z,58122.41,credit,Treutel Inc,utilities,bankcard
+Beer - Sleemans Cream Ale,2024-09-24T05:25:33Z,97974.58,credit,Ankunding and Sons,car,switch
+Onions - Cippolini,2024-03-31T04:18:04Z,65714.59,debit,"Stehr, Ondricka and Koelpin",car,bankcard
+Chicken Thigh - Bone Out,2024-10-10T13:09:15Z,23425.19,credit,Vandervort Inc,car,solo
+Beef - Ground Medium,2023-09-26T20:27:35Z,17164.03,credit,Sporer-Wiza,utilities,switch
+Calypso - Black Cherry Lemonade,2024-07-08T07:47:21Z,74297.47,credit,"Reilly, Goyette and Reynolds",entertainment,mastercard
+Cookies - Assorted,2023-09-12T13:06:28Z,38646.07,debit,Conroy and Sons,car,switch
+Juice - Lagoon Mango,2023-09-10T16:34:27Z,10828.19,debit,Kub-Tillman,groceries,visa-electron
+"Beef - Rouladin, Sliced",2023-12-14T17:19:49Z,81967.39,credit,"Grady, Lebsack and McLaughlin",utilities,jcb
+Cilantro / Coriander - Fresh,2024-11-07T10:18:50Z,20243.8,credit,Nader and Sons,entertainment,diners-club-enroute
+Beer - Muskoka Cream Ale,2024-08-04T17:40:29Z,69104.01,debit,Kohler and Sons,car,jcb
+Longos - Grilled Chicken With,2024-08-13T04:20:39Z,56265.3,credit,"Hamill, Reichert and Dickens",clothing,jcb
+Longos - Grilled Veg Sandwiches,2024-06-25T11:09:00Z,85418.6,credit,Reichert-Nitzsche,entertainment,jcb
+Fondant - Icing,2024-01-23T11:38:12Z,28334.08,credit,Legros-Bode,entertainment,jcb
+Carbonated Water - Wildberry,2025-01-17T11:45:09Z,69220.39,debit,VonRueden-Bechtelar,groceries,jcb
+Muffin - Banana Nut Individual,2024-10-12T07:19:24Z,66064.64,debit,Upton and Sons,clothing,switch
+Foil Cont Round,2024-08-11T10:25:02Z,31696.53,debit,Kunde Inc,classes,jcb
+Tequila Rose Cream Liquor,2024-11-26T07:20:36Z,17547.75,debit,Beahan Inc,groceries,switch
+Paper Cocktail Umberlla 80 - 180,2024-07-18T04:16:55Z,78476.2,debit,Schiller Group,groceries,instapayment
+Coffee Cup 16oz Foam,2025-01-29T16:01:23Z,39180.35,debit,Sauer and Sons,entertainment,jcb
+Crab - Meat,2024-02-16T05:02:24Z,94288.76,debit,Harber-Pollich,entertainment,visa
+Pizza Pizza Dough,2025-01-09T02:54:42Z,22170.98,credit,Toy Inc,car,china-unionpay
+"Tray - Foam, Square 4 - S",2023-09-26T00:30:13Z,45638.24,debit,Smith-Moen,classes,jcb
+Jicama,2024-11-28T10:27:29Z,19386.45,debit,"Thompson, Schuster and Koepp",entertainment,maestro
+Beans - Fine,2023-09-07T22:44:02Z,55161.97,credit,"Miller, Heaney and Harvey",entertainment,jcb
+"Arctic Char - Fresh, Whole",2025-01-05T10:33:28Z,9269.46,credit,"Balistreri, Ernser and Gorczany",classes,maestro
+Bread Base - Goodhearth,2024-06-16T23:17:51Z,38817.16,debit,Breitenberg Inc,car,diners-club-carte-blanche
+Chocolate - Dark Callets,2024-03-24T19:46:32Z,75017.64,debit,Auer and Sons,car,jcb
+"Wine - Red, Wolf Blass, Yellow",2024-06-05T09:40:20Z,41263.76,credit,"O'Conner, Ernser and Spencer",groceries,jcb
+Chocolate Bar - Reese Pieces,2024-01-12T02:12:50Z,90516.26,debit,"Sawayn, Braun and Collins",groceries,jcb
+Mcgillicuddy Vanilla Schnap,2025-01-27T05:16:43Z,82346.79,debit,"Smith, Ledner and Larson",groceries,mastercard
+Caviar - Salmon,2024-06-16T19:13:26Z,58709.09,credit,Price-Dickinson,utilities,diners-club-enroute
+Pork - Liver,2023-09-26T16:21:46Z,27304.02,debit,Mayert Group,car,jcb
+"Crab - Claws, 26 - 30",2024-01-14T14:17:15Z,36793.48,debit,Hansen-Feil,groceries,jcb
+Lamb Rack Frenched Australian,2024-12-31T14:33:41Z,35493.33,credit,Monahan-Pagac,classes,visa-electron
+"Mop Head - Cotton, 24 Oz",2023-10-28T08:12:22Z,3092.29,credit,Wilkinson Group,clothing,jcb
+"Pork - Sausage, Medium",2024-12-17T17:42:51Z,62919.72,credit,Kertzmann Inc,clothing,visa-electron
+Easy Off Oven Cleaner,2024-07-21T18:55:34Z,19252.41,debit,Langworth and Sons,groceries,jcb
+Bag Clear 10 Lb,2024-04-26T05:43:44Z,53990.31,credit,"Beatty, Deckow and Doyle",groceries,bankcard
+Pasta - Cheese / Spinach Bauletti,2024-01-18T11:05:13Z,57467.29,debit,"Douglas, Kulas and Pacocha",clothing,jcb
+Coffee - Ristretto Coffee Capsule,2024-12-03T04:51:27Z,22051.22,credit,"Schoen, Emmerich and Schinner",clothing,switch
+Bacardi Mojito,2024-06-14T15:43:33Z,44397.22,credit,"Sauer, Bergstrom and Schumm",classes,jcb
+Cardamon Seed / Pod,2024-09-24T08:07:07Z,40105.42,debit,Runolfsson LLC,car,diners-club-carte-blanche
+Orange Roughy 4/6 Oz,2024-04-03T10:20:08Z,79892.03,debit,"Erdman, Brown and Kerluke",clothing,visa-electron
+Ice Cream - Super Sandwich,2024-07-20T09:45:19Z,28757.19,debit,Champlin LLC,car,diners-club-enroute
+Lid Tray - 16in Dome,2024-09-10T01:12:17Z,10142.66,credit,Kovacek Group,car,americanexpress
+Breakfast Quesadillas,2024-05-16T00:25:27Z,72593.6,credit,"Considine, Wisozk and Rosenbaum",classes,diners-club-us-ca
+Wine - Zinfandel California 2002,2024-06-16T06:55:58Z,90552.17,credit,"Schmeler, Carroll and Gutkowski",car,mastercard
+"Cheese - Cheddar, Old White",2024-12-01T09:44:38Z,14920.64,credit,Lemke and Sons,utilities,maestro
+Soup Campbells Beef With Veg,2024-10-02T04:40:59Z,67582.5,credit,Kuhn-Jacobson,entertainment,jcb
+Lettuce - Lambs Mash,2024-10-20T14:31:55Z,69271.66,credit,"Stark, Larson and Hansen",car,jcb
+Rolled Oats,2024-10-18T06:43:53Z,7117.91,debit,Wisozk-Volkman,groceries,mastercard
+Wine - Savigny - Les - Beaune,2024-09-05T08:28:31Z,45202.66,debit,Batz-Hahn,utilities,jcb
+"Beef - Rib Roast, Capless",2023-11-11T17:16:18Z,7320.35,debit,Runolfsson Inc,entertainment,visa-electron
+Creme De Menth - White,2023-12-15T21:13:03Z,80366.21,credit,"VonRueden, Nitzsche and Robel",clothing,americanexpress
+"Pasta - Shells, Medium, Dry",2024-01-10T07:02:57Z,65854.97,debit,Corwin-Howe,entertainment,jcb
+Cake - Sheet Strawberry,2024-09-09T17:41:13Z,9082.39,debit,"Gleichner, Halvorson and Wiegand",clothing,americanexpress
+Island Oasis - Raspberry,2024-08-12T05:06:00Z,42997.61,debit,"Collins, Marks and Spencer",utilities,jcb
+Veal - Leg,2024-08-03T22:05:57Z,84889.25,credit,Dach Group,car,visa-electron
+"Wine - Mas Chicet Rose, Vintage",2024-11-05T23:47:37Z,35596.46,debit,Turner Inc,clothing,jcb
+Eel Fresh,2024-02-29T09:04:19Z,55063.82,debit,"Hane, Jacobson and Simonis",car,jcb
+Table Cloth 54x54 White,2024-05-18T14:57:48Z,17338.73,credit,"Rutherford, Klocko and Oberbrunner",classes,diners-club-enroute
+Cookies Oatmeal Raisin,2024-11-28T14:06:09Z,3859.32,credit,"Emard, Prosacco and Kilback",car,maestro
+Beer - Mill St Organic,2024-01-04T01:17:35Z,55894.97,credit,Witting and Sons,classes,bankcard
+Baking Soda,2024-03-26T01:59:59Z,32492.58,credit,Baumbach-Feest,car,jcb
+Godiva White Chocolate,2024-10-20T01:48:42Z,66554.58,debit,Waelchi-Feil,clothing,jcb
+Cheese - Gouda Smoked,2023-12-11T22:47:37Z,91300.11,credit,Abbott-Runolfsson,car,jcb
+Ham - Cooked,2024-08-07T10:43:19Z,84972.91,credit,Prohaska-Fahey,clothing,diners-club-carte-blanche
+Ecolab - Solid Fusion,2023-12-31T04:04:01Z,71148.2,credit,Hoppe-Cormier,clothing,jcb
+Ice Cream Bar - Oreo Sandwich,2024-12-05T02:21:57Z,55197.89,debit,Auer-Streich,classes,visa
+"Octopus - Baby, Cleaned",2024-01-18T23:50:50Z,46291.78,debit,Wilderman Group,clothing,bankcard
+Tea - Herbal Orange Spice,2024-12-25T08:55:06Z,17527.67,credit,"Armstrong, Waters and Gusikowski",clothing,jcb
+"Seedlings - Buckwheat, Organic",2023-09-22T00:48:46Z,8017.04,debit,Schroeder and Sons,car,visa-electron
+Soup - Cream Of Potato / Leek,2024-03-13T18:55:04Z,98830.82,debit,"Nikolaus, Bergstrom and Luettgen",groceries,switch
+Beer - Upper Canada Lager,2024-11-27T06:33:29Z,2319.86,credit,Brown LLC,clothing,jcb
+Sugar - Palm,2024-05-05T05:08:41Z,69237.51,debit,"Yost, Rippin and Ondricka",clothing,diners-club-carte-blanche
+Rum - Mount Gay Eclipes,2024-03-27T00:13:14Z,3489.99,credit,"Collier, Schmidt and Klocko",classes,jcb
+Trout Rainbow Whole,2024-10-15T04:04:00Z,20082.2,credit,Yundt-Turcotte,utilities,jcb
+Tea - Camomele,2024-09-02T01:31:15Z,50193.8,credit,Skiles Inc,entertainment,jcb
+Flour - Chickpea,2023-10-25T19:21:47Z,50256.0,debit,Hills LLC,clothing,diners-club-carte-blanche
+"Sugar - Brown, Individual",2023-12-26T16:44:45Z,32078.85,debit,Howe-Hegmann,groceries,jcb
+Lamb - Loin Chops,2024-02-28T23:11:11Z,97190.1,debit,Kuhlman-Mertz,groceries,jcb
+Pastry - Carrot Muffin - Mini,2024-12-19T22:51:45Z,62364.91,credit,"Pacocha, Larson and Macejkovic",classes,mastercard
+Chickensplit Half,2023-10-13T00:56:35Z,42399.11,credit,Monahan-Lesch,groceries,visa-electron
+Lamb - Sausage Casings,2024-10-08T14:08:52Z,85789.3,credit,"Bernier, Dare and Predovic",car,jcb
+Carbonated Water - White Grape,2024-12-21T15:43:54Z,92176.5,debit,"Barton, Kub and Windler",entertainment,bankcard
+Crawfish,2023-10-21T02:18:04Z,98026.56,credit,Rice-MacGyver,utilities,china-unionpay
+Tarts Assorted,2023-11-20T20:56:28Z,75460.4,credit,Yundt Inc,car,jcb
+Pear - Prickly,2025-01-18T04:57:57Z,14783.42,credit,Harvey Inc,entertainment,diners-club-us-ca
+Oil - Sunflower,2024-06-23T18:19:53Z,35294.58,credit,Feest and Sons,classes,diners-club-enroute
+Cognac - Courvaisier,2024-11-18T04:28:19Z,91579.95,credit,"Brekke, Kutch and Howell",classes,jcb
+Onions - Cippolini,2024-06-28T11:18:25Z,19363.47,credit,"Cummerata, Collier and Wintheiser",entertainment,jcb
+Table Cloth 81x81 Colour,2024-12-26T22:32:43Z,15284.33,debit,Ankunding-Wolff,clothing,jcb
+"Tendrils - Baby Pea, Organic",2023-12-13T23:37:23Z,59028.76,debit,Yundt-Rau,groceries,jcb
+"Cheese - Cheddar, Old White",2024-07-04T03:13:41Z,37134.33,debit,"Oberbrunner, Ankunding and Kerluke",classes,bankcard
+Yogurt - Plain,2024-04-14T20:01:54Z,24851.44,credit,Bode-Emard,utilities,bankcard
+Beef - Top Butt Aaa,2024-01-06T21:00:45Z,3695.64,credit,Christiansen Inc,car,jcb
+Beer - Labatt Blue,2024-03-14T02:33:28Z,11398.81,credit,Wunsch-Rohan,classes,mastercard
+Sambuca - Opal Nera,2024-09-14T19:31:12Z,78134.74,credit,Schamberger and Sons,groceries,jcb
+Cheese - Victor Et Berthold,2024-04-14T20:24:43Z,1218.76,credit,Marks-Hayes,classes,switch
+Gatorade - Fruit Punch,2024-12-07T13:45:04Z,14927.81,credit,"Hirthe, Schultz and Nitzsche",classes,jcb
+Poppy Seed,2024-05-11T07:19:29Z,51716.14,debit,Ratke and Sons,groceries,americanexpress
+Appetizer - Sausage Rolls,2024-11-02T04:59:06Z,34577.97,debit,Reinger and Sons,groceries,jcb
+Veal - Knuckle,2023-09-11T22:21:25Z,6179.81,credit,Pouros LLC,entertainment,bankcard
+Wine - George Duboeuf Rose,2024-02-12T23:40:37Z,86482.02,debit,Marvin and Sons,groceries,maestro
+"Bread - Roll, Italian",2024-07-14T04:40:38Z,66037.66,credit,"Bahringer, Becker and McLaughlin",clothing,switch
+Sprouts - Brussel,2023-09-08T08:17:02Z,55529.67,credit,Cruickshank-Schmitt,entertainment,visa-electron
+Bok Choy - Baby,2025-01-07T05:13:11Z,50139.05,debit,Bashirian-Krajcik,clothing,visa
+Baking Powder,2024-12-19T03:28:36Z,53688.83,credit,Kling LLC,classes,jcb
+Soup Campbells - Tomato Bisque,2024-07-19T16:29:03Z,18773.43,credit,Wilderman and Sons,groceries,jcb
+Truffle Paste,2024-10-31T11:21:24Z,93641.93,credit,Daniel Inc,classes,jcb
+Appetizer - Tarragon Chicken,2025-01-22T05:41:26Z,66927.29,debit,Fahey-Heller,groceries,solo
+Sobe - Lizard Fuel,2024-01-11T21:43:55Z,51592.26,debit,Mills LLC,car,laser
+Spaghetti Squash,2024-04-09T13:36:07Z,48300.95,debit,Satterfield Group,classes,americanexpress
+Wine - Balbach Riverside,2024-07-21T22:52:51Z,41576.39,credit,Davis and Sons,clothing,maestro
+Basil - Seedlings Cookstown,2024-09-12T21:52:47Z,33066.34,credit,Lind Inc,groceries,jcb
+Mustard - Dijon,2024-10-21T13:36:17Z,4725.04,debit,Kertzmann-Aufderhar,entertainment,jcb
+"Brownies - Two Bite, Chocolate",2024-10-14T20:09:50Z,85424.0,debit,Koss-Leffler,classes,jcb
+Turkey - Oven Roast Breast,2023-12-10T22:34:50Z,50374.01,credit,Bins-Herzog,car,jcb
+Sobe - Cranberry Grapefruit,2025-01-07T20:49:17Z,81357.39,debit,Padberg-Simonis,car,americanexpress
+Cut Wakame - Hanawakaba,2024-07-18T01:38:11Z,2431.69,credit,"Feeney, O'Reilly and Wehner",entertainment,jcb
+"Pasta - Fettuccine, Dry",2023-12-30T04:40:31Z,8007.14,credit,Leannon Inc,clothing,americanexpress
+White Fish - Filets,2024-03-08T00:37:39Z,66682.64,credit,"Hills, Wunsch and Corkery",car,diners-club-carte-blanche
+"Tuna - Canned, Flaked, Light",2024-05-12T15:15:40Z,13379.44,credit,Beatty Group,groceries,maestro
+Wine - Bouchard La Vignee Pinot,2024-09-15T20:54:03Z,33622.45,credit,"Rau, Morar and Wunsch",entertainment,jcb
+Longos - Grilled Veg Sandwiches,2024-01-31T02:32:04Z,50302.78,credit,O'Conner-Nicolas,car,jcb
+Hog / Sausage Casing - Pork,2024-08-27T21:50:16Z,13601.76,credit,Hyatt LLC,entertainment,diners-club-us-ca
+Flour - All Purpose,2025-01-12T03:16:25Z,76966.51,debit,Parisian-Ebert,car,instapayment
+Laundry - Bag Cloth,2024-02-13T22:40:24Z,63302.53,credit,Shanahan LLC,utilities,jcb
+Mussels - Cultivated,2024-09-02T13:07:57Z,10336.41,debit,Grady-Weber,utilities,diners-club-enroute
+Baking Soda,2024-09-11T01:27:29Z,28868.5,debit,Emard Group,utilities,diners-club-international
+Bag - Regular Kraft 20 Lb,2024-02-02T13:19:48Z,9530.59,debit,"Mante, Gutkowski and Lubowitz",utilities,americanexpress
+Cheese - Cheddar With Claret,2025-01-17T18:23:43Z,63274.02,debit,"Rohan, Ondricka and Turcotte",clothing,jcb
+Lettuce - Frisee,2024-08-28T02:06:17Z,40323.82,credit,"Heathcote, Walsh and Zboncak",utilities,maestro
+"Pasta - Tortellini, Fresh",2024-11-11T17:12:20Z,76047.64,credit,Lang and Sons,utilities,maestro
+The Pop Shoppe - Black Cherry,2023-12-16T00:26:53Z,78498.77,debit,"Hoeger, Kihn and O'Kon",groceries,diners-club-carte-blanche
+Wine - Zonnebloem Pinotage,2024-06-23T12:43:06Z,89893.81,debit,Pouros Inc,clothing,jcb
+Extract Vanilla Pure,2023-11-07T06:04:56Z,52291.64,credit,Schinner-Nitzsche,entertainment,jcb
+Coffee - Decafenated,2024-06-06T01:39:31Z,80238.62,credit,Kuphal Group,classes,jcb
+Oil - Olive Bertolli,2023-09-17T11:26:54Z,49720.72,debit,Grimes-Spinka,groceries,jcb
+Goulash Seasoning,2023-11-06T10:40:15Z,87181.72,debit,"Pfeffer, Ernser and Cremin",classes,jcb
+Butter Ripple - Phillips,2024-01-28T00:10:37Z,55208.35,credit,Kuvalis Inc,clothing,jcb
+Icecream Bar - Del Monte,2024-11-11T07:42:10Z,18850.76,credit,Tromp Group,entertainment,switch
+"Pasta - Lasagna Noodle, Frozen",2023-09-10T03:54:57Z,95728.44,credit,"Bashirian, Heathcote and Howell",entertainment,maestro
+Scallops 60/80 Iqf,2024-05-12T04:41:54Z,87824.89,credit,Larkin LLC,entertainment,jcb
+"Wine - White, Concha Y Toro",2025-01-04T12:14:48Z,50336.95,debit,O'Keefe-Stiedemann,clothing,jcb
+"Iced Tea - Lemon, 460 Ml",2024-10-08T08:18:59Z,55020.35,debit,Kuphal-Yundt,classes,jcb
+Coffee - Almond Amaretto,2024-02-12T02:04:58Z,84203.77,credit,"Pollich, Smitham and Weimann",entertainment,jcb
+Broom - Push,2024-12-18T04:49:05Z,91720.23,credit,Koch Group,clothing,mastercard
+"Rum - Cream, Amarula",2024-03-01T06:51:20Z,12660.85,credit,"Kutch, Collins and Littel",classes,jcb
+Wine - Alicanca Vinho Verde,2023-09-10T23:55:03Z,65296.01,credit,"Schaefer, Haag and Smitham",groceries,jcb
+Thyme - Fresh,2024-07-15T20:03:28Z,36611.33,credit,Harris-Ernser,entertainment,visa
+Bar Nature Valley,2024-04-25T16:10:55Z,61047.0,credit,Bednar-Hickle,groceries,jcb
+Brandy Cherry - Mcguinness,2024-10-28T21:17:13Z,76499.74,credit,"Schultz, Stark and Aufderhar",groceries,jcb
+Bread - 10 Grain,2024-08-22T15:50:01Z,31310.76,debit,Marks and Sons,classes,jcb
+Pork - Belly Fresh,2024-06-30T06:01:20Z,4025.69,credit,"Brakus, Casper and Funk",groceries,jcb
+Worcestershire Sauce,2023-11-23T04:57:38Z,67701.69,debit,Tillman LLC,car,switch
+Snapple - Mango Maddness,2023-09-06T14:32:00Z,67588.03,credit,Stanton and Sons,classes,jcb
+Beef - Kobe Striploin,2024-02-28T12:24:17Z,39279.91,credit,Lockman-Lehner,groceries,bankcard
+"Soup - Cream Of Broccoli, Dry",2023-09-25T11:38:19Z,71862.8,credit,"O'Conner, Beatty and Murphy",classes,jcb
+Dc - Frozen Momji,2024-10-18T19:57:02Z,33721.5,debit,Williamson Group,clothing,jcb
+Cucumber - Pickling Ontario,2024-04-12T08:47:47Z,55729.56,credit,Stehr LLC,groceries,mastercard
+Kumquat,2024-07-28T22:43:29Z,52719.31,debit,"Daniel, Stehr and Hickle",groceries,jcb
+Wine - Pinot Noir Mondavi Coastal,2024-07-27T12:09:29Z,60926.92,debit,Weimann-Grady,groceries,china-unionpay
+Sauce - Rosee,2023-09-26T17:22:12Z,94264.64,debit,Ziemann Group,entertainment,diners-club-us-ca
+Sauce - Vodka Blush,2024-07-19T15:18:59Z,23304.09,debit,Langosh and Sons,clothing,jcb
+Wine - Balbach Riverside,2024-11-21T05:07:10Z,14425.01,debit,Zboncak-Bahringer,car,diners-club-carte-blanche
+Flour - Whole Wheat,2023-12-19T09:20:17Z,80448.18,debit,Hagenes Inc,entertainment,americanexpress
+Gatorade - Cool Blue Raspberry,2024-11-12T20:00:32Z,4780.98,credit,Marks-Strosin,groceries,diners-club-enroute
+Alize Sunset,2024-10-07T14:57:16Z,38539.7,debit,Luettgen LLC,groceries,americanexpress
+Capon - Whole,2024-01-11T10:36:30Z,53276.9,debit,Simonis-Rohan,entertainment,mastercard
+Octopus,2024-03-19T12:19:40Z,36959.02,credit,Lindgren Group,groceries,jcb
+Oyster - In Shell,2023-11-09T17:04:55Z,30592.37,credit,Haley-Hoeger,classes,jcb
+Gelatine Leaves - Envelopes,2024-06-16T16:51:29Z,61075.03,credit,"Cartwright, Hauck and Stokes",entertainment,diners-club-enroute
+Tea - Herbal Sweet Dreams,2024-07-22T15:54:55Z,15179.69,debit,"Denesik, Miller and Swaniawski",utilities,jcb
+Flower - Dish Garden,2024-11-23T06:26:32Z,94251.27,credit,Ratke-Gorczany,groceries,switch
+"Pasta - Cappellini, Dry",2023-12-25T17:41:15Z,32984.11,debit,"Labadie, Langworth and Bechtelar",groceries,switch
+Lobster - Cooked,2025-01-01T17:02:04Z,69028.16,credit,Trantow-Harvey,utilities,jcb
+Remy Red Berry Infusion,2024-12-24T00:56:45Z,43364.24,debit,"Champlin, Heathcote and Nolan",clothing,switch
+"Bread - Pullman, Sliced",2023-12-27T09:04:24Z,42282.15,credit,Kshlerin-Romaguera,entertainment,mastercard
+Wine - Crozes Hermitage E.,2023-09-21T04:22:18Z,91087.7,credit,"Bauch, Shanahan and Frami",utilities,mastercard
+Maple Syrup,2023-09-17T21:36:49Z,29957.75,debit,"McLaughlin, Bauch and Pollich",entertainment,jcb
+"Pasta - Linguini, Dry",2024-08-13T03:18:19Z,36143.27,credit,Halvorson-Upton,clothing,jcb
+Muffin Mix - Blueberry,2023-11-12T07:09:38Z,81037.07,debit,Wyman Inc,clothing,americanexpress
+Wine - Prosecco Valdobienne,2024-04-22T02:36:18Z,22470.52,credit,Mosciski Inc,classes,laser
+Oranges,2023-11-01T02:43:14Z,32944.47,debit,Watsica and Sons,groceries,mastercard
+"Sauce - Soya, Light",2024-01-16T06:55:56Z,36925.47,credit,Kovacek LLC,clothing,mastercard
+Sea Bass - Fillets,2024-10-26T21:39:39Z,99174.36,credit,Barton-Thompson,car,jcb
+Sugar - Icing,2023-11-12T02:48:10Z,38996.3,debit,"Baumbach, Hermann and Beahan",classes,switch
+"Wine - White, Ej Gallo",2024-03-19T23:38:03Z,89392.3,debit,"Effertz, Douglas and Russel",clothing,americanexpress
+Vector Energy Bar,2025-01-23T07:19:15Z,16516.12,credit,Kihn Group,car,jcb
+Wine - Vineland Estate Semi - Dry,2024-07-11T09:56:59Z,71148.87,debit,Kreiger-Gottlieb,entertainment,maestro
+Skirt - 29 Foot,2024-04-07T21:30:30Z,78758.94,credit,Hansen Inc,utilities,china-unionpay
+Cookie - Oatmeal,2023-10-22T19:47:50Z,30523.33,credit,"Williamson, Herman and Abshire",clothing,mastercard
+Flour - Strong Pizza,2024-07-19T03:12:13Z,25602.39,credit,Mante LLC,classes,jcb
+Buffalo - Striploin,2024-10-24T08:26:38Z,52256.83,credit,"Simonis, Koepp and Ferry",utilities,mastercard
+"Pasta - Cappellini, Dry",2023-09-04T15:17:40Z,97777.15,debit,Armstrong-Schultz,car,jcb
+Lid - 0090 Clear,2024-02-23T19:15:18Z,51051.13,credit,Herzog LLC,entertainment,instapayment
+Sauce - Roasted Red Pepper,2023-12-24T08:20:53Z,26102.74,debit,"Nicolas, Ankunding and Cronin",groceries,jcb
+"Arctic Char - Fresh, Whole",2024-02-29T14:58:39Z,32757.53,credit,"Pfeffer, Borer and Koch",car,diners-club-carte-blanche
+Island Oasis - Ice Cream Mix,2024-06-06T00:56:07Z,35308.55,credit,"Reichel, Cormier and Stehr",utilities,jcb
+Soup - Campbellschix Stew,2024-05-01T19:22:12Z,8649.33,debit,Kertzmann-Cassin,car,jcb
+Crackers Cheez It,2024-04-09T10:02:00Z,27672.49,credit,Fahey-Fritsch,utilities,maestro
+Appetizer - Smoked Salmon / Dill,2023-11-19T06:51:09Z,53044.76,credit,Hoeger-Hodkiewicz,entertainment,instapayment
+"Lamb - Whole, Fresh",2024-07-25T00:36:10Z,81069.95,debit,Wilderman-Schowalter,entertainment,instapayment
+Sauce - Alfredo,2024-05-09T05:09:50Z,79098.12,debit,Weissnat-Schinner,groceries,visa-electron
+Wine - Montecillo Rioja Crianza,2023-09-29T15:48:03Z,55847.73,debit,Homenick Inc,classes,jcb
+Lighter - Bbq,2024-05-12T21:34:01Z,35520.18,credit,"Rutherford, Muller and Rowe",car,china-unionpay
+Venison - Ground,2024-11-17T08:21:51Z,16215.24,debit,"Boyle, McGlynn and Simonis",groceries,jcb
+"Pasta - Penne, Lisce, Dry",2024-03-08T12:16:04Z,66760.56,debit,Schumm-Kuhn,utilities,jcb
+Pancetta,2024-11-27T12:05:29Z,9411.8,debit,Conroy-Hayes,clothing,jcb
+Garbag Bags - Black,2024-09-23T14:52:07Z,96963.36,debit,Mitchell-Schaden,clothing,visa-electron
+Buffalo - Striploin,2024-12-29T17:38:32Z,49123.85,debit,"Kozey, Hermiston and Barton",car,mastercard
+Pastry - Raisin Muffin - Mini,2024-06-29T17:40:07Z,33058.3,debit,Kub-Miller,utilities,jcb
+Wine - Coteaux Du Tricastin Ac,2024-01-16T09:56:59Z,40433.97,debit,Schoen Inc,car,americanexpress
+"Lobster - Tail, 3 - 4 Oz",2024-02-03T20:52:31Z,26512.78,credit,"Bernhard, Vandervort and Spencer",entertainment,jcb
+"Mushroom - Chantrelle, Fresh",2023-10-23T01:19:26Z,76436.97,credit,Reynolds-Williamson,car,mastercard
+Petite Baguette,2023-12-19T13:29:15Z,57522.17,debit,"Wiza, Shields and Dietrich",entertainment,china-unionpay
+"Mushroom - Enoki, Fresh",2024-06-24T07:24:43Z,54647.94,debit,"Collier, Hirthe and Hirthe",entertainment,jcb
+"C - Plus, Orange",2024-04-06T04:40:12Z,155.4,credit,Quigley-Bayer,entertainment,maestro
+Sauce - Demi Glace,2024-11-27T18:08:41Z,12666.88,credit,"Jast, Hane and Welch",entertainment,jcb
+Cheese Cloth No 60,2023-10-18T13:36:46Z,63112.96,credit,Watsica-Lueilwitz,car,jcb
+Cheese Cloth,2024-06-20T20:55:49Z,6270.18,credit,"Gerlach, Stracke and Hand",utilities,bankcard
+"Soup - Campbells, Lentil",2023-09-01T21:59:05Z,63239.76,credit,"Leannon, Tillman and Sporer",utilities,jcb
+"Oil - Truffle, Black",2024-07-16T18:56:39Z,72659.09,credit,Jast and Sons,entertainment,jcb
+Halibut - Fletches,2024-08-26T04:27:43Z,28812.47,debit,Kulas Group,classes,jcb
+Tomato - Tricolor Cherry,2024-05-16T06:21:51Z,39993.24,debit,Gleason LLC,clothing,jcb
+Oyster - In Shell,2024-09-25T14:38:39Z,79373.9,debit,Carter and Sons,entertainment,jcb
+Tea - Camomele,2024-10-22T20:56:23Z,92494.97,debit,Hilpert-Reinger,entertainment,switch
+Wine - Montecillo Rioja Crianza,2024-01-08T02:35:37Z,82009.66,credit,Stark Inc,groceries,switch
+The Pop Shoppe - Cream Soda,2024-09-26T22:20:19Z,95340.55,credit,Nienow Group,utilities,visa-electron
+"Beef - Ox Tail, Frozen",2024-05-17T13:14:11Z,30729.75,credit,Veum Inc,car,jcb
+Cranberries - Dry,2024-09-29T09:50:42Z,33448.7,debit,"McCullough, Harris and Kemmer",clothing,maestro
+Sauce - Oyster,2023-12-24T01:58:24Z,63835.23,debit,Emard-Spencer,clothing,jcb
+Muffin Hinge 117n,2023-10-02T13:17:20Z,69282.16,credit,Nikolaus-Goyette,clothing,diners-club-carte-blanche
+Cookies Almond Hazelnut,2024-03-16T10:31:28Z,83469.66,debit,Larkin Group,entertainment,jcb
+Beer - Heinekin,2024-07-16T16:28:12Z,78139.37,credit,Steuber Inc,groceries,jcb
+"Tray - Foam, Square 4 - S",2023-10-21T10:39:27Z,25213.63,credit,Durgan-Kuphal,car,maestro
+"Peas - Pigeon, Dry",2024-08-25T15:53:47Z,35943.87,debit,Satterfield LLC,groceries,jcb
+Nori Sea Weed,2024-06-25T10:33:11Z,22924.87,debit,Schmidt-Emard,groceries,diners-club-us-ca
+Wine - Peller Estates Late,2024-05-05T16:17:09Z,38806.35,credit,Murray LLC,clothing,jcb
+Water - Green Tea Refresher,2024-10-29T03:09:21Z,15317.2,credit,Rath-Mosciski,classes,mastercard
+Wine - Peller Estates Late,2023-12-05T16:32:06Z,56319.03,debit,"Feil, Lynch and Von",car,jcb
+Foam Espresso Cup Plain White,2024-05-16T03:14:32Z,52802.29,debit,"Hettinger, Yundt and Marquardt",classes,switch
+"Veal - Leg, Provimi - 50 Lb Max",2025-01-10T06:07:10Z,28365.87,debit,Champlin-Kerluke,clothing,jcb
+"Coconut - Shredded, Unsweet",2024-10-29T03:03:58Z,72804.11,credit,Rath LLC,clothing,switch
+Yogurt - French Vanilla,2023-11-08T01:48:26Z,91700.13,debit,"Runolfsson, Watsica and Shields",utilities,jcb
+Hot Chocolate - Individual,2023-11-04T03:45:31Z,76050.73,credit,Russel-Heathcote,entertainment,mastercard
+Appetizer - Smoked Salmon / Dill,2024-09-16T15:27:00Z,92876.6,credit,"Grimes, Corwin and Pouros",groceries,mastercard
+Truffle Cups Green,2024-03-07T23:23:21Z,30926.96,debit,"Gottlieb, Reilly and Reichert",groceries,jcb
+Beef Dry Aged Tenderloin Aaa,2023-09-24T21:17:06Z,56597.62,debit,Lebsack and Sons,entertainment,jcb
+Sterno - Chafing Dish Fuel,2024-05-23T18:04:29Z,69676.74,credit,Howell-Welch,clothing,diners-club-carte-blanche
+Cafe Royale,2023-09-10T20:54:19Z,27646.38,debit,Larson Inc,car,maestro
+Pail For Lid 1537,2024-12-02T09:33:58Z,87391.3,debit,Strosin LLC,clothing,bankcard
+"Basil - Dry, Rubbed",2024-01-28T06:25:06Z,30492.8,credit,"Stanton, Gibson and Hagenes",clothing,americanexpress
+Bols Melon Liqueur,2024-07-10T05:33:16Z,95306.03,debit,"Nienow, Reinger and Cormier",utilities,mastercard
+Sprouts - Alfalfa,2023-12-13T23:15:40Z,20178.04,credit,"Swaniawski, Macejkovic and Dietrich",clothing,jcb
+Triple Sec - Mcguinness,2023-10-02T10:48:32Z,8995.52,debit,"Kris, Yost and Howe",classes,mastercard
+"Trout - Hot Smkd, Dbl Fillet",2024-06-30T12:05:16Z,98423.76,debit,"O'Reilly, Jacobson and Feeney",clothing,mastercard
+"Nut - Pine Nuts, Whole",2024-02-08T10:44:48Z,29387.28,debit,"McGlynn, Metz and Schimmel",groceries,jcb
+Wine - Prosecco Valdobienne,2023-11-08T23:09:13Z,8785.68,debit,"Hagenes, Klocko and Wehner",utilities,jcb
+Bread - Mini Hamburger Bun,2024-12-29T21:52:10Z,96577.5,credit,Windler Group,classes,maestro
+Quail - Jumbo,2025-01-16T21:23:30Z,54139.88,credit,"Streich, Marquardt and Green",groceries,jcb
+"Beans - Black Bean, Preserved",2023-09-11T06:02:40Z,17407.96,credit,Padberg-Kutch,classes,diners-club-enroute
+Juice - Apple 284ml,2024-10-12T21:53:35Z,16629.16,debit,Paucek Inc,entertainment,jcb
+Remy Red,2024-03-30T20:30:37Z,82908.44,credit,Medhurst Group,entertainment,diners-club-carte-blanche
+Beer - Credit North Strong Ale,2023-11-15T07:33:49Z,22005.73,credit,Marvin Group,clothing,jcb
+Cheese - Brick With Onion,2024-02-07T23:33:48Z,45857.0,credit,"Kuvalis, Trantow and Wilkinson",clothing,diners-club-carte-blanche
+Wine - Malbec Trapiche Reserve,2024-03-04T00:26:42Z,6492.04,credit,Boyle LLC,car,jcb
+Juice - Propel Sport,2024-07-17T23:50:52Z,40350.73,credit,Blick-Simonis,clothing,jcb
+"Lid - Translucent, 3.5 And 6 Oz",2024-02-15T14:57:58Z,46424.8,debit,Ziemann and Sons,groceries,americanexpress
+Wine - Riesling Alsace Ac 2001,2023-10-12T06:45:21Z,76671.64,debit,Doyle-Hane,groceries,china-unionpay
+Skirt - 24 Foot,2024-10-03T09:11:03Z,85474.82,debit,"Collier, Morissette and Jacobson",car,switch
+Mangoes,2023-12-26T17:17:16Z,23155.19,credit,"Haag, Abernathy and Adams",groceries,mastercard
+"Shrimp - 16/20, Iqf, Shell On",2024-02-25T15:36:58Z,89108.1,debit,"Christiansen, Mosciski and Ankunding",clothing,jcb
+Rabbit - Whole,2024-01-22T16:28:04Z,90312.96,credit,"Torphy, Nienow and Kiehn",entertainment,diners-club-us-ca
+"Rum - Dark, Bacardi, Black",2024-07-27T13:31:38Z,44761.46,credit,"Bruen, Leffler and Cormier",classes,diners-club-enroute
+Pasta - Cheese / Spinach Bauletti,2024-11-25T10:10:07Z,72696.51,credit,Johnson Group,groceries,jcb
+Paper Cocktail Umberlla 80 - 180,2024-06-29T07:33:20Z,74472.6,debit,"Simonis, Crona and Douglas",clothing,switch
+"Appetizer - Mini Egg Roll, Shrimp",2024-03-27T14:59:49Z,59600.15,debit,Durgan-Donnelly,entertainment,laser
+Wine - Port Late Bottled Vintage,2023-12-31T07:39:54Z,63693.32,debit,"Miller, Ullrich and Rutherford",utilities,jcb
+Bandage - Finger Cots,2025-01-11T02:26:33Z,54209.56,credit,Wolf-Goldner,car,bankcard
+Appetizer - Shrimp Puff,2023-11-05T16:33:15Z,37030.06,credit,Reilly and Sons,classes,china-unionpay
+"Beef - Ox Tongue, Pickled",2023-10-23T06:16:41Z,59284.64,credit,"Larkin, King and Daugherty",groceries,switch
+Shrimp - Black Tiger 8 - 12,2025-01-10T16:13:59Z,73236.6,debit,"Corwin, West and Labadie",clothing,jcb
+Baking Soda,2024-01-04T15:24:47Z,69906.18,credit,Williamson-Nitzsche,utilities,mastercard
+"Oil - Food, Lacquer Spray",2023-09-21T18:56:54Z,16355.37,credit,"Hoppe, O'Connell and Dooley",classes,jcb
+Clam Nectar,2025-01-15T15:26:52Z,65807.04,credit,Ward-Jacobs,car,maestro
+Fudge - Chocolate Fudge,2023-09-29T20:13:56Z,23367.57,credit,Oberbrunner-Roberts,car,solo
+"Yeast - Fresh, Fleischman",2023-11-14T05:05:39Z,56901.74,debit,Johnston-White,classes,jcb
+Coffee - 10oz Cup 92961,2023-10-24T02:55:32Z,70754.07,credit,Graham LLC,clothing,china-unionpay
+"Soup - Campbells, Butternut",2023-11-25T19:59:57Z,45814.33,credit,Halvorson-Cormier,groceries,visa-electron
+"Bread - Pumpernickle, Rounds",2024-12-18T16:55:40Z,77837.98,debit,"Berge, Armstrong and Funk",groceries,laser
+Beer - Paulaner Hefeweisse,2024-10-25T01:52:05Z,7286.2,credit,Kreiger-D'Amore,classes,americanexpress
+Cheese - Cheddarsliced,2023-12-28T23:33:38Z,50081.08,debit,Sipes-Hyatt,car,mastercard
+Sauce - Vodka Blush,2024-08-11T04:23:51Z,65615.32,credit,"Langosh, Weber and Bins",car,visa-electron
+Tia Maria,2024-04-02T20:34:35Z,54169.73,credit,"Koch, Frami and Upton",entertainment,switch
+Table Cloth - 53x69 Colour,2024-03-26T05:35:45Z,74892.95,debit,Hermiston and Sons,groceries,jcb
+Ecolab - Mikroklene 4/4 L,2024-01-19T01:35:42Z,36376.97,debit,"Hilll, Vandervort and Maggio",entertainment,solo
+"Wine - White, Ej Gallo",2024-03-11T01:39:17Z,94668.23,debit,Pacocha-Williamson,clothing,laser
+Wine - Beringer Founders Estate,2024-02-23T07:35:15Z,63742.03,credit,Goyette-Crooks,car,jcb
+Ketchup - Tomato,2024-09-05T02:56:57Z,37046.67,debit,Von-Prohaska,utilities,jcb
+Wine - Magnotta - Pinot Gris Sr,2024-08-08T08:24:08Z,67299.4,debit,"Beatty, Rolfson and Stark",entertainment,jcb
+Galliano,2025-01-21T18:00:20Z,36603.04,debit,"Kub, Lang and Lowe",utilities,jcb
+Salt - Sea,2023-09-07T17:32:43Z,12813.59,debit,Goyette-Kihn,classes,mastercard
+Flour - Cake,2023-09-24T12:01:15Z,12463.73,debit,"McCullough, Hodkiewicz and Runte",utilities,china-unionpay
+Sauce - Ranch Dressing,2023-10-19T16:19:19Z,77840.7,credit,"Denesik, O'Kon and Marvin",classes,jcb
+Corn - Mini,2024-05-16T04:45:09Z,99720.3,debit,"Kemmer, O'Keefe and Ortiz",entertainment,jcb
+Bandage - Fexible 1x3,2024-02-02T21:15:45Z,29775.6,debit,Morar LLC,entertainment,visa-electron
+Shiro Miso,2024-03-07T11:07:32Z,24222.78,credit,"Kovacek, Jakubowski and Kunze",entertainment,jcb
+Steamers White,2023-12-27T07:22:14Z,84840.13,credit,"McCullough, Sawayn and Wuckert",car,mastercard
+Bread Ww Cluster,2024-06-26T06:36:28Z,9516.31,debit,"Murazik, Crist and Reynolds",car,visa-electron
+Nori Sea Weed,2023-09-12T07:00:13Z,1005.88,credit,West-Klein,entertainment,switch
+Wine - Rosso Del Veronese Igt,2024-07-01T14:59:34Z,85958.48,credit,Bayer-Larson,classes,jcb
+Wine - Shiraz South Eastern,2025-01-30T06:57:34Z,34302.12,credit,"Gorczany, Koch and Brakus",car,bankcard
+English Muffin,2024-10-04T18:43:25Z,61429.12,debit,Bergnaum LLC,clothing,jcb
+Chinese Foods - Chicken Wing,2024-08-27T08:09:44Z,14786.58,credit,Jacobs-Stiedemann,classes,maestro
+Pastry - Chocolate Chip Muffin,2024-07-09T14:19:27Z,61873.85,debit,"Zulauf, Mante and Rau",entertainment,switch
+Sterno - Chafing Dish Fuel,2024-02-01T08:54:39Z,23716.77,debit,McGlynn Group,utilities,jcb
+Papadam,2023-12-14T05:00:05Z,11327.89,credit,Leannon and Sons,entertainment,mastercard
+Pepsi - 600ml,2023-11-08T03:35:11Z,8604.5,credit,Walker-Dickinson,entertainment,americanexpress
+Longos - Grilled Salmon With Bbq,2024-02-07T07:19:52Z,37549.23,credit,Donnelly Inc,classes,mastercard
+"Lemonade - Island Tea, 591 Ml",2023-12-14T10:19:28Z,48053.95,credit,"Bartell, Friesen and Leuschke",groceries,diners-club-us-ca
+Lamb - Shoulder,2024-08-16T20:05:59Z,30667.6,credit,"Rice, Mayert and Bauch",clothing,diners-club-enroute
+Wine - Saint Emilion Calvet,2023-10-15T21:28:31Z,45999.38,credit,Cassin-Jaskolski,groceries,jcb
+"Marjoram - Dried, Rubbed",2024-07-04T14:39:00Z,15559.45,debit,Grady Inc,groceries,maestro
+Soup - French Onion,2025-01-17T04:58:59Z,84693.96,debit,Thiel Group,car,jcb
+Flax Seed,2023-09-01T07:10:45Z,48999.4,debit,"Block, Ward and Kovacek",entertainment,jcb
+"Ecolab - Orange Frc, Cleaner",2024-01-02T05:34:09Z,80215.23,credit,Moore-Stark,groceries,jcb
+"Lemonade - Strawberry, 591 Ml",2024-11-27T04:30:56Z,52584.75,debit,"Hyatt, Kling and Heaney",utilities,jcb
+"Pasta - Gnocchi, Potato",2024-01-05T17:06:49Z,96999.33,credit,Okuneva-Skiles,groceries,diners-club-us-ca
+Basil - Seedlings Cookstown,2024-07-06T17:54:02Z,63325.22,debit,"Osinski, Batz and Bartell",car,jcb
+Beef - Inside Round,2024-08-24T17:46:25Z,36059.49,credit,Mann LLC,groceries,americanexpress
+Lychee,2023-09-13T15:20:55Z,1291.58,debit,"Heaney, Kulas and VonRueden",clothing,jcb
+Chutney Sauce - Mango,2024-05-12T10:44:08Z,65284.15,debit,Stanton and Sons,clothing,jcb
+"Soup - Campbells, Minestrone",2024-12-20T00:14:29Z,4480.23,credit,"Hirthe, Cassin and Breitenberg",clothing,switch
+V8 - Vegetable Cocktail,2024-06-18T16:46:51Z,73906.28,credit,Dickinson Group,utilities,jcb
+"Wine - White, Chardonnay",2025-01-10T14:43:52Z,44111.57,debit,Kris Inc,groceries,jcb
+Turnip - White,2023-09-07T20:42:14Z,7802.37,debit,Vandervort-Kiehn,entertainment,jcb
+"Yogurt - Strawberry, 175 Gr",2024-08-06T12:33:11Z,43581.85,debit,O'Connell Inc,car,mastercard
+Cheese - Roquefort Pappillon,2024-03-12T09:29:31Z,51523.47,debit,"Gusikowski, Bogisich and Keebler",groceries,visa
+"Pasta - Tortellini, Fresh",2023-10-24T04:03:06Z,84905.91,debit,Murazik-Harber,groceries,instapayment
+Mussels - Cultivated,2024-04-25T17:23:43Z,96264.55,credit,Hilll-Ryan,clothing,jcb
+Cheese - Ermite Bleu,2024-07-10T20:54:53Z,81440.62,debit,Casper Inc,utilities,americanexpress
+Shrimp - Black Tiger 13/15,2024-11-24T07:19:36Z,12993.91,debit,"Bahringer, McCullough and Pfannerstill",entertainment,diners-club-carte-blanche
+Salmon Steak - Cohoe 6 Oz,2024-04-21T05:07:13Z,81132.44,debit,"Thiel, Gutkowski and Raynor",clothing,china-unionpay
+Chocolate - Semi Sweet,2024-01-25T07:30:13Z,73773.15,credit,Koelpin-Green,entertainment,jcb
+"Pepper - Black, Whole",2024-12-27T01:03:38Z,31563.82,debit,"Labadie, Cronin and King",car,diners-club-enroute
+Wine - Chateauneuf Du Pape,2024-11-13T14:59:55Z,14718.86,credit,Gottlieb-Bradtke,entertainment,laser
+Bread Crumbs - Japanese Style,2023-11-13T00:44:20Z,12921.36,debit,Anderson-Hartmann,car,bankcard
+Gherkin - Sour,2024-05-06T22:08:26Z,55266.88,debit,Tillman Group,clothing,bankcard
+Coffee Cup 16oz Foam,2023-12-06T11:09:12Z,5624.66,credit,"Predovic, Gerlach and Wolff",entertainment,visa-electron
+Lettuce - Boston Bib - Organic,2024-09-19T16:47:52Z,98695.7,debit,Welch and Sons,entertainment,jcb
+Cookie Choc,2024-05-13T04:02:24Z,84658.01,debit,Bartell-Shields,car,jcb
+Bar Special K,2023-12-06T08:20:40Z,76622.98,debit,Lindgren Inc,car,instapayment
+Chicken - Leg / Back Attach,2024-11-14T06:54:38Z,83535.16,credit,"Wilderman, Jaskolski and Hegmann",groceries,switch
+"Flour - Bran, Red",2023-10-14T16:08:18Z,23572.94,credit,Doyle Group,entertainment,visa
+Slt - Individual Portions,2025-01-23T19:25:11Z,73348.03,credit,"Von, Mann and Sauer",groceries,diners-club-enroute
+"Doilies - 8, Paper",2024-07-29T14:13:19Z,84434.86,credit,Rowe-Swift,clothing,americanexpress
+"Lemonade - Natural, 591 Ml",2024-05-25T22:40:55Z,67026.76,credit,Stark LLC,classes,americanexpress
+Foam Cup 6 Oz,2023-10-07T21:00:52Z,88783.64,debit,Wolf-Cruickshank,classes,mastercard
+Radish,2024-04-30T14:08:20Z,34162.87,credit,Hand-Hoppe,utilities,jcb
+"Juice - Orange, Concentrate",2024-05-14T20:14:12Z,85281.57,credit,"Treutel, Gerhold and Durgan",clothing,china-unionpay
+Garlic - Peeled,2024-02-12T05:05:49Z,38787.21,credit,Dicki and Sons,classes,bankcard
+Crab - Imitation Flakes,2024-12-15T03:35:12Z,30524.25,credit,"Wisoky, Walter and Renner",entertainment,jcb
+Onion Powder,2024-10-26T16:41:52Z,14407.82,debit,"Jerde, Lockman and Gorczany",clothing,jcb
+Cheese Cloth No 60,2024-06-17T04:53:04Z,99221.99,credit,"Wisoky, Schaefer and Nader",groceries,jcb
+Eggplant Oriental,2024-07-25T05:34:15Z,87475.28,debit,O'Kon Group,car,china-unionpay
+"Dill - Primerba, Paste",2024-04-20T17:51:12Z,96529.41,credit,"Bernhard, Torphy and Effertz",groceries,jcb
+Pork - Backfat,2024-06-09T04:13:22Z,45591.5,credit,"Von, Hudson and Leannon",groceries,jcb
+Wine - Chateau Aqueria Tavel,2024-01-06T20:31:50Z,16594.04,debit,Beahan Group,car,jcb
+Beef - Tender Tips,2023-11-21T11:09:46Z,25020.43,credit,Boehm and Sons,classes,jcb
+Bread - Focaccia Quarter,2024-08-20T16:39:29Z,93377.56,credit,"Flatley, Ortiz and Sanford",clothing,jcb
+Chocolate - Mi - Amere Semi,2023-11-23T13:47:01Z,90446.03,credit,Welch-Pagac,utilities,maestro
+Pizza Pizza Dough,2024-07-05T02:07:15Z,13510.75,credit,Erdman Inc,groceries,jcb
+Nut - Pumpkin Seeds,2024-05-05T14:36:14Z,82741.47,debit,"Wintheiser, Botsford and Renner",classes,diners-club-enroute
+Beans - Fine,2023-09-11T09:43:46Z,69920.09,debit,Champlin-Schmeler,car,jcb
+Pepper - Cayenne,2024-10-11T13:33:11Z,63791.51,credit,Watsica Group,entertainment,diners-club-enroute
+Wine - Valpolicella Masi,2024-06-06T20:47:04Z,84584.27,debit,Bashirian-Monahan,groceries,jcb
+"Wine - White, Riesling, Henry Of",2023-11-30T19:11:42Z,11548.36,debit,"Collier, Hauck and Herzog",groceries,jcb
+Wine - Savigny - Les - Beaune,2024-04-23T02:48:56Z,17720.47,credit,Tillman Inc,clothing,switch
+Lettuce - Boston Bib,2024-06-21T19:12:39Z,1411.58,debit,"Hickle, Grimes and Lang",entertainment,maestro
+V8 - Vegetable Cocktail,2024-11-06T23:38:46Z,6976.43,debit,Champlin-Rippin,utilities,diners-club-carte-blanche
+Peas Snow,2024-07-27T21:46:01Z,15174.17,debit,Buckridge Group,clothing,jcb
+Cheese - Feta,2024-03-22T08:44:01Z,59507.97,debit,Thompson-Dare,entertainment,jcb
+Pork Loin Bine - In Frenched,2024-01-28T11:25:07Z,40339.43,credit,Schroeder-Howe,entertainment,jcb
+"Flour - Buckwheat, Dark",2024-10-10T10:00:04Z,66202.74,credit,"Nicolas, Wisoky and Gulgowski",clothing,china-unionpay
+Wine - Clavet Saint Emilion,2023-10-17T11:22:07Z,65803.04,credit,Nitzsche-Kuphal,car,diners-club-carte-blanche
+Sour Puss Sour Apple,2024-08-01T05:01:49Z,64567.24,credit,Labadie-Nader,entertainment,jcb
+Gelatine Powder,2023-10-09T15:50:49Z,91721.99,debit,Langworth-Heller,groceries,jcb
+Ham - Black Forest,2024-03-13T09:18:15Z,53627.74,debit,Langosh-Waelchi,clothing,jcb
+Pork Casing,2024-08-05T08:58:25Z,32953.76,credit,Tromp LLC,classes,switch
+Arizona - Green Tea,2025-01-20T13:58:42Z,83825.98,credit,"Cronin, Stroman and Crona",groceries,mastercard
+Cheese - Swiss Sliced,2024-05-09T22:25:51Z,12408.52,credit,"Goldner, Boyle and Doyle",classes,diners-club-us-ca
+Sansho Powder,2023-11-30T16:29:25Z,49379.25,debit,Thiel Group,classes,jcb
+Pastry - French Mini Assorted,2024-12-11T03:34:59Z,36586.72,debit,Flatley-Predovic,classes,diners-club-enroute
+Creme De Menth - White,2025-01-12T08:03:03Z,64236.08,debit,"Schulist, Jacobs and Padberg",classes,diners-club-carte-blanche
+Sugar - Monocystal / Rock,2024-01-28T08:48:31Z,26328.21,credit,Gislason-Jacobson,entertainment,diners-club-enroute
+Scallops - In Shell,2024-07-23T05:59:21Z,86630.72,credit,"Hickle, Hessel and Mills",utilities,maestro
+Red Pepper Paste,2023-12-24T12:19:15Z,49306.64,credit,Mante Group,clothing,jcb
+Gatorade - Lemon Lime,2024-03-16T02:57:10Z,24597.35,debit,"Beier, Kerluke and Friesen",classes,jcb
+Langers - Ruby Red Grapfruit,2024-07-31T19:29:34Z,61574.3,debit,Walsh LLC,groceries,diners-club-carte-blanche
+Sprouts - China Rose,2023-12-21T11:18:41Z,64762.78,credit,"Ullrich, Hackett and Franecki",entertainment,jcb
+Mushroom - Crimini,2024-08-05T07:59:43Z,42733.52,debit,"Luettgen, Sanford and Fay",clothing,jcb
+Steam Pan Full Lid,2024-10-07T19:01:24Z,67086.29,debit,Lemke-Nader,clothing,china-unionpay
+Muffin Mix - Oatmeal,2023-09-02T07:43:48Z,38572.73,debit,Maggio-Hammes,classes,switch
+Spaghetti Squash,2024-09-24T10:20:43Z,83200.44,credit,Effertz Inc,entertainment,jcb
+Dates,2024-10-04T06:58:27Z,49558.04,credit,Berge and Sons,clothing,visa-electron
+Scallops 60/80 Iqf,2024-02-25T22:01:28Z,10814.85,credit,"Koch, Dach and Murazik",car,bankcard
+Knife Plastic - White,2024-04-21T04:09:57Z,80096.78,debit,Rice Group,classes,jcb
+Spice - Greek 1 Step,2023-11-05T19:40:58Z,92714.67,debit,Kovacek LLC,entertainment,mastercard
+Cookie Double Choco,2024-06-26T19:34:53Z,95255.98,debit,Bernier and Sons,clothing,china-unionpay
+Jicama,2024-09-21T23:14:36Z,23033.12,credit,Hayes LLC,entertainment,maestro
+Danishes - Mini Raspberry,2023-11-18T02:11:38Z,7549.1,debit,Shanahan and Sons,groceries,jcb
+Evaporated Milk - Skim,2024-11-17T22:05:51Z,11409.48,credit,"Schroeder, Hilll and Smitham",clothing,mastercard
+Wine - Barolo Fontanafredda,2024-07-23T21:21:19Z,63844.32,credit,"Hilll, Heaney and Herzog",clothing,mastercard
+"Wine - Red, Colio Cabernet",2023-09-29T15:39:38Z,16399.97,credit,"Schulist, Dach and Wuckert",clothing,switch
+Taro Leaves,2024-06-05T04:25:52Z,37255.98,debit,Donnelly-Kilback,car,china-unionpay
+Lamb - Shanks,2024-01-09T10:13:44Z,55423.81,debit,Glover-Heaney,groceries,switch
+Lamb Rack Frenched Australian,2024-05-11T12:51:56Z,14326.91,debit,Osinski-Deckow,classes,maestro
+Wine - Clavet Saint Emilion,2023-10-12T05:44:57Z,35664.59,credit,"Hessel, Marks and Hudson",utilities,jcb
+Sherry - Dry,2024-06-25T15:36:59Z,62812.96,debit,"Walsh, Welch and Mohr",car,jcb
+"Coke - Diet, 355 Ml",2024-11-16T22:04:55Z,42508.31,credit,"Beatty, Hoeger and Lakin",entertainment,mastercard
+Vinegar - Champagne,2024-10-25T18:03:09Z,6385.31,debit,Gutmann-Ryan,car,mastercard
+Sobe - Cranberry Grapefruit,2023-09-19T05:02:41Z,48076.74,credit,Cummerata Group,car,jcb
+Icecream - Dstk Strw Chseck,2024-09-12T03:31:00Z,55275.94,debit,Lueilwitz LLC,entertainment,diners-club-enroute
+Cookies - Englishbay Oatmeal,2024-10-02T01:45:38Z,10392.08,credit,Hagenes-Krajcik,utilities,visa-electron
+Coconut Milk - Unsweetened,2024-08-25T10:04:26Z,32294.34,debit,Buckridge LLC,classes,switch
+Cheese - Le Cheve Noir,2023-11-01T16:49:09Z,23657.41,credit,Roberts LLC,car,jcb
+Soup - Campbells Mac N Cheese,2024-10-28T19:50:02Z,26032.54,credit,Cartwright-Witting,clothing,visa
+Juice - Ocean Spray Cranberry,2024-01-07T11:16:12Z,82615.6,credit,O'Conner Group,groceries,diners-club-carte-blanche
+Ocean Spray - Ruby Red,2024-09-06T11:58:25Z,22748.36,debit,McDermott and Sons,utilities,maestro
+Wasabi Paste,2023-12-01T09:57:26Z,83999.08,debit,"Grady, Olson and Ebert",entertainment,mastercard
+Sprouts - Peppercress,2024-07-28T08:19:34Z,19713.62,credit,Medhurst-Kunde,utilities,jcb
+Cherries - Frozen,2024-02-04T07:54:53Z,60179.93,debit,Hauck and Sons,classes,jcb
+Muffin Mix - Oatmeal,2023-12-21T17:03:14Z,7183.64,credit,Langosh-Carroll,car,visa
+Sterno - Chafing Dish Fuel,2025-01-25T14:20:10Z,93180.41,credit,Gusikowski LLC,classes,americanexpress
+Yogurt - French Vanilla,2024-08-29T21:57:30Z,88303.63,credit,Jacobson LLC,groceries,maestro
+Garlic,2024-07-06T16:14:57Z,17888.52,debit,Casper-Effertz,groceries,jcb
+Pepper - Jalapeno,2024-03-05T12:33:14Z,70811.21,credit,"Macejkovic, Orn and Morissette",classes,jcb
+Muffin Hinge Container 6,2024-08-23T18:07:32Z,53161.62,credit,"Schowalter, Russel and Fisher",groceries,jcb
+Transfer Sheets,2025-01-04T04:35:40Z,55520.7,credit,Monahan Inc,clothing,jcb
+"Mushroom - Shitake, Fresh",2024-12-27T05:11:00Z,71960.24,debit,Dare-Sawayn,groceries,maestro
+Beets,2024-12-05T15:28:27Z,55626.43,credit,Collier-Dickinson,groceries,maestro
+Chocolate Eclairs,2024-11-03T17:41:53Z,72417.71,debit,Klocko-Friesen,classes,jcb
+"Chocolate - Semi Sweet, Calets",2024-08-19T16:57:29Z,61238.25,debit,Olson Inc,car,jcb
+Snapple - Mango Maddness,2024-12-08T21:20:15Z,42202.32,debit,"Moen, Renner and Schaefer",clothing,solo
+Bread Base - Goodhearth,2023-11-05T10:16:02Z,62545.1,credit,Yundt-Harber,groceries,instapayment
+Bread - Italian Corn Meal Poly,2024-04-25T19:04:18Z,87656.12,debit,"Stracke, Dickens and Grimes",clothing,jcb
+Shark - Loin,2024-03-08T12:26:19Z,50746.85,debit,Huels Inc,clothing,switch
+Beans - Fava Fresh,2023-11-02T18:26:08Z,77776.53,credit,"Pollich, Aufderhar and Kerluke",clothing,instapayment
+Bagelers - Cinn / Brown,2024-03-14T09:06:28Z,86461.9,credit,"Kling, Jaskolski and Howe",entertainment,jcb
+Pecan Raisin - Tarts,2024-12-21T02:11:35Z,52934.82,debit,"Mohr, Kihn and Torp",entertainment,switch
+Fruit Mix - Light,2024-10-05T08:35:47Z,1305.24,credit,Bergstrom-Vandervort,clothing,jcb
+Pumpkin - Seed,2024-06-06T16:31:01Z,24841.52,credit,Kohler-Jones,groceries,jcb
+Beer - Camerons Cream Ale,2025-01-05T08:22:54Z,36657.19,debit,"Koelpin, Heller and Bernier",entertainment,mastercard
+"Beets - Candy Cane, Organic",2024-03-04T14:48:39Z,98650.45,credit,"Wiza, Tillman and Willms",clothing,jcb
+Beans - Butter Lrg Lima,2024-12-18T02:02:24Z,43651.25,credit,Aufderhar and Sons,classes,americanexpress
+"Pork - Loin, Boneless",2024-06-21T14:02:16Z,95015.11,debit,Emard-Jerde,entertainment,maestro
+Bowl 12 Oz - Showcase 92012,2024-02-15T05:57:29Z,87104.29,credit,Daugherty and Sons,car,americanexpress
+Munchies Honey Sweet Trail Mix,2024-04-25T01:58:20Z,53355.49,debit,Rice-Goyette,clothing,bankcard
+Coffee Cup 16oz Foam,2024-10-10T00:04:10Z,86873.1,debit,Bartell and Sons,classes,jcb
+Foam Tray S2,2024-11-12T07:18:10Z,36808.47,credit,Bayer-Beier,utilities,china-unionpay
+"Sauce - White, Mix",2023-10-25T06:24:43Z,87556.52,debit,"Koss, Wintheiser and Dicki",groceries,jcb
+Juice - Mango,2024-01-01T20:08:40Z,1094.02,debit,"Dach, Yundt and Beier",clothing,mastercard
+Marzipan 50/50,2024-10-24T09:26:03Z,89884.26,debit,Braun LLC,entertainment,visa
+"Clams - Littleneck, Whole",2025-01-01T12:23:10Z,55575.22,debit,Schiller LLC,groceries,maestro
+Lotus Leaves,2024-09-29T04:21:21Z,95333.26,credit,"Deckow, Nicolas and Cremin",clothing,visa
+Squid U5 - Thailand,2023-10-18T06:59:52Z,18233.86,debit,Monahan-Gutmann,utilities,jcb
+Cheese - St. Paulin,2024-11-06T15:47:35Z,75277.29,debit,"Bechtelar, Shields and Ritchie",car,jcb
+Wine - Black Tower Qr,2023-09-30T02:00:06Z,54777.05,credit,"Moen, Schuster and DuBuque",clothing,mastercard
+Ocean Spray - Ruby Red,2024-11-10T09:13:13Z,40051.92,debit,Schinner-Conn,car,visa-electron
+Soupcontfoam16oz 116con,2024-10-14T06:09:43Z,39938.45,debit,"Considine, Lang and Pouros",car,jcb
+Oregano - Fresh,2023-12-31T09:11:02Z,50430.23,credit,Jaskolski-Gleason,utilities,solo
+Cookie Dough - Peanut Butter,2024-11-04T14:04:57Z,38082.59,debit,"King, Baumbach and Tremblay",classes,jcb
+"Wine - Red, Lurton Merlot De",2024-12-22T19:41:42Z,34311.09,debit,Hahn and Sons,entertainment,mastercard
+Bread - White Epi Baguette,2024-10-16T11:38:01Z,90220.58,credit,O'Kon-McGlynn,utilities,maestro
+Capicola - Hot,2024-07-30T11:17:11Z,17546.35,debit,O'Connell-Heller,clothing,jcb
+"Zucchini - Mini, Green",2024-08-15T20:54:29Z,68462.54,debit,Gislason Inc,car,jcb
+Raisin - Golden,2024-12-03T03:52:27Z,20684.03,debit,Hintz-Baumbach,entertainment,diners-club-carte-blanche
+Bagelers - Cinn / Brown Sugar,2024-06-16T10:39:55Z,49866.01,debit,Schuster Group,entertainment,jcb
+"Juice - Apple, 1.36l",2023-12-16T23:26:12Z,108.83,debit,"Morar, Beahan and McGlynn",entertainment,jcb
+Bread - Pita,2024-08-19T01:55:54Z,41072.98,credit,"Lang, Donnelly and Gulgowski",car,laser
+"Wine - White, Concha Y Toro",2024-07-10T09:25:12Z,8558.74,credit,Waters-Wiegand,car,jcb
+Beef - Tenderloin Tails,2024-09-09T14:23:36Z,53297.41,credit,"Prohaska, Larson and Orn",entertainment,jcb
+Taro Leaves,2024-12-07T20:23:38Z,23012.4,debit,Schulist LLC,classes,jcb
+Broccoli - Fresh,2024-10-10T05:33:29Z,9157.22,credit,"Kozey, Bradtke and Bernier",groceries,solo
+"Shrimp, Dried, Small / Lb",2024-08-19T04:59:41Z,98348.51,debit,Koelpin LLC,groceries,visa-electron
+Lettuce - Green Leaf,2024-06-05T00:59:21Z,14582.77,credit,Weissnat-Rath,utilities,bankcard
+"Juice - Apple, 341 Ml",2023-09-25T14:44:38Z,52104.4,credit,Stoltenberg and Sons,car,maestro
+"Chilli Paste, Hot Sambal Oelek",2023-12-04T18:39:55Z,76643.7,debit,Wolff Inc,clothing,jcb
+White Fish - Filets,2024-06-04T14:17:56Z,28370.94,debit,"Bergnaum, Deckow and Lockman",clothing,jcb
+"Juice - Clamato, 341 Ml",2024-02-28T05:53:31Z,58528.02,credit,"Cormier, Jast and Wunsch",utilities,americanexpress
+Puree - Strawberry,2023-09-19T08:03:26Z,38288.09,debit,Runte-Jacobson,groceries,switch
+Crab - Meat,2025-01-25T19:21:02Z,83393.45,debit,Krajcik-Stracke,car,bankcard
+Tarts Assorted,2024-05-15T09:21:21Z,88369.19,debit,"Rau, Hilpert and Borer",clothing,diners-club-enroute
+Cheese Cheddar Processed,2025-01-25T07:18:35Z,89941.7,debit,Russel and Sons,groceries,jcb
+Beer - Upper Canada Light,2023-10-08T14:01:38Z,92241.64,debit,Powlowski-Fahey,groceries,china-unionpay
+Pepper - Gypsy Pepper,2023-09-14T11:13:25Z,13954.64,debit,White and Sons,clothing,instapayment
+Water Chestnut - Canned,2024-07-16T02:40:38Z,71060.19,debit,Torp-Bahringer,car,jcb
+"Pasta - Linguini, Dry",2023-10-06T23:42:41Z,17581.98,debit,Cormier LLC,groceries,jcb
+Mushroom - White Button,2024-07-13T15:21:07Z,70357.03,debit,"Connelly, Rath and Carroll",entertainment,jcb
+Mushroom - Lg - Cello,2024-11-27T04:04:36Z,93370.96,credit,Mertz and Sons,car,mastercard
+"Wine - Red, Pinot Noir, Chateau",2024-11-16T21:46:06Z,87636.37,debit,"Schneider, Cremin and Schneider",car,jcb
+Cookie Dough - Double,2023-09-28T23:24:36Z,52024.01,credit,Gottlieb-Leffler,classes,jcb
+Steam Pan - Half Size Deep,2023-09-16T22:55:28Z,55536.99,debit,"Hegmann, Keebler and Conn",groceries,jcb
+"Bread - Pullman, Sliced",2024-05-11T06:59:50Z,54538.5,credit,Quitzon LLC,classes,mastercard
+Muffin Mix - Carrot,2023-10-19T21:56:05Z,92108.86,debit,Swift LLC,car,jcb
+Chocolate Eclairs,2024-02-05T12:43:27Z,67263.21,credit,Kozey-Stiedemann,clothing,jcb
+"Pork - Back, Short Cut, Boneless",2024-05-07T00:30:15Z,40587.8,debit,Zieme LLC,clothing,jcb
+"Tortillas - Flour, 12",2024-06-18T08:50:15Z,90525.39,credit,"Little, Stamm and Dicki",clothing,jcb
+Wasabi Paste,2023-11-04T19:30:45Z,72313.53,credit,Gerhold and Sons,groceries,visa
+Skirt - 29 Foot,2023-12-27T22:57:15Z,36192.78,credit,Stanton LLC,groceries,diners-club-enroute
+"Pineapple - Canned, Rings",2024-02-21T12:06:39Z,3329.74,debit,Keebler LLC,utilities,mastercard
+Flavouring - Raspberry,2023-10-14T00:26:22Z,67869.77,credit,"Haley, Brekke and Stracke",clothing,jcb
+Soup Campbells Split Pea And Ham,2023-10-18T19:25:43Z,33149.47,debit,"Hyatt, Nienow and Legros",clothing,mastercard
+Chocolate - Semi Sweet,2023-11-26T02:49:28Z,63818.84,credit,Hegmann-Reichert,entertainment,jcb
+Gooseberry,2024-07-19T13:08:08Z,27022.71,credit,Cruickshank LLC,car,laser
+Noodles - Steamed Chow Mein,2024-11-07T20:19:26Z,68209.74,debit,Cormier-Renner,entertainment,switch
+Potatoes - Idaho 80 Count,2024-06-28T04:32:54Z,96125.5,debit,Runolfsson-Buckridge,car,jcb
+Sauce - Ranch Dressing,2023-10-06T02:44:37Z,6998.88,credit,"Gerhold, Stark and Padberg",clothing,mastercard
+Container - Clear 32 Oz,2024-04-21T16:19:51Z,61640.21,credit,"O'Kon, Luettgen and Heidenreich",car,jcb
+Bread - Olive Dinner Roll,2023-12-26T23:31:36Z,70015.22,credit,Walter LLC,groceries,mastercard
+Cake - Mini Potato Pancake,2024-03-30T20:18:36Z,25344.55,debit,Nienow-Kovacek,car,jcb
+Pepper - Sorrano,2024-02-12T00:04:51Z,24864.61,debit,"Gottlieb, Schamberger and Balistreri",groceries,americanexpress
+"Pork - Sausage, Medium",2023-09-12T11:26:31Z,21180.24,credit,O'Hara-Goyette,car,jcb
+"Lemonade - Black Cherry, 591 Ml",2024-12-10T16:06:09Z,33317.46,credit,Wehner-Runolfsdottir,classes,jcb
+Bag - Clear 7 Lb,2025-01-29T20:35:30Z,29305.39,credit,Hilpert-Mills,clothing,instapayment
+Lamb - Sausage Casings,2024-03-28T03:21:47Z,77378.91,credit,Thiel-Fahey,utilities,bankcard
+Curry Paste - Green Masala,2023-10-12T15:47:16Z,58083.68,credit,"Bahringer, Kirlin and White",utilities,switch
+Energy Drink - Redbull 355ml,2024-03-15T12:41:34Z,14121.02,debit,"Stiedemann, McGlynn and Weber",clothing,jcb
+Eggroll,2024-04-24T06:30:18Z,8809.46,credit,Kuhlman-O'Reilly,clothing,diners-club-us-ca
+Oil - Hazelnut,2024-11-29T06:09:57Z,52529.37,credit,"Stark, Purdy and Ernser",entertainment,switch
+Broom - Corn,2024-06-10T17:45:23Z,63726.78,debit,Gleason-Borer,groceries,maestro
+Browning Caramel Glace,2023-10-05T07:52:28Z,3214.55,debit,Hodkiewicz-Towne,groceries,instapayment
+Vinegar - Sherry,2024-11-07T19:24:56Z,3252.85,debit,Littel and Sons,clothing,visa
+Stainless Steel Cleaner Vision,2024-05-22T04:27:13Z,21869.64,debit,Bauch-Bradtke,classes,visa-electron
+Glycerine,2024-07-03T01:54:59Z,45725.87,debit,Pfannerstill Inc,clothing,jcb
+Cabbage - Green,2024-05-06T12:34:37Z,10212.6,credit,Robel-Bauch,entertainment,visa-electron
+Wine - Fume Blanc Fetzer,2024-02-15T20:18:15Z,21682.7,credit,Runolfsdottir and Sons,groceries,jcb
+Lettuce Romaine Chopped,2023-11-23T19:54:19Z,91383.92,credit,Schiller Group,clothing,jcb
+Nantucket Orange Juice,2024-07-16T19:16:33Z,7883.44,debit,Ebert-Feest,clothing,diners-club-enroute
+Cheese - Grie Des Champ,2024-04-28T20:44:17Z,72655.65,credit,Rodriguez-Auer,entertainment,maestro
+Ice Cream Bar - Oreo Cone,2024-03-22T05:30:43Z,6227.15,credit,Nolan-Dooley,classes,jcb
+Wine - Piper Heidsieck Brut,2024-06-10T18:34:33Z,99466.58,credit,Hickle-Mosciski,groceries,jcb
+Sprouts - Alfalfa,2024-11-27T01:54:09Z,35243.53,debit,Romaguera Inc,groceries,jcb
+Oxtail - Cut,2024-10-28T11:45:25Z,73658.7,credit,"Tremblay, Zboncak and Skiles",car,jcb
+Wine - Sauvignon Blanc,2023-09-20T00:51:04Z,24769.72,debit,"Langosh, Grady and Carter",groceries,jcb
+Eggplant Italian,2024-02-05T01:18:57Z,32821.8,credit,Jakubowski and Sons,classes,jcb
+"Soup - Knorr, Country Bean",2024-08-05T22:37:07Z,38253.64,credit,Jenkins-Ondricka,groceries,jcb
+Chevere Logs,2024-09-19T17:18:41Z,83574.05,credit,Harvey Inc,utilities,jcb
+Squeeze Bottle,2023-11-26T12:48:38Z,21069.87,debit,Upton-Padberg,classes,laser
+Beef - Inside Round,2024-10-10T08:16:32Z,30208.13,credit,Lemke-Auer,entertainment,china-unionpay
+Fennel,2023-11-22T13:26:27Z,49270.1,credit,Toy-Wilkinson,clothing,jcb
+Sage - Fresh,2024-01-27T20:28:19Z,7568.09,credit,Hilll LLC,utilities,bankcard
+Chocolate - Chips Compound,2023-10-08T11:28:01Z,97953.1,debit,Bruen-Schultz,car,jcb
+Broom - Angled,2024-05-22T10:09:53Z,20114.32,debit,Aufderhar-Bartoletti,utilities,jcb
+Veal - Eye Of Round,2024-01-23T22:02:35Z,57465.5,credit,Bauch-Mosciski,groceries,switch
+Sardines,2023-11-30T20:56:44Z,4431.23,debit,Krajcik-Leuschke,utilities,jcb
+Swiss Chard,2024-08-14T09:01:53Z,48175.33,debit,Nikolaus and Sons,utilities,jcb
+Mustard - Dijon,2024-05-29T15:17:22Z,51482.5,credit,"Senger, Cruickshank and Tremblay",classes,switch
+Wanton Wrap,2025-01-29T01:52:29Z,61510.73,credit,Padberg-Kiehn,classes,diners-club-enroute
+Wine - Sawmill Creek Autumn,2024-02-05T20:33:39Z,91294.21,debit,"Brekke, Larson and Schroeder",groceries,china-unionpay
+"Lemonade - Mandarin, 591 Ml",2024-11-02T04:44:26Z,7699.7,debit,Harber-Bahringer,car,jcb
+Vaccum Bag 10x13,2024-05-20T23:54:10Z,3507.23,debit,Hermann LLC,classes,jcb
+Kolrabi,2024-03-21T14:02:58Z,54192.02,debit,Lehner LLC,utilities,bankcard
+Coffee Cup 16oz Foam,2024-03-11T22:44:05Z,12283.87,debit,Wolf-Rau,entertainment,jcb
+Pepper - Gypsy Pepper,2024-02-17T07:51:21Z,42320.05,debit,Stiedemann-Lesch,clothing,jcb
+Apple - Custard,2024-07-15T07:34:17Z,3320.66,debit,Kohler Group,clothing,americanexpress
+Ice Cream - Turtles Stick Bar,2025-01-21T02:01:29Z,1185.09,credit,"Abshire, Hoppe and Douglas",groceries,americanexpress
+Ketchup - Tomato,2023-09-10T19:21:09Z,94970.79,credit,Zulauf-Wilderman,utilities,mastercard
+"Wine - White, Gewurtzraminer",2024-10-17T13:52:27Z,93336.72,debit,"Howe, Wisoky and Windler",classes,jcb
+"Crush - Orange, 355ml",2024-07-18T01:34:28Z,39712.12,credit,Ullrich LLC,utilities,maestro
+Ice Cream Bar - Rolo Cone,2024-09-01T08:55:29Z,37370.98,debit,Hammes Group,entertainment,maestro
+Shrimp - Black Tiger 16/20,2024-10-09T05:23:14Z,23676.51,credit,Schimmel-Dicki,utilities,jcb
+Sole - Iqf,2024-01-11T13:23:07Z,32366.67,debit,"Hintz, Jast and Greenfelder",entertainment,china-unionpay
+Langers - Ruby Red Grapfruit,2023-12-21T19:11:25Z,9865.27,debit,Zulauf and Sons,clothing,maestro
+White Fish - Filets,2024-10-28T03:35:58Z,62608.76,debit,Klein LLC,classes,diners-club-enroute
+Flour - Chickpea,2023-12-11T09:01:20Z,38455.73,credit,Mann-Walsh,groceries,visa-electron
+Wine - Merlot Vina Carmen,2024-04-29T19:05:51Z,29810.41,debit,"Kling, Keeling and Batz",utilities,jcb
+Pepsi - 600ml,2025-01-30T00:31:57Z,54291.05,credit,"Spinka, Schuster and Beer",utilities,visa-electron
+Container - Clear 32 Oz,2024-02-13T12:48:36Z,91540.83,credit,"Hegmann, Armstrong and Hayes",clothing,mastercard
+"Tray - Foam, Square 4 - S",2024-08-04T20:17:23Z,63098.6,credit,Goodwin and Sons,groceries,maestro
+Muffin Mix - Banana Nut,2024-12-25T15:59:58Z,50332.23,debit,"Kozey, Ledner and Yundt",utilities,maestro
+Ecolab - Solid Fusion,2024-06-02T01:43:36Z,61845.11,credit,Yost LLC,groceries,mastercard
+Chip - Potato Dill Pickle,2024-05-21T05:51:49Z,37609.31,debit,"Streich, Strosin and Reinger",clothing,jcb
+Quail Eggs - Canned,2024-07-08T18:46:07Z,92723.88,credit,"Hudson, Kihn and Gerlach",entertainment,solo
+Muffin Hinge - 211n,2025-01-24T09:32:48Z,17326.98,debit,"Maggio, Lang and Sipes",groceries,mastercard
+Wine - Clavet Saint Emilion,2024-12-13T12:33:15Z,82707.0,debit,"Leffler, Marks and Gibson",entertainment,mastercard
+Taro Leaves,2024-12-16T21:59:24Z,90111.35,credit,Spinka and Sons,clothing,diners-club-international
+"Cheese - Mozzarella, Shredded",2024-02-28T12:28:05Z,36728.07,debit,Grant-Johnston,classes,visa-electron
+Snapple Lemon Tea,2023-12-05T21:52:48Z,46818.21,credit,Kris Inc,classes,diners-club-carte-blanche
+"Crab - Blue, Frozen",2024-01-31T06:35:31Z,76538.61,credit,Walker LLC,clothing,visa-electron
+"Potatoes - Yukon Gold, 80 Ct",2024-12-06T17:50:51Z,52140.42,credit,"Schiller, Green and Mayert",groceries,visa-electron
+Icecream Cone - Areo Chocolate,2023-09-21T07:23:44Z,59533.66,credit,Borer-Kuhic,entertainment,bankcard
+Extract - Rum,2023-10-27T16:47:19Z,65098.16,debit,"Greenfelder, Quitzon and Sawayn",utilities,bankcard
+"Turkey - Breast, Smoked",2024-06-06T09:53:32Z,73029.31,debit,Hermiston LLC,classes,solo
+Bread - Calabrese Baguette,2024-07-26T11:14:34Z,38061.52,debit,"Spinka, Labadie and Hane",classes,maestro
+Cornish Hen,2024-02-04T19:56:42Z,89338.36,credit,Senger-Nitzsche,entertainment,jcb
+Aromat Spice / Seasoning,2024-06-14T02:10:12Z,44014.49,credit,Gutkowski-Dooley,entertainment,mastercard
+Dried Cherries,2024-03-11T18:39:33Z,79330.25,debit,Jaskolski LLC,groceries,diners-club-us-ca
+Tomatoes Tear Drop Yellow,2025-01-13T04:00:17Z,5890.1,debit,Harris-Lubowitz,entertainment,jcb
+Squash - Acorn,2024-06-16T22:11:22Z,74745.28,credit,"Casper, Jast and Gutmann",utilities,mastercard
+Sambuca - Opal Nera,2024-04-22T00:11:39Z,9494.92,credit,Marks LLC,entertainment,diners-club-international
+Beer - Moosehead,2024-04-01T20:51:23Z,62180.79,credit,Legros-Corwin,car,jcb
+Lettuce - Belgian Endive,2024-09-14T10:13:48Z,68820.56,credit,Nolan-Rolfson,clothing,laser
+Napkin - Beverage 1 Ply,2024-10-28T02:17:29Z,25171.58,credit,Balistreri-Brown,groceries,china-unionpay
+Melon - Watermelon Yellow,2024-06-30T21:39:47Z,56403.32,credit,"McLaughlin, Metz and Quigley",classes,jcb
+"Tart Shells - Savory, 4",2025-01-24T01:36:15Z,35474.97,debit,Kessler-Von,entertainment,jcb
+"Corn - Cream, Canned",2024-03-28T05:15:04Z,62923.61,debit,Simonis-Powlowski,clothing,jcb
+Ice Cream - Chocolate,2024-07-27T22:08:44Z,52436.37,credit,Bogan and Sons,clothing,mastercard
+Beer - Corona,2023-09-18T08:00:41Z,87295.47,debit,Hane LLC,clothing,jcb
+Cake Slab,2024-10-02T09:38:04Z,49171.01,debit,Pollich Group,classes,jcb
+Honey - Lavender,2024-08-04T19:10:52Z,71746.54,credit,Streich LLC,utilities,jcb
+Fond - Neutral,2024-07-21T02:04:05Z,84288.38,credit,Kerluke-Altenwerth,car,diners-club-enroute
+Yogurt - French Vanilla,2023-11-13T17:28:55Z,90451.6,credit,Hartmann-Schroeder,entertainment,jcb
+Appetizer - Smoked Salmon / Dill,2025-01-27T11:46:19Z,74653.28,credit,Bashirian Group,car,jcb
+"Veal - Insides, Grains",2025-01-21T09:04:01Z,92888.6,debit,Cormier and Sons,classes,solo
+Arctic Char - Fillets,2023-11-22T21:00:15Z,87771.8,debit,Schinner-Krajcik,classes,jcb
+Scallops 60/80 Iqf,2024-08-30T12:18:44Z,63983.72,debit,Kertzmann-Braun,clothing,jcb
+Haggis,2024-12-07T20:44:10Z,27585.08,credit,Schaden and Sons,groceries,americanexpress
+Jello - Assorted,2024-12-18T04:28:10Z,61933.34,credit,"Kerluke, Muller and Romaguera",classes,switch
+Cauliflower,2024-09-01T17:03:34Z,55117.95,debit,Crist-Mueller,clothing,china-unionpay
+Beef - Top Butt Aaa,2024-09-13T15:30:36Z,17222.85,debit,"Nienow, Kshlerin and Cormier",classes,switch
+Pastry - Banana Muffin - Mini,2023-12-02T00:28:15Z,53500.27,credit,Lang Inc,utilities,jcb
+"Wine - White, French Cross",2024-04-18T00:59:32Z,35779.45,credit,Hammes-Schaden,classes,jcb
+Nantucket Cranberry Juice,2024-04-14T08:47:07Z,59516.51,debit,Mayert-Romaguera,clothing,jcb
+Curry Paste - Madras,2024-02-16T10:28:46Z,51669.34,debit,Witting LLC,clothing,bankcard
+Nougat - Paste / Cream,2024-06-30T08:48:52Z,96529.13,credit,Koch Group,entertainment,maestro
+Red Pepper Paste,2023-09-04T13:44:59Z,91954.37,debit,Jerde-McDermott,entertainment,maestro
+Blueberries,2024-03-23T10:27:39Z,90120.27,debit,Satterfield Group,car,jcb
+Potatoes - Parissienne,2023-11-17T16:40:49Z,2375.87,debit,McClure Inc,classes,jcb
+Pastry - French Mini Assorted,2024-06-17T18:13:17Z,59567.86,credit,"Schultz, Sauer and Marks",entertainment,jcb
+Oil - Olive Bertolli,2024-03-08T08:53:59Z,67805.92,credit,O'Connell-Mraz,groceries,jcb
+"Veal - Chops, Split, Frenched",2024-04-08T19:46:19Z,35558.53,debit,Halvorson Inc,groceries,switch
+Island Oasis - Magarita Mix,2023-09-18T08:21:09Z,56469.43,debit,Koepp Group,groceries,jcb
+Bread - Granary Small Pull,2024-09-29T15:02:24Z,38965.53,debit,Monahan Group,groceries,jcb
+Cream - 10%,2024-12-08T20:58:43Z,15874.18,debit,"Kuhic, Homenick and Purdy",entertainment,mastercard
+Squeeze Bottle,2024-08-25T10:19:14Z,44283.04,debit,Kutch-Feil,utilities,switch
+"Onions - Dried, Chopped",2024-11-08T06:20:33Z,21039.64,credit,Jerde Group,clothing,diners-club-enroute
+Potatoes - Mini White 3 Oz,2025-01-22T04:50:33Z,8859.96,debit,Williamson LLC,classes,diners-club-enroute
+"Vermouth - White, Cinzano",2024-12-27T13:40:27Z,73927.65,credit,"Flatley, Pouros and White",clothing,mastercard
+Juice - Happy Planet,2025-01-06T05:53:37Z,35789.71,debit,"Schuster, Roob and Haley",utilities,diners-club-enroute
+Kale - Red,2024-12-08T04:22:23Z,42299.98,credit,Schulist-Walter,car,jcb
+Roe - Flying Fish,2024-11-05T02:32:13Z,89690.16,debit,Lebsack-Hintz,utilities,jcb
+Plate Foam Laminated 9in Blk,2023-11-25T01:22:00Z,88767.28,debit,"King, Auer and Zieme",entertainment,jcb
+Wine - Chenin Blanc K.w.v.,2024-10-18T07:07:30Z,99028.47,debit,Krajcik LLC,utilities,jcb
+"Mushroom - Chanterelle, Dry",2024-04-03T13:24:40Z,19289.69,credit,Schaefer-Little,clothing,jcb
+Dried Peach,2023-12-10T11:14:24Z,88800.01,credit,Jacobs and Sons,clothing,jcb
+Wine - Vovray Sec Domaine Huet,2024-06-23T07:29:07Z,97474.87,credit,Lynch-Gleason,groceries,diners-club-enroute
+Macaroons - Homestyle Two Bit,2023-12-10T21:15:33Z,15017.76,debit,Kozey-Pfeffer,entertainment,jcb
+Fork - Plastic,2024-08-12T15:22:29Z,56666.78,debit,"Haley, Moore and Buckridge",utilities,jcb
+Bacon Strip Precooked,2025-01-24T11:08:58Z,39960.05,debit,"Hamill, Ryan and Gusikowski",groceries,jcb
+Tea - Decaf 1 Cup,2023-10-23T23:59:05Z,99634.32,debit,"White, Steuber and Walter",clothing,china-unionpay
+Wine - Fume Blanc Fetzer,2024-12-19T17:41:39Z,29707.98,debit,"Feest, Klein and Schuster",clothing,jcb
+Scotch - Queen Anne,2024-01-16T12:46:04Z,34770.53,debit,"Schmidt, Schaefer and Upton",utilities,diners-club-carte-blanche
+Pastry - Butterscotch Baked,2023-12-03T16:38:50Z,7255.28,credit,Ondricka-Langosh,utilities,china-unionpay
+"Bread - Dark Rye, Loaf",2024-05-01T20:32:44Z,63348.05,debit,Cormier Inc,clothing,jcb
+Cake - Lemon Chiffon,2024-08-18T03:10:14Z,61080.95,debit,"Wuckert, Bins and Ward",entertainment,visa-electron
+Cod - Black Whole Fillet,2024-08-03T18:24:43Z,3505.02,credit,Nader and Sons,car,switch
+Flour - Teff,2024-11-09T18:12:55Z,90192.47,debit,"Leuschke, Kassulke and Trantow",clothing,diners-club-enroute
+Swordfish Loin Portions,2024-01-14T17:57:17Z,93972.89,debit,Ryan and Sons,car,jcb
+Soup - Cream Of Broccoli,2024-11-02T09:05:44Z,65427.47,credit,Hessel LLC,clothing,visa-electron
+Sambuca - Ramazzotti,2024-04-27T21:32:53Z,60143.99,credit,"Cummings, Lubowitz and Dietrich",clothing,jcb
+"Nut - Walnut, Pieces",2024-07-23T07:36:45Z,89724.36,credit,Rippin and Sons,groceries,americanexpress
+Juice - V8 Splash,2024-06-20T05:00:27Z,90386.01,credit,Ferry-Wiza,groceries,switch
+Bonito Flakes - Toku Katsuo,2024-12-30T00:29:31Z,31158.0,credit,Muller and Sons,entertainment,laser
+Filter - Coffee,2024-05-06T18:04:25Z,6512.11,debit,D'Amore and Sons,utilities,americanexpress
+Fuji Apples,2024-11-14T09:41:47Z,43975.51,credit,Kling and Sons,car,solo
+Appetiser - Bought,2023-09-12T16:17:37Z,13392.26,credit,Grant-Moore,clothing,jcb
+Chocolate Bar - Coffee Crisp,2024-08-24T13:19:51Z,2933.64,credit,"Renner, Cartwright and Pollich",groceries,china-unionpay
+Cornflakes,2023-11-09T02:34:21Z,24514.97,credit,Langosh-Kerluke,utilities,jcb
+Pork - Liver,2023-09-18T01:53:45Z,90730.96,credit,"Orn, Ward and Leannon",classes,mastercard
+Table Cloth 72x144 White,2024-12-22T10:50:46Z,68537.2,debit,"Haag, Torp and Hills",classes,bankcard
+"Veal - Leg, Provimi - 50 Lb Max",2024-12-12T22:15:37Z,29786.15,debit,Yost-Stroman,clothing,diners-club-enroute
+Pate Pans Yellow,2024-10-06T12:27:48Z,41603.42,debit,"Larson, Hodkiewicz and Haley",entertainment,jcb
+Mushroom - Morel Frozen,2024-04-03T05:20:10Z,24618.39,debit,Hoppe Group,clothing,china-unionpay
+Plasticforkblack,2024-05-21T06:47:47Z,18158.0,credit,"Gottlieb, Sipes and Rosenbaum",entertainment,jcb
+Trout - Smoked,2024-02-19T09:18:47Z,38551.81,credit,"Welch, Mosciski and Rogahn",car,jcb
+Island Oasis - Wildberry,2024-10-12T09:25:02Z,21824.51,credit,Ziemann LLC,entertainment,jcb
+"Juice - Clam, 46 Oz",2023-12-16T04:22:49Z,49281.76,credit,Terry Inc,utilities,jcb
+Nantucket Pine Orangebanana,2025-01-10T02:46:29Z,32452.1,debit,Schultz-McClure,classes,jcb
+Wine - Chablis 2003 Champs,2024-02-16T23:54:53Z,72839.29,credit,"Berge, Gerhold and Erdman",clothing,bankcard
+Veal - Slab Bacon,2024-08-11T11:45:37Z,66029.35,credit,O'Reilly and Sons,classes,bankcard
+"Yeast - Fresh, Fleischman",2024-05-31T04:33:05Z,72042.56,debit,Renner Inc,utilities,jcb
+Oil - Sesame,2024-06-28T02:36:20Z,47912.73,credit,"Hills, Goldner and Effertz",groceries,instapayment
+Spice - Greek 1 Step,2024-10-19T23:05:50Z,98216.37,debit,"Rolfson, Turner and Aufderhar",clothing,jcb
+Wine - Touraine Azay - Le - Rideau,2024-09-19T21:11:05Z,32462.66,credit,"Kilback, Stroman and Huel",groceries,jcb
+Bread - Multigrain Oval,2024-05-07T00:03:18Z,29831.37,credit,Towne-Lakin,car,instapayment
+Wine - Magnotta - Cab Franc,2024-06-30T04:33:46Z,40727.41,debit,McCullough-Kerluke,utilities,jcb

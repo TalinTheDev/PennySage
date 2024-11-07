@@ -125,6 +125,14 @@
         });
       });
   };
+
+  const handleImportTransactions = () => {
+    const config = { headers: { "Content-Type": "multipart/form-data" } };
+    const form = new FormData();
+    form.append("file", document.getElementById("transactionImportFile").files[0]);
+    console.log(document.getElementById("transactionImportFile").files[0]);
+    api.post("/transactions/import", form, config);
+  };
 </script>
 <template>
   <AppLayout>
@@ -241,13 +249,8 @@
         <span class="formHeader">Import Transactions</span>
       </template>
       <template #content>
-        <form
-          method="post"
-          enctype="multipart/form-data"
-          action="http://localhost:3000/api/transactions/import">
-          <input type="file" name="transactionImportFile" />
-          <Button type="submit">Import Transactions</Button>
-        </form>
+        <input type="file" id="transactionImportFile" />
+        <Button @click="handleImportTransactions">Import Transactions</Button>
       </template>
     </Card>
   </AppLayout>

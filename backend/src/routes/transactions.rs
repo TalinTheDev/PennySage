@@ -8,7 +8,7 @@ use axum::{
   Json, Router,
 };
 use chrono::DateTime;
-use futures_util::stream::StreamExt;
+use futures_util::{stream::StreamExt, TryFutureExt};
 use serde::{Deserialize, Serialize};
 use serde_json::json;
 use validator::{Validate, ValidationError};
@@ -372,8 +372,8 @@ pub async fn import_transactions(
 ) {
   while let Some(mut field) = multipart.next_field().await.unwrap() {
     let name = field.name().unwrap().to_string();
-    let data = field.bytes().await.unwrap();
+    let data = field.text().await.unwrap();
 
-    println!("Length of `{}` is {} bytes", name, data.len());
+    println!("File: {} has data {}", name, data);
   }
 }

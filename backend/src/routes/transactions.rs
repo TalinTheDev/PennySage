@@ -1,4 +1,4 @@
-use std::iter::Successors;
+use std::{fmt, iter::Successors};
 
 use super::{ApiError, ApiResponse};
 use crate::{db::gen_id, jwt::AccessTokenClaims, AppState};
@@ -10,7 +10,9 @@ use axum::{
   Json, Router,
 };
 use chrono::DateTime;
+use csv::Reader;
 use futures_util::{stream::StreamExt, TryFutureExt};
+use rust_decimal::Decimal;
 use serde::{Deserialize, Serialize};
 use serde_json::json;
 use validator::{Validate, ValidationError};
@@ -22,6 +24,20 @@ pub fn routes() -> Router<AppState> {
     .route("/delete", delete(delete_transactions))
     .route("/edit", patch(edit_transaction))
     .route("/import", post(import_transactions))
+}
+
+#[derive(Debug, Serialize, Deserialize, sqlx::Type)]
+enum TransactionType {
+  Credit,
+  Debit,
+}
+impl fmt::Display for TransactionType {
+  fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+    match self {
+      TransactionType::Credit => write!(f, "credit"),
+      TransactionType::Debit => write!(f, "debit"),
+    }
+  }
 }
 
 #[derive(Deserialize, Validate)]
@@ -367,11 +383,24 @@ pub async fn edit_transaction(
   }
 }
 
+#[derive(Debug, Deserialize)]
+struct ImportedTransaction {
+  description: String,
+  date: String,
+  amount: String,
+  r#type: TransactionType,
+  merchant: String,
+  category: String,
+  payment_source: String,
+}
+
 pub async fn import_transactions(
   State(state): State<crate::AppState>,
   user: AccessTokenClaims,
   mut multipart: Multipart,
 ) -> ApiResponse {
+  let total_transactions;
+  let mut failed_transactions = 0;
   let form_data = multipart.next_field().await;
   match form_data {
     Err(e) => {
@@ -397,7 +426,59 @@ pub async fn import_transactions(
             };
           }
         };
-        println!("File has data {}", data);
+        let mut rdr = Reader::from_reader(data.as_bytes());
+        let mut tx = match state.db_pool.begin().await {
+          Ok(tx) => tx,
+          Err(_) => {
+            return ApiResponse::Failure {
+              status: StatusCode::INTERNAL_SERVER_ERROR,
+              error: ApiError::Simple(
+                "Internal server error while preparing transaction to import transactions"
+                  .to_owned(),
+              ),
+            }
+          }
+        };
+        total_transactions = rdr.records().count();
+        for result in rdr.deserialize() {
+          let transaction: ImportedTransaction = match result {
+            Ok(r) => r,
+            Err(_) => {
+              failed_transactions += 1;
+              continue;
+            }
+          };
+          let transaction_id = match gen_id(crate::db::Tables::Transactions, &state.db_pool).await {
+            Ok(id) => id,
+            Err(e) => return e,
+          };
+          match sqlx::query!("INSERT INTO transactions (id, user_id, description, date, amount, type, merchant, category, payment_source) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);", transaction_id, user.id, transaction.description, transaction.date, transaction.amount, transaction.r#type, transaction.merchant, transaction.category, transaction.payment_source).execute(&mut *tx).await {
+                Ok(_) => continue,
+                Err(_) => {
+                    failed_transactions += 1;
+                    continue;
+                }
+            }
+        }
+        match tx.commit().await {
+          Ok(_) => {
+            return ApiResponse::Success {
+              status: StatusCode::OK,
+              data: Box::new(
+                json!({"message": "Transactions imported successfully", "transaction_count": (total_transactions - failed_transactions)}),
+              ),
+            };
+          }
+          Err(e) => {
+            return ApiResponse::Failure {
+              status: StatusCode::INTERNAL_SERVER_ERROR,
+              error: ApiError::Complex {
+                message: "Internal server error while importing transactions".to_owned(),
+                error: Box::new(e.to_string()),
+              },
+            }
+          }
+        }
       } else {
         return ApiResponse::Failure {
           status: StatusCode::BAD_REQUEST,
@@ -406,10 +487,4 @@ pub async fn import_transactions(
       }
     }
   }
-  return ApiResponse::Success {
-    status: StatusCode::OK,
-    data: Box::new(
-      json!({"message": "Transactions imported successfully", "transaction_count": 0}),
-    ),
-  };
 }

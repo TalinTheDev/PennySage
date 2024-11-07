@@ -136,8 +136,8 @@
       .then((data) => {
         toast.add({
           severity: "info",
-          summary: "Transactions Successfully Imported",
-          detail: `ID: ${data.transaction_count}`,
+          summary: data.message,
+          detail: `Count: ${data.transaction_count}`,
           life: 3000
         });
         router.push({ name: "view" });

@@ -236,6 +236,20 @@
         <Button @click="handleAddTransaction">Add Transaction</Button>
       </template>
     </Card>
+    <Card>
+      <template #header>
+        <span class="formHeader">Import Transactions</span>
+      </template>
+      <template #content>
+        <form
+          method="post"
+          enctype="multipart/form-data"
+          action="http://localhost:3000/api/transactions/import">
+          <input type="file" name="transactionImportFile" />
+          <Button type="submit">Import Transactions</Button>
+        </form>
+      </template>
+    </Card>
   </AppLayout>
 </template>
 <style scoped>

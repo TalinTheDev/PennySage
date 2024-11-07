@@ -1,12 +1,14 @@
 use super::{ApiError, ApiResponse};
 use crate::{db::gen_id, jwt::AccessTokenClaims, AppState};
 use axum::{
+  extract::Multipart,
   extract::State,
   http::StatusCode,
   routing::{delete, get, patch, post},
   Json, Router,
 };
 use chrono::DateTime;
+use futures_util::stream::StreamExt;
 use serde::{Deserialize, Serialize};
 use serde_json::json;
 use validator::{Validate, ValidationError};
@@ -17,6 +19,7 @@ pub fn routes() -> Router<AppState> {
     .route("/all", get(get_transactions))
     .route("/delete", delete(delete_transactions))
     .route("/edit", patch(edit_transaction))
+    .route("/import", post(import_transactions))
 }
 
 #[derive(Deserialize, Validate)]
@@ -310,7 +313,6 @@ pub struct EditReq {
   edits: Vec<EditField>,
 }
 
-#[axum::debug_handler]
 pub async fn edit_transaction(
   State(state): State<crate::AppState>,
   user: AccessTokenClaims,
@@ -360,5 +362,18 @@ pub async fn edit_transaction(
   ApiResponse::Success {
     status: StatusCode::OK,
     data: Box::new("Transaction edited successfully"),
+  }
+}
+
+pub async fn import_transactions(
+  State(state): State<crate::AppState>,
+  user: AccessTokenClaims,
+  mut multipart: Multipart,
+) {
+  while let Some(mut field) = multipart.next_field().await.unwrap() {
+    let name = field.name().unwrap().to_string();
+    let data = field.bytes().await.unwrap();
+
+    println!("Length of `{}` is {} bytes", name, data.len());
   }
 }

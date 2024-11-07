@@ -57,12 +57,14 @@ export const useApiStore = defineStore("useApiStore", () => {
         !user.checkLoggedIn ||
         error.response.status !== 401
       ) {
+        console.log("not refreshing token");
         return Promise.reject(error.response.data);
       }
       return new Promise((resolve, reject) => {
         refreshApiInstance
           .post("/auth/refresh_tokens")
           .then(({ data }) => {
+            console.log("refreshed token");
             user.login(data.user_details, data.access_token);
             let request = error.config;
             api.value

@@ -61,7 +61,7 @@ pub async fn gen_refresh_token(
   connection: sqlx::Pool<sqlx::Sqlite>,
 ) -> Result<String, ApiResponse> {
   let now = Local::now();
-  let expiration = match now.checked_add_signed(Duration::minutes(5)) {
+  let expiration = match now.checked_add_signed(Duration::days(7)) {
     Some(time) => time.format("%s").to_string(),
     None => now.format("%s").to_string(),
   };

@@ -1,3 +1,5 @@
+use std::iter::Successors;
+
 use super::{ApiError, ApiResponse};
 use crate::{db::gen_id, jwt::AccessTokenClaims, AppState};
 use axum::{
@@ -369,11 +371,45 @@ pub async fn import_transactions(
   State(state): State<crate::AppState>,
   user: AccessTokenClaims,
   mut multipart: Multipart,
-) {
-  while let Some(mut field) = multipart.next_field().await.unwrap() {
-    let name = field.name().unwrap().to_string();
-    let data = field.text().await.unwrap();
-
-    println!("File: {} has data {}", name, data);
+) -> ApiResponse {
+  let form_data = multipart.next_field().await;
+  match form_data {
+    Err(e) => {
+      return ApiResponse::Failure {
+        status: StatusCode::INTERNAL_SERVER_ERROR,
+        error: ApiError::Complex {
+          message: String::from("Error while reading form data"),
+          error: Box::new(e.body_text()),
+        },
+      };
+    }
+    Ok(field) => {
+      if let Some(file) = field {
+        let data = match file.text().await {
+          Ok(data) => data,
+          Err(e) => {
+            return ApiResponse::Failure {
+              status: StatusCode::INTERNAL_SERVER_ERROR,
+              error: ApiError::Complex {
+                message: String::from("Error while reading file"),
+                error: Box::new(e.body_text()),
+              },
+            };
+          }
+        };
+        println!("File has data {}", data);
+      } else {
+        return ApiResponse::Failure {
+          status: StatusCode::BAD_REQUEST,
+          error: ApiError::Simple("No file provided".to_owned()),
+        };
+      }
+    }
   }
+  return ApiResponse::Success {
+    status: StatusCode::OK,
+    data: Box::new(
+      json!({"message": "Transactions imported successfully", "transaction_count": 0}),
+    ),
+  };
 }

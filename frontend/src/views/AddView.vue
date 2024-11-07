@@ -131,7 +131,25 @@
     const form = new FormData();
     form.append("file", document.getElementById("transactionImportFile").files[0]);
     console.log(document.getElementById("transactionImportFile").files[0]);
-    api.post("/transactions/import", form, config);
+    api
+      .post("/transactions/import", form, config)
+      .then((data) => {
+        toast.add({
+          severity: "info",
+          summary: "Transactions Successfully Imported",
+          detail: `ID: ${data.transaction_count}`,
+          life: 3000
+        });
+        router.push({ name: "view" });
+      })
+      .catch((error) => {
+        toast.add({
+          severity: "error",
+          summary: "Error importing transaction",
+          detail: error.message,
+          life: 3000
+        });
+      });
   };
 </script>
 <template>

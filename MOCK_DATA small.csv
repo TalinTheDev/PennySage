@@ -1,6 +1,6 @@
-description,date,amount,transaction_type,merchant,category,payment_source
-Ham - Procutinni,2007-01-21T06:12:28Z,$0.51,debit,Centizu,classes,mastercard
-Horseradish Root,2040-11-22T02:44:41Z,$9.44,debit,Tekfly,car,maestro
-Wine - Piper Heidsieck Brut,2049-02-24T10:18:44Z,$7.46,debit,Thoughtstorm,classes,jcb
-Beef - Short Loin,2044-02-24T03:31:19Z,$4.79,credit,Camimbo,car,jcb
-"Bread - Rolls, Rye",2019-09-29T09:29:52Z,$7.09,credit,Babbleblab,entertainment,instapayment
+description,date,amount,type,merchant,category,payment_source
+Ham - Procutinni,2007-01-21T06:12:28Z,0.51,debit,Centizu,classes,mastercard
+Horseradish Root,2040-11-22T02:44:41Z,9.44,debit,Tekfly,car,maestro
+Wine - Piper Heidsieck Brut,2049-02-24T10:18:44Z,7.46,debit,Thoughtstorm,classes,jcb
+Beef - Short Loin,2044-02-24T03:31:19Z,4.79,credit,Camimbo,car,jcb
+"Bread - Rolls, Rye",2019-09-29T09:29:52Z,7.09,credit,Babbleblab,entertainment,instapayment

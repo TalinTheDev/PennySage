@@ -1,1001 +1,1001 @@
-description,date,amount,transaction_type,merchant,category,payment_source
-Wiberg Cure,2020-08-31T14:39:43Z,$0.25,debit,Quinu,classes,jcb
-"Bag - Bread, White, Plain",2040-03-24T16:39:20Z,$3.33,credit,Divanoodle,utilities,diners-club-carte-blanche
-Pate Pans Yellow,2047-03-22T15:25:58Z,$6.30,credit,Realpoint,groceries,maestro
-"Corn - Cream, Canned",2004-01-01T03:49:44Z,$9.64,credit,Skalith,entertainment,mastercard
-Tea - Honey Green Tea,2005-03-04T14:37:23Z,$6.23,credit,Skyndu,groceries,jcb
-Red Pepper Paste,2003-07-16T02:30:53Z,$4.60,credit,Skalith,car,jcb
-Banana - Leaves,2041-05-10T04:22:24Z,$5.74,debit,Wikizz,car,maestro
-Chips - Miss Vickies,2044-04-12T10:10:10Z,$6.80,credit,Meetz,car,laser
-"Rosemary - Primerba, Paste",2012-06-07T00:46:38Z,$7.67,credit,Kaymbo,entertainment,jcb
-Fennel,2024-10-14T12:11:17Z,$2.96,credit,Quire,groceries,jcb
-"Cherries - Maraschino,jar",2041-06-18T21:02:41Z,$8.26,debit,Browsedrive,classes,jcb
-Flour - Bread,2043-04-16T01:56:12Z,$0.13,debit,Wordware,groceries,visa-electron
-"Beef - Tenderlion, Center Cut",2033-05-17T23:46:18Z,$9.56,credit,Mynte,entertainment,jcb
-Gatorade - Orange,2021-12-29T23:10:35Z,$8.52,credit,Blogpad,classes,mastercard
-Knife Plastic - White,2045-06-11T15:27:24Z,$4.87,debit,Thoughtworks,car,mastercard
-Sping Loaded Cup Dispenser,2027-09-16T03:05:59Z,$0.89,debit,Voolith,entertainment,jcb
-Tea - Camomele,2009-01-07T21:03:03Z,$5.72,credit,Aibox,utilities,jcb
-Creme De Cacao White,2041-05-29T02:49:35Z,$1.35,credit,Agimba,clothing,visa-electron
-Banana - Leaves,2050-08-21T07:42:00Z,$5.42,credit,Zoomcast,medical,jcb
-"Nestea - Ice Tea, Diet",2011-03-23T03:45:13Z,$0.34,debit,Avamm,medical,jcb
-Pur Source,2032-01-29T22:50:37Z,$4.86,credit,Tagpad,car,diners-club-enroute
-Lettuce - Arugula,2028-05-09T21:27:18Z,$8.09,debit,Pixonyx,utilities,instapayment
-Limes,2037-10-05T08:45:39Z,$8.04,credit,Minyx,medical,bankcard
-The Pop Shoppe - Black Cherry,2010-03-20T14:30:47Z,$2.91,credit,Skiba,utilities,mastercard
-"Croissant, Raw - Mini",2026-08-24T07:09:37Z,$0.80,credit,Flashset,entertainment,jcb
-Mushroom - Morel Frozen,2043-12-11T12:05:28Z,$4.50,credit,Einti,medical,china-unionpay
-Water - Aquafina Vitamin,2032-10-22T22:19:30Z,$3.24,debit,Skivee,clothing,bankcard
-"Crab - Claws, Snow 16 - 24",2045-05-19T02:54:17Z,$7.84,credit,Dabfeed,home,jcb
-Beef - Top Sirloin,2050-02-02T05:13:41Z,$6.53,credit,Twiyo,classes,visa
-"Mushroom - Chantrelle, Fresh",2045-03-07T12:42:41Z,$3.31,credit,Jabbertype,car,instapayment
-"Jam - Blackberry, 20 Ml Jar",2019-02-06T05:53:45Z,$9.84,debit,Pixonyx,utilities,switch
-"Mushroom - Enoki, Dry",2032-10-26T21:11:57Z,$9.71,credit,Dablist,entertainment,jcb
-"Sparkling Wine - Rose, Freixenet",2011-05-05T21:42:13Z,$4.47,credit,Realblab,classes,mastercard
-Pickles - Gherkins,2039-12-17T12:33:01Z,$9.03,debit,BlogXS,entertainment,bankcard
-Table Cloth 91x91 Colour,2014-02-01T02:57:09Z,$9.75,credit,Kwinu,car,jcb
-"Sauce - Apple, Unsweetened",2023-01-22T15:44:27Z,$0.41,credit,Wikibox,entertainment,mastercard
-"Lemonade - Strawberry, 591 Ml",2027-12-17T10:32:01Z,$9.99,credit,Oyondu,clothing,instapayment
-General Purpose Trigger,2046-06-19T06:05:26Z,$6.67,debit,Yakijo,utilities,diners-club-us-ca
-"Croissant, Raw - Mini",2023-01-07T21:22:58Z,$3.01,credit,Tavu,medical,mastercard
-Chicken Breast Wing On,2000-10-14T15:53:48Z,$2.60,credit,Voonix,groceries,jcb
-Pork Casing,2042-06-08T07:22:53Z,$1.82,debit,Minyx,car,jcb
-"Wine - White, Colubia Cresh",2008-08-12T18:25:12Z,$9.56,debit,Gabtune,medical,china-unionpay
-Beer - Muskoka Cream Ale,2049-04-15T13:07:57Z,$0.72,debit,Gabvine,clothing,solo
-"Lentils - Red, Dry",2039-02-22T12:53:52Z,$2.75,debit,Zooveo,groceries,americanexpress
-White Baguette,2017-03-23T12:04:47Z,$4.55,debit,Rhynyx,groceries,jcb
-"Doilies - 5, Paper",2033-08-30T23:40:34Z,$5.70,credit,Blogtags,utilities,jcb
-Cookie Dough - Double,2037-11-08T14:37:50Z,$3.11,debit,Pixope,home,jcb
-Cheese - Marble,2036-05-22T06:47:42Z,$4.29,debit,Leenti,utilities,china-unionpay
-Tea - Decaf Lipton,2019-06-20T18:46:41Z,$5.79,debit,Tagpad,entertainment,jcb
-"Appetizer - Spring Roll, Veg",2048-06-07T01:50:23Z,$5.00,credit,Twitterworks,clothing,jcb
-Chutney Sauce - Mango,2049-09-29T16:09:19Z,$8.86,credit,Divape,utilities,diners-club-carte-blanche
-Drambuie,2020-12-16T01:16:47Z,$7.16,debit,Dabvine,entertainment,americanexpress
-Milk Powder,2021-10-25T13:43:54Z,$2.27,debit,Edgeify,medical,jcb
-Island Oasis - Raspberry,2000-03-21T20:09:48Z,$7.97,debit,Jaxspan,clothing,instapayment
-Cheese - Valancey,2023-09-02T17:06:17Z,$3.70,credit,Mynte,medical,switch
-Vector Energy Bar,2011-04-22T12:29:02Z,$9.28,credit,Yodo,entertainment,jcb
-"Mushroom - Shitake, Fresh",2032-10-16T16:40:53Z,$3.14,debit,Gigaclub,groceries,instapayment
-Wine - Chablis J Moreau Et Fils,2029-01-16T17:47:55Z,$4.78,debit,Gabtune,car,jcb
-Cape Capensis - Fillet,2019-09-22T01:10:42Z,$5.88,credit,Trudeo,medical,jcb
-Onions - Red Pearl,2026-11-02T01:18:53Z,$7.90,credit,Twitterlist,groceries,mastercard
-Drambuie,2002-07-11T23:29:04Z,$3.08,credit,Riffpath,entertainment,americanexpress
-Kellogs Special K Cereal,2017-02-05T11:42:20Z,$2.53,credit,Ozu,utilities,jcb
-"Tea - Darjeeling, Azzura",2008-09-04T18:06:18Z,$8.73,credit,Kwideo,home,jcb
-Chicken - White Meat With Tender,2001-03-05T00:49:11Z,$8.84,credit,Dazzlesphere,classes,diners-club-us-ca
-Jack Daniels,2049-12-25T23:47:04Z,$9.81,debit,Skippad,home,diners-club-international
-Lettuce - Lolla Rosa,2003-09-12T09:15:03Z,$8.36,debit,Mybuzz,home,visa-electron
-Soup - Base Broth Beef,2033-07-10T08:46:10Z,$4.31,debit,Livefish,classes,bankcard
-Plaintain,2035-01-10T04:14:20Z,$5.29,credit,Mycat,home,jcb
-"Ham - Smoked, Bone - In",2035-04-12T02:21:51Z,$5.79,credit,Devify,car,jcb
-"Doilies - 12, Paper",2022-08-16T23:37:58Z,$7.71,debit,Gabcube,car,diners-club-us-ca
-Wine - Sawmill Creek Autumn,2007-05-10T15:39:59Z,$6.12,credit,Realblab,utilities,laser
-Sandwich Wrap,2035-05-14T20:44:03Z,$6.37,credit,Abatz,clothing,jcb
-Cleaner - Comet,2031-01-05T02:44:32Z,$2.18,debit,Jatri,home,instapayment
-Cabbage - Green,2023-12-25T19:31:24Z,$1.54,credit,Yakidoo,clothing,jcb
-"Napkin - Beverge, White 2 - Ply",2012-11-19T03:10:09Z,$8.68,credit,Youtags,car,maestro
-Creme De Cacao White,2023-02-13T08:22:19Z,$6.97,credit,Twitterbeat,medical,mastercard
-Soup - Boston Clam Chowder,2040-10-27T18:02:59Z,$6.48,debit,Cogidoo,classes,mastercard
-Lettuce - Curly Endive,2019-05-07T00:08:11Z,$5.29,credit,Oyoloo,classes,diners-club-us-ca
-"Wine - White, Chardonnay",2036-09-11T01:12:19Z,$3.24,credit,Tagfeed,clothing,jcb
-"Napkin - Beverge, White 2 - Ply",2023-03-28T14:49:05Z,$8.67,credit,Camimbo,car,switch
-Napkin White - Starched,2024-07-24T13:23:02Z,$9.63,debit,Jabbercube,medical,jcb
-Clam - Cherrystone,2023-08-05T19:26:48Z,$8.73,debit,Wordtune,groceries,china-unionpay
-"Pasta - Cappellini, Dry",2002-10-20T19:34:35Z,$9.53,credit,Twitternation,classes,jcb
-Lotus Leaves,2021-09-04T23:02:55Z,$4.91,credit,Youopia,groceries,jcb
-Veal - Bones,2004-07-01T22:14:50Z,$7.92,credit,Twimm,groceries,jcb
-"Pepper - Julienne, Frozen",2016-01-24T23:47:09Z,$7.45,credit,Katz,car,americanexpress
-Brandy - Bar,2008-10-13T06:26:40Z,$7.78,credit,Chatterpoint,entertainment,diners-club-enroute
-"Soup - Knorr, French Onion",2021-09-29T18:47:03Z,$9.68,debit,Omba,entertainment,visa
-"Wine - Red, Harrow Estates, Cab",2003-02-12T23:53:46Z,$6.32,credit,Browsedrive,utilities,diners-club-carte-blanche
-Grenadillo,2035-01-16T21:15:19Z,$7.98,debit,Cogidoo,utilities,jcb
-Tuna - Yellowfin,2041-08-05T00:51:28Z,$7.40,debit,Kanoodle,groceries,mastercard
-Cookie Chocolate Chip With,2011-07-31T01:43:52Z,$2.15,debit,Topdrive,home,diners-club-enroute
-Vinegar - Rice,2019-11-16T08:05:57Z,$4.44,credit,LiveZ,car,americanexpress
-Beef - Striploin,2011-01-13T04:23:17Z,$4.51,debit,Tagcat,clothing,americanexpress
-Lambcasing,2020-04-03T18:27:29Z,$4.87,credit,Yakidoo,car,jcb
-Sugar - Invert,2013-08-12T14:48:33Z,$0.88,credit,Thoughtmix,utilities,diners-club-enroute
-Longos - Penne With Pesto,2045-07-06T15:06:22Z,$3.35,credit,Linktype,car,jcb
-Cookie - Oreo 100x2,2038-01-13T06:11:11Z,$4.62,debit,Voolia,medical,jcb
-Jagermeister,2049-02-11T05:12:19Z,$8.01,debit,Ozu,car,jcb
-"Wine - Red, Cabernet Sauvignon",2018-02-22T11:52:23Z,$8.05,debit,Tagpad,utilities,jcb
-Mushroom - Lg - Cello,2024-03-14T17:42:10Z,$4.66,debit,Topicblab,home,diners-club-us-ca
-Cheese - Marble,2004-03-16T16:48:28Z,$0.58,credit,Yacero,car,visa
-Wine - Cotes Du Rhone Parallele,2030-07-08T03:22:46Z,$9.55,debit,Devcast,car,laser
-Muffin Chocolate Individual Wrap,2019-01-06T20:11:36Z,$3.02,credit,Twitterbeat,entertainment,jcb
-"Fish - Scallops, Cold Smoked",2033-08-23T08:12:53Z,$6.69,debit,Tagchat,medical,jcb
-Iced Tea Concentrate,2013-04-25T00:22:17Z,$6.57,credit,Twitterwire,medical,visa-electron
-Island Oasis - Wildberry,2001-08-26T23:40:01Z,$5.12,credit,Photobug,car,mastercard
-Mace,2027-12-24T06:12:00Z,$3.48,credit,Realcube,clothing,americanexpress
-Bagel - Whole White Sesame,2034-07-28T18:09:00Z,$1.37,debit,Jaxnation,entertainment,laser
-"Shrimp - 16 - 20 Cooked, Peeled",2009-02-20T08:25:21Z,$8.79,debit,Eayo,car,switch
-Bread - French Stick,2011-10-28T06:21:25Z,$5.92,debit,Flipstorm,entertainment,jcb
-Chinese Foods - Cantonese,2047-10-30T08:12:40Z,$8.26,debit,Avamba,home,maestro
-Barramundi,2018-04-10T15:16:54Z,$7.28,debit,Zooveo,medical,china-unionpay
-Pork - Ground,2003-05-16T22:04:55Z,$2.39,credit,Vitz,utilities,jcb
-Coffee Decaf Colombian,2010-01-06T02:10:56Z,$9.19,debit,Twitterbeat,utilities,bankcard
-Wine - Fat Bastard Merlot,2032-04-30T11:31:21Z,$1.98,debit,Flipbug,home,visa-electron
-Coffee - Frthy Coffee Crisp,2012-12-31T10:05:23Z,$6.92,debit,Wordware,home,jcb
-Flour - Whole Wheat,2041-07-14T12:06:53Z,$7.08,credit,Devify,utilities,jcb
-"Trout - Rainbow, Frozen",2032-10-04T18:13:37Z,$6.36,debit,Photofeed,groceries,jcb
-Quail - Jumbo Boneless,2039-02-18T09:03:19Z,$8.39,credit,Plajo,classes,maestro
-Wine - Zinfandel Rosenblum,2009-07-07T06:41:18Z,$1.51,credit,Buzzster,utilities,switch
-Chocolate - Chips Compound,2003-04-05T01:34:52Z,$1.57,credit,Gabtune,groceries,diners-club-us-ca
-Veal - Sweetbread,2017-10-17T09:32:14Z,$8.36,credit,Izio,clothing,jcb
-Wine - Casillero Deldiablo,2015-08-25T15:26:05Z,$3.62,debit,Yozio,home,jcb
-Capon - Whole,2013-10-07T12:33:26Z,$5.11,debit,Ailane,clothing,mastercard
-Milk Powder,2045-09-30T18:27:46Z,$6.01,debit,Tavu,entertainment,mastercard
-Cakes Assorted,2003-11-27T09:09:02Z,$9.10,debit,Cogidoo,groceries,laser
-Glass - Juice Clear 5oz 55005,2014-05-01T11:12:15Z,$1.62,credit,Geba,car,jcb
-"Cod - Salted, Boneless",2011-09-02T21:18:42Z,$2.94,credit,Gabvine,clothing,maestro
-Pork - Bones,2004-02-02T19:58:26Z,$8.55,credit,Mudo,clothing,jcb
-Napkin Colour,2048-05-10T02:25:33Z,$7.07,debit,Youfeed,car,jcb
-Paper Towel Touchless,2029-06-04T07:14:47Z,$4.29,credit,Zooveo,medical,jcb
-Lettuce - Arugula,2001-06-09T17:03:34Z,$0.55,credit,Vitz,clothing,bankcard
-Steamers White,2050-07-22T05:16:04Z,$9.44,credit,Bubblemix,utilities,diners-club-international
-"Tortillas - Flour, 12",2042-12-15T09:39:22Z,$6.67,debit,Blogpad,medical,jcb
-Pork - Backs - Boneless,2033-12-26T17:54:22Z,$0.18,debit,Topicblab,classes,americanexpress
-Shopper Bag - S - 4,2000-07-09T13:08:10Z,$5.43,debit,Yadel,home,mastercard
-Bread - Mini Hamburger Bun,2025-03-05T05:20:58Z,$4.07,credit,Agimba,entertainment,maestro
-Versatainer Nc - 8288,2032-11-08T15:15:50Z,$2.96,debit,Eidel,home,maestro
-"Doilies - 10, Paper",2039-11-26T12:25:07Z,$5.55,credit,Tagfeed,utilities,visa-electron
-Syrup - Monin - Passion Fruit,2034-03-27T23:36:25Z,$0.68,debit,Chatterbridge,classes,jcb
-"Carrots - Mini, Stem On",2000-05-07T07:18:30Z,$6.40,debit,Yadel,home,mastercard
-Cheese - Brick With Onion,2043-04-01T12:11:12Z,$5.92,debit,Kazu,groceries,jcb
-Ecolab - Ster Bac,2023-04-03T13:20:07Z,$2.55,debit,Vinder,classes,americanexpress
-"Lobster - Baby, Boiled",2040-06-02T03:50:46Z,$6.53,debit,Buzzbean,classes,jcb
-Okra,2016-01-08T11:08:43Z,$7.82,credit,Jayo,utilities,laser
-Beets - Pickled,2005-09-18T08:24:34Z,$2.90,debit,Flipstorm,utilities,jcb
-"Jam - Blackberry, 20 Ml Jar",2035-04-11T22:12:50Z,$0.09,credit,Dabvine,groceries,jcb
-Rye Special Old,2043-09-06T03:37:29Z,$3.83,debit,Edgepulse,utilities,americanexpress
-Lettuce - Arugula,2010-09-09T19:29:46Z,$1.99,debit,Mybuzz,medical,jcb
-Dawn Professionl Pot And Pan,2044-01-15T13:42:54Z,$3.75,debit,Mita,groceries,jcb
-Jam - Raspberry,2036-11-24T02:41:24Z,$5.74,debit,Meejo,home,laser
-Beer - Fruli,2018-01-04T03:10:40Z,$9.40,debit,Miboo,groceries,jcb
-"Chicken - Leg, Boneless",2009-08-08T17:01:33Z,$4.30,debit,Voolith,entertainment,jcb
-Magnotta - Bel Paese White,2003-09-20T22:10:47Z,$7.69,credit,Feedbug,car,maestro
-"Soup - French Onion, Dry",2015-04-10T00:44:35Z,$3.53,debit,Voonix,utilities,mastercard
-Beets - Pickled,2050-11-01T17:09:57Z,$7.15,debit,Realcube,groceries,americanexpress
-Pork - Caul Fat,2045-05-29T01:12:33Z,$6.35,debit,Dynabox,utilities,jcb
-"Pork - Loin, Boneless",2022-07-17T00:24:46Z,$4.91,debit,Yakidoo,entertainment,jcb
-Tea - Decaf 1 Cup,2002-10-04T09:06:58Z,$0.07,credit,Blogpad,home,maestro
-Pork - Suckling Pig,2033-05-10T02:33:25Z,$5.86,debit,Chatterpoint,entertainment,mastercard
-Mcguinness - Blue Curacao,2008-09-25T22:40:08Z,$3.14,credit,Avaveo,car,jcb
-Sour Puss Sour Apple,2026-06-05T07:01:00Z,$6.84,debit,Shufflester,groceries,jcb
-Cheese Cheddar Processed,2009-09-02T07:11:38Z,$5.52,debit,Cogilith,home,diners-club-enroute
-Foil Wrap,2019-09-10T13:54:54Z,$5.38,credit,Eare,home,diners-club-enroute
-Papadam,2024-10-07T20:52:00Z,$9.89,debit,Dabvine,clothing,visa
-Bread - Sour Batard,2043-06-29T13:42:23Z,$1.00,debit,Twinder,groceries,mastercard
-Sauce - Fish 25 Ozf Bottle,2022-09-20T12:05:56Z,$7.11,debit,Zazio,home,visa-electron
-"Shrimp - 16/20, Iqf, Shell On",2022-10-11T23:04:16Z,$6.79,debit,Feedmix,utilities,mastercard
-"Wine - Red, Pinot Noir, Chateau",2035-03-01T13:41:54Z,$3.97,credit,Aimbo,classes,visa-electron
-Water - Aquafina Vitamin,2049-03-31T21:27:50Z,$3.42,debit,Shufflebeat,utilities,americanexpress
-Tart - Pecan Butter Squares,2050-09-21T11:37:44Z,$2.67,debit,Cogibox,clothing,jcb
-Tuna - Bluefin,2026-03-09T14:05:33Z,$0.03,credit,Realmix,groceries,china-unionpay
-Cod - Black Whole Fillet,2003-12-01T23:29:55Z,$4.42,credit,Divape,clothing,jcb
-Coffee - Hazelnut Cream,2011-08-01T21:32:30Z,$4.89,credit,Brightdog,clothing,switch
-Wine - Toasted Head,2016-10-11T11:55:15Z,$0.07,credit,Layo,utilities,jcb
-Wine - Manischewitz Concord,2030-07-03T06:20:23Z,$4.31,debit,Fanoodle,car,jcb
-Bar Mix - Lemon,2049-10-05T14:18:22Z,$8.99,debit,Browsetype,clothing,jcb
-"Soup - Knorr, French Onion",2048-11-02T08:36:49Z,$7.65,credit,Wordtune,clothing,switch
-Onions - Vidalia,2024-03-08T17:00:45Z,$0.53,debit,Twitterworks,clothing,switch
-Knife Plastic - White,2020-04-23T23:49:01Z,$1.94,debit,Kwilith,clothing,mastercard
-Yogurt - Assorted Pack,2035-05-13T14:37:41Z,$7.62,debit,Kwilith,classes,mastercard
-"Pasta - Linguini, Dry",2021-03-01T00:13:09Z,$7.19,debit,Gigabox,car,jcb
-Aspic - Light,2047-05-18T00:11:01Z,$6.54,credit,Skiptube,medical,switch
-Lettuce - Arugula,2035-11-17T10:46:47Z,$5.14,debit,Blogpad,home,switch
-"Leeks - Baby, White",2015-02-14T09:22:54Z,$9.95,debit,Eabox,entertainment,jcb
-Carbonated Water - Cherry,2005-04-03T16:21:34Z,$9.19,credit,Riffpedia,clothing,jcb
-Bread Ww Cluster,2027-11-04T19:35:56Z,$1.84,debit,Brightdog,car,mastercard
-Whmis Spray Bottle Graduated,2050-04-27T09:57:30Z,$6.54,debit,Jabbersphere,clothing,mastercard
-Rabbit - Whole,2028-01-13T15:28:50Z,$1.86,debit,Plajo,groceries,bankcard
-Parasol Pick Stir Stick,2018-01-13T00:21:47Z,$7.73,credit,Blogtag,groceries,mastercard
-Poppy Seed,2035-02-20T05:34:47Z,$5.30,debit,Feedfish,home,instapayment
-Turnip - Wax,2047-03-16T10:59:13Z,$2.49,debit,Browsecat,classes,jcb
-Cake - Bande Of Fruit,2002-09-25T11:38:59Z,$9.87,debit,Bubblemix,home,jcb
-Truffle Shells - Semi - Sweet,2050-12-15T23:23:10Z,$7.96,credit,Jaxspan,home,jcb
-Soup - Campbells Tomato Ravioli,2025-01-15T08:31:38Z,$0.91,credit,Pixope,classes,switch
-"Juice - Clamato, 341 Ml",2004-12-10T14:21:53Z,$4.23,credit,Youtags,medical,diners-club-carte-blanche
-Soup - Campbells Beef Stew,2026-12-29T04:41:00Z,$6.25,credit,Gevee,classes,mastercard
-Breakfast Quesadillas,2035-05-05T23:13:22Z,$5.70,credit,Quimm,medical,jcb
-Squid Ink,2005-07-24T01:52:29Z,$2.74,credit,Dynazzy,home,diners-club-enroute
-Eggplant - Baby,2016-05-16T15:39:31Z,$1.75,debit,Photobug,car,maestro
-"Bread - Rolls, Corn",2035-10-14T23:19:07Z,$2.62,debit,Jayo,car,switch
-Juice - Lime,2008-08-29T15:07:22Z,$3.28,debit,InnoZ,entertainment,jcb
-Sauce - Roasted Red Pepper,2014-11-19T09:18:08Z,$9.11,credit,Zoonder,groceries,jcb
-"Basil - Primerba, Paste",2002-03-09T21:12:37Z,$6.34,debit,Skynoodle,classes,visa-electron
-Trout Rainbow Whole,2008-01-30T02:56:28Z,$6.71,credit,Reallinks,utilities,jcb
-Cornish Hen,2008-07-02T10:50:27Z,$3.27,debit,Jabbersphere,clothing,mastercard
-"Juice - Apple, 1.36l",2047-06-20T01:04:44Z,$7.12,credit,Jazzy,entertainment,diners-club-carte-blanche
-Grouper - Fresh,2035-10-14T13:24:03Z,$0.96,debit,Dabjam,groceries,jcb
-Beer - Camerons Cream Ale,2009-10-24T03:56:39Z,$3.29,credit,Brainlounge,utilities,jcb
-Salami - Genova,2035-01-22T15:09:31Z,$4.68,credit,Zoomzone,clothing,laser
-Ginger - Crystalized,2024-12-05T13:40:15Z,$9.22,credit,Leenti,groceries,jcb
-Vinegar - Tarragon,2012-03-04T04:48:00Z,$6.30,debit,Flashset,groceries,bankcard
-Turkey - Ground. Lean,2027-02-17T08:08:52Z,$2.85,debit,Skyba,utilities,jcb
-Lobster - Live,2047-01-22T11:29:46Z,$1.83,debit,Quatz,medical,mastercard
-"Pasta - Gnocchi, Potato",2005-08-07T22:40:38Z,$4.62,credit,Roodel,utilities,jcb
-Sugar - Individual Portions,2004-06-21T05:18:58Z,$6.32,debit,Kimia,utilities,visa
-Broccoli - Fresh,2011-02-16T17:18:16Z,$3.53,credit,Tagfeed,groceries,diners-club-carte-blanche
-Pastry - Key Limepoppy Seed Tea,2034-07-16T19:32:53Z,$4.42,debit,Zoomzone,car,jcb
-"Bread - Pita, Mini",2024-01-08T02:20:17Z,$9.62,credit,Twitterbeat,clothing,jcb
-Praline Paste,2000-06-10T10:00:43Z,$1.05,credit,Jabbertype,utilities,jcb
-Bread Sour Rolls,2008-09-05T13:10:15Z,$5.94,credit,Livepath,classes,bankcard
-Milk 2% 500 Ml,2026-12-15T23:42:20Z,$5.96,debit,Realcube,utilities,instapayment
-Chocolate - Mi - Amere Semi,2001-07-28T09:35:34Z,$1.58,debit,Skipstorm,home,jcb
-Vinegar - Rice,2005-01-29T01:09:39Z,$5.11,credit,Oozz,clothing,maestro
-Bagelers,2049-06-15T09:48:15Z,$0.93,credit,Realcube,groceries,visa-electron
-Glass Clear 7 Oz Xl,2021-08-19T17:25:51Z,$9.56,credit,Topicware,utilities,maestro
-Chicken - Whole Roasting,2004-03-20T02:48:56Z,$8.52,credit,Blognation,clothing,diners-club-enroute
-Oil - Olive,2042-12-16T07:08:30Z,$3.10,credit,Flashspan,medical,jcb
-Dooleys Toffee,2037-08-21T02:47:14Z,$2.26,debit,Photolist,utilities,diners-club-enroute
-Steam Pan - Half Size Deep,2024-09-15T01:46:09Z,$3.53,debit,Tazzy,clothing,mastercard
-Bread - Granary Small Pull,2002-08-02T11:08:23Z,$6.20,debit,Zooveo,entertainment,diners-club-carte-blanche
-Pork - Bones,2009-02-28T18:51:29Z,$6.62,debit,Pixoboo,classes,bankcard
-Napkin White,2040-07-27T17:08:08Z,$8.43,debit,Eayo,clothing,americanexpress
-"Asparagus - White, Fresh",2039-04-02T04:35:09Z,$7.87,debit,Zooveo,entertainment,jcb
-Drambuie,2034-02-20T01:11:42Z,$5.25,debit,Trudoo,entertainment,jcb
-Veal - Kidney,2035-08-17T16:20:30Z,$5.11,debit,Yozio,groceries,visa-electron
-Gatorade - Xfactor Berry,2030-10-15T11:54:04Z,$8.78,debit,Browsedrive,utilities,americanexpress
-Sauce Bbq Smokey,2049-11-11T06:29:58Z,$5.87,credit,Browsezoom,medical,jcb
-Beer - Rickards Red,2045-06-15T02:42:52Z,$0.67,credit,Bubblebox,medical,mastercard
-Orange - Tangerine,2010-03-31T03:32:21Z,$2.86,debit,Flipbug,classes,china-unionpay
-Veal - Inside,2029-01-21T10:15:11Z,$1.81,credit,Youbridge,groceries,maestro
-Kiwi Gold Zespri,2027-05-07T08:17:15Z,$2.92,credit,Wikivu,car,americanexpress
-Squid - Tubes / Tenticles 10/20,2050-11-24T01:52:37Z,$7.34,debit,Rhybox,home,visa-electron
-Papadam,2013-04-07T08:56:35Z,$2.28,debit,Blogpad,entertainment,bankcard
-Fond - Chocolate,2013-01-13T16:49:56Z,$3.93,debit,Reallinks,classes,jcb
-Carrots - Jumbo,2035-01-27T12:19:38Z,$0.77,debit,Kazio,car,mastercard
-Eggplant - Baby,2042-03-08T20:42:22Z,$4.07,credit,Tazz,car,diners-club-enroute
-Turkey - Ground. Lean,2038-09-18T02:08:58Z,$4.38,credit,Voomm,utilities,switch
-Yukon Jack,2036-11-24T14:59:41Z,$0.03,debit,Tambee,entertainment,jcb
-Turkey Tenderloin Frozen,2047-07-10T17:21:22Z,$9.15,debit,Vidoo,car,jcb
-"Artichoke - Hearts, Canned",2049-08-06T13:29:17Z,$4.07,debit,Kamba,classes,laser
-Carrots - Mini Red Organic,2019-01-10T21:14:26Z,$5.39,credit,Skyble,home,bankcard
-Breakfast Quesadillas,2005-05-11T23:43:29Z,$8.80,credit,Cogilith,home,jcb
-Muffin - Mix - Creme Brule 15l,2035-11-20T20:30:16Z,$3.77,debit,Mybuzz,groceries,diners-club-us-ca
-"Beef - Bones, Marrow",2048-01-08T00:31:55Z,$7.57,debit,Dabtype,home,bankcard
-Glass - Juice Clear 5oz 55005,2048-05-21T16:19:24Z,$5.77,debit,Photofeed,utilities,jcb
-Pail With Metal Handle 16l White,2001-04-06T13:44:10Z,$4.07,debit,Brainlounge,utilities,jcb
-Pepper - Yellow Bell,2027-09-17T04:21:26Z,$4.57,debit,JumpXS,clothing,jcb
-Vinegar - Red Wine,2026-07-11T06:38:23Z,$6.51,debit,Linktype,clothing,mastercard
-"Brocolinni - Gaylan, Chinese",2012-01-30T15:52:59Z,$0.91,debit,Yakitri,utilities,jcb
-Grenadillo,2028-04-24T07:21:05Z,$4.99,credit,Izio,groceries,jcb
-Tea - Mint,2026-05-13T20:27:15Z,$9.09,debit,Meemm,classes,visa-electron
-"Liqueur Banana, Ramazzotti",2040-07-12T05:56:14Z,$8.16,debit,Tanoodle,entertainment,maestro
-Flax Seed,2031-03-14T13:56:20Z,$6.49,debit,Jabberstorm,groceries,laser
-"Wine - Red, Harrow Estates, Cab",2031-09-30T16:36:48Z,$0.18,debit,Riffpedia,utilities,jcb
-Melon - Honey Dew,2024-01-24T05:59:04Z,$0.09,credit,Trudoo,medical,mastercard
-"Peas - Pigeon, Dry",2027-04-13T00:38:30Z,$0.87,debit,Dynabox,classes,visa-electron
-Tomato - Green,2029-12-22T22:26:41Z,$4.17,debit,Blogtags,entertainment,jcb
-Peach - Fresh,2002-12-31T11:22:24Z,$3.76,debit,Flipopia,groceries,jcb
-Creme De Banane - Marie,2009-01-24T17:10:56Z,$6.15,debit,Buzzshare,utilities,visa
-Cake - Lemon Chiffon,2029-09-26T03:35:05Z,$6.03,debit,Twitterworks,home,switch
-"Sauce - Bernaise, Mix",2043-08-27T12:22:18Z,$0.83,debit,Wikibox,clothing,jcb
-Meldea Green Tea Liquor,2042-11-28T20:14:27Z,$3.21,debit,Photobug,groceries,china-unionpay
-"Split Peas - Yellow, Dry",2007-11-02T08:33:12Z,$9.75,debit,Skyba,clothing,mastercard
-Pork Ham Prager,2012-07-02T10:25:41Z,$7.52,debit,Brainbox,utilities,visa
-Dome Lid Clear P92008h,2017-02-09T23:41:40Z,$8.02,credit,Tagpad,home,visa
-Lamb Rack - Ontario,2011-04-28T19:37:01Z,$8.65,debit,Skilith,utilities,china-unionpay
-Pear - Prickly,2030-09-13T19:32:13Z,$9.31,credit,Meevee,utilities,jcb
-Tahini Paste,2038-06-15T04:41:13Z,$6.79,credit,Skimia,clothing,jcb
-Green Tea Refresher,2034-11-24T13:46:31Z,$10.00,credit,Thoughtbeat,car,visa-electron
-"Pepper - White, Whole",2043-01-09T05:54:46Z,$0.41,debit,Realbridge,entertainment,visa-electron
-"Napkin - Beverge, White 2 - Ply",2044-06-24T14:11:48Z,$6.19,credit,Brainbox,groceries,diners-club-carte-blanche
-Beets,2008-05-24T12:54:02Z,$0.64,debit,Zooxo,groceries,jcb
-Appetizer - Assorted Box,2017-08-28T20:33:01Z,$7.56,credit,Tagchat,clothing,jcb
-Fork - Plastic,2016-06-23T17:42:15Z,$3.10,debit,Jaxworks,classes,mastercard
-Syrup - Kahlua Chocolate,2015-05-28T15:09:35Z,$6.48,credit,Skilith,medical,instapayment
-Oil - Sunflower,2031-06-04T04:23:40Z,$4.76,debit,Twitterlist,utilities,jcb
-Lobster - Cooked,2030-03-24T04:19:37Z,$7.94,credit,Realpoint,medical,visa
-Apricots - Halves,2019-08-03T20:01:55Z,$9.40,debit,Jayo,entertainment,maestro
-Langers - Mango Nectar,2015-05-06T11:40:56Z,$7.99,debit,Feedspan,classes,solo
-Amarula Cream,2021-01-19T16:02:24Z,$5.09,debit,Topdrive,groceries,jcb
-Pastry - Chocolate Chip Muffin,2045-04-02T10:16:23Z,$4.09,debit,Brainsphere,clothing,diners-club-carte-blanche
-Cheese - Ermite Bleu,2010-08-07T04:05:46Z,$1.53,credit,Yambee,entertainment,diners-club-carte-blanche
-Bacon Strip Precooked,2048-01-19T19:25:45Z,$8.71,debit,Minyx,medical,jcb
-Vinegar - Balsamic,2008-06-06T09:40:08Z,$6.88,credit,Devshare,entertainment,bankcard
-Pastry - Carrot Muffin - Mini,2004-07-05T18:48:05Z,$3.52,debit,Quamba,home,jcb
-Towel Multifold,2014-01-06T00:12:21Z,$6.60,debit,Wordware,classes,jcb
-Maintenance Removal Charge,2039-02-27T15:36:18Z,$7.29,credit,Trilia,medical,jcb
-Steamers White,2050-07-12T18:17:58Z,$3.27,debit,Yozio,medical,jcb
-Muskox - French Rack,2018-12-25T04:21:07Z,$4.17,credit,Brainlounge,medical,diners-club-enroute
-Tuna - Salad Premix,2015-01-08T08:32:24Z,$4.01,credit,Blogtags,car,mastercard
-Beef - Tenderloin,2000-01-15T08:57:11Z,$7.30,debit,Yakijo,entertainment,switch
-Dried Cranberries,2046-07-09T10:57:10Z,$4.68,credit,Vidoo,clothing,jcb
-Pepper - Chilli Seeds Mild,2029-07-13T04:52:34Z,$5.89,credit,Browsedrive,classes,bankcard
-Apple - Fuji,2001-09-15T23:24:23Z,$9.92,credit,Riffpedia,classes,jcb
-Temperature Recording Station,2004-01-17T22:39:30Z,$9.73,debit,Thoughtbeat,home,diners-club-carte-blanche
-Bay Leaf,2019-01-21T06:19:46Z,$5.87,credit,Eabox,clothing,jcb
-Kippers - Smoked,2025-09-12T05:51:46Z,$7.50,credit,Skimia,groceries,switch
-Carbonated Water - Raspberry,2033-08-15T14:44:37Z,$7.44,debit,Blogtags,clothing,laser
-Sausage - Blood Pudding,2015-10-04T11:21:43Z,$4.98,credit,Fatz,classes,maestro
-Lettuce Romaine Chopped,2000-09-17T05:11:42Z,$1.51,credit,Edgeblab,groceries,jcb
-Cheese - Bakers Cream Cheese,2003-10-28T19:19:24Z,$7.44,debit,Abatz,entertainment,jcb
-Mushroom - Lg - Cello,2040-08-14T00:47:33Z,$7.99,credit,Camimbo,classes,bankcard
-Bread - Raisin Walnut Pull,2032-04-28T02:55:08Z,$7.19,credit,Jaxnation,home,jcb
-Soup - Campbells Broccoli,2038-12-01T08:29:32Z,$3.19,debit,Fanoodle,entertainment,mastercard
-Cocoa Powder - Natural,2037-12-12T23:07:19Z,$0.20,debit,Podcat,groceries,jcb
-Versatainer Nc - 888,2020-12-09T21:39:54Z,$7.58,debit,Miboo,home,jcb
-"Pasta - Bauletti, Chicken White",2035-11-17T14:18:05Z,$7.88,credit,Einti,utilities,jcb
-Nut - Macadamia,2000-06-22T19:13:40Z,$2.93,credit,Snaptags,entertainment,jcb
-Sauce Bbq Smokey,2042-03-22T06:52:01Z,$2.31,debit,Jetwire,classes,jcb
-Shallots,2021-01-06T09:57:12Z,$2.35,debit,Jabberstorm,utilities,switch
-Madeira,2037-05-27T17:38:59Z,$0.08,credit,Yodel,entertainment,switch
-"Nut - Almond, Blanched, Whole",2017-11-18T14:13:14Z,$0.39,credit,BlogXS,classes,bankcard
-Truffle Shells - Semi - Sweet,2039-05-04T03:11:27Z,$0.60,debit,Meedoo,entertainment,visa-electron
-Rice Paper,2005-08-26T12:45:22Z,$8.45,credit,LiveZ,medical,jcb
-Island Oasis - Strawberry,2048-02-03T05:29:03Z,$4.40,credit,Yacero,groceries,instapayment
-Pepper - Green Thai,2044-09-25T03:56:10Z,$1.13,debit,Wikivu,clothing,jcb
-Island Oasis - Strawberry,2032-04-08T08:06:38Z,$1.47,credit,Jabbertype,car,visa-electron
-Sobe - Lizard Fuel,2015-12-27T03:11:02Z,$9.29,credit,Teklist,clothing,instapayment
-"Cheese - Cheddar, Mild",2007-01-13T15:38:29Z,$6.75,debit,Kare,clothing,switch
-Dry Ice,2014-12-07T06:55:46Z,$8.16,debit,Photobean,home,jcb
-Wine - Beaujolais Villages,2028-09-19T12:43:08Z,$2.44,debit,Yacero,entertainment,diners-club-carte-blanche
-Wine - Chateau Aqueria Tavel,2048-09-15T00:54:36Z,$7.99,debit,Dabjam,utilities,china-unionpay
-"Cheese - Manchego, Spanish",2007-01-15T01:11:28Z,$8.17,credit,Brainsphere,groceries,jcb
-"Lamb - Racks, Frenched",2037-06-30T11:22:46Z,$0.92,debit,Feedfire,clothing,jcb
-Table Cloth 53x53 White,2045-07-12T09:16:52Z,$4.81,debit,Youbridge,car,jcb
-Tea - Lemon Green Tea,2008-06-23T11:39:50Z,$9.53,credit,Lajo,groceries,switch
-Broom And Brush Rack Black,2009-06-19T15:15:36Z,$8.56,credit,Blognation,entertainment,visa
-"Nut - Pistachio, Shelled",2050-07-31T16:58:45Z,$2.20,credit,Yata,utilities,solo
-Bagel - Everything,2047-01-24T11:08:30Z,$5.34,debit,Oozz,medical,diners-club-us-ca
-Juice - Lime,2019-09-29T17:38:20Z,$7.14,credit,Katz,medical,maestro
-"Wine - Sherry Dry Sack, William",2020-06-02T05:06:38Z,$4.08,credit,Dazzlesphere,home,switch
-Toamtoes 6x7 Select,2003-01-14T11:53:23Z,$0.04,debit,Yacero,classes,visa-electron
-Wine - Stoneliegh Sauvignon,2007-07-04T20:26:01Z,$3.76,debit,Feednation,utilities,jcb
-Tomatoes - Hot House,2000-01-11T13:26:14Z,$4.60,debit,Zoonoodle,groceries,diners-club-enroute
-Ginger - Crystalized,2025-09-17T12:59:52Z,$0.29,debit,Skinte,groceries,china-unionpay
-Bacardi Breezer - Tropical,2036-01-01T09:14:56Z,$2.24,debit,Gabtype,medical,diners-club-carte-blanche
-Soup - Campbells Asian Noodle,2004-12-01T23:00:05Z,$8.11,credit,Kwideo,medical,diners-club-carte-blanche
-Sobe - Orange Carrot,2035-06-06T17:57:24Z,$0.39,credit,Realbridge,home,jcb
-Eggplant - Asian,2045-12-15T23:01:44Z,$8.22,debit,Abata,groceries,switch
-Compound - Strawberry,2006-07-30T06:58:41Z,$7.01,debit,Browsebug,home,switch
-Dill Weed - Dry,2006-06-07T05:30:02Z,$3.16,credit,Dabtype,medical,switch
-Beef - Cow Feet Split,2050-07-24T18:04:12Z,$6.73,debit,Buzzdog,classes,diners-club-enroute
-Calypso - Strawberry Lemonade,2034-11-20T01:34:07Z,$1.69,debit,Yadel,classes,laser
-"Bread - Roll, Canadian Dinner",2050-12-04T23:57:48Z,$9.19,credit,Gabtune,groceries,mastercard
-Tea - Decaf 1 Cup,2016-01-12T17:56:07Z,$2.35,credit,Leenti,classes,jcb
-Wine - Tribal Sauvignon,2044-04-01T13:05:38Z,$2.73,debit,Skinder,medical,china-unionpay
-"Pasta - Gnocchi, Potato",2027-01-17T01:58:37Z,$9.21,debit,Quatz,groceries,jcb
-"Lamb - Whole, Frozen",2044-04-30T19:06:06Z,$7.34,debit,Twinder,medical,jcb
-"Hickory Smoke, Liquid",2000-11-11T07:12:08Z,$9.69,credit,Plambee,classes,jcb
-Wooden Mop Handle,2040-07-04T03:49:19Z,$5.68,credit,Camido,groceries,jcb
-Wine - Rosso Toscano Igt,2025-08-17T10:56:42Z,$1.18,credit,Trupe,clothing,jcb
-Pail For Lid 1537,2001-08-15T04:45:30Z,$0.15,credit,Brainsphere,utilities,diners-club-carte-blanche
-Mackerel Whole Fresh,2043-10-24T11:21:43Z,$8.20,debit,Jabberbean,groceries,visa
-Calypso - Black Cherry Lemonade,2029-07-21T04:30:28Z,$1.53,debit,Twiyo,car,bankcard
-Bar Mix - Lemon,2004-04-06T12:24:41Z,$4.87,credit,Fivebridge,car,switch
-Cheese - Parmigiano Reggiano,2049-02-21T12:35:06Z,$8.93,debit,Wordtune,medical,jcb
-Pea - Snow,2010-10-13T03:26:15Z,$4.64,debit,Photospace,entertainment,visa
-"Chocolate - Pistoles, Lactee, Milk",2043-09-29T07:05:17Z,$7.54,credit,Topicshots,home,jcb
-Wine - Chablis 2003 Champs,2006-01-12T20:39:07Z,$6.28,credit,Agivu,medical,diners-club-us-ca
-"Wine - Red, Lurton Merlot De",2011-12-20T23:04:36Z,$3.11,credit,Feedspan,classes,jcb
-"Chocolate - Pistoles, Lactee, Milk",2025-07-28T23:54:57Z,$6.72,credit,Photolist,clothing,jcb
-Food Colouring - Pink,2039-03-09T22:06:59Z,$3.38,debit,Shuffledrive,clothing,switch
-Squash - Sunburst,2032-04-20T16:12:24Z,$9.37,credit,LiveZ,utilities,visa
-Parasol Pick Stir Stick,2038-02-22T04:02:52Z,$9.38,credit,Blognation,groceries,jcb
-Flour - All Purpose,2022-04-10T15:00:35Z,$8.86,debit,Lazzy,car,jcb
-Mushroom - Portebello,2050-07-09T14:40:45Z,$7.27,credit,Jabbercube,home,jcb
-The Pop Shoppe - Root Beer,2028-11-19T19:26:36Z,$8.83,debit,Zoomdog,groceries,jcb
-"Marjoram - Dried, Rubbed",2010-11-21T06:18:37Z,$7.37,debit,Dynabox,home,mastercard
-Wine - Domaine Boyar Royal,2021-10-20T06:16:24Z,$4.91,credit,Shuffledrive,classes,switch
-Cinnamon - Ground,2009-04-08T18:48:21Z,$5.87,credit,Thoughtmix,groceries,jcb
-Cookies Cereal Nut,2012-04-18T16:41:48Z,$7.33,credit,Topdrive,utilities,maestro
-Table Cloth 62x120 Colour,2045-04-11T22:49:45Z,$2.77,credit,Meejo,classes,jcb
-Coffee - French Vanilla Frothy,2027-01-02T15:33:23Z,$2.07,credit,Yozio,groceries,jcb
-Wine - Blue Nun Qualitatswein,2006-08-16T00:32:42Z,$8.31,debit,Avamba,home,diners-club-enroute
-Momiji Oroshi Chili Sauce,2037-02-11T03:19:55Z,$2.88,credit,Oba,medical,jcb
-Curry Paste - Green Masala,2009-08-29T04:42:25Z,$5.02,credit,Skalith,utilities,mastercard
-Cookie Trail Mix,2001-06-17T04:01:11Z,$1.37,debit,Buzzshare,clothing,jcb
-"Pork - Sausage, Medium",2048-05-28T04:36:17Z,$3.22,credit,Jabbercube,utilities,diners-club-us-ca
-Carbonated Water - White Grape,2025-06-22T14:56:47Z,$8.89,credit,Eare,medical,jcb
-Tea - Mint,2017-09-06T01:30:57Z,$9.49,debit,Babblestorm,medical,maestro
-Wine - Vovray Sec Domaine Huet,2046-04-06T13:47:42Z,$1.11,credit,Yata,groceries,mastercard
-Pork - Suckling Pig,2008-01-09T16:24:51Z,$1.70,credit,Skilith,utilities,mastercard
-Vanilla Beans,2015-02-03T00:39:36Z,$3.03,credit,Wikibox,classes,china-unionpay
-"Soda Water - Club Soda, 355 Ml",2014-10-14T04:35:44Z,$2.96,debit,Zoomlounge,entertainment,mastercard
-Flower - Dish Garden,2033-07-13T09:56:35Z,$9.63,debit,Mydo,utilities,diners-club-international
-Spinach - Packaged,2041-07-28T02:06:59Z,$7.98,debit,Twimm,utilities,jcb
-Soup - Campbellschix Stew,2043-04-04T01:16:10Z,$0.01,credit,Meedoo,medical,jcb
-Duck - Whole,2017-11-21T19:29:02Z,$1.76,debit,Babblestorm,entertainment,jcb
-Shrimp - 31/40,2005-07-04T11:26:53Z,$5.45,credit,Geba,car,jcb
-Beans - Wax,2013-12-12T19:10:14Z,$3.58,debit,Nlounge,entertainment,diners-club-carte-blanche
-Beer - Molson Excel,2004-08-12T09:41:03Z,$3.80,credit,Eabox,entertainment,jcb
-"Beef - Baby, Liver",2046-02-17T23:25:44Z,$4.44,credit,Gigaclub,medical,jcb
-Mayonnaise - Individual Pkg,2040-10-01T20:33:50Z,$9.27,debit,Camimbo,car,jcb
-Trout Rainbow Whole,2034-12-24T23:53:57Z,$6.04,debit,Avamba,entertainment,switch
-Beef - Ox Tongue,2042-08-18T22:28:05Z,$7.72,debit,Photospace,entertainment,jcb
-Syrup - Kahlua Chocolate,2027-02-18T19:44:11Z,$2.54,debit,Yodel,groceries,jcb
-Flour - Fast / Rapid,2031-07-31T12:10:51Z,$7.23,debit,Meemm,car,jcb
-Wiberg Super Cure,2032-05-24T09:55:16Z,$5.97,credit,Blogtag,utilities,visa
-Vaccum Bag 10x13,2016-12-15T00:55:20Z,$0.19,credit,Twinte,utilities,jcb
-Coffee Decaf Colombian,2006-03-22T07:47:34Z,$9.61,credit,Reallinks,entertainment,switch
-Red Cod Fillets - 225g,2043-11-08T00:43:36Z,$4.29,credit,Realpoint,clothing,jcb
-Milk - 2%,2039-01-17T12:00:09Z,$4.16,credit,Zazio,groceries,switch
-Apron,2044-11-06T13:03:34Z,$9.20,credit,Fatz,classes,switch
-"Flour - Buckwheat, Dark",2010-06-09T15:51:00Z,$2.22,credit,Vidoo,utilities,jcb
-Devonshire Cream,2026-08-02T05:48:02Z,$8.87,credit,Vipe,car,jcb
-"Lamb - Loin, Trimmed, Boneless",2009-04-20T12:13:52Z,$4.54,credit,Dynazzy,home,maestro
-Milk - Chocolate 500ml,2048-12-19T12:14:46Z,$8.75,credit,Devify,clothing,diners-club-carte-blanche
-Squid Ink,2002-06-06T19:15:10Z,$2.22,debit,Gabvine,car,mastercard
-Longos - Grilled Chicken With,2048-08-23T12:46:31Z,$8.15,credit,Janyx,utilities,jcb
-Tilapia - Fillets,2049-12-14T13:34:53Z,$9.09,debit,Skimia,medical,jcb
-Ocean Spray - Ruby Red,2033-02-05T19:05:57Z,$1.84,debit,Realblab,utilities,visa
-Appetizer - Southwestern,2006-08-18T11:41:01Z,$0.99,credit,Realpoint,clothing,visa-electron
-"Pork - Loin, Bone - In",2031-01-16T04:14:09Z,$0.94,debit,Browsedrive,groceries,visa-electron
-"Vodka - Hot, Lnferno",2021-11-19T14:00:54Z,$6.90,credit,Blogpad,entertainment,jcb
-"Tart Shells - Sweet, 4",2023-09-04T07:13:31Z,$8.33,debit,Brainverse,groceries,jcb
-Sauce - Chili,2010-12-31T04:01:55Z,$8.41,debit,Wikizz,car,maestro
-Pail For Lid 1537,2031-09-25T04:16:54Z,$6.77,debit,Mydo,classes,laser
-Baking Soda,2028-07-19T18:30:07Z,$6.48,debit,Flipstorm,home,jcb
-Vinegar - Raspberry,2032-04-14T10:57:49Z,$0.97,credit,Zoomdog,medical,jcb
-Mousse - Banana Chocolate,2015-09-11T14:57:26Z,$3.20,credit,Feedfire,entertainment,diners-club-carte-blanche
-Cheese - Parmesan Cubes,2006-11-05T21:52:51Z,$3.35,debit,Centidel,groceries,jcb
-"Sauce - Apple, Unsweetened",2038-02-09T08:18:00Z,$9.15,debit,Yadel,groceries,jcb
-Squid - U - 10 Thailand,2012-03-10T02:11:57Z,$0.82,credit,Riffwire,utilities,jcb
-Pie Shell - 9,2023-02-16T19:10:20Z,$5.12,debit,Gigabox,groceries,maestro
-Cheese - Valancey,2026-04-03T18:40:09Z,$9.48,credit,Photobug,home,visa-electron
-Juice - Orangina,2028-09-23T16:09:30Z,$4.41,credit,Youbridge,entertainment,jcb
-Beef - Top Butt Aaa,2015-05-27T17:10:00Z,$0.94,debit,Mycat,medical,jcb
-Flower - Commercial Bronze,2046-01-11T07:15:16Z,$9.85,debit,Pixonyx,utilities,switch
-Kellogs Cereal In A Cup,2026-09-04T01:47:34Z,$3.08,debit,Flashspan,classes,jcb
-Butcher Twine 4r,2022-07-12T16:12:44Z,$7.52,debit,Kazu,entertainment,jcb
-Bar - Granola Trail Mix Fruit Nut,2027-08-07T06:55:38Z,$5.72,debit,Zava,home,diners-club-carte-blanche
-Gatorade - Orange,2039-11-28T03:11:56Z,$3.31,debit,Bubblemix,classes,jcb
-Straw - Regular,2018-06-10T09:29:10Z,$7.16,credit,Viva,home,jcb
-Monkfish Fresh - Skin Off,2026-09-11T16:47:09Z,$4.92,debit,Camimbo,medical,jcb
-Island Oasis - Mango Daiquiri,2027-11-08T13:59:59Z,$9.17,credit,Eidel,medical,jcb
-Breadfruit,2024-08-13T15:58:32Z,$8.39,credit,Linkbridge,classes,jcb
-Wine - Prosecco Valdobiaddene,2009-11-05T08:59:10Z,$3.76,debit,Kwinu,classes,jcb
-Port - 74 Brights,2045-01-29T12:27:21Z,$5.04,credit,Yakitri,medical,jcb
-Peppercorns - Green,2049-03-08T14:31:25Z,$3.82,debit,Jayo,classes,bankcard
-Silicone Paper 16.5x24,2005-05-21T11:08:39Z,$3.32,credit,Zoomdog,car,maestro
-Table Cloth 53x53 White,2010-03-25T18:06:43Z,$3.25,debit,Tagopia,medical,mastercard
-Wine - Jafflin Bourgongone,2028-02-15T22:08:10Z,$6.49,credit,Jaxnation,utilities,mastercard
-Water - Spring 1.5lit,2020-11-18T07:16:37Z,$5.50,debit,Edgewire,utilities,maestro
-"Mushroom - Chanterelle, Dry",2011-01-27T12:37:25Z,$8.68,debit,Fiveclub,clothing,americanexpress
-Ham - Procutinni,2035-10-09T00:51:16Z,$9.81,debit,Rooxo,medical,visa
-Nut - Pumpkin Seeds,2041-01-21T05:05:52Z,$2.90,credit,Skynoodle,groceries,jcb
-Beef - Bresaola,2031-11-04T19:36:22Z,$2.81,credit,Skyvu,clothing,jcb
-"Bread - Dark Rye, Loaf",2003-05-11T12:50:32Z,$2.66,debit,Abatz,car,visa
-Tea - Earl Grey,2022-01-13T04:33:44Z,$8.17,credit,Gabtype,groceries,maestro
-Veal - Sweetbread,2034-05-23T01:05:04Z,$9.51,debit,Babblestorm,home,maestro
-Onions - Red,2007-04-06T06:36:18Z,$5.91,credit,Podcat,utilities,americanexpress
-"Beans - Long, Chinese",2037-11-29T06:11:34Z,$7.07,credit,Realbridge,entertainment,jcb
-Milk - Chocolate 500ml,2028-02-13T21:54:35Z,$2.85,credit,Tanoodle,entertainment,jcb
-Onions - Pearl,2038-08-14T16:00:51Z,$9.11,credit,Skilith,groceries,visa-electron
-Potatoes - Peeled,2014-04-13T08:15:40Z,$8.31,credit,Twitterworks,entertainment,jcb
-Lotus Rootlets - Canned,2029-11-20T02:13:13Z,$0.71,debit,Skilith,entertainment,visa-electron
-Meldea Green Tea Liquor,2033-04-02T01:25:08Z,$3.16,credit,Aivee,clothing,jcb
-Beef - Short Ribs,2046-09-22T03:27:49Z,$2.09,debit,Edgeblab,car,china-unionpay
-Seedlings - Clamshell,2038-01-31T08:08:41Z,$4.98,credit,Meemm,home,bankcard
-Oil - Shortening - All - Purpose,2015-01-10T16:42:21Z,$3.42,debit,Realbridge,utilities,china-unionpay
-Spice - Chili Powder Mexican,2024-02-22T22:05:38Z,$9.55,credit,Bubblemix,classes,visa
-Oneshot Automatic Soap System,2000-05-26T07:25:27Z,$0.56,credit,Skipfire,car,jcb
-Bread - Wheat Baguette,2012-12-04T11:39:16Z,$8.39,debit,Eimbee,groceries,jcb
-Pineapple - Regular,2036-01-27T10:19:52Z,$9.80,debit,Wikizz,medical,jcb
-Squash - Sunburst,2001-05-17T20:41:34Z,$0.48,credit,Edgewire,home,instapayment
-Dried Cherries,2023-08-15T01:56:05Z,$8.88,credit,Topdrive,car,china-unionpay
-Tobasco Sauce,2037-07-18T18:55:49Z,$0.61,debit,Skyba,home,americanexpress
-"Lamb - Leg, Diced",2004-11-21T21:21:55Z,$9.79,credit,Feedspan,utilities,jcb
-Bag - Clear 7 Lb,2021-04-02T18:10:14Z,$2.48,credit,Riffpath,clothing,switch
-Steam Pan - Half Size Deep,2035-03-25T10:56:16Z,$0.54,credit,Buzzbean,classes,jcb
-"Napkin - Cocktail,beige 2 - Ply",2002-01-31T17:14:47Z,$9.91,debit,Innojam,medical,jcb
-Tray - 16in Rnd Blk,2018-05-06T13:08:57Z,$7.70,debit,Katz,medical,china-unionpay
-Beef - Top Butt,2001-08-13T06:17:33Z,$1.71,credit,Blognation,car,jcb
-Soup - Campbells,2013-12-09T07:35:32Z,$5.09,debit,Yombu,clothing,mastercard
-Piping - Bags Quizna,2045-06-11T20:50:53Z,$0.82,debit,Livetube,car,bankcard
-"Veal - Tenderloin, Untrimmed",2017-07-11T12:31:33Z,$9.12,debit,Twiyo,medical,maestro
-Cocoa Powder - Dutched,2010-03-06T23:33:35Z,$4.26,credit,Npath,classes,maestro
-Glove - Cutting,2007-02-19T00:56:23Z,$1.36,credit,Midel,entertainment,jcb
-Wine - Gewurztraminer Pierre,2010-10-03T16:13:36Z,$9.96,debit,Quamba,home,americanexpress
-Gelatine Leaves - Bulk,2017-12-26T15:34:16Z,$2.46,debit,Thoughtstorm,utilities,jcb
-Avocado,2033-02-16T05:12:05Z,$8.39,credit,Vidoo,utilities,visa-electron
-Pecan Raisin - Tarts,2024-08-22T20:12:31Z,$2.75,credit,Realmix,clothing,jcb
-Puree - Guava,2031-11-08T04:41:06Z,$3.52,credit,Browsedrive,entertainment,jcb
-Artichokes - Jerusalem,2050-07-27T17:31:42Z,$6.47,credit,Livepath,car,americanexpress
-Muffin Hinge Container 6,2007-03-03T14:53:19Z,$8.67,debit,Shuffletag,medical,jcb
-Pork - European Side Bacon,2022-06-15T08:48:37Z,$3.55,credit,Youspan,utilities,switch
-French Pastry - Mini Chocolate,2010-11-20T03:33:22Z,$1.92,debit,Mydo,utilities,bankcard
-Chick Peas - Canned,2023-02-25T12:31:29Z,$8.23,debit,Topdrive,medical,bankcard
-"Shrimp - 16 - 20 Cooked, Peeled",2004-09-08T15:46:04Z,$1.44,credit,Viva,groceries,diners-club-enroute
-Milk - 2%,2048-03-14T03:26:39Z,$5.80,credit,Yacero,utilities,diners-club-enroute
-Cheese - Victor Et Berthold,2045-01-02T13:46:31Z,$2.01,credit,Jayo,car,mastercard
-Ice Cream - Chocolate,2018-12-05T01:28:55Z,$0.39,debit,Mymm,entertainment,laser
-"Pasta - Bauletti, Chicken White",2000-11-09T00:01:44Z,$2.42,debit,Gigabox,medical,jcb
-Vegetable - Base,2040-02-23T20:46:58Z,$9.86,debit,Zoomzone,entertainment,jcb
-Sage Ground Wiberg,2044-04-19T19:27:07Z,$6.65,credit,Bluezoom,utilities,switch
-"Juice - Clamato, 341 Ml",2030-09-10T02:04:51Z,$9.81,credit,Wikivu,classes,mastercard
-Bread - Hamburger Buns,2037-08-14T05:28:35Z,$2.48,debit,Katz,car,jcb
-"Turkey - Breast, Double",2031-02-06T11:27:39Z,$1.26,credit,Twitterwire,groceries,jcb
-"Ham - Smoked, Bone - In",2013-03-02T18:45:22Z,$3.58,debit,Pixoboo,utilities,laser
-Ecolab Crystal Fusion,2008-11-13T18:46:24Z,$5.25,debit,Skinte,clothing,diners-club-enroute
-Truffle Cups - White Paper,2016-10-26T22:46:12Z,$6.58,debit,Wikivu,utilities,china-unionpay
-Muffin Hinge Container 6,2015-10-10T06:09:58Z,$0.30,debit,Cogilith,car,switch
-"Veal - Leg, Provimi - 50 Lb Max",2017-08-17T00:43:48Z,$8.53,debit,Aivee,clothing,americanexpress
-Beer - Upper Canada Light,2007-04-12T14:02:15Z,$9.90,debit,Jayo,medical,jcb
-Flower - Potmums,2048-10-22T11:14:08Z,$2.27,credit,Twinte,clothing,switch
-Kaffir Lime Leaves,2049-11-20T03:10:25Z,$1.35,debit,Skivee,utilities,jcb
-Lemons,2012-03-21T04:01:42Z,$1.80,debit,Twitterbeat,car,maestro
-Mcgillicuddy Vanilla Schnap,2049-06-22T20:40:30Z,$3.34,credit,Lazzy,utilities,mastercard
-Chips Potato All Dressed - 43g,2015-08-31T04:59:51Z,$2.66,debit,Voolith,utilities,americanexpress
-Longos - Chicken Caeser Salad,2041-01-05T22:40:53Z,$0.11,debit,Trunyx,medical,bankcard
-Buffalo - Tenderloin,2003-05-04T16:26:47Z,$6.06,credit,Gigabox,entertainment,jcb
-Catfish - Fillets,2031-02-09T06:20:14Z,$8.62,debit,Jayo,classes,bankcard
-Corn Meal,2023-05-09T14:28:33Z,$6.79,credit,Edgeclub,home,visa-electron
-"Croissant, Raw - Mini",2017-05-26T00:34:34Z,$0.48,debit,Yadel,utilities,diners-club-carte-blanche
-Cake - Pancake,2027-07-26T01:54:39Z,$10.00,credit,Browsebug,classes,jcb
-Wine - Casablanca Valley,2012-09-11T16:38:44Z,$0.86,debit,Shuffletag,medical,jcb
-Lambcasing,2030-02-26T11:47:25Z,$3.78,debit,Blogtag,home,visa
-Beer - Moosehead,2035-12-23T02:49:58Z,$9.62,credit,Bubbletube,entertainment,jcb
-"Pork - Sausage, Medium",2035-12-23T17:23:09Z,$1.63,debit,Skivee,groceries,maestro
-Star Fruit,2013-08-12T07:34:48Z,$9.98,debit,Skipstorm,clothing,diners-club-enroute
-"Lamb - Whole, Fresh",2024-06-11T05:20:56Z,$6.05,debit,Bluejam,classes,jcb
-"Coffee - Colombian, Portioned",2043-04-29T07:51:37Z,$0.63,credit,Flipbug,classes,jcb
-Lettuce - Sea / Sea Asparagus,2039-06-09T05:17:02Z,$5.26,debit,Avamm,entertainment,mastercard
-"Crab - Claws, Snow 16 - 24",2011-06-09T15:50:46Z,$3.56,debit,Jaxnation,entertainment,china-unionpay
-Lentils - Green Le Puy,2042-02-07T19:21:30Z,$3.63,credit,Jaxbean,classes,jcb
-Pastry - Trippleberry Muffin - Mini,2046-11-08T04:12:17Z,$3.06,credit,Linkbuzz,utilities,laser
-Water - Spring 1.5lit,2046-06-28T19:25:48Z,$0.24,credit,Tagopia,medical,americanexpress
-Veal - Knuckle,2023-01-10T08:05:18Z,$6.07,credit,Oloo,classes,diners-club-enroute
-Veal - Bones,2049-02-18T17:43:57Z,$3.32,debit,Lazz,car,laser
-Bay Leaf Fresh,2005-08-17T00:52:17Z,$6.23,credit,Fliptune,home,maestro
-Soup - Campbells - Chicken Noodle,2030-02-27T00:43:50Z,$1.93,credit,Bubbletube,entertainment,jcb
-Bagel - Everything,2048-11-02T21:30:08Z,$7.63,debit,Quimba,classes,diners-club-international
-Fennel - Seeds,2043-05-15T21:27:09Z,$9.43,debit,Roombo,medical,jcb
-Bread - Triangle White,2044-02-16T14:19:52Z,$0.58,debit,Quaxo,car,switch
-Pie Shells 10,2026-03-31T00:35:11Z,$6.92,debit,Topicblab,entertainment,jcb
-Beer - Steamwhistle,2022-06-27T10:16:03Z,$8.59,credit,Youspan,clothing,china-unionpay
-Salt - Sea,2027-10-18T22:56:52Z,$2.82,credit,Photospace,classes,jcb
-Turkey - Oven Roast Breast,2010-07-23T05:00:35Z,$8.91,debit,Dabvine,medical,americanexpress
-V8 Pet,2046-01-16T06:32:43Z,$6.30,credit,Tambee,utilities,americanexpress
-Cake - Mini Cheesecake,2043-12-25T19:35:28Z,$2.55,debit,Linktype,utilities,jcb
-Carbonated Water - Orange,2020-04-22T15:22:46Z,$6.79,credit,Dynabox,utilities,jcb
-Langers - Ruby Red Grapfruit,2029-03-11T03:46:09Z,$2.08,debit,Yodoo,car,jcb
-Trueblue - Blueberry 12x473ml,2025-12-04T10:21:15Z,$3.05,credit,Feedfish,groceries,jcb
-Cookie Trail Mix,2009-12-24T03:29:08Z,$8.96,credit,Yadel,home,diners-club-us-ca
-Bagel - Whole White Sesame,2037-11-03T00:24:28Z,$8.89,debit,Cogibox,medical,laser
-Mortadella,2007-08-27T14:05:24Z,$8.73,debit,Oyoloo,classes,jcb
-"Wine - Red, Black Opal Shiraz",2038-08-06T14:48:20Z,$3.37,debit,Chatterpoint,utilities,diners-club-us-ca
-Chicken - Whole Fryers,2006-09-26T01:21:46Z,$2.58,debit,Kazio,car,switch
-Cream - 18%,2028-10-21T01:11:24Z,$4.90,debit,Trudoo,utilities,bankcard
-Salt - Celery,2030-12-08T18:43:54Z,$8.54,credit,Edgewire,utilities,mastercard
-Sauce - Caesar Dressing,2010-11-22T23:56:16Z,$5.00,debit,Yadel,clothing,diners-club-enroute
-Puree - Guava,2022-07-11T09:09:33Z,$6.95,debit,Zoozzy,clothing,laser
-"Olives - Black, Pitted",2042-09-25T12:59:54Z,$8.42,debit,Blognation,medical,jcb
-Beans - Green,2022-06-05T18:58:43Z,$1.63,debit,Livetube,groceries,jcb
-Cabbage - Savoy,2018-08-09T02:35:33Z,$4.25,credit,Oyoba,entertainment,switch
-Beets - Golden,2032-08-12T03:07:27Z,$8.60,debit,Miboo,groceries,diners-club-international
-Turnip - Wax,2031-08-20T11:56:44Z,$6.93,credit,Pixoboo,groceries,jcb
-Potatoes - Mini Red,2026-06-06T16:53:16Z,$9.51,credit,Zoomlounge,classes,maestro
-Pur Source,2000-01-30T18:20:27Z,$9.36,debit,Camido,groceries,jcb
-Appetizer - Sausage Rolls,2049-04-11T18:34:47Z,$1.78,debit,Browsetype,home,bankcard
-"Placemat - Scallop, White",2011-01-22T01:07:49Z,$5.51,credit,Realpoint,entertainment,diners-club-us-ca
-"Coconut - Shredded, Unsweet",2050-05-27T17:33:42Z,$8.06,debit,Wikizz,clothing,jcb
-Sardines,2000-04-03T01:55:43Z,$1.79,credit,Skiptube,groceries,maestro
-Tea - Honey Green Tea,2019-04-02T00:20:30Z,$6.49,debit,Digitube,car,visa
-Beef - Texas Style Burger,2023-03-17T03:29:49Z,$3.97,debit,Gabtune,entertainment,jcb
-Nantucket Pine Orangebanana,2003-11-10T09:45:38Z,$0.84,credit,Voolith,car,jcb
-"Turkey - Breast, Bone - In",2000-01-26T08:56:55Z,$3.46,debit,Bluezoom,utilities,mastercard
-Longan,2036-02-22T22:34:07Z,$1.24,debit,Voonyx,classes,mastercard
-Cheese - Provolone,2030-06-23T02:13:33Z,$0.72,debit,Roodel,home,jcb
-"Liqueur Banana, Ramazzotti",2035-08-16T17:14:41Z,$0.98,debit,Shuffledrive,groceries,jcb
-Bread - Multigrain,2033-11-22T12:02:46Z,$7.99,debit,Kamba,clothing,china-unionpay
-"Vinegar - Balsamic, White",2035-01-21T08:29:11Z,$9.33,debit,Rhyloo,classes,mastercard
-Milk - 2%,2018-04-05T13:49:13Z,$5.45,credit,Jabberstorm,clothing,jcb
-Roe - Flying Fish,2038-11-01T19:02:12Z,$1.05,debit,Wikido,car,maestro
-Honey - Lavender,2034-06-27T01:32:56Z,$6.29,credit,Flipstorm,entertainment,china-unionpay
-Cleaner - Comet,2034-02-21T02:27:19Z,$0.89,credit,LiveZ,groceries,jcb
-Lamb - Shanks,2029-02-21T04:44:50Z,$6.75,debit,Dynabox,clothing,diners-club-carte-blanche
-Tobasco Sauce,2049-11-22T17:51:36Z,$5.42,credit,Topicware,medical,jcb
-"Soup - Knorr, Country Bean",2019-10-16T22:29:57Z,$0.87,debit,Kazio,clothing,jcb
-Tobasco Sauce,2040-04-13T03:18:23Z,$1.29,credit,Blogspan,entertainment,laser
-Cheese - Shred Cheddar / Mozza,2038-06-20T23:48:22Z,$1.62,credit,Reallinks,entertainment,jcb
-Coffee - Almond Amaretto,2041-05-25T00:22:32Z,$5.76,credit,Ozu,home,jcb
-Paper - Brown Paper Mini Cups,2036-01-31T18:20:55Z,$2.59,credit,Plajo,home,jcb
-Wine - Black Tower Qr,2035-08-20T02:18:15Z,$3.46,debit,Jaxbean,entertainment,visa-electron
-Carbonated Water - Wildberry,2011-03-06T14:14:17Z,$8.86,debit,Quinu,utilities,jcb
-Longos - Grilled Chicken With,2002-04-16T18:10:41Z,$8.64,debit,Oyondu,clothing,jcb
-Sobe - Cranberry Grapefruit,2007-08-17T12:20:31Z,$7.03,debit,Mycat,entertainment,laser
-Skirt - 29 Foot,2020-11-14T03:01:57Z,$1.78,credit,Devify,groceries,jcb
-Cheese - Taleggio D.o.p.,2008-01-08T04:20:49Z,$4.40,credit,Ainyx,medical,americanexpress
-Lidsoupcont Rp12dn,2015-06-08T06:37:45Z,$3.77,debit,Thoughtstorm,car,jcb
-"Potatoes - Yukon Gold, 80 Ct",2016-11-19T12:28:03Z,$8.32,debit,Eidel,car,jcb
-Trout - Smoked,2023-12-10T10:45:50Z,$1.91,debit,Quaxo,utilities,maestro
-Water - San Pellegrino,2032-12-12T12:00:54Z,$3.57,credit,Kimia,clothing,jcb
-Cup - 4oz Translucent,2038-11-13T06:08:09Z,$1.23,debit,Avaveo,home,jcb
-"Chocolate - Pistoles, Lactee, Milk",2050-02-03T04:01:40Z,$2.04,credit,Jaxnation,utilities,mastercard
-Wine - Chablis 2003 Champs,2032-02-03T16:40:09Z,$6.03,credit,Brainlounge,medical,jcb
-Schnappes Peppermint - Walker,2038-04-03T03:15:19Z,$9.73,debit,Demimbu,entertainment,jcb
-Parsley - Dried,2000-01-14T17:27:20Z,$7.76,debit,Vinte,clothing,diners-club-enroute
-Bagel - Plain,2003-03-20T21:43:40Z,$6.74,credit,Quimm,medical,diners-club-carte-blanche
-Pork - Inside,2045-10-29T06:47:38Z,$5.56,debit,Realcube,medical,jcb
-Octopus,2006-05-08T22:57:16Z,$0.96,credit,Photobug,medical,jcb
-Brandy - Bar,2048-10-23T22:03:21Z,$2.77,debit,Tambee,utilities,jcb
-Jolt Cola,2035-10-18T02:55:44Z,$9.54,credit,Pixonyx,medical,visa-electron
-"Tomatoes - Vine Ripe, Red",2039-09-11T01:01:02Z,$9.07,debit,Zoonoodle,medical,jcb
-Bay Leaf,2042-10-13T10:02:49Z,$9.66,debit,Skidoo,car,maestro
-"Beef - Roasted, Cooked",2030-05-04T04:09:49Z,$4.62,debit,Meezzy,car,americanexpress
-Salt - Celery,2005-08-28T04:18:12Z,$8.59,credit,Gigazoom,clothing,diners-club-enroute
-Sprite - 355 Ml,2043-12-28T12:46:24Z,$3.72,debit,Gigaclub,classes,china-unionpay
-Apple - Fuji,2034-06-22T06:09:49Z,$3.11,credit,Voonyx,groceries,switch
-Capers - Ox Eye Daisy,2011-01-25T19:38:18Z,$5.32,credit,Devify,classes,visa-electron
-"Cheese - Havarti, Roasted Garlic",2029-01-22T08:10:22Z,$1.35,debit,Meezzy,medical,jcb
-Cranberries - Fresh,2037-03-13T10:53:46Z,$1.50,debit,JumpXS,home,jcb
-Chocolate - Unsweetened,2044-07-05T11:39:41Z,$8.33,credit,Dynava,classes,jcb
-Crawfish,2014-03-29T21:45:32Z,$4.02,debit,Gigashots,groceries,china-unionpay
-Ecolab - Hobart Upr Prewash Arm,2017-12-14T07:07:07Z,$3.51,debit,Vimbo,classes,maestro
-V8 Splash Strawberry Kiwi,2025-01-09T05:14:14Z,$8.39,credit,Realmix,medical,jcb
-Beef - Sushi Flat Iron Steak,2006-10-16T23:09:32Z,$0.00,credit,Kwideo,classes,switch
-Pastry - Carrot Muffin - Mini,2024-01-15T09:40:00Z,$9.81,credit,Minyx,car,diners-club-carte-blanche
-Muffin Mix - Chocolate Chip,2003-01-31T14:50:43Z,$2.82,credit,Meezzy,entertainment,maestro
-Tray - 16in Rnd Blk,2044-10-01T02:50:52Z,$4.00,debit,Mynte,groceries,jcb
-Flour - Strong Pizza,2031-08-04T23:52:31Z,$6.95,credit,Skiptube,classes,maestro
-Garbage Bag - Clear,2028-09-07T01:00:39Z,$1.48,credit,Babbleopia,home,jcb
-Pail For Lid 1537,2022-04-17T11:10:51Z,$8.41,credit,Wikibox,home,switch
-The Pop Shoppe - Cream Soda,2031-08-08T05:03:31Z,$9.08,debit,Rhycero,classes,mastercard
-Greens Mustard,2035-03-11T12:24:03Z,$5.25,credit,Lajo,medical,bankcard
-Cheese - Oka,2029-11-27T11:27:42Z,$4.48,credit,Gabvine,utilities,jcb
-Mackerel Whole Fresh,2026-04-22T10:49:20Z,$0.27,credit,Bubblebox,car,jcb
-Apple - Macintosh,2032-09-06T22:32:23Z,$1.31,credit,Brainbox,home,jcb
-Arrowroot,2031-07-22T22:55:28Z,$8.65,credit,Skibox,entertainment,switch
-Plastic Wrap,2037-06-07T14:13:28Z,$3.87,debit,Thoughtstorm,medical,switch
-Lady Fingers,2001-08-19T10:53:27Z,$7.57,credit,Meevee,classes,maestro
-Juice - Cranberry 284ml,2020-02-27T09:10:23Z,$4.24,credit,Brightdog,classes,mastercard
-Wine - Chablis 2003 Champs,2019-02-23T09:49:21Z,$0.47,credit,Yodel,groceries,mastercard
-Tuna - Bluefin,2021-09-13T07:55:48Z,$3.57,debit,Meetz,clothing,solo
-"Potatoes - Yukon Gold, 80 Ct",2022-08-25T10:29:01Z,$0.07,credit,Teklist,medical,diners-club-enroute
-"Bread - Rolls, Rye",2038-06-14T13:13:45Z,$0.14,credit,Photobug,medical,americanexpress
-Scotch - Queen Anne,2048-05-16T07:11:05Z,$1.73,debit,Dabjam,utilities,visa-electron
-Bread Ww Cluster,2040-06-15T15:13:18Z,$9.77,credit,Brightbean,clothing,diners-club-carte-blanche
-"Appetizer - Spring Roll, Veg",2049-11-09T15:02:36Z,$1.77,debit,Talane,classes,americanexpress
-"Tart Shells - Savory, 3",2042-07-22T11:12:05Z,$3.34,credit,Jabberstorm,utilities,jcb
-Trout - Smoked,2006-07-23T18:23:31Z,$8.76,credit,Bubblemix,utilities,visa-electron
-Ecolab - Hand Soap Form Antibac,2050-09-04T20:38:58Z,$3.82,credit,Browsebug,home,visa
-Octopus,2006-11-09T22:55:55Z,$3.38,credit,Dynava,entertainment,jcb
-Steamers White,2028-05-15T15:14:20Z,$5.36,credit,Meeveo,groceries,jcb
-Fudge - Cream Fudge,2017-04-21T13:44:35Z,$3.24,credit,Fivechat,clothing,switch
-Spinach - Baby,2005-07-23T04:17:22Z,$7.92,credit,Feednation,utilities,bankcard
-Cardamon Seed / Pod,2046-04-07T11:09:30Z,$8.73,debit,Centizu,utilities,jcb
-Appetizer - Sausage Rolls,2006-08-28T05:47:16Z,$6.35,debit,Wikivu,home,diners-club-international
-Chicken Thigh - Bone Out,2014-04-20T12:09:37Z,$8.42,credit,Flashspan,classes,jcb
-Cheese - Shred Cheddar / Mozza,2012-08-05T11:37:58Z,$5.39,debit,Meeveo,clothing,visa-electron
-Triple Sec - Mcguinness,2042-04-29T13:01:57Z,$1.47,credit,Dabjam,clothing,jcb
-"Flour - Buckwheat, Dark",2031-12-23T12:18:38Z,$5.69,debit,Mynte,groceries,bankcard
-Eggwhite Frozen,2004-10-18T12:02:38Z,$5.23,credit,Topiczoom,entertainment,china-unionpay
-Sauce - Vodka Blush,2000-03-31T17:12:09Z,$3.05,debit,Rhyzio,medical,mastercard
-Steampan - Half Size Shallow,2011-10-25T12:08:15Z,$1.39,credit,Bubblebox,classes,jcb
-Oyster - In Shell,2009-09-17T15:46:29Z,$0.43,credit,Ailane,medical,jcb
-Oven Mitts - 15 Inch,2036-12-16T20:00:38Z,$7.36,credit,Leenti,clothing,maestro
-"Trout - Rainbow, Fresh",2027-10-11T22:14:04Z,$1.77,credit,Trudeo,car,jcb
-Horseradish Root,2007-09-05T05:55:14Z,$9.42,debit,Photobug,entertainment,visa
-Appetizer - Mango Chevre,2030-09-04T12:15:56Z,$1.48,debit,Bluejam,groceries,china-unionpay
-Muffin - Banana Nut Individual,2012-05-29T21:11:44Z,$4.59,debit,Jaloo,classes,visa-electron
-Parsnip,2007-06-23T07:40:32Z,$0.83,debit,Photobug,clothing,jcb
-Mangoes,2028-08-03T21:36:28Z,$7.96,credit,Thoughtstorm,utilities,jcb
-Tea - Apple Green Tea,2016-12-26T21:38:49Z,$5.13,debit,Oozz,groceries,jcb
-Scallops - 10/20,2014-01-12T21:21:29Z,$8.33,credit,Twitterlist,car,diners-club-us-ca
-"Roe - Lump Fish, Red",2045-12-17T14:46:27Z,$7.44,debit,Feedspan,medical,jcb
-Beer - Camerons Cream Ale,2014-12-08T10:14:25Z,$1.37,debit,Topiclounge,groceries,china-unionpay
-Bread - Raisin Walnut Pull,2002-01-10T18:12:35Z,$3.38,debit,Eare,medical,china-unionpay
-Cumin - Whole,2049-02-26T12:16:41Z,$5.56,credit,Vimbo,classes,jcb
-Crackers - Trio,2046-11-18T08:59:44Z,$6.09,credit,Jayo,entertainment,americanexpress
-"Cherries - Bing, Canned",2016-02-03T07:49:30Z,$7.57,credit,Demizz,groceries,jcb
-Sugar - Icing,2023-11-03T06:59:22Z,$1.80,credit,Ooba,entertainment,jcb
-Cheese - Victor Et Berthold,2011-12-01T04:44:47Z,$9.91,credit,Plajo,entertainment,jcb
-Cabbage Roll,2045-08-21T14:15:23Z,$2.28,credit,Zoonder,classes,jcb
-"Coke - Classic, 355 Ml",2012-07-09T22:09:05Z,$8.70,credit,Lajo,home,diners-club-carte-blanche
-Glycerine,2021-10-26T11:58:54Z,$6.92,credit,Dynabox,classes,jcb
-Beer - Heinekin,2044-09-24T21:44:13Z,$0.67,credit,Photobug,home,mastercard
-"Carrots - Mini, Stem On",2020-09-23T04:31:19Z,$8.69,debit,Agivu,clothing,jcb
-Wine - Chablis 2003 Champs,2045-12-17T02:24:00Z,$1.34,debit,Fivebridge,medical,jcb
-Salad Dressing,2035-12-09T23:00:46Z,$7.83,debit,Roombo,home,jcb
-Instant Coffee,2010-01-05T06:00:15Z,$6.91,credit,Twitternation,medical,jcb
-Carrots - Mini Red Organic,2016-03-27T12:48:24Z,$7.76,debit,Linktype,classes,maestro
-Table Cloth 62x114 White,2048-08-20T15:32:54Z,$8.04,debit,Feedfish,utilities,jcb
-Cookies Almond Hazelnut,2017-04-03T05:23:44Z,$6.09,credit,Voolith,groceries,visa-electron
-Appetizer - Crab And Brie,2046-07-30T04:19:26Z,$1.02,debit,Ozu,classes,diners-club-enroute
-Beer - Steamwhistle,2012-12-24T03:09:46Z,$6.34,debit,Trilia,home,switch
-Flower - Commercial Bronze,2026-11-04T02:46:58Z,$3.02,credit,Kaymbo,utilities,china-unionpay
-Chef Hat 25cm,2016-07-04T06:20:08Z,$3.89,credit,Feednation,utilities,switch
-Cheese - Gouda Smoked,2033-09-29T00:47:00Z,$8.50,debit,Gabtype,classes,visa
-Napkin White - Starched,2003-05-02T02:52:37Z,$3.27,debit,Thoughtblab,groceries,jcb
-Cake - French Pear Tart,2048-05-22T14:22:37Z,$5.15,credit,Kazio,home,mastercard
-V8 - Vegetable Cocktail,2042-07-07T13:08:52Z,$8.21,credit,Twitterwire,medical,jcb
-Roe - Flying Fish,2043-08-05T19:43:04Z,$1.98,debit,Realpoint,groceries,jcb
-"Water - Mineral, Carbonated",2035-11-12T07:21:55Z,$3.16,credit,Avamba,home,maestro
-Bagel - Whole White Sesame,2022-03-20T09:53:37Z,$3.20,debit,Dazzlesphere,home,diners-club-us-ca
-Crab - Imitation Flakes,2024-03-03T11:56:54Z,$1.44,credit,Plambee,medical,mastercard
-Carrots - Mini Red Organic,2006-04-02T14:16:44Z,$5.68,credit,Zoombeat,groceries,switch
-"Soup - Knorr, Country Bean",2031-03-23T12:21:12Z,$3.94,debit,Skimia,entertainment,jcb
-Ice Cream - Super Sandwich,2043-03-12T02:23:21Z,$7.76,credit,Feedfire,home,bankcard
-Uniform Linen Charge,2050-05-27T09:30:21Z,$4.90,credit,Reallinks,home,switch
-Broccoli - Fresh,2042-05-16T08:48:10Z,$7.51,debit,Buzzshare,entertainment,switch
-"Water - Mineral, Natural",2046-05-10T13:45:36Z,$9.03,credit,Topdrive,entertainment,americanexpress
-Sugar - Crumb,2002-11-15T05:12:35Z,$3.64,debit,Linkbuzz,clothing,jcb
-Peach - Halves,2008-01-10T20:18:05Z,$1.69,debit,Midel,medical,americanexpress
-"Chocolate - Pistoles, Lactee, Milk",2028-05-11T11:17:36Z,$8.20,debit,Trudeo,clothing,visa-electron
-Dc - Frozen Momji,2040-11-23T10:16:22Z,$1.74,debit,Zoombeat,clothing,visa-electron
-"Soup - Canadian Pea, Dry Mix",2031-10-05T19:56:29Z,$1.36,credit,Browsezoom,medical,jcb
-Chick Peas - Dried,2015-09-11T01:15:54Z,$4.65,credit,Devpoint,classes,switch
-"Doilies - 12, Paper",2007-07-28T15:03:02Z,$9.06,credit,Geba,classes,americanexpress
-"Mushrooms - Black, Dried",2009-11-05T18:55:56Z,$7.32,credit,Wikibox,medical,diners-club-us-ca
-Rosemary - Dry,2004-10-06T07:23:32Z,$6.70,credit,Jaloo,entertainment,jcb
-Sesame Seed,2049-04-10T00:18:42Z,$4.67,debit,Yodoo,medical,laser
-Wine - Magnotta - Cab Sauv,2031-04-03T12:54:39Z,$5.18,credit,Zooxo,groceries,americanexpress
-"Pepper - Paprika, Spanish",2045-05-31T08:47:00Z,$6.56,credit,Eimbee,classes,jcb
-Chips - Potato Jalapeno,2050-08-08T03:12:52Z,$0.29,debit,Twitterwire,medical,maestro
-Squash - Guords,2044-06-08T07:05:12Z,$4.36,debit,Dabshots,medical,jcb
-Tea - Herbal I Love Lemon,2019-05-08T17:01:48Z,$8.39,credit,Avavee,classes,jcb
-Wine - Jafflin Bourgongone,2044-04-07T09:04:56Z,$2.84,credit,Tanoodle,clothing,bankcard
-Calaloo,2015-07-01T10:01:20Z,$8.27,debit,Gigazoom,car,diners-club-us-ca
-"Wine - White, Gewurtzraminer",2041-02-02T19:21:29Z,$5.86,debit,Avavee,car,jcb
-Jam - Raspberry,2015-08-28T22:34:45Z,$6.69,debit,Riffpedia,clothing,jcb
-"Quail - Eggs, Fresh",2033-01-29T14:37:46Z,$0.82,debit,Riffpath,utilities,diners-club-carte-blanche
-"Chilli Paste, Hot Sambal Oelek",2004-01-01T15:47:50Z,$0.22,debit,Youtags,classes,switch
-"Artichoke - Bottom, Canned",2024-07-07T06:23:57Z,$6.75,debit,Bubblemix,utilities,mastercard
-Spice - Peppercorn Melange,2005-02-12T05:17:56Z,$4.93,credit,Realmix,medical,visa-electron
-Beer - Camerons Auburn,2021-10-16T13:20:59Z,$5.47,credit,Divape,car,maestro
-Smoked Tongue,2038-09-30T11:59:20Z,$1.88,credit,Meeveo,home,jcb
-Muffin Hinge Container 6,2003-03-17T21:02:56Z,$0.44,debit,Oyoloo,clothing,jcb
-Mustard - Individual Pkg,2031-01-14T07:11:12Z,$6.89,credit,Yakijo,car,mastercard
-"Juice - Pineapple, 341 Ml",2027-11-26T16:55:19Z,$5.68,debit,Dabshots,medical,diners-club-carte-blanche
-Tuna - Loin,2042-05-24T04:59:22Z,$1.11,debit,Realbridge,groceries,switch
-Chicken - Soup Base,2025-05-22T22:16:35Z,$6.74,debit,Zoozzy,medical,mastercard
-Skirt - 29 Foot,2002-05-07T19:47:50Z,$6.78,credit,Quatz,medical,americanexpress
-Thermometer Digital,2002-09-12T03:40:12Z,$6.79,debit,Devcast,car,jcb
-Cheese - Wine,2042-02-11T02:31:44Z,$2.05,debit,Katz,utilities,jcb
-Cheese - Asiago,2000-11-18T04:38:43Z,$9.70,debit,Avavee,medical,jcb
-Creamers - 10%,2048-07-27T12:58:21Z,$1.31,debit,Quamba,car,jcb
-Cheese - Goat,2004-04-10T17:08:13Z,$1.76,debit,Oyoloo,car,china-unionpay
-Chocolate - Milk Coating,2042-05-22T18:05:34Z,$2.59,credit,Voonte,entertainment,jcb
-Pastry - Baked Scones - Mini,2022-10-02T08:45:35Z,$0.22,credit,Blognation,medical,solo
-Pear - Halves,2012-05-13T06:18:01Z,$5.35,debit,Yombu,medical,jcb
-Veal Inside - Provimi,2044-02-12T05:58:28Z,$0.46,debit,Mydo,utilities,jcb
-Wine - Beringer Founders Estate,2034-10-10T23:08:23Z,$9.81,debit,Wikizz,medical,bankcard
-Flower - Potmums,2047-04-09T15:24:16Z,$8.45,debit,Avamm,car,jcb
-Pork Loin Bine - In Frenched,2007-12-06T21:57:41Z,$0.75,debit,Eare,entertainment,jcb
-Tumeric,2012-03-17T11:52:01Z,$6.77,credit,Vidoo,utilities,china-unionpay
-"Chicken - Wings, Tip Off",2008-11-02T11:32:10Z,$5.72,credit,Shufflester,entertainment,jcb
-"Wine - White, Lindemans Bin 95",2014-11-29T19:07:28Z,$9.08,credit,Skibox,entertainment,jcb
-Mustard - Pommery,2018-06-14T21:22:18Z,$2.40,credit,Meezzy,car,diners-club-us-ca
-"Soup - Cream Of Broccoli, Dry",2038-08-22T21:02:51Z,$8.44,debit,Tazz,medical,bankcard
-Flower - Leather Leaf Fern,2014-01-14T13:58:24Z,$6.74,credit,Oyoba,entertainment,switch
-Basil - Seedlings Cookstown,2008-12-06T08:00:05Z,$0.74,credit,Camimbo,medical,visa-electron
-"Shrimp - 16/20, Peeled Deviened",2030-09-13T12:11:49Z,$4.52,credit,Mybuzz,home,americanexpress
-Browning Caramel Glace,2029-12-22T21:10:08Z,$4.37,debit,Feedbug,classes,mastercard
-Salmon - Fillets,2008-06-01T14:19:06Z,$2.55,debit,Lazz,clothing,jcb
-Pepper - Red Bell,2029-04-20T05:14:13Z,$0.88,credit,Skidoo,utilities,jcb
-Muffin Puck Ww Carrot,2005-03-15T17:06:41Z,$6.71,credit,Flipbug,clothing,jcb
-"Capon - Breast, Double, Wing On",2023-11-11T14:40:43Z,$3.55,debit,Ntag,home,jcb
-Couscous,2034-05-16T19:16:54Z,$9.17,debit,Buzzbean,medical,china-unionpay
-Lidsoupcont Rp12dn,2029-10-29T13:40:25Z,$3.60,credit,Mynte,entertainment,diners-club-enroute
-Grapefruit - Pink,2000-04-15T08:36:51Z,$0.06,debit,Brainsphere,entertainment,jcb
-Cheese - Parmesan Grated,2015-01-24T16:46:48Z,$3.66,debit,Zoombeat,clothing,americanexpress
-"Lamb - Whole, Frozen",2049-01-15T10:14:43Z,$3.86,debit,Zooxo,classes,maestro
-Flavouring Vanilla Artificial,2019-03-22T11:01:21Z,$5.17,credit,Gevee,medical,bankcard
-Cod - Fillets,2033-07-21T08:30:30Z,$3.47,debit,Gevee,groceries,mastercard
-Yeast Dry - Fermipan,2027-10-28T19:31:40Z,$9.58,credit,Tavu,groceries,jcb
-Ice Cream - Chocolate,2002-02-08T15:13:39Z,$3.76,credit,Kayveo,clothing,laser
-Water - Green Tea Refresher,2007-05-03T08:03:15Z,$1.54,debit,Innotype,medical,visa-electron
-Tray - 12in Rnd Blk,2016-12-03T07:56:43Z,$6.17,credit,Fanoodle,car,china-unionpay
-Herb Du Provence - Primerba,2009-08-13T09:35:36Z,$3.87,debit,Quaxo,car,jcb
-Snapple Raspberry Tea,2030-12-07T10:23:11Z,$8.98,debit,Realpoint,classes,jcb
-"Veal - Shank, Pieces",2015-03-01T11:07:45Z,$1.80,credit,Vidoo,entertainment,mastercard
-Liqueur - Melon,2027-06-21T07:14:48Z,$3.46,credit,Trupe,entertainment,maestro
-Steampan - Lid For Half Size,2036-09-23T19:23:43Z,$5.36,debit,Gabtype,medical,jcb
-Sweet Pea Sprouts,2004-08-19T08:50:00Z,$6.68,credit,Yotz,groceries,jcb
-Shichimi Togarashi Peppeers,2001-03-23T01:09:23Z,$4.34,credit,Jamia,home,mastercard
-Trueblue - Blueberry Cranberry,2029-03-20T18:09:01Z,$7.42,credit,Yakitri,classes,bankcard
-Soap - Hand Soap,2029-11-05T13:57:43Z,$9.07,debit,Photofeed,medical,jcb
-Chicken - Base,2016-03-17T23:36:56Z,$4.41,credit,Realblab,utilities,jcb
-"Soup - Knorr, Country Bean",2045-12-27T19:28:46Z,$1.41,debit,Feedbug,car,jcb
-Juice - Orange 1.89l,2000-04-19T06:41:48Z,$0.90,credit,Jaxbean,groceries,jcb
-"Trout - Rainbow, Fresh",2031-01-04T05:15:43Z,$0.87,credit,Voonix,home,jcb
-"Nut - Peanut, Roasted",2026-11-27T04:06:52Z,$8.73,credit,Skipstorm,home,jcb
-Ice Cream Bar - Oreo Sandwich,2046-06-15T09:15:43Z,$9.22,credit,Quire,home,switch
-Crackers Cheez It,2040-09-27T01:06:03Z,$5.73,debit,Linktype,entertainment,diners-club-carte-blanche
-Bar Mix - Lime,2047-10-15T11:49:23Z,$2.31,debit,Voonder,entertainment,instapayment
-Bay Leaf,2019-05-12T00:28:50Z,$3.83,credit,Ooba,utilities,switch
-Almonds Ground Blanched,2043-03-28T10:47:31Z,$8.06,credit,Dynabox,clothing,jcb
-Sauce - Sesame Thai Dressing,2014-07-30T02:06:38Z,$5.12,credit,Edgewire,classes,laser
-"Vermouth - White, Cinzano",2011-07-08T13:36:24Z,$3.06,credit,Quaxo,utilities,visa-electron
-Veal - Osso Bucco,2009-07-16T05:35:14Z,$3.00,credit,Jaxworks,car,jcb
-Smirnoff Green Apple Twist,2040-11-16T19:14:00Z,$4.77,credit,Kazio,groceries,china-unionpay
-Vinegar - Tarragon,2026-03-08T08:05:59Z,$3.60,credit,Meembee,clothing,jcb
-Steamers White,2048-12-04T06:57:16Z,$7.08,credit,Skyvu,car,visa-electron
-Ginger - Crystalized,2020-12-07T10:52:35Z,$0.76,debit,Browsezoom,classes,jcb
-Crawfish,2040-03-07T13:19:45Z,$7.54,debit,Thoughtsphere,clothing,visa-electron
-Pepper - Yellow Bell,2026-12-27T15:18:47Z,$5.10,credit,Katz,car,jcb
-Beets - Mini Golden,2028-08-15T15:24:51Z,$8.90,credit,Shufflebeat,home,jcb
-"Beef - Tongue, Fresh",2049-11-13T04:58:14Z,$8.22,debit,Vinte,car,jcb
-Eggplant Oriental,2013-12-11T22:13:30Z,$1.17,credit,Topicware,groceries,americanexpress
-Crab Meat Claw Pasteurise,2030-06-09T08:44:44Z,$5.93,debit,Yakidoo,home,maestro
-"Crab - Dungeness, Whole",2032-04-24T21:39:39Z,$9.22,credit,Izio,clothing,instapayment
-"Doilies - 5, Paper",2029-04-25T03:19:31Z,$0.03,credit,Brainsphere,medical,jcb
-Salmon Atl.whole 8 - 10 Lb,2017-10-29T02:09:34Z,$9.74,debit,Mydo,car,americanexpress
-"Soup - Knorr, Ministrone",2038-12-13T11:34:27Z,$7.38,credit,Kwilith,clothing,visa
-Apple - Macintosh,2008-04-06T20:24:46Z,$5.64,credit,Buzzdog,clothing,americanexpress
-"Beef - Bones, Marrow",2043-09-05T06:23:59Z,$8.24,credit,Shuffledrive,groceries,visa-electron
-"Sauce - Apple, Unsweetened",2041-09-16T12:12:08Z,$3.56,debit,Photobug,entertainment,maestro
-Pepper - Sorrano,2038-02-22T20:41:56Z,$2.44,credit,Mynte,home,jcb
-Chickhen - Chicken Phyllo,2006-09-13T05:29:25Z,$2.64,debit,BlogXS,utilities,visa-electron
-Dc Hikiage Hira Huba,2005-11-04T17:43:40Z,$6.46,credit,Quatz,car,visa
-"Soup - Knorr, Chicken Noodle",2019-09-16T02:53:38Z,$3.49,credit,Thoughtbridge,clothing,jcb
-Samosa - Veg,2025-12-12T08:44:48Z,$8.28,credit,Yambee,classes,mastercard
-"Doilies - 5, Paper",2030-02-22T04:32:04Z,$9.63,credit,Edgeify,car,switch
-Tea - Grapefruit Green Tea,2038-08-26T01:33:52Z,$2.81,debit,Mydeo,clothing,jcb
-Puree - Mango,2038-12-22T23:10:43Z,$6.41,credit,Twiyo,car,maestro
-"Rum - Coconut, Malibu",2045-05-13T20:57:43Z,$5.39,credit,Kazio,utilities,maestro
-Thyme - Dried,2020-05-20T00:14:53Z,$6.07,credit,Kwinu,entertainment,americanexpress
-Wine - Chianti Classico Riserva,2049-07-21T00:56:54Z,$5.09,credit,Tavu,classes,jcb
-Buttons,2027-05-15T00:07:43Z,$9.96,credit,Leexo,entertainment,jcb
-Bar Nature Valley,2043-06-18T17:53:02Z,$5.31,debit,Brainbox,entertainment,americanexpress
-Honey - Lavender,2016-05-15T03:50:50Z,$0.98,debit,Muxo,entertainment,jcb
-"Syrup - Monin, Irish Cream",2023-03-02T23:14:22Z,$2.47,debit,Blogpad,car,americanexpress
-Sauce - Soy Low Sodium - 3.87l,2022-10-25T23:13:18Z,$1.22,credit,Kanoodle,home,jcb
-Salt - Sea,2030-11-05T20:36:54Z,$8.75,credit,Voomm,home,diners-club-carte-blanche
-Jack Daniels,2039-06-23T10:02:16Z,$4.62,credit,Vimbo,classes,bankcard
-Lid Tray - 12in Dome,2021-10-14T08:50:19Z,$2.41,credit,Voonix,home,americanexpress
-Longos - Greek Salad,2036-03-15T05:00:44Z,$5.88,credit,Fanoodle,car,instapayment
-Oats Large Flake,2016-09-14T19:43:12Z,$9.14,debit,Gabvine,medical,mastercard
-Sorrel - Fresh,2050-12-26T03:47:46Z,$3.36,credit,Agivu,clothing,visa-electron
-Nectarines,2025-01-22T04:00:26Z,$3.01,debit,Geba,groceries,jcb
-Anchovy Fillets,2013-03-16T12:36:48Z,$8.85,debit,Realfire,home,jcb
-"Ham - Smoked, Bone - In",2002-05-27T23:11:21Z,$4.46,debit,Plambee,clothing,mastercard
-Galliano,2023-04-19T02:37:44Z,$5.26,debit,Realbridge,entertainment,jcb
-Beef - Bresaola,2023-01-12T16:18:35Z,$7.03,credit,Riffwire,car,jcb
-Ecolab - Solid Fusion,2008-09-09T12:43:59Z,$1.52,credit,Feedfire,utilities,jcb
-Petit Baguette,2044-07-24T13:42:45Z,$8.03,debit,Latz,car,jcb
-Liquid Aminios Acid - Braggs,2044-02-06T18:18:23Z,$2.41,credit,Jabbersphere,classes,instapayment
-Shrimp - 31/40,2030-12-13T09:29:22Z,$5.98,debit,Tagcat,groceries,jcb
-Bread Ww Cluster,2016-09-26T01:36:21Z,$4.03,debit,Gabtune,groceries,maestro
-Beets,2011-04-02T00:21:26Z,$5.20,debit,Yabox,entertainment,maestro
-Frangelico,2017-10-13T01:29:19Z,$4.81,debit,Devcast,classes,maestro
-Turkey Tenderloin Frozen,2039-10-19T02:25:40Z,$4.47,debit,Kwinu,home,jcb
-Grenadillo,2031-12-22T12:17:31Z,$4.16,credit,Flipstorm,clothing,jcb
-"Pepper - Green, Chili",2003-11-01T07:06:06Z,$2.92,debit,Realbridge,car,visa-electron
-"Seedlings - Mix, Organic",2000-10-18T05:46:07Z,$0.65,debit,Photospace,medical,switch
-Grand Marnier,2006-03-23T15:51:12Z,$1.59,credit,Lajo,car,mastercard
-Wine - Casillero Deldiablo,2034-05-24T09:10:19Z,$6.85,credit,Skippad,home,maestro
-Wine - Pinot Noir Pond Haddock,2006-10-23T04:55:30Z,$1.96,debit,Fiveclub,utilities,americanexpress
-Oysters - Smoked,2026-11-23T22:51:52Z,$1.30,credit,Skidoo,utilities,bankcard
-"Lamb - Whole, Fresh",2015-11-26T11:43:56Z,$6.69,debit,Centizu,clothing,jcb
-Carbonated Water - White Grape,2030-01-18T15:12:32Z,$0.00,debit,Thoughtstorm,utilities,jcb
-Squid U5 - Thailand,2014-02-13T05:13:30Z,$2.47,credit,Reallinks,car,visa
-Flour - Fast / Rapid,2031-01-26T03:08:48Z,$3.73,credit,Rhybox,classes,diners-club-carte-blanche
-Beef - Shank,2041-09-08T11:40:55Z,$9.54,credit,Wikivu,car,china-unionpay
-Beer - Sleemans Honey Brown,2013-02-04T08:25:28Z,$6.53,credit,Tagchat,car,jcb
-Sugar - Crumb,2042-05-14T03:08:02Z,$8.12,credit,Avamm,classes,diners-club-enroute
-Vaccum Bag - 14x20,2027-04-09T01:58:46Z,$7.76,credit,Realbridge,groceries,bankcard
-"Rice Pilaf, Dry,package",2021-12-06T23:19:38Z,$0.71,credit,Jabbertype,classes,maestro
-Crab - Soft Shell,2020-02-03T12:54:05Z,$1.04,credit,Trilith,medical,diners-club-carte-blanche
-Pate - Liver,2007-05-10T07:09:13Z,$0.76,credit,Centizu,clothing,jcb
-"Coffee - Colombian, Portioned",2041-07-11T09:52:41Z,$7.59,credit,Zoomcast,medical,jcb
-Wine - Chianti Classico Riserva,2006-06-07T21:29:27Z,$9.54,debit,Realbridge,utilities,jcb
-Melon - Cantaloupe,2049-04-16T05:02:08Z,$5.05,debit,Jaxbean,medical,visa
-Tray - 12in Rnd Blk,2019-03-27T16:14:50Z,$3.87,credit,Centidel,entertainment,visa-electron
-Lamb Leg - Bone - In Nz,2029-03-08T14:17:48Z,$4.51,credit,Gabspot,home,visa-electron
-"Coke - Diet, 355 Ml",2024-10-17T19:21:15Z,$9.97,credit,Janyx,entertainment,switch
-Blueberries,2032-04-08T22:45:56Z,$6.83,credit,Abata,utilities,maestro
-Pastry - Chocolate Marble Tea,2021-07-25T16:29:15Z,$0.26,debit,Dynabox,medical,maestro
-Sauce - Hoisin,2042-08-03T02:26:40Z,$2.12,debit,Talane,medical,visa-electron
-Cornish Hen,2041-03-19T17:30:27Z,$5.02,debit,Midel,clothing,americanexpress
-Cheese - Montery Jack,2021-02-10T14:51:20Z,$2.23,debit,Eimbee,groceries,switch
-Uniform Linen Charge,2035-01-15T02:36:04Z,$8.42,credit,Riffpath,classes,switch
-Wine - Clavet Saint Emilion,2025-09-14T12:42:32Z,$1.24,credit,Twitterbeat,classes,americanexpress
-Nut - Pumpkin Seeds,2028-04-25T17:25:22Z,$8.21,debit,Meedoo,entertainment,maestro
-Scallops - 20/30,2034-12-26T01:02:46Z,$5.37,debit,Fivebridge,classes,visa-electron
-Chocolate - Milk Coating,2002-08-23T02:26:29Z,$5.17,credit,Skinder,medical,bankcard
-Cream Of Tartar,2034-02-25T10:24:56Z,$6.47,credit,Vinder,entertainment,mastercard
-Apple - Custard,2029-10-23T02:15:38Z,$3.19,debit,Eire,clothing,china-unionpay
-"Seedlings - Mix, Organic",2009-07-27T05:24:46Z,$7.53,debit,Wikizz,clothing,jcb
-Ginger - Crystalized,2030-03-09T09:40:48Z,$2.36,debit,Zoonder,car,maestro
-"Soup - Knorr, Veg / Beef",2025-06-09T01:20:35Z,$4.43,credit,Browsecat,entertainment,jcb
-Juice - Apple Cider,2039-11-26T08:02:15Z,$4.27,credit,Layo,home,jcb
-Cheese - Ricotta,2022-06-13T02:32:45Z,$1.08,credit,Dabtype,car,jcb
-Chinese Foods - Chicken Wing,2040-07-15T07:20:27Z,$7.68,credit,Blognation,groceries,switch
-Cleaner - Pine Sol,2012-12-03T11:26:24Z,$9.06,debit,Quimba,groceries,jcb
-Island Oasis - Lemonade,2033-12-04T15:12:14Z,$8.98,debit,Mudo,classes,switch
-Seedlings - Clamshell,2021-11-21T06:54:17Z,$7.77,credit,Jabbercube,medical,laser
-"Wine - Red, Harrow Estates, Cab",2018-04-24T00:25:32Z,$9.93,debit,Rhyzio,entertainment,jcb
-Roe - Flying Fish,2024-06-06T23:39:39Z,$8.01,debit,Brightdog,classes,bankcard
-"Flour - Corn, Fine",2038-05-29T15:02:09Z,$1.20,debit,Edgeify,classes,mastercard
-Chocolate Bar - Oh Henry,2034-04-09T22:12:57Z,$9.23,debit,Yambee,classes,china-unionpay
-Cake - Pancake,2034-08-11T04:20:38Z,$0.73,credit,Avaveo,medical,jcb
-Chocolate Bar - Reese Pieces,2044-04-04T01:59:50Z,$1.35,debit,Tekfly,utilities,diners-club-carte-blanche
-English Muffin,2014-04-04T04:44:43Z,$8.07,credit,Zoombox,car,jcb
-Mousse - Banana Chocolate,2030-04-22T15:22:20Z,$1.03,debit,Kanoodle,utilities,instapayment
-Lettuce - Lolla Rosa,2015-05-11T09:27:36Z,$1.92,credit,Tanoodle,classes,diners-club-enroute
-Irish Cream - Butterscotch,2007-05-13T19:37:58Z,$3.02,credit,Bubblemix,clothing,americanexpress
-"Pasta - Elbows, Macaroni, Dry",2000-04-20T17:07:34Z,$7.02,debit,Jayo,medical,bankcard
-Shortbread - Cookie Crumbs,2032-03-09T16:25:10Z,$4.41,debit,Twitterlist,groceries,jcb
-Cherries - Fresh,2027-12-12T08:47:36Z,$9.13,debit,Eidel,classes,jcb
-Ecolab - Medallion,2038-10-14T12:34:20Z,$7.20,debit,Linkbridge,entertainment,jcb
-General Purpose Trigger,2005-03-18T13:29:57Z,$2.02,credit,Rooxo,medical,diners-club-carte-blanche
-Brandy Apricot,2010-09-06T15:36:05Z,$7.43,credit,Dynava,classes,americanexpress
-Shortbread - Cookie Crumbs,2032-11-12T20:32:25Z,$6.63,debit,Meemm,medical,switch
-Carbonated Water - Raspberry,2030-04-09T17:41:06Z,$4.24,credit,Devpoint,home,bankcard
-Beans - Butter Lrg Lima,2045-10-17T03:47:22Z,$7.24,credit,Yodoo,car,jcb
-Coffee Decaf Colombian,2003-10-03T13:46:23Z,$3.27,debit,Voolia,utilities,jcb
-Thermometer Digital,2029-02-06T21:19:23Z,$1.27,credit,Yombu,home,jcb
-Cheese Cheddar Processed,2017-07-23T02:55:46Z,$1.96,credit,Myworks,entertainment,visa-electron
-Butter - Salted,2000-11-02T10:53:44Z,$5.06,credit,Devpulse,entertainment,jcb
-Chambord Royal,2015-01-04T18:07:17Z,$4.88,credit,Feedmix,groceries,jcb
-Rosemary - Dry,2017-06-28T00:29:21Z,$9.00,debit,Trilith,classes,jcb
-Cheese - Gorgonzola,2027-01-29T08:17:46Z,$1.15,credit,Realpoint,clothing,instapayment
-Dragon Fruit,2001-11-26T10:29:34Z,$5.97,credit,Realmix,clothing,jcb
-Wine - Chenin Blanc K.w.v.,2019-04-13T05:06:34Z,$9.79,credit,Livetube,utilities,jcb
-Cheese - Gorgonzola,2049-02-21T09:53:12Z,$0.26,debit,Skyndu,groceries,visa-electron
-Pastry - Key Limepoppy Seed Tea,2032-06-03T09:17:10Z,$9.28,credit,Layo,medical,visa-electron
-Fond - Neutral,2024-08-10T16:06:19Z,$2.36,debit,Npath,car,maestro
-Wine - Peller Estates Late,2021-09-13T15:11:27Z,$4.42,credit,Eire,home,jcb
-Soup V8 Roasted Red Pepper,2016-09-07T01:17:46Z,$3.39,debit,Zoombeat,clothing,americanexpress
-Longos - Chicken Cordon Bleu,2009-06-07T17:47:03Z,$4.98,credit,Skimia,home,jcb
-Pastry - Carrot Muffin - Mini,2000-12-13T01:35:01Z,$5.98,credit,Viva,entertainment,mastercard
-"Sugar - Brown, Individual",2035-05-22T21:48:03Z,$6.45,credit,Zoomcast,home,jcb
-Oil - Shortening - All - Purpose,2023-03-02T15:42:22Z,$1.59,debit,Aimbo,classes,mastercard
-Flour - Bread,2004-09-07T13:02:45Z,$8.36,credit,Wikizz,clothing,jcb
-Cup - 4oz Translucent,2010-11-22T04:03:02Z,$4.72,debit,Vimbo,clothing,maestro
-Cheese Cloth No 60,2001-10-15T01:35:08Z,$3.79,credit,Linklinks,classes,visa-electron
-Coffee - Espresso,2019-07-23T10:25:49Z,$6.18,credit,Edgeclub,medical,americanexpress
-Extract - Rum,2025-11-21T07:42:47Z,$7.72,debit,Thoughtworks,groceries,maestro
-Lemon Balm - Fresh,2003-02-26T11:54:58Z,$6.44,debit,Kwideo,entertainment,mastercard
-English Muffin,2017-06-09T16:52:17Z,$9.37,credit,Vipe,classes,jcb
-Tuna - Sushi Grade,2017-02-19T04:10:18Z,$5.74,debit,Aivee,classes,jcb
-Pepper - Green,2039-03-02T09:28:26Z,$2.20,debit,Realbridge,utilities,maestro
-"Coconut - Creamed, Pure",2038-07-10T15:20:19Z,$5.14,debit,Voomm,entertainment,laser
-Sour Puss Sour Apple,2041-04-22T08:13:01Z,$8.76,debit,Meemm,classes,jcb
-Rice - Wild,2038-06-21T18:58:30Z,$4.11,credit,Quire,utilities,visa
-Wine - Delicato Merlot,2024-06-26T16:26:53Z,$4.59,debit,Skalith,clothing,solo
-Cookie Chocolate Chip With,2022-01-13T01:04:11Z,$9.79,credit,InnoZ,groceries,jcb
-Curry Paste - Madras,2031-03-27T23:26:41Z,$2.18,debit,Cogilith,clothing,mastercard
-Buffalo - Striploin,2038-01-29T00:34:46Z,$7.21,debit,Mybuzz,classes,diners-club-international
-Liners - Baking Cups,2040-11-20T13:54:18Z,$3.87,debit,Topiczoom,clothing,switch
-Hinge W Undercut,2013-02-17T03:02:24Z,$5.69,credit,Skipfire,medical,instapayment
-Beef - Bresaola,2043-11-22T04:28:59Z,$4.80,credit,Skiptube,home,jcb
-Garbage Bags - Black,2034-04-02T04:19:57Z,$9.40,debit,Yambee,classes,jcb
-Cake - Box Window 10x10x2.5,2027-08-02T11:54:43Z,$6.96,credit,Gigaclub,classes,jcb
-Pate - Cognac,2043-12-09T17:14:39Z,$3.44,credit,Photospace,entertainment,laser
-Gatorade - Fruit Punch,2028-10-25T19:54:49Z,$2.60,debit,Vidoo,utilities,visa-electron
-Tamarind Paste,2033-12-17T12:09:06Z,$5.93,debit,Feedspan,medical,diners-club-enroute
-"Crush - Grape, 355 Ml",2027-09-17T07:18:06Z,$5.61,credit,Kanoodle,medical,visa
-"Salmon - Whole, 4 - 6 Pounds",2043-01-20T14:34:35Z,$4.42,debit,Photobug,groceries,instapayment
-Ice Cream - Turtles Stick Bar,2043-04-28T13:25:15Z,$7.02,credit,Quimm,classes,bankcard
-Spinach - Packaged,2017-07-08T19:01:07Z,$9.35,credit,Kwideo,utilities,laser
-Lettuce - Lambs Mash,2010-05-15T19:08:37Z,$2.93,credit,Leexo,clothing,americanexpress
-Appetizer - Assorted Box,2008-10-05T17:45:15Z,$7.67,debit,Yamia,medical,visa-electron
-Tart - Pecan Butter Squares,2035-01-07T04:34:50Z,$2.16,debit,Topiclounge,clothing,jcb
-Chips - Assorted,2007-08-07T15:35:18Z,$7.07,debit,InnoZ,medical,mastercard
-Pork - Ham Hocks - Smoked,2009-05-22T05:52:09Z,$3.58,debit,Trilia,classes,bankcard
-"Coconut - Shredded, Sweet",2010-10-08T11:17:36Z,$0.31,credit,Pixope,home,jcb
-Foil - Round Foil,2019-01-27T22:34:16Z,$6.36,debit,Bluejam,car,diners-club-international
-Pork - Belly Fresh,2030-04-06T11:34:28Z,$9.32,credit,Quimba,entertainment,jcb
-Chocolate Liqueur - Godet White,2011-05-02T17:29:10Z,$4.68,credit,Jabbersphere,entertainment,laser
-Carbonated Water - Blackberry,2041-05-31T21:54:57Z,$3.77,credit,Innotype,groceries,jcb
-Cheese - Valancey,2019-05-09T19:00:46Z,$2.68,credit,Fatz,utilities,jcb
-Pears - Bartlett,2006-03-25T20:48:39Z,$1.90,credit,Chatterpoint,utilities,mastercard
-Petite Baguette,2032-01-08T00:25:37Z,$6.16,credit,Brainlounge,classes,china-unionpay
-Pasta - Ravioli,2009-12-31T11:00:07Z,$7.95,credit,Eayo,home,laser
-Arizona - Plum Green Tea,2042-08-07T16:47:20Z,$8.65,credit,Skidoo,medical,switch
-Table Cloth 54x54 Colour,2048-09-19T01:26:38Z,$9.37,debit,Teklist,classes,americanexpress
-Turnip - Mini,2016-05-13T12:57:54Z,$9.76,credit,Browsedrive,medical,jcb
-"Doilies - 7, Paper",2039-05-20T08:15:20Z,$5.96,credit,Yakijo,utilities,visa-electron
-Steel Wool S.o.s,2034-10-04T20:14:53Z,$4.15,debit,Yodel,medical,jcb
-Coffee Cup 8oz 5338cd,2001-04-05T19:37:51Z,$6.26,debit,Voonix,classes,solo
-Wine - Chablis J Moreau Et Fils,2044-08-08T15:44:24Z,$8.07,credit,Digitube,clothing,visa-electron
-Carbonated Water - Raspberry,2011-09-17T07:08:29Z,$6.71,debit,Edgewire,classes,maestro
-Capers - Ox Eye Daisy,2023-08-01T06:05:39Z,$1.91,credit,Demivee,home,jcb
-Beef - Tenderloin Tails,2014-03-31T15:49:49Z,$2.94,credit,Cogibox,entertainment,visa-electron
-"Soup - Campbells, Butternut",2035-12-03T13:49:36Z,$3.98,credit,Rhyzio,groceries,mastercard
-Bread - Rosemary Focaccia,2044-08-07T04:06:17Z,$8.63,debit,Devbug,classes,jcb
-The Pop Shoppe - Cream Soda,2008-12-09T00:14:39Z,$5.75,credit,Voolith,classes,americanexpress
-"Coffee - Beans, Whole",2046-04-26T01:08:45Z,$8.70,debit,BlogXS,home,diners-club-international
-"Pepper - Red, Finger Hot",2002-03-04T02:28:25Z,$6.22,debit,Linkbuzz,classes,jcb
-Dip - Tapenade,2031-08-22T10:55:54Z,$8.01,credit,Innojam,medical,americanexpress
-Yoplait Drink,2008-08-07T15:53:52Z,$4.88,debit,Gabtype,car,mastercard
-Yams,2018-03-27T03:54:42Z,$8.61,credit,Realmix,classes,jcb
-Cloves - Ground,2025-08-06T15:36:52Z,$5.41,debit,Jaxbean,car,mastercard
-Shortbread - Cookie Crumbs,2016-04-04T21:55:52Z,$8.18,credit,Ainyx,home,diners-club-enroute
-Lettuce Romaine Chopped,2022-11-04T13:05:56Z,$7.15,debit,Skynoodle,home,switch
+description,date,amount,type,merchant,category,payment_source
+Wiberg Cure,2020-08-31T14:39:43Z,0.25,debit,Quinu,classes,jcb
+"Bag - Bread, White, Plain",2040-03-24T16:39:20Z,3.33,credit,Divanoodle,utilities,diners-club-carte-blanche
+Pate Pans Yellow,2047-03-22T15:25:58Z,6.30,credit,Realpoint,groceries,maestro
+"Corn - Cream, Canned",2004-01-01T03:49:44Z,9.64,credit,Skalith,entertainment,mastercard
+Tea - Honey Green Tea,2005-03-04T14:37:23Z,6.23,credit,Skyndu,groceries,jcb
+Red Pepper Paste,2003-07-16T02:30:53Z,4.60,credit,Skalith,car,jcb
+Banana - Leaves,2041-05-10T04:22:24Z,5.74,debit,Wikizz,car,maestro
+Chips - Miss Vickies,2044-04-12T10:10:10Z,6.80,credit,Meetz,car,laser
+"Rosemary - Primerba, Paste",2012-06-07T00:46:38Z,7.67,credit,Kaymbo,entertainment,jcb
+Fennel,2024-10-14T12:11:17Z,2.96,credit,Quire,groceries,jcb
+"Cherries - Maraschino,jar",2041-06-18T21:02:41Z,8.26,debit,Browsedrive,classes,jcb
+Flour - Bread,2043-04-16T01:56:12Z,0.13,debit,Wordware,groceries,visa-electron
+"Beef - Tenderlion, Center Cut",2033-05-17T23:46:18Z,9.56,credit,Mynte,entertainment,jcb
+Gatorade - Orange,2021-12-29T23:10:35Z,8.52,credit,Blogpad,classes,mastercard
+Knife Plastic - White,2045-06-11T15:27:24Z,4.87,debit,Thoughtworks,car,mastercard
+Sping Loaded Cup Dispenser,2027-09-16T03:05:59Z,0.89,debit,Voolith,entertainment,jcb
+Tea - Camomele,2009-01-07T21:03:03Z,5.72,credit,Aibox,utilities,jcb
+Creme De Cacao White,2041-05-29T02:49:35Z,1.35,credit,Agimba,clothing,visa-electron
+Banana - Leaves,2050-08-21T07:42:00Z,5.42,credit,Zoomcast,medical,jcb
+"Nestea - Ice Tea, Diet",2011-03-23T03:45:13Z,0.34,debit,Avamm,medical,jcb
+Pur Source,2032-01-29T22:50:37Z,4.86,credit,Tagpad,car,diners-club-enroute
+Lettuce - Arugula,2028-05-09T21:27:18Z,8.09,debit,Pixonyx,utilities,instapayment
+Limes,2037-10-05T08:45:39Z,8.04,credit,Minyx,medical,bankcard
+The Pop Shoppe - Black Cherry,2010-03-20T14:30:47Z,2.91,credit,Skiba,utilities,mastercard
+"Croissant, Raw - Mini",2026-08-24T07:09:37Z,0.80,credit,Flashset,entertainment,jcb
+Mushroom - Morel Frozen,2043-12-11T12:05:28Z,4.50,credit,Einti,medical,china-unionpay
+Water - Aquafina Vitamin,2032-10-22T22:19:30Z,3.24,debit,Skivee,clothing,bankcard
+"Crab - Claws, Snow 16 - 24",2045-05-19T02:54:17Z,7.84,credit,Dabfeed,home,jcb
+Beef - Top Sirloin,2050-02-02T05:13:41Z,6.53,credit,Twiyo,classes,visa
+"Mushroom - Chantrelle, Fresh",2045-03-07T12:42:41Z,3.31,credit,Jabbertype,car,instapayment
+"Jam - Blackberry, 20 Ml Jar",2019-02-06T05:53:45Z,9.84,debit,Pixonyx,utilities,switch
+"Mushroom - Enoki, Dry",2032-10-26T21:11:57Z,9.71,credit,Dablist,entertainment,jcb
+"Sparkling Wine - Rose, Freixenet",2011-05-05T21:42:13Z,4.47,credit,Realblab,classes,mastercard
+Pickles - Gherkins,2039-12-17T12:33:01Z,9.03,debit,BlogXS,entertainment,bankcard
+Table Cloth 91x91 Colour,2014-02-01T02:57:09Z,9.75,credit,Kwinu,car,jcb
+"Sauce - Apple, Unsweetened",2023-01-22T15:44:27Z,0.41,credit,Wikibox,entertainment,mastercard
+"Lemonade - Strawberry, 591 Ml",2027-12-17T10:32:01Z,9.99,credit,Oyondu,clothing,instapayment
+General Purpose Trigger,2046-06-19T06:05:26Z,6.67,debit,Yakijo,utilities,diners-club-us-ca
+"Croissant, Raw - Mini",2023-01-07T21:22:58Z,3.01,credit,Tavu,medical,mastercard
+Chicken Breast Wing On,2000-10-14T15:53:48Z,2.60,credit,Voonix,groceries,jcb
+Pork Casing,2042-06-08T07:22:53Z,1.82,debit,Minyx,car,jcb
+"Wine - White, Colubia Cresh",2008-08-12T18:25:12Z,9.56,debit,Gabtune,medical,china-unionpay
+Beer - Muskoka Cream Ale,2049-04-15T13:07:57Z,0.72,debit,Gabvine,clothing,solo
+"Lentils - Red, Dry",2039-02-22T12:53:52Z,2.75,debit,Zooveo,groceries,americanexpress
+White Baguette,2017-03-23T12:04:47Z,4.55,debit,Rhynyx,groceries,jcb
+"Doilies - 5, Paper",2033-08-30T23:40:34Z,5.70,credit,Blogtags,utilities,jcb
+Cookie Dough - Double,2037-11-08T14:37:50Z,3.11,debit,Pixope,home,jcb
+Cheese - Marble,2036-05-22T06:47:42Z,4.29,debit,Leenti,utilities,china-unionpay
+Tea - Decaf Lipton,2019-06-20T18:46:41Z,5.79,debit,Tagpad,entertainment,jcb
+"Appetizer - Spring Roll, Veg",2048-06-07T01:50:23Z,5.00,credit,Twitterworks,clothing,jcb
+Chutney Sauce - Mango,2049-09-29T16:09:19Z,8.86,credit,Divape,utilities,diners-club-carte-blanche
+Drambuie,2020-12-16T01:16:47Z,7.16,debit,Dabvine,entertainment,americanexpress
+Milk Powder,2021-10-25T13:43:54Z,2.27,debit,Edgeify,medical,jcb
+Island Oasis - Raspberry,2000-03-21T20:09:48Z,7.97,debit,Jaxspan,clothing,instapayment
+Cheese - Valancey,2023-09-02T17:06:17Z,3.70,credit,Mynte,medical,switch
+Vector Energy Bar,2011-04-22T12:29:02Z,9.28,credit,Yodo,entertainment,jcb
+"Mushroom - Shitake, Fresh",2032-10-16T16:40:53Z,3.14,debit,Gigaclub,groceries,instapayment
+Wine - Chablis J Moreau Et Fils,2029-01-16T17:47:55Z,4.78,debit,Gabtune,car,jcb
+Cape Capensis - Fillet,2019-09-22T01:10:42Z,5.88,credit,Trudeo,medical,jcb
+Onions - Red Pearl,2026-11-02T01:18:53Z,7.90,credit,Twitterlist,groceries,mastercard
+Drambuie,2002-07-11T23:29:04Z,3.08,credit,Riffpath,entertainment,americanexpress
+Kellogs Special K Cereal,2017-02-05T11:42:20Z,2.53,credit,Ozu,utilities,jcb
+"Tea - Darjeeling, Azzura",2008-09-04T18:06:18Z,8.73,credit,Kwideo,home,jcb
+Chicken - White Meat With Tender,2001-03-05T00:49:11Z,8.84,credit,Dazzlesphere,classes,diners-club-us-ca
+Jack Daniels,2049-12-25T23:47:04Z,9.81,debit,Skippad,home,diners-club-international
+Lettuce - Lolla Rosa,2003-09-12T09:15:03Z,8.36,debit,Mybuzz,home,visa-electron
+Soup - Base Broth Beef,2033-07-10T08:46:10Z,4.31,debit,Livefish,classes,bankcard
+Plaintain,2035-01-10T04:14:20Z,5.29,credit,Mycat,home,jcb
+"Ham - Smoked, Bone - In",2035-04-12T02:21:51Z,5.79,credit,Devify,car,jcb
+"Doilies - 12, Paper",2022-08-16T23:37:58Z,7.71,debit,Gabcube,car,diners-club-us-ca
+Wine - Sawmill Creek Autumn,2007-05-10T15:39:59Z,6.12,credit,Realblab,utilities,laser
+Sandwich Wrap,2035-05-14T20:44:03Z,6.37,credit,Abatz,clothing,jcb
+Cleaner - Comet,2031-01-05T02:44:32Z,2.18,debit,Jatri,home,instapayment
+Cabbage - Green,2023-12-25T19:31:24Z,1.54,credit,Yakidoo,clothing,jcb
+"Napkin - Beverge, White 2 - Ply",2012-11-19T03:10:09Z,8.68,credit,Youtags,car,maestro
+Creme De Cacao White,2023-02-13T08:22:19Z,6.97,credit,Twitterbeat,medical,mastercard
+Soup - Boston Clam Chowder,2040-10-27T18:02:59Z,6.48,debit,Cogidoo,classes,mastercard
+Lettuce - Curly Endive,2019-05-07T00:08:11Z,5.29,credit,Oyoloo,classes,diners-club-us-ca
+"Wine - White, Chardonnay",2036-09-11T01:12:19Z,3.24,credit,Tagfeed,clothing,jcb
+"Napkin - Beverge, White 2 - Ply",2023-03-28T14:49:05Z,8.67,credit,Camimbo,car,switch
+Napkin White - Starched,2024-07-24T13:23:02Z,9.63,debit,Jabbercube,medical,jcb
+Clam - Cherrystone,2023-08-05T19:26:48Z,8.73,debit,Wordtune,groceries,china-unionpay
+"Pasta - Cappellini, Dry",2002-10-20T19:34:35Z,9.53,credit,Twitternation,classes,jcb
+Lotus Leaves,2021-09-04T23:02:55Z,4.91,credit,Youopia,groceries,jcb
+Veal - Bones,2004-07-01T22:14:50Z,7.92,credit,Twimm,groceries,jcb
+"Pepper - Julienne, Frozen",2016-01-24T23:47:09Z,7.45,credit,Katz,car,americanexpress
+Brandy - Bar,2008-10-13T06:26:40Z,7.78,credit,Chatterpoint,entertainment,diners-club-enroute
+"Soup - Knorr, French Onion",2021-09-29T18:47:03Z,9.68,debit,Omba,entertainment,visa
+"Wine - Red, Harrow Estates, Cab",2003-02-12T23:53:46Z,6.32,credit,Browsedrive,utilities,diners-club-carte-blanche
+Grenadillo,2035-01-16T21:15:19Z,7.98,debit,Cogidoo,utilities,jcb
+Tuna - Yellowfin,2041-08-05T00:51:28Z,7.40,debit,Kanoodle,groceries,mastercard
+Cookie Chocolate Chip With,2011-07-31T01:43:52Z,2.15,debit,Topdrive,home,diners-club-enroute
+Vinegar - Rice,2019-11-16T08:05:57Z,4.44,credit,LiveZ,car,americanexpress
+Beef - Striploin,2011-01-13T04:23:17Z,4.51,debit,Tagcat,clothing,americanexpress
+Lambcasing,2020-04-03T18:27:29Z,4.87,credit,Yakidoo,car,jcb
+Sugar - Invert,2013-08-12T14:48:33Z,0.88,credit,Thoughtmix,utilities,diners-club-enroute
+Longos - Penne With Pesto,2045-07-06T15:06:22Z,3.35,credit,Linktype,car,jcb
+Cookie - Oreo 100x2,2038-01-13T06:11:11Z,4.62,debit,Voolia,medical,jcb
+Jagermeister,2049-02-11T05:12:19Z,8.01,debit,Ozu,car,jcb
+"Wine - Red, Cabernet Sauvignon",2018-02-22T11:52:23Z,8.05,debit,Tagpad,utilities,jcb
+Mushroom - Lg - Cello,2024-03-14T17:42:10Z,4.66,debit,Topicblab,home,diners-club-us-ca
+Cheese - Marble,2004-03-16T16:48:28Z,0.58,credit,Yacero,car,visa
+Wine - Cotes Du Rhone Parallele,2030-07-08T03:22:46Z,9.55,debit,Devcast,car,laser
+Muffin Chocolate Individual Wrap,2019-01-06T20:11:36Z,3.02,credit,Twitterbeat,entertainment,jcb
+"Fish - Scallops, Cold Smoked",2033-08-23T08:12:53Z,6.69,debit,Tagchat,medical,jcb
+Iced Tea Concentrate,2013-04-25T00:22:17Z,6.57,credit,Twitterwire,medical,visa-electron
+Island Oasis - Wildberry,2001-08-26T23:40:01Z,5.12,credit,Photobug,car,mastercard
+Mace,2027-12-24T06:12:00Z,3.48,credit,Realcube,clothing,americanexpress
+Bagel - Whole White Sesame,2034-07-28T18:09:00Z,1.37,debit,Jaxnation,entertainment,laser
+"Shrimp - 16 - 20 Cooked, Peeled",2009-02-20T08:25:21Z,8.79,debit,Eayo,car,switch
+Bread - French Stick,2011-10-28T06:21:25Z,5.92,debit,Flipstorm,entertainment,jcb
+Chinese Foods - Cantonese,2047-10-30T08:12:40Z,8.26,debit,Avamba,home,maestro
+Barramundi,2018-04-10T15:16:54Z,7.28,debit,Zooveo,medical,china-unionpay
+Pork - Ground,2003-05-16T22:04:55Z,2.39,credit,Vitz,utilities,jcb
+Coffee Decaf Colombian,2010-01-06T02:10:56Z,9.19,debit,Twitterbeat,utilities,bankcard
+Wine - Fat Bastard Merlot,2032-04-30T11:31:21Z,1.98,debit,Flipbug,home,visa-electron
+Coffee - Frthy Coffee Crisp,2012-12-31T10:05:23Z,6.92,debit,Wordware,home,jcb
+Flour - Whole Wheat,2041-07-14T12:06:53Z,7.08,credit,Devify,utilities,jcb
+"Trout - Rainbow, Frozen",2032-10-04T18:13:37Z,6.36,debit,Photofeed,groceries,jcb
+Quail - Jumbo Boneless,2039-02-18T09:03:19Z,8.39,credit,Plajo,classes,maestro
+Wine - Zinfandel Rosenblum,2009-07-07T06:41:18Z,1.51,credit,Buzzster,utilities,switch
+Chocolate - Chips Compound,2003-04-05T01:34:52Z,1.57,credit,Gabtune,groceries,diners-club-us-ca
+Veal - Sweetbread,2017-10-17T09:32:14Z,8.36,credit,Izio,clothing,jcb
+Wine - Casillero Deldiablo,2015-08-25T15:26:05Z,3.62,debit,Yozio,home,jcb
+Capon - Whole,2013-10-07T12:33:26Z,5.11,debit,Ailane,clothing,mastercard
+Milk Powder,2045-09-30T18:27:46Z,6.01,debit,Tavu,entertainment,mastercard
+Cakes Assorted,2003-11-27T09:09:02Z,9.10,debit,Cogidoo,groceries,laser
+Glass - Juice Clear 5oz 55005,2014-05-01T11:12:15Z,1.62,credit,Geba,car,jcb
+"Cod - Salted, Boneless",2011-09-02T21:18:42Z,2.94,credit,Gabvine,clothing,maestro
+Pork - Bones,2004-02-02T19:58:26Z,8.55,credit,Mudo,clothing,jcb
+Napkin Colour,2048-05-10T02:25:33Z,7.07,debit,Youfeed,car,jcb
+Paper Towel Touchless,2029-06-04T07:14:47Z,4.29,credit,Zooveo,medical,jcb
+Lettuce - Arugula,2001-06-09T17:03:34Z,0.55,credit,Vitz,clothing,bankcard
+Steamers White,2050-07-22T05:16:04Z,9.44,credit,Bubblemix,utilities,diners-club-international
+"Tortillas - Flour, 12",2042-12-15T09:39:22Z,6.67,debit,Blogpad,medical,jcb
+Pork - Backs - Boneless,2033-12-26T17:54:22Z,0.18,debit,Topicblab,classes,americanexpress
+Shopper Bag - S - 4,2000-07-09T13:08:10Z,5.43,debit,Yadel,home,mastercard
+Bread - Mini Hamburger Bun,2025-03-05T05:20:58Z,4.07,credit,Agimba,entertainment,maestro
+Versatainer Nc - 8288,2032-11-08T15:15:50Z,2.96,debit,Eidel,home,maestro
+"Doilies - 10, Paper",2039-11-26T12:25:07Z,5.55,credit,Tagfeed,utilities,visa-electron
+Syrup - Monin - Passion Fruit,2034-03-27T23:36:25Z,0.68,debit,Chatterbridge,classes,jcb
+"Carrots - Mini, Stem On",2000-05-07T07:18:30Z,6.40,debit,Yadel,home,mastercard
+Cheese - Brick With Onion,2043-04-01T12:11:12Z,5.92,debit,Kazu,groceries,jcb
+Ecolab - Ster Bac,2023-04-03T13:20:07Z,2.55,debit,Vinder,classes,americanexpress
+"Lobster - Baby, Boiled",2040-06-02T03:50:46Z,6.53,debit,Buzzbean,classes,jcb
+Okra,2016-01-08T11:08:43Z,7.82,credit,Jayo,utilities,laser
+Beets - Pickled,2005-09-18T08:24:34Z,2.90,debit,Flipstorm,utilities,jcb
+"Jam - Blackberry, 20 Ml Jar",2035-04-11T22:12:50Z,0.09,credit,Dabvine,groceries,jcb
+Rye Special Old,2043-09-06T03:37:29Z,3.83,debit,Edgepulse,utilities,americanexpress
+Lettuce - Arugula,2010-09-09T19:29:46Z,1.99,debit,Mybuzz,medical,jcb
+Dawn Professionl Pot And Pan,2044-01-15T13:42:54Z,3.75,debit,Mita,groceries,jcb
+Jam - Raspberry,2036-11-24T02:41:24Z,5.74,debit,Meejo,home,laser
+Beer - Fruli,2018-01-04T03:10:40Z,9.40,debit,Miboo,groceries,jcb
+"Chicken - Leg, Boneless",2009-08-08T17:01:33Z,4.30,debit,Voolith,entertainment,jcb
+Magnotta - Bel Paese White,2003-09-20T22:10:47Z,7.69,credit,Feedbug,car,maestro
+"Soup - French Onion, Dry",2015-04-10T00:44:35Z,3.53,debit,Voonix,utilities,mastercard
+Beets - Pickled,2050-11-01T17:09:57Z,7.15,debit,Realcube,groceries,americanexpress
+Pork - Caul Fat,2045-05-29T01:12:33Z,6.35,debit,Dynabox,utilities,jcb
+"Pork - Loin, Boneless",2022-07-17T00:24:46Z,4.91,debit,Yakidoo,entertainment,jcb
+Tea - Decaf 1 Cup,2002-10-04T09:06:58Z,0.07,credit,Blogpad,home,maestro
+Pork - Suckling Pig,2033-05-10T02:33:25Z,5.86,debit,Chatterpoint,entertainment,mastercard
+Mcguinness - Blue Curacao,2008-09-25T22:40:08Z,3.14,credit,Avaveo,car,jcb
+Sour Puss Sour Apple,2026-06-05T07:01:00Z,6.84,debit,Shufflester,groceries,jcb
+Cheese Cheddar Processed,2009-09-02T07:11:38Z,5.52,debit,Cogilith,home,diners-club-enroute
+Foil Wrap,2019-09-10T13:54:54Z,5.38,credit,Eare,home,diners-club-enroute
+Papadam,2024-10-07T20:52:00Z,9.89,debit,Dabvine,clothing,visa
+Bread - Sour Batard,2043-06-29T13:42:23Z,1.00,debit,Twinder,groceries,mastercard
+Sauce - Fish 25 Ozf Bottle,2022-09-20T12:05:56Z,7.11,debit,Zazio,home,visa-electron
+"Shrimp - 16/20, Iqf, Shell On",2022-10-11T23:04:16Z,6.79,debit,Feedmix,utilities,mastercard
+"Wine - Red, Pinot Noir, Chateau",2035-03-01T13:41:54Z,3.97,credit,Aimbo,classes,visa-electron
+Water - Aquafina Vitamin,2049-03-31T21:27:50Z,3.42,debit,Shufflebeat,utilities,americanexpress
+Tart - Pecan Butter Squares,2050-09-21T11:37:44Z,2.67,debit,Cogibox,clothing,jcb
+Tuna - Bluefin,2026-03-09T14:05:33Z,0.03,credit,Realmix,groceries,china-unionpay
+Cod - Black Whole Fillet,2003-12-01T23:29:55Z,4.42,credit,Divape,clothing,jcb
+Coffee - Hazelnut Cream,2011-08-01T21:32:30Z,4.89,credit,Brightdog,clothing,switch
+Wine - Toasted Head,2016-10-11T11:55:15Z,0.07,credit,Layo,utilities,jcb
+Wine - Manischewitz Concord,2030-07-03T06:20:23Z,4.31,debit,Fanoodle,car,jcb
+Bar Mix - Lemon,2049-10-05T14:18:22Z,8.99,debit,Browsetype,clothing,jcb
+"Soup - Knorr, French Onion",2048-11-02T08:36:49Z,7.65,credit,Wordtune,clothing,switch
+Onions - Vidalia,2024-03-08T17:00:45Z,0.53,debit,Twitterworks,clothing,switch
+Knife Plastic - White,2020-04-23T23:49:01Z,1.94,debit,Kwilith,clothing,mastercard
+Yogurt - Assorted Pack,2035-05-13T14:37:41Z,7.62,debit,Kwilith,classes,mastercard
+"Pasta - Linguini, Dry",2021-03-01T00:13:09Z,7.19,debit,Gigabox,car,jcb
+Aspic - Light,2047-05-18T00:11:01Z,6.54,credit,Skiptube,medical,switch
+Lettuce - Arugula,2035-11-17T10:46:47Z,5.14,debit,Blogpad,home,switch
+"Leeks - Baby, White",2015-02-14T09:22:54Z,9.95,debit,Eabox,entertainment,jcb
+Carbonated Water - Cherry,2005-04-03T16:21:34Z,9.19,credit,Riffpedia,clothing,jcb
+Bread Ww Cluster,2027-11-04T19:35:56Z,1.84,debit,Brightdog,car,mastercard
+Whmis Spray Bottle Graduated,2050-04-27T09:57:30Z,6.54,debit,Jabbersphere,clothing,mastercard
+Rabbit - Whole,2028-01-13T15:28:50Z,1.86,debit,Plajo,groceries,bankcard
+Parasol Pick Stir Stick,2018-01-13T00:21:47Z,7.73,credit,Blogtag,groceries,mastercard
+Poppy Seed,2035-02-20T05:34:47Z,5.30,debit,Feedfish,home,instapayment
+Turnip - Wax,2047-03-16T10:59:13Z,2.49,debit,Browsecat,classes,jcb
+Cake - Bande Of Fruit,2002-09-25T11:38:59Z,9.87,debit,Bubblemix,home,jcb
+Truffle Shells - Semi - Sweet,2050-12-15T23:23:10Z,7.96,credit,Jaxspan,home,jcb
+Soup - Campbells Tomato Ravioli,2025-01-15T08:31:38Z,0.91,credit,Pixope,classes,switch
+"Juice - Clamato, 341 Ml",2004-12-10T14:21:53Z,4.23,credit,Youtags,medical,diners-club-carte-blanche
+Soup - Campbells Beef Stew,2026-12-29T04:41:00Z,6.25,credit,Gevee,classes,mastercard
+Breakfast Quesadillas,2035-05-05T23:13:22Z,5.70,credit,Quimm,medical,jcb
+Squid Ink,2005-07-24T01:52:29Z,2.74,credit,Dynazzy,home,diners-club-enroute
+Eggplant - Baby,2016-05-16T15:39:31Z,1.75,debit,Photobug,car,maestro
+"Bread - Rolls, Corn",2035-10-14T23:19:07Z,2.62,debit,Jayo,car,switch
+Juice - Lime,2008-08-29T15:07:22Z,3.28,debit,InnoZ,entertainment,jcb
+Sauce - Roasted Red Pepper,2014-11-19T09:18:08Z,9.11,credit,Zoonder,groceries,jcb
+"Basil - Primerba, Paste",2002-03-09T21:12:37Z,6.34,debit,Skynoodle,classes,visa-electron
+Trout Rainbow Whole,2008-01-30T02:56:28Z,6.71,credit,Reallinks,utilities,jcb
+Cornish Hen,2008-07-02T10:50:27Z,3.27,debit,Jabbersphere,clothing,mastercard
+"Juice - Apple, 1.36l",2047-06-20T01:04:44Z,7.12,credit,Jazzy,entertainment,diners-club-carte-blanche
+Grouper - Fresh,2035-10-14T13:24:03Z,0.96,debit,Dabjam,groceries,jcb
+Beer - Camerons Cream Ale,2009-10-24T03:56:39Z,3.29,credit,Brainlounge,utilities,jcb
+Salami - Genova,2035-01-22T15:09:31Z,4.68,credit,Zoomzone,clothing,laser
+Ginger - Crystalized,2024-12-05T13:40:15Z,9.22,credit,Leenti,groceries,jcb
+Vinegar - Tarragon,2012-03-04T04:48:00Z,6.30,debit,Flashset,groceries,bankcard
+Turkey - Ground. Lean,2027-02-17T08:08:52Z,2.85,debit,Skyba,utilities,jcb
+Lobster - Live,2047-01-22T11:29:46Z,1.83,debit,Quatz,medical,mastercard
+"Pasta - Gnocchi, Potato",2005-08-07T22:40:38Z,4.62,credit,Roodel,utilities,jcb
+Sugar - Individual Portions,2004-06-21T05:18:58Z,6.32,debit,Kimia,utilities,visa
+Broccoli - Fresh,2011-02-16T17:18:16Z,3.53,credit,Tagfeed,groceries,diners-club-carte-blanche
+Pastry - Key Limepoppy Seed Tea,2034-07-16T19:32:53Z,4.42,debit,Zoomzone,car,jcb
+"Bread - Pita, Mini",2024-01-08T02:20:17Z,9.62,credit,Twitterbeat,clothing,jcb
+Praline Paste,2000-06-10T10:00:43Z,1.05,credit,Jabbertype,utilities,jcb
+Bread Sour Rolls,2008-09-05T13:10:15Z,5.94,credit,Livepath,classes,bankcard
+Milk 2% 500 Ml,2026-12-15T23:42:20Z,5.96,debit,Realcube,utilities,instapayment
+Chocolate - Mi - Amere Semi,2001-07-28T09:35:34Z,1.58,debit,Skipstorm,home,jcb
+Vinegar - Rice,2005-01-29T01:09:39Z,5.11,credit,Oozz,clothing,maestro
+Bagelers,2049-06-15T09:48:15Z,0.93,credit,Realcube,groceries,visa-electron
+Glass Clear 7 Oz Xl,2021-08-19T17:25:51Z,9.56,credit,Topicware,utilities,maestro
+Chicken - Whole Roasting,2004-03-20T02:48:56Z,8.52,credit,Blognation,clothing,diners-club-enroute
+Oil - Olive,2042-12-16T07:08:30Z,3.10,credit,Flashspan,medical,jcb
+Dooleys Toffee,2037-08-21T02:47:14Z,2.26,debit,Photolist,utilities,diners-club-enroute
+Steam Pan - Half Size Deep,2024-09-15T01:46:09Z,3.53,debit,Tazzy,clothing,mastercard
+Bread - Granary Small Pull,2002-08-02T11:08:23Z,6.20,debit,Zooveo,entertainment,diners-club-carte-blanche
+Pork - Bones,2009-02-28T18:51:29Z,6.62,debit,Pixoboo,classes,bankcard
+Napkin White,2040-07-27T17:08:08Z,8.43,debit,Eayo,clothing,americanexpress
+"Asparagus - White, Fresh",2039-04-02T04:35:09Z,7.87,debit,Zooveo,entertainment,jcb
+Drambuie,2034-02-20T01:11:42Z,5.25,debit,Trudoo,entertainment,jcb
+Veal - Kidney,2035-08-17T16:20:30Z,5.11,debit,Yozio,groceries,visa-electron
+Gatorade - Xfactor Berry,2030-10-15T11:54:04Z,8.78,debit,Browsedrive,utilities,americanexpress
+Sauce Bbq Smokey,2049-11-11T06:29:58Z,5.87,credit,Browsezoom,medical,jcb
+Beer - Rickards Red,2045-06-15T02:42:52Z,0.67,credit,Bubblebox,medical,mastercard
+Orange - Tangerine,2010-03-31T03:32:21Z,2.86,debit,Flipbug,classes,china-unionpay
+Veal - Inside,2029-01-21T10:15:11Z,1.81,credit,Youbridge,groceries,maestro
+Kiwi Gold Zespri,2027-05-07T08:17:15Z,2.92,credit,Wikivu,car,americanexpress
+Squid - Tubes / Tenticles 10/20,2050-11-24T01:52:37Z,7.34,debit,Rhybox,home,visa-electron
+Papadam,2013-04-07T08:56:35Z,2.28,debit,Blogpad,entertainment,bankcard
+Fond - Chocolate,2013-01-13T16:49:56Z,3.93,debit,Reallinks,classes,jcb
+Carrots - Jumbo,2035-01-27T12:19:38Z,0.77,debit,Kazio,car,mastercard
+Eggplant - Baby,2042-03-08T20:42:22Z,4.07,credit,Tazz,car,diners-club-enroute
+Turkey - Ground. Lean,2038-09-18T02:08:58Z,4.38,credit,Voomm,utilities,switch
+Yukon Jack,2036-11-24T14:59:41Z,0.03,debit,Tambee,entertainment,jcb
+Turkey Tenderloin Frozen,2047-07-10T17:21:22Z,9.15,debit,Vidoo,car,jcb
+"Artichoke - Hearts, Canned",2049-08-06T13:29:17Z,4.07,debit,Kamba,classes,laser
+Carrots - Mini Red Organic,2019-01-10T21:14:26Z,5.39,credit,Skyble,home,bankcard
+Breakfast Quesadillas,2005-05-11T23:43:29Z,8.80,credit,Cogilith,home,jcb
+Muffin - Mix - Creme Brule 15l,2035-11-20T20:30:16Z,3.77,debit,Mybuzz,groceries,diners-club-us-ca
+"Beef - Bones, Marrow",2048-01-08T00:31:55Z,7.57,debit,Dabtype,home,bankcard
+Glass - Juice Clear 5oz 55005,2048-05-21T16:19:24Z,5.77,debit,Photofeed,utilities,jcb
+Pail With Metal Handle 16l White,2001-04-06T13:44:10Z,4.07,debit,Brainlounge,utilities,jcb
+Pepper - Yellow Bell,2027-09-17T04:21:26Z,4.57,debit,JumpXS,clothing,jcb
+Vinegar - Red Wine,2026-07-11T06:38:23Z,6.51,debit,Linktype,clothing,mastercard
+"Brocolinni - Gaylan, Chinese",2012-01-30T15:52:59Z,0.91,debit,Yakitri,utilities,jcb
+Grenadillo,2028-04-24T07:21:05Z,4.99,credit,Izio,groceries,jcb
+Tea - Mint,2026-05-13T20:27:15Z,9.09,debit,Meemm,classes,visa-electron
+"Liqueur Banana, Ramazzotti",2040-07-12T05:56:14Z,8.16,debit,Tanoodle,entertainment,maestro
+Flax Seed,2031-03-14T13:56:20Z,6.49,debit,Jabberstorm,groceries,laser
+"Wine - Red, Harrow Estates, Cab",2031-09-30T16:36:48Z,0.18,debit,Riffpedia,utilities,jcb
+Melon - Honey Dew,2024-01-24T05:59:04Z,0.09,credit,Trudoo,medical,mastercard
+"Peas - Pigeon, Dry",2027-04-13T00:38:30Z,0.87,debit,Dynabox,classes,visa-electron
+Tomato - Green,2029-12-22T22:26:41Z,4.17,debit,Blogtags,entertainment,jcb
+Peach - Fresh,2002-12-31T11:22:24Z,3.76,debit,Flipopia,groceries,jcb
+Creme De Banane - Marie,2009-01-24T17:10:56Z,6.15,debit,Buzzshare,utilities,visa
+Cake - Lemon Chiffon,2029-09-26T03:35:05Z,6.03,debit,Twitterworks,home,switch
+"Sauce - Bernaise, Mix",2043-08-27T12:22:18Z,0.83,debit,Wikibox,clothing,jcb
+Meldea Green Tea Liquor,2042-11-28T20:14:27Z,3.21,debit,Photobug,groceries,china-unionpay
+"Split Peas - Yellow, Dry",2007-11-02T08:33:12Z,9.75,debit,Skyba,clothing,mastercard
+Pork Ham Prager,2012-07-02T10:25:41Z,7.52,debit,Brainbox,utilities,visa
+Dome Lid Clear P92008h,2017-02-09T23:41:40Z,8.02,credit,Tagpad,home,visa
+Lamb Rack - Ontario,2011-04-28T19:37:01Z,8.65,debit,Skilith,utilities,china-unionpay
+Pear - Prickly,2030-09-13T19:32:13Z,9.31,credit,Meevee,utilities,jcb
+Tahini Paste,2038-06-15T04:41:13Z,6.79,credit,Skimia,clothing,jcb
+Green Tea Refresher,2034-11-24T13:46:31Z,10.00,credit,Thoughtbeat,car,visa-electron
+"Pepper - White, Whole",2043-01-09T05:54:46Z,0.41,debit,Realbridge,entertainment,visa-electron
+"Napkin - Beverge, White 2 - Ply",2044-06-24T14:11:48Z,6.19,credit,Brainbox,groceries,diners-club-carte-blanche
+Beets,2008-05-24T12:54:02Z,0.64,debit,Zooxo,groceries,jcb
+Appetizer - Assorted Box,2017-08-28T20:33:01Z,7.56,credit,Tagchat,clothing,jcb
+Fork - Plastic,2016-06-23T17:42:15Z,3.10,debit,Jaxworks,classes,mastercard
+Syrup - Kahlua Chocolate,2015-05-28T15:09:35Z,6.48,credit,Skilith,medical,instapayment
+Oil - Sunflower,2031-06-04T04:23:40Z,4.76,debit,Twitterlist,utilities,jcb
+Lobster - Cooked,2030-03-24T04:19:37Z,7.94,credit,Realpoint,medical,visa
+Apricots - Halves,2019-08-03T20:01:55Z,9.40,debit,Jayo,entertainment,maestro
+Langers - Mango Nectar,2015-05-06T11:40:56Z,7.99,debit,Feedspan,classes,solo
+Amarula Cream,2021-01-19T16:02:24Z,5.09,debit,Topdrive,groceries,jcb
+Pastry - Chocolate Chip Muffin,2045-04-02T10:16:23Z,4.09,debit,Brainsphere,clothing,diners-club-carte-blanche
+Cheese - Ermite Bleu,2010-08-07T04:05:46Z,1.53,credit,Yambee,entertainment,diners-club-carte-blanche
+Bacon Strip Precooked,2048-01-19T19:25:45Z,8.71,debit,Minyx,medical,jcb
+Vinegar - Balsamic,2008-06-06T09:40:08Z,6.88,credit,Devshare,entertainment,bankcard
+Pastry - Carrot Muffin - Mini,2004-07-05T18:48:05Z,3.52,debit,Quamba,home,jcb
+Towel Multifold,2014-01-06T00:12:21Z,6.60,debit,Wordware,classes,jcb
+Maintenance Removal Charge,2039-02-27T15:36:18Z,7.29,credit,Trilia,medical,jcb
+Steamers White,2050-07-12T18:17:58Z,3.27,debit,Yozio,medical,jcb
+Muskox - French Rack,2018-12-25T04:21:07Z,4.17,credit,Brainlounge,medical,diners-club-enroute
+Tuna - Salad Premix,2015-01-08T08:32:24Z,4.01,credit,Blogtags,car,mastercard
+Beef - Tenderloin,2000-01-15T08:57:11Z,7.30,debit,Yakijo,entertainment,switch
+Dried Cranberries,2046-07-09T10:57:10Z,4.68,credit,Vidoo,clothing,jcb
+Pepper - Chilli Seeds Mild,2029-07-13T04:52:34Z,5.89,credit,Browsedrive,classes,bankcard
+Apple - Fuji,2001-09-15T23:24:23Z,9.92,credit,Riffpedia,classes,jcb
+Temperature Recording Station,2004-01-17T22:39:30Z,9.73,debit,Thoughtbeat,home,diners-club-carte-blanche
+Bay Leaf,2019-01-21T06:19:46Z,5.87,credit,Eabox,clothing,jcb
+Kippers - Smoked,2025-09-12T05:51:46Z,7.50,credit,Skimia,groceries,switch
+Carbonated Water - Raspberry,2033-08-15T14:44:37Z,7.44,debit,Blogtags,clothing,laser
+Sausage - Blood Pudding,2015-10-04T11:21:43Z,4.98,credit,Fatz,classes,maestro
+Lettuce Romaine Chopped,2000-09-17T05:11:42Z,1.51,credit,Edgeblab,groceries,jcb
+Cheese - Bakers Cream Cheese,2003-10-28T19:19:24Z,7.44,debit,Abatz,entertainment,jcb
+Mushroom - Lg - Cello,2040-08-14T00:47:33Z,7.99,credit,Camimbo,classes,bankcard
+Bread - Raisin Walnut Pull,2032-04-28T02:55:08Z,7.19,credit,Jaxnation,home,jcb
+Soup - Campbells Broccoli,2038-12-01T08:29:32Z,3.19,debit,Fanoodle,entertainment,mastercard
+Cocoa Powder - Natural,2037-12-12T23:07:19Z,0.20,debit,Podcat,groceries,jcb
+Versatainer Nc - 888,2020-12-09T21:39:54Z,7.58,debit,Miboo,home,jcb
+"Pasta - Bauletti, Chicken White",2035-11-17T14:18:05Z,7.88,credit,Einti,utilities,jcb
+Nut - Macadamia,2000-06-22T19:13:40Z,2.93,credit,Snaptags,entertainment,jcb
+Sauce Bbq Smokey,2042-03-22T06:52:01Z,2.31,debit,Jetwire,classes,jcb
+Shallots,2021-01-06T09:57:12Z,2.35,debit,Jabberstorm,utilities,switch
+Madeira,2037-05-27T17:38:59Z,0.08,credit,Yodel,entertainment,switch
+"Nut - Almond, Blanched, Whole",2017-11-18T14:13:14Z,0.39,credit,BlogXS,classes,bankcard
+Truffle Shells - Semi - Sweet,2039-05-04T03:11:27Z,0.60,debit,Meedoo,entertainment,visa-electron
+Rice Paper,2005-08-26T12:45:22Z,8.45,credit,LiveZ,medical,jcb
+Island Oasis - Strawberry,2048-02-03T05:29:03Z,4.40,credit,Yacero,groceries,instapayment
+Pepper - Green Thai,2044-09-25T03:56:10Z,1.13,debit,Wikivu,clothing,jcb
+Island Oasis - Strawberry,2032-04-08T08:06:38Z,1.47,credit,Jabbertype,car,visa-electron
+Sobe - Lizard Fuel,2015-12-27T03:11:02Z,9.29,credit,Teklist,clothing,instapayment
+"Cheese - Cheddar, Mild",2007-01-13T15:38:29Z,6.75,debit,Kare,clothing,switch
+Dry Ice,2014-12-07T06:55:46Z,8.16,debit,Photobean,home,jcb
+Wine - Beaujolais Villages,2028-09-19T12:43:08Z,2.44,debit,Yacero,entertainment,diners-club-carte-blanche
+Wine - Chateau Aqueria Tavel,2048-09-15T00:54:36Z,7.99,debit,Dabjam,utilities,china-unionpay
+"Cheese - Manchego, Spanish",2007-01-15T01:11:28Z,8.17,credit,Brainsphere,groceries,jcb
+"Lamb - Racks, Frenched",2037-06-30T11:22:46Z,0.92,debit,Feedfire,clothing,jcb
+Table Cloth 53x53 White,2045-07-12T09:16:52Z,4.81,debit,Youbridge,car,jcb
+Tea - Lemon Green Tea,2008-06-23T11:39:50Z,9.53,credit,Lajo,groceries,switch
+Broom And Brush Rack Black,2009-06-19T15:15:36Z,8.56,credit,Blognation,entertainment,visa
+"Nut - Pistachio, Shelled",2050-07-31T16:58:45Z,2.20,credit,Yata,utilities,solo
+Bagel - Everything,2047-01-24T11:08:30Z,5.34,debit,Oozz,medical,diners-club-us-ca
+Juice - Lime,2019-09-29T17:38:20Z,7.14,credit,Katz,medical,maestro
+"Wine - Sherry Dry Sack, William",2020-06-02T05:06:38Z,4.08,credit,Dazzlesphere,home,switch
+Toamtoes 6x7 Select,2003-01-14T11:53:23Z,0.04,debit,Yacero,classes,visa-electron
+Wine - Stoneliegh Sauvignon,2007-07-04T20:26:01Z,3.76,debit,Feednation,utilities,jcb
+Tomatoes - Hot House,2000-01-11T13:26:14Z,4.60,debit,Zoonoodle,groceries,diners-club-enroute
+Ginger - Crystalized,2025-09-17T12:59:52Z,0.29,debit,Skinte,groceries,china-unionpay
+Bacardi Breezer - Tropical,2036-01-01T09:14:56Z,2.24,debit,Gabtype,medical,diners-club-carte-blanche
+Soup - Campbells Asian Noodle,2004-12-01T23:00:05Z,8.11,credit,Kwideo,medical,diners-club-carte-blanche
+Sobe - Orange Carrot,2035-06-06T17:57:24Z,0.39,credit,Realbridge,home,jcb
+Eggplant - Asian,2045-12-15T23:01:44Z,8.22,debit,Abata,groceries,switch
+Compound - Strawberry,2006-07-30T06:58:41Z,7.01,debit,Browsebug,home,switch
+Dill Weed - Dry,2006-06-07T05:30:02Z,3.16,credit,Dabtype,medical,switch
+Beef - Cow Feet Split,2050-07-24T18:04:12Z,6.73,debit,Buzzdog,classes,diners-club-enroute
+Calypso - Strawberry Lemonade,2034-11-20T01:34:07Z,1.69,debit,Yadel,classes,laser
+"Bread - Roll, Canadian Dinner",2050-12-04T23:57:48Z,9.19,credit,Gabtune,groceries,mastercard
+Tea - Decaf 1 Cup,2016-01-12T17:56:07Z,2.35,credit,Leenti,classes,jcb
+Wine - Tribal Sauvignon,2044-04-01T13:05:38Z,2.73,debit,Skinder,medical,china-unionpay
+"Pasta - Gnocchi, Potato",2027-01-17T01:58:37Z,9.21,debit,Quatz,groceries,jcb
+"Lamb - Whole, Frozen",2044-04-30T19:06:06Z,7.34,debit,Twinder,medical,jcb
+"Hickory Smoke, Liquid",2000-11-11T07:12:08Z,9.69,credit,Plambee,classes,jcb
+Wooden Mop Handle,2040-07-04T03:49:19Z,5.68,credit,Camido,groceries,jcb
+Wine - Rosso Toscano Igt,2025-08-17T10:56:42Z,1.18,credit,Trupe,clothing,jcb
+Pail For Lid 1537,2001-08-15T04:45:30Z,0.15,credit,Brainsphere,utilities,diners-club-carte-blanche
+Mackerel Whole Fresh,2043-10-24T11:21:43Z,8.20,debit,Jabberbean,groceries,visa
+Calypso - Black Cherry Lemonade,2029-07-21T04:30:28Z,1.53,debit,Twiyo,car,bankcard
+Bar Mix - Lemon,2004-04-06T12:24:41Z,4.87,credit,Fivebridge,car,switch
+Cheese - Parmigiano Reggiano,2049-02-21T12:35:06Z,8.93,debit,Wordtune,medical,jcb
+Pea - Snow,2010-10-13T03:26:15Z,4.64,debit,Photospace,entertainment,visa
+"Chocolate - Pistoles, Lactee, Milk",2043-09-29T07:05:17Z,7.54,credit,Topicshots,home,jcb
+Wine - Chablis 2003 Champs,2006-01-12T20:39:07Z,6.28,credit,Agivu,medical,diners-club-us-ca
+"Wine - Red, Lurton Merlot De",2011-12-20T23:04:36Z,3.11,credit,Feedspan,classes,jcb
+"Chocolate - Pistoles, Lactee, Milk",2025-07-28T23:54:57Z,6.72,credit,Photolist,clothing,jcb
+Food Colouring - Pink,2039-03-09T22:06:59Z,3.38,debit,Shuffledrive,clothing,switch
+Squash - Sunburst,2032-04-20T16:12:24Z,9.37,credit,LiveZ,utilities,visa
+Parasol Pick Stir Stick,2038-02-22T04:02:52Z,9.38,credit,Blognation,groceries,jcb
+Flour - All Purpose,2022-04-10T15:00:35Z,8.86,debit,Lazzy,car,jcb
+Mushroom - Portebello,2050-07-09T14:40:45Z,7.27,credit,Jabbercube,home,jcb
+The Pop Shoppe - Root Beer,2028-11-19T19:26:36Z,8.83,debit,Zoomdog,groceries,jcb
+"Marjoram - Dried, Rubbed",2010-11-21T06:18:37Z,7.37,debit,Dynabox,home,mastercard
+Wine - Domaine Boyar Royal,2021-10-20T06:16:24Z,4.91,credit,Shuffledrive,classes,switch
+Cinnamon - Ground,2009-04-08T18:48:21Z,5.87,credit,Thoughtmix,groceries,jcb
+Cookies Cereal Nut,2012-04-18T16:41:48Z,7.33,credit,Topdrive,utilities,maestro
+Table Cloth 62x120 Colour,2045-04-11T22:49:45Z,2.77,credit,Meejo,classes,jcb
+Coffee - French Vanilla Frothy,2027-01-02T15:33:23Z,2.07,credit,Yozio,groceries,jcb
+Wine - Blue Nun Qualitatswein,2006-08-16T00:32:42Z,8.31,debit,Avamba,home,diners-club-enroute
+Momiji Oroshi Chili Sauce,2037-02-11T03:19:55Z,2.88,credit,Oba,medical,jcb
+Curry Paste - Green Masala,2009-08-29T04:42:25Z,5.02,credit,Skalith,utilities,mastercard
+Cookie Trail Mix,2001-06-17T04:01:11Z,1.37,debit,Buzzshare,clothing,jcb
+"Pork - Sausage, Medium",2048-05-28T04:36:17Z,3.22,credit,Jabbercube,utilities,diners-club-us-ca
+Carbonated Water - White Grape,2025-06-22T14:56:47Z,8.89,credit,Eare,medical,jcb
+Tea - Mint,2017-09-06T01:30:57Z,9.49,debit,Babblestorm,medical,maestro
+Wine - Vovray Sec Domaine Huet,2046-04-06T13:47:42Z,1.11,credit,Yata,groceries,mastercard
+Pork - Suckling Pig,2008-01-09T16:24:51Z,1.70,credit,Skilith,utilities,mastercard
+Vanilla Beans,2015-02-03T00:39:36Z,3.03,credit,Wikibox,classes,china-unionpay
+"Soda Water - Club Soda, 355 Ml",2014-10-14T04:35:44Z,2.96,debit,Zoomlounge,entertainment,mastercard
+Flower - Dish Garden,2033-07-13T09:56:35Z,9.63,debit,Mydo,utilities,diners-club-international
+Spinach - Packaged,2041-07-28T02:06:59Z,7.98,debit,Twimm,utilities,jcb
+Soup - Campbellschix Stew,2043-04-04T01:16:10Z,0.01,credit,Meedoo,medical,jcb
+Duck - Whole,2017-11-21T19:29:02Z,1.76,debit,Babblestorm,entertainment,jcb
+Shrimp - 31/40,2005-07-04T11:26:53Z,5.45,credit,Geba,car,jcb
+Beans - Wax,2013-12-12T19:10:14Z,3.58,debit,Nlounge,entertainment,diners-club-carte-blanche
+Beer - Molson Excel,2004-08-12T09:41:03Z,3.80,credit,Eabox,entertainment,jcb
+"Beef - Baby, Liver",2046-02-17T23:25:44Z,4.44,credit,Gigaclub,medical,jcb
+Mayonnaise - Individual Pkg,2040-10-01T20:33:50Z,9.27,debit,Camimbo,car,jcb
+Trout Rainbow Whole,2034-12-24T23:53:57Z,6.04,debit,Avamba,entertainment,switch
+Beef - Ox Tongue,2042-08-18T22:28:05Z,7.72,debit,Photospace,entertainment,jcb
+Syrup - Kahlua Chocolate,2027-02-18T19:44:11Z,2.54,debit,Yodel,groceries,jcb
+Flour - Fast / Rapid,2031-07-31T12:10:51Z,7.23,debit,Meemm,car,jcb
+Wiberg Super Cure,2032-05-24T09:55:16Z,5.97,credit,Blogtag,utilities,visa
+Vaccum Bag 10x13,2016-12-15T00:55:20Z,0.19,credit,Twinte,utilities,jcb
+Coffee Decaf Colombian,2006-03-22T07:47:34Z,9.61,credit,Reallinks,entertainment,switch
+Red Cod Fillets - 225g,2043-11-08T00:43:36Z,4.29,credit,Realpoint,clothing,jcb
+Milk - 2%,2039-01-17T12:00:09Z,4.16,credit,Zazio,groceries,switch
+Apron,2044-11-06T13:03:34Z,9.20,credit,Fatz,classes,switch
+"Flour - Buckwheat, Dark",2010-06-09T15:51:00Z,2.22,credit,Vidoo,utilities,jcb
+Devonshire Cream,2026-08-02T05:48:02Z,8.87,credit,Vipe,car,jcb
+"Lamb - Loin, Trimmed, Boneless",2009-04-20T12:13:52Z,4.54,credit,Dynazzy,home,maestro
+Milk - Chocolate 500ml,2048-12-19T12:14:46Z,8.75,credit,Devify,clothing,diners-club-carte-blanche
+Squid Ink,2002-06-06T19:15:10Z,2.22,debit,Gabvine,car,mastercard
+Longos - Grilled Chicken With,2048-08-23T12:46:31Z,8.15,credit,Janyx,utilities,jcb
+Tilapia - Fillets,2049-12-14T13:34:53Z,9.09,debit,Skimia,medical,jcb
+Ocean Spray - Ruby Red,2033-02-05T19:05:57Z,1.84,debit,Realblab,utilities,visa
+Appetizer - Southwestern,2006-08-18T11:41:01Z,0.99,credit,Realpoint,clothing,visa-electron
+"Pork - Loin, Bone - In",2031-01-16T04:14:09Z,0.94,debit,Browsedrive,groceries,visa-electron
+"Vodka - Hot, Lnferno",2021-11-19T14:00:54Z,6.90,credit,Blogpad,entertainment,jcb
+"Tart Shells - Sweet, 4",2023-09-04T07:13:31Z,8.33,debit,Brainverse,groceries,jcb
+Sauce - Chili,2010-12-31T04:01:55Z,8.41,debit,Wikizz,car,maestro
+Pail For Lid 1537,2031-09-25T04:16:54Z,6.77,debit,Mydo,classes,laser
+Baking Soda,2028-07-19T18:30:07Z,6.48,debit,Flipstorm,home,jcb
+Vinegar - Raspberry,2032-04-14T10:57:49Z,0.97,credit,Zoomdog,medical,jcb
+Mousse - Banana Chocolate,2015-09-11T14:57:26Z,3.20,credit,Feedfire,entertainment,diners-club-carte-blanche
+Cheese - Parmesan Cubes,2006-11-05T21:52:51Z,3.35,debit,Centidel,groceries,jcb
+"Sauce - Apple, Unsweetened",2038-02-09T08:18:00Z,9.15,debit,Yadel,groceries,jcb
+Squid - U - 10 Thailand,2012-03-10T02:11:57Z,0.82,credit,Riffwire,utilities,jcb
+Pie Shell - 9,2023-02-16T19:10:20Z,5.12,debit,Gigabox,groceries,maestro
+Cheese - Valancey,2026-04-03T18:40:09Z,9.48,credit,Photobug,home,visa-electron
+Juice - Orangina,2028-09-23T16:09:30Z,4.41,credit,Youbridge,entertainment,jcb
+Beef - Top Butt Aaa,2015-05-27T17:10:00Z,0.94,debit,Mycat,medical,jcb
+Flower - Commercial Bronze,2046-01-11T07:15:16Z,9.85,debit,Pixonyx,utilities,switch
+Kellogs Cereal In A Cup,2026-09-04T01:47:34Z,3.08,debit,Flashspan,classes,jcb
+Butcher Twine 4r,2022-07-12T16:12:44Z,7.52,debit,Kazu,entertainment,jcb
+Bar - Granola Trail Mix Fruit Nut,2027-08-07T06:55:38Z,5.72,debit,Zava,home,diners-club-carte-blanche
+Gatorade - Orange,2039-11-28T03:11:56Z,3.31,debit,Bubblemix,classes,jcb
+Straw - Regular,2018-06-10T09:29:10Z,7.16,credit,Viva,home,jcb
+Monkfish Fresh - Skin Off,2026-09-11T16:47:09Z,4.92,debit,Camimbo,medical,jcb
+Island Oasis - Mango Daiquiri,2027-11-08T13:59:59Z,9.17,credit,Eidel,medical,jcb
+Breadfruit,2024-08-13T15:58:32Z,8.39,credit,Linkbridge,classes,jcb
+Wine - Prosecco Valdobiaddene,2009-11-05T08:59:10Z,3.76,debit,Kwinu,classes,jcb
+Port - 74 Brights,2045-01-29T12:27:21Z,5.04,credit,Yakitri,medical,jcb
+Peppercorns - Green,2049-03-08T14:31:25Z,3.82,debit,Jayo,classes,bankcard
+Silicone Paper 16.5x24,2005-05-21T11:08:39Z,3.32,credit,Zoomdog,car,maestro
+Table Cloth 53x53 White,2010-03-25T18:06:43Z,3.25,debit,Tagopia,medical,mastercard
+Wine - Jafflin Bourgongone,2028-02-15T22:08:10Z,6.49,credit,Jaxnation,utilities,mastercard
+Water - Spring 1.5lit,2020-11-18T07:16:37Z,5.50,debit,Edgewire,utilities,maestro
+"Mushroom - Chanterelle, Dry",2011-01-27T12:37:25Z,8.68,debit,Fiveclub,clothing,americanexpress
+Ham - Procutinni,2035-10-09T00:51:16Z,9.81,debit,Rooxo,medical,visa
+Nut - Pumpkin Seeds,2041-01-21T05:05:52Z,2.90,credit,Skynoodle,groceries,jcb
+Beef - Bresaola,2031-11-04T19:36:22Z,2.81,credit,Skyvu,clothing,jcb
+"Bread - Dark Rye, Loaf",2003-05-11T12:50:32Z,2.66,debit,Abatz,car,visa
+Tea - Earl Grey,2022-01-13T04:33:44Z,8.17,credit,Gabtype,groceries,maestro
+Veal - Sweetbread,2034-05-23T01:05:04Z,9.51,debit,Babblestorm,home,maestro
+Onions - Red,2007-04-06T06:36:18Z,5.91,credit,Podcat,utilities,americanexpress
+"Beans - Long, Chinese",2037-11-29T06:11:34Z,7.07,credit,Realbridge,entertainment,jcb
+Milk - Chocolate 500ml,2028-02-13T21:54:35Z,2.85,credit,Tanoodle,entertainment,jcb
+Onions - Pearl,2038-08-14T16:00:51Z,9.11,credit,Skilith,groceries,visa-electron
+Potatoes - Peeled,2014-04-13T08:15:40Z,8.31,credit,Twitterworks,entertainment,jcb
+Lotus Rootlets - Canned,2029-11-20T02:13:13Z,0.71,debit,Skilith,entertainment,visa-electron
+Meldea Green Tea Liquor,2033-04-02T01:25:08Z,3.16,credit,Aivee,clothing,jcb
+Beef - Short Ribs,2046-09-22T03:27:49Z,2.09,debit,Edgeblab,car,china-unionpay
+Seedlings - Clamshell,2038-01-31T08:08:41Z,4.98,credit,Meemm,home,bankcard
+Oil - Shortening - All - Purpose,2015-01-10T16:42:21Z,3.42,debit,Realbridge,utilities,china-unionpay
+Spice - Chili Powder Mexican,2024-02-22T22:05:38Z,9.55,credit,Bubblemix,classes,visa
+Oneshot Automatic Soap System,2000-05-26T07:25:27Z,0.56,credit,Skipfire,car,jcb
+Bread - Wheat Baguette,2012-12-04T11:39:16Z,8.39,debit,Eimbee,groceries,jcb
+Pineapple - Regular,2036-01-27T10:19:52Z,9.80,debit,Wikizz,medical,jcb
+Squash - Sunburst,2001-05-17T20:41:34Z,0.48,credit,Edgewire,home,instapayment
+Dried Cherries,2023-08-15T01:56:05Z,8.88,credit,Topdrive,car,china-unionpay
+Tobasco Sauce,2037-07-18T18:55:49Z,0.61,debit,Skyba,home,americanexpress
+"Lamb - Leg, Diced",2004-11-21T21:21:55Z,9.79,credit,Feedspan,utilities,jcb
+Bag - Clear 7 Lb,2021-04-02T18:10:14Z,2.48,credit,Riffpath,clothing,switch
+Steam Pan - Half Size Deep,2035-03-25T10:56:16Z,0.54,credit,Buzzbean,classes,jcb
+"Napkin - Cocktail,beige 2 - Ply",2002-01-31T17:14:47Z,9.91,debit,Innojam,medical,jcb
+Tray - 16in Rnd Blk,2018-05-06T13:08:57Z,7.70,debit,Katz,medical,china-unionpay
+Beef - Top Butt,2001-08-13T06:17:33Z,1.71,credit,Blognation,car,jcb
+Soup - Campbells,2013-12-09T07:35:32Z,5.09,debit,Yombu,clothing,mastercard
+Piping - Bags Quizna,2045-06-11T20:50:53Z,0.82,debit,Livetube,car,bankcard
+"Veal - Tenderloin, Untrimmed",2017-07-11T12:31:33Z,9.12,debit,Twiyo,medical,maestro
+Cocoa Powder - Dutched,2010-03-06T23:33:35Z,4.26,credit,Npath,classes,maestro
+Glove - Cutting,2007-02-19T00:56:23Z,1.36,credit,Midel,entertainment,jcb
+Wine - Gewurztraminer Pierre,2010-10-03T16:13:36Z,9.96,debit,Quamba,home,americanexpress
+Gelatine Leaves - Bulk,2017-12-26T15:34:16Z,2.46,debit,Thoughtstorm,utilities,jcb
+Avocado,2033-02-16T05:12:05Z,8.39,credit,Vidoo,utilities,visa-electron
+Pecan Raisin - Tarts,2024-08-22T20:12:31Z,2.75,credit,Realmix,clothing,jcb
+Puree - Guava,2031-11-08T04:41:06Z,3.52,credit,Browsedrive,entertainment,jcb
+Artichokes - Jerusalem,2050-07-27T17:31:42Z,6.47,credit,Livepath,car,americanexpress
+Muffin Hinge Container 6,2007-03-03T14:53:19Z,8.67,debit,Shuffletag,medical,jcb
+Pork - European Side Bacon,2022-06-15T08:48:37Z,3.55,credit,Youspan,utilities,switch
+French Pastry - Mini Chocolate,2010-11-20T03:33:22Z,1.92,debit,Mydo,utilities,bankcard
+Chick Peas - Canned,2023-02-25T12:31:29Z,8.23,debit,Topdrive,medical,bankcard
+"Shrimp - 16 - 20 Cooked, Peeled",2004-09-08T15:46:04Z,1.44,credit,Viva,groceries,diners-club-enroute
+Milk - 2%,2048-03-14T03:26:39Z,5.80,credit,Yacero,utilities,diners-club-enroute
+Cheese - Victor Et Berthold,2045-01-02T13:46:31Z,2.01,credit,Jayo,car,mastercard
+Ice Cream - Chocolate,2018-12-05T01:28:55Z,0.39,debit,Mymm,entertainment,laser
+"Pasta - Bauletti, Chicken White",2000-11-09T00:01:44Z,2.42,debit,Gigabox,medical,jcb
+Vegetable - Base,2040-02-23T20:46:58Z,9.86,debit,Zoomzone,entertainment,jcb
+Sage Ground Wiberg,2044-04-19T19:27:07Z,6.65,credit,Bluezoom,utilities,switch
+"Juice - Clamato, 341 Ml",2030-09-10T02:04:51Z,9.81,credit,Wikivu,classes,mastercard
+Bread - Hamburger Buns,2037-08-14T05:28:35Z,2.48,debit,Katz,car,jcb
+"Turkey - Breast, Double",2031-02-06T11:27:39Z,1.26,credit,Twitterwire,groceries,jcb
+"Ham - Smoked, Bone - In",2013-03-02T18:45:22Z,3.58,debit,Pixoboo,utilities,laser
+Ecolab Crystal Fusion,2008-11-13T18:46:24Z,5.25,debit,Skinte,clothing,diners-club-enroute
+Truffle Cups - White Paper,2016-10-26T22:46:12Z,6.58,debit,Wikivu,utilities,china-unionpay
+Muffin Hinge Container 6,2015-10-10T06:09:58Z,0.30,debit,Cogilith,car,switch
+"Veal - Leg, Provimi - 50 Lb Max",2017-08-17T00:43:48Z,8.53,debit,Aivee,clothing,americanexpress
+Beer - Upper Canada Light,2007-04-12T14:02:15Z,9.90,debit,Jayo,medical,jcb
+Flower - Potmums,2048-10-22T11:14:08Z,2.27,credit,Twinte,clothing,switch
+Kaffir Lime Leaves,2049-11-20T03:10:25Z,1.35,debit,Skivee,utilities,jcb
+Lemons,2012-03-21T04:01:42Z,1.80,debit,Twitterbeat,car,maestro
+Mcgillicuddy Vanilla Schnap,2049-06-22T20:40:30Z,3.34,credit,Lazzy,utilities,mastercard
+Chips Potato All Dressed - 43g,2015-08-31T04:59:51Z,2.66,debit,Voolith,utilities,americanexpress
+Longos - Chicken Caeser Salad,2041-01-05T22:40:53Z,0.11,debit,Trunyx,medical,bankcard
+Buffalo - Tenderloin,2003-05-04T16:26:47Z,6.06,credit,Gigabox,entertainment,jcb
+Catfish - Fillets,2031-02-09T06:20:14Z,8.62,debit,Jayo,classes,bankcard
+Corn Meal,2023-05-09T14:28:33Z,6.79,credit,Edgeclub,home,visa-electron
+"Croissant, Raw - Mini",2017-05-26T00:34:34Z,0.48,debit,Yadel,utilities,diners-club-carte-blanche
+Cake - Pancake,2027-07-26T01:54:39Z,10.00,credit,Browsebug,classes,jcb
+Wine - Casablanca Valley,2012-09-11T16:38:44Z,0.86,debit,Shuffletag,medical,jcb
+Lambcasing,2030-02-26T11:47:25Z,3.78,debit,Blogtag,home,visa
+Beer - Moosehead,2035-12-23T02:49:58Z,9.62,credit,Bubbletube,entertainment,jcb
+"Pork - Sausage, Medium",2035-12-23T17:23:09Z,1.63,debit,Skivee,groceries,maestro
+Star Fruit,2013-08-12T07:34:48Z,9.98,debit,Skipstorm,clothing,diners-club-enroute
+"Lamb - Whole, Fresh",2024-06-11T05:20:56Z,6.05,debit,Bluejam,classes,jcb
+"Coffee - Colombian, Portioned",2043-04-29T07:51:37Z,0.63,credit,Flipbug,classes,jcb
+Lettuce - Sea / Sea Asparagus,2039-06-09T05:17:02Z,5.26,debit,Avamm,entertainment,mastercard
+"Crab - Claws, Snow 16 - 24",2011-06-09T15:50:46Z,3.56,debit,Jaxnation,entertainment,china-unionpay
+Lentils - Green Le Puy,2042-02-07T19:21:30Z,3.63,credit,Jaxbean,classes,jcb
+Pastry - Trippleberry Muffin - Mini,2046-11-08T04:12:17Z,3.06,credit,Linkbuzz,utilities,laser
+Water - Spring 1.5lit,2046-06-28T19:25:48Z,0.24,credit,Tagopia,medical,americanexpress
+Veal - Knuckle,2023-01-10T08:05:18Z,6.07,credit,Oloo,classes,diners-club-enroute
+Veal - Bones,2049-02-18T17:43:57Z,3.32,debit,Lazz,car,laser
+Bay Leaf Fresh,2005-08-17T00:52:17Z,6.23,credit,Fliptune,home,maestro
+Soup - Campbells - Chicken Noodle,2030-02-27T00:43:50Z,1.93,credit,Bubbletube,entertainment,jcb
+Bagel - Everything,2048-11-02T21:30:08Z,7.63,debit,Quimba,classes,diners-club-international
+Fennel - Seeds,2043-05-15T21:27:09Z,9.43,debit,Roombo,medical,jcb
+Bread - Triangle White,2044-02-16T14:19:52Z,0.58,debit,Quaxo,car,switch
+Pie Shells 10,2026-03-31T00:35:11Z,6.92,debit,Topicblab,entertainment,jcb
+Beer - Steamwhistle,2022-06-27T10:16:03Z,8.59,credit,Youspan,clothing,china-unionpay
+Salt - Sea,2027-10-18T22:56:52Z,2.82,credit,Photospace,classes,jcb
+Turkey - Oven Roast Breast,2010-07-23T05:00:35Z,8.91,debit,Dabvine,medical,americanexpress
+V8 Pet,2046-01-16T06:32:43Z,6.30,credit,Tambee,utilities,americanexpress
+Cake - Mini Cheesecake,2043-12-25T19:35:28Z,2.55,debit,Linktype,utilities,jcb
+Carbonated Water - Orange,2020-04-22T15:22:46Z,6.79,credit,Dynabox,utilities,jcb
+Langers - Ruby Red Grapfruit,2029-03-11T03:46:09Z,2.08,debit,Yodoo,car,jcb
+Trueblue - Blueberry 12x473ml,2025-12-04T10:21:15Z,3.05,credit,Feedfish,groceries,jcb
+Cookie Trail Mix,2009-12-24T03:29:08Z,8.96,credit,Yadel,home,diners-club-us-ca
+Bagel - Whole White Sesame,2037-11-03T00:24:28Z,8.89,debit,Cogibox,medical,laser
+Mortadella,2007-08-27T14:05:24Z,8.73,debit,Oyoloo,classes,jcb
+"Wine - Red, Black Opal Shiraz",2038-08-06T14:48:20Z,3.37,debit,Chatterpoint,utilities,diners-club-us-ca
+Chicken - Whole Fryers,2006-09-26T01:21:46Z,2.58,debit,Kazio,car,switch
+Cream - 18%,2028-10-21T01:11:24Z,4.90,debit,Trudoo,utilities,bankcard
+Salt - Celery,2030-12-08T18:43:54Z,8.54,credit,Edgewire,utilities,mastercard
+Sauce - Caesar Dressing,2010-11-22T23:56:16Z,5.00,debit,Yadel,clothing,diners-club-enroute
+Puree - Guava,2022-07-11T09:09:33Z,6.95,debit,Zoozzy,clothing,laser
+"Olives - Black, Pitted",2042-09-25T12:59:54Z,8.42,debit,Blognation,medical,jcb
+Beans - Green,2022-06-05T18:58:43Z,1.63,debit,Livetube,groceries,jcb
+Cabbage - Savoy,2018-08-09T02:35:33Z,4.25,credit,Oyoba,entertainment,switch
+Beets - Golden,2032-08-12T03:07:27Z,8.60,debit,Miboo,groceries,diners-club-international
+Turnip - Wax,2031-08-20T11:56:44Z,6.93,credit,Pixoboo,groceries,jcb
+Potatoes - Mini Red,2026-06-06T16:53:16Z,9.51,credit,Zoomlounge,classes,maestro
+Pur Source,2000-01-30T18:20:27Z,9.36,debit,Camido,groceries,jcb
+Appetizer - Sausage Rolls,2049-04-11T18:34:47Z,1.78,debit,Browsetype,home,bankcard
+"Placemat - Scallop, White",2011-01-22T01:07:49Z,5.51,credit,Realpoint,entertainment,diners-club-us-ca
+"Coconut - Shredded, Unsweet",2050-05-27T17:33:42Z,8.06,debit,Wikizz,clothing,jcb
+Sardines,2000-04-03T01:55:43Z,1.79,credit,Skiptube,groceries,maestro
+Tea - Honey Green Tea,2019-04-02T00:20:30Z,6.49,debit,Digitube,car,visa
+Beef - Texas Style Burger,2023-03-17T03:29:49Z,3.97,debit,Gabtune,entertainment,jcb
+Nantucket Pine Orangebanana,2003-11-10T09:45:38Z,0.84,credit,Voolith,car,jcb
+"Turkey - Breast, Bone - In",2000-01-26T08:56:55Z,3.46,debit,Bluezoom,utilities,mastercard
+Longan,2036-02-22T22:34:07Z,1.24,debit,Voonyx,classes,mastercard
+Cheese - Provolone,2030-06-23T02:13:33Z,0.72,debit,Roodel,home,jcb
+"Liqueur Banana, Ramazzotti",2035-08-16T17:14:41Z,0.98,debit,Shuffledrive,groceries,jcb
+Bread - Multigrain,2033-11-22T12:02:46Z,7.99,debit,Kamba,clothing,china-unionpay
+"Vinegar - Balsamic, White",2035-01-21T08:29:11Z,9.33,debit,Rhyloo,classes,mastercard
+Milk - 2%,2018-04-05T13:49:13Z,5.45,credit,Jabberstorm,clothing,jcb
+Roe - Flying Fish,2038-11-01T19:02:12Z,1.05,debit,Wikido,car,maestro
+Honey - Lavender,2034-06-27T01:32:56Z,6.29,credit,Flipstorm,entertainment,china-unionpay
+Cleaner - Comet,2034-02-21T02:27:19Z,0.89,credit,LiveZ,groceries,jcb
+Lamb - Shanks,2029-02-21T04:44:50Z,6.75,debit,Dynabox,clothing,diners-club-carte-blanche
+Tobasco Sauce,2049-11-22T17:51:36Z,5.42,credit,Topicware,medical,jcb
+"Soup - Knorr, Country Bean",2019-10-16T22:29:57Z,0.87,debit,Kazio,clothing,jcb
+Tobasco Sauce,2040-04-13T03:18:23Z,1.29,credit,Blogspan,entertainment,laser
+Cheese - Shred Cheddar / Mozza,2038-06-20T23:48:22Z,1.62,credit,Reallinks,entertainment,jcb
+Coffee - Almond Amaretto,2041-05-25T00:22:32Z,5.76,credit,Ozu,home,jcb
+Paper - Brown Paper Mini Cups,2036-01-31T18:20:55Z,2.59,credit,Plajo,home,jcb
+Wine - Black Tower Qr,2035-08-20T02:18:15Z,3.46,debit,Jaxbean,entertainment,visa-electron
+Carbonated Water - Wildberry,2011-03-06T14:14:17Z,8.86,debit,Quinu,utilities,jcb
+Longos - Grilled Chicken With,2002-04-16T18:10:41Z,8.64,debit,Oyondu,clothing,jcb
+Sobe - Cranberry Grapefruit,2007-08-17T12:20:31Z,7.03,debit,Mycat,entertainment,laser
+Skirt - 29 Foot,2020-11-14T03:01:57Z,1.78,credit,Devify,groceries,jcb
+Cheese - Taleggio D.o.p.,2008-01-08T04:20:49Z,4.40,credit,Ainyx,medical,americanexpress
+Lidsoupcont Rp12dn,2015-06-08T06:37:45Z,3.77,debit,Thoughtstorm,car,jcb
+"Potatoes - Yukon Gold, 80 Ct",2016-11-19T12:28:03Z,8.32,debit,Eidel,car,jcb
+Trout - Smoked,2023-12-10T10:45:50Z,1.91,debit,Quaxo,utilities,maestro
+Water - San Pellegrino,2032-12-12T12:00:54Z,3.57,credit,Kimia,clothing,jcb
+Cup - 4oz Translucent,2038-11-13T06:08:09Z,1.23,debit,Avaveo,home,jcb
+"Chocolate - Pistoles, Lactee, Milk",2050-02-03T04:01:40Z,2.04,credit,Jaxnation,utilities,mastercard
+Wine - Chablis 2003 Champs,2032-02-03T16:40:09Z,6.03,credit,Brainlounge,medical,jcb
+Schnappes Peppermint - Walker,2038-04-03T03:15:19Z,9.73,debit,Demimbu,entertainment,jcb
+Parsley - Dried,2000-01-14T17:27:20Z,7.76,debit,Vinte,clothing,diners-club-enroute
+Bagel - Plain,2003-03-20T21:43:40Z,6.74,credit,Quimm,medical,diners-club-carte-blanche
+Pork - Inside,2045-10-29T06:47:38Z,5.56,debit,Realcube,medical,jcb
+Octopus,2006-05-08T22:57:16Z,0.96,credit,Photobug,medical,jcb
+Brandy - Bar,2048-10-23T22:03:21Z,2.77,debit,Tambee,utilities,jcb
+Jolt Cola,2035-10-18T02:55:44Z,9.54,credit,Pixonyx,medical,visa-electron
+"Tomatoes - Vine Ripe, Red",2039-09-11T01:01:02Z,9.07,debit,Zoonoodle,medical,jcb
+Bay Leaf,2042-10-13T10:02:49Z,9.66,debit,Skidoo,car,maestro
+"Beef - Roasted, Cooked",2030-05-04T04:09:49Z,4.62,debit,Meezzy,car,americanexpress
+Salt - Celery,2005-08-28T04:18:12Z,8.59,credit,Gigazoom,clothing,diners-club-enroute
+Sprite - 355 Ml,2043-12-28T12:46:24Z,3.72,debit,Gigaclub,classes,china-unionpay
+Apple - Fuji,2034-06-22T06:09:49Z,3.11,credit,Voonyx,groceries,switch
+Capers - Ox Eye Daisy,2011-01-25T19:38:18Z,5.32,credit,Devify,classes,visa-electron
+"Cheese - Havarti, Roasted Garlic",2029-01-22T08:10:22Z,1.35,debit,Meezzy,medical,jcb
+Cranberries - Fresh,2037-03-13T10:53:46Z,1.50,debit,JumpXS,home,jcb
+Chocolate - Unsweetened,2044-07-05T11:39:41Z,8.33,credit,Dynava,classes,jcb
+Crawfish,2014-03-29T21:45:32Z,4.02,debit,Gigashots,groceries,china-unionpay
+Ecolab - Hobart Upr Prewash Arm,2017-12-14T07:07:07Z,3.51,debit,Vimbo,classes,maestro
+V8 Splash Strawberry Kiwi,2025-01-09T05:14:14Z,8.39,credit,Realmix,medical,jcb
+Beef - Sushi Flat Iron Steak,2006-10-16T23:09:32Z,0.00,credit,Kwideo,classes,switch
+Pastry - Carrot Muffin - Mini,2024-01-15T09:40:00Z,9.81,credit,Minyx,car,diners-club-carte-blanche
+Muffin Mix - Chocolate Chip,2003-01-31T14:50:43Z,2.82,credit,Meezzy,entertainment,maestro
+Tray - 16in Rnd Blk,2044-10-01T02:50:52Z,4.00,debit,Mynte,groceries,jcb
+Flour - Strong Pizza,2031-08-04T23:52:31Z,6.95,credit,Skiptube,classes,maestro
+Garbage Bag - Clear,2028-09-07T01:00:39Z,1.48,credit,Babbleopia,home,jcb
+Pail For Lid 1537,2022-04-17T11:10:51Z,8.41,credit,Wikibox,home,switch
+The Pop Shoppe - Cream Soda,2031-08-08T05:03:31Z,9.08,debit,Rhycero,classes,mastercard
+Greens Mustard,2035-03-11T12:24:03Z,5.25,credit,Lajo,medical,bankcard
+Cheese - Oka,2029-11-27T11:27:42Z,4.48,credit,Gabvine,utilities,jcb
+Mackerel Whole Fresh,2026-04-22T10:49:20Z,0.27,credit,Bubblebox,car,jcb
+Apple - Macintosh,2032-09-06T22:32:23Z,1.31,credit,Brainbox,home,jcb
+Arrowroot,2031-07-22T22:55:28Z,8.65,credit,Skibox,entertainment,switch
+Plastic Wrap,2037-06-07T14:13:28Z,3.87,debit,Thoughtstorm,medical,switch
+Lady Fingers,2001-08-19T10:53:27Z,7.57,credit,Meevee,classes,maestro
+Juice - Cranberry 284ml,2020-02-27T09:10:23Z,4.24,credit,Brightdog,classes,mastercard
+Wine - Chablis 2003 Champs,2019-02-23T09:49:21Z,0.47,credit,Yodel,groceries,mastercard
+Tuna - Bluefin,2021-09-13T07:55:48Z,3.57,debit,Meetz,clothing,solo
+"Potatoes - Yukon Gold, 80 Ct",2022-08-25T10:29:01Z,0.07,credit,Teklist,medical,diners-club-enroute
+"Bread - Rolls, Rye",2038-06-14T13:13:45Z,0.14,credit,Photobug,medical,americanexpress
+Scotch - Queen Anne,2048-05-16T07:11:05Z,1.73,debit,Dabjam,utilities,visa-electron
+Bread Ww Cluster,2040-06-15T15:13:18Z,9.77,credit,Brightbean,clothing,diners-club-carte-blanche
+"Appetizer - Spring Roll, Veg",2049-11-09T15:02:36Z,1.77,debit,Talane,classes,americanexpress
+"Tart Shells - Savory, 3",2042-07-22T11:12:05Z,3.34,credit,Jabberstorm,utilities,jcb
+Trout - Smoked,2006-07-23T18:23:31Z,8.76,credit,Bubblemix,utilities,visa-electron
+Ecolab - Hand Soap Form Antibac,2050-09-04T20:38:58Z,3.82,credit,Browsebug,home,visa
+Octopus,2006-11-09T22:55:55Z,3.38,credit,Dynava,entertainment,jcb
+Steamers White,2028-05-15T15:14:20Z,5.36,credit,Meeveo,groceries,jcb
+Fudge - Cream Fudge,2017-04-21T13:44:35Z,3.24,credit,Fivechat,clothing,switch
+Spinach - Baby,2005-07-23T04:17:22Z,7.92,credit,Feednation,utilities,bankcard
+Cardamon Seed / Pod,2046-04-07T11:09:30Z,8.73,debit,Centizu,utilities,jcb
+Appetizer - Sausage Rolls,2006-08-28T05:47:16Z,6.35,debit,Wikivu,home,diners-club-international
+Chicken Thigh - Bone Out,2014-04-20T12:09:37Z,8.42,credit,Flashspan,classes,jcb
+Cheese - Shred Cheddar / Mozza,2012-08-05T11:37:58Z,5.39,debit,Meeveo,clothing,visa-electron
+Triple Sec - Mcguinness,2042-04-29T13:01:57Z,1.47,credit,Dabjam,clothing,jcb
+"Flour - Buckwheat, Dark",2031-12-23T12:18:38Z,5.69,debit,Mynte,groceries,bankcard
+Eggwhite Frozen,2004-10-18T12:02:38Z,5.23,credit,Topiczoom,entertainment,china-unionpay
+Sauce - Vodka Blush,2000-03-31T17:12:09Z,3.05,debit,Rhyzio,medical,mastercard
+Steampan - Half Size Shallow,2011-10-25T12:08:15Z,1.39,credit,Bubblebox,classes,jcb
+Oyster - In Shell,2009-09-17T15:46:29Z,0.43,credit,Ailane,medical,jcb
+Oven Mitts - 15 Inch,2036-12-16T20:00:38Z,7.36,credit,Leenti,clothing,maestro
+"Trout - Rainbow, Fresh",2027-10-11T22:14:04Z,1.77,credit,Trudeo,car,jcb
+Horseradish Root,2007-09-05T05:55:14Z,9.42,debit,Photobug,entertainment,visa
+Appetizer - Mango Chevre,2030-09-04T12:15:56Z,1.48,debit,Bluejam,groceries,china-unionpay
+Muffin - Banana Nut Individual,2012-05-29T21:11:44Z,4.59,debit,Jaloo,classes,visa-electron
+Parsnip,2007-06-23T07:40:32Z,0.83,debit,Photobug,clothing,jcb
+Mangoes,2028-08-03T21:36:28Z,7.96,credit,Thoughtstorm,utilities,jcb
+Tea - Apple Green Tea,2016-12-26T21:38:49Z,5.13,debit,Oozz,groceries,jcb
+Scallops - 10/20,2014-01-12T21:21:29Z,8.33,credit,Twitterlist,car,diners-club-us-ca
+"Roe - Lump Fish, Red",2045-12-17T14:46:27Z,7.44,debit,Feedspan,medical,jcb
+Beer - Camerons Cream Ale,2014-12-08T10:14:25Z,1.37,debit,Topiclounge,groceries,china-unionpay
+Bread - Raisin Walnut Pull,2002-01-10T18:12:35Z,3.38,debit,Eare,medical,china-unionpay
+Cumin - Whole,2049-02-26T12:16:41Z,5.56,credit,Vimbo,classes,jcb
+Crackers - Trio,2046-11-18T08:59:44Z,6.09,credit,Jayo,entertainment,americanexpress
+"Cherries - Bing, Canned",2016-02-03T07:49:30Z,7.57,credit,Demizz,groceries,jcb
+Sugar - Icing,2023-11-03T06:59:22Z,1.80,credit,Ooba,entertainment,jcb
+Cheese - Victor Et Berthold,2011-12-01T04:44:47Z,9.91,credit,Plajo,entertainment,jcb
+Cabbage Roll,2045-08-21T14:15:23Z,2.28,credit,Zoonder,classes,jcb
+"Coke - Classic, 355 Ml",2012-07-09T22:09:05Z,8.70,credit,Lajo,home,diners-club-carte-blanche
+Glycerine,2021-10-26T11:58:54Z,6.92,credit,Dynabox,classes,jcb
+Beer - Heinekin,2044-09-24T21:44:13Z,0.67,credit,Photobug,home,mastercard
+"Carrots - Mini, Stem On",2020-09-23T04:31:19Z,8.69,debit,Agivu,clothing,jcb
+Wine - Chablis 2003 Champs,2045-12-17T02:24:00Z,1.34,debit,Fivebridge,medical,jcb
+Salad Dressing,2035-12-09T23:00:46Z,7.83,debit,Roombo,home,jcb
+Instant Coffee,2010-01-05T06:00:15Z,6.91,credit,Twitternation,medical,jcb
+Carrots - Mini Red Organic,2016-03-27T12:48:24Z,7.76,debit,Linktype,classes,maestro
+Table Cloth 62x114 White,2048-08-20T15:32:54Z,8.04,debit,Feedfish,utilities,jcb
+Cookies Almond Hazelnut,2017-04-03T05:23:44Z,6.09,credit,Voolith,groceries,visa-electron
+Appetizer - Crab And Brie,2046-07-30T04:19:26Z,1.02,debit,Ozu,classes,diners-club-enroute
+Beer - Steamwhistle,2012-12-24T03:09:46Z,6.34,debit,Trilia,home,switch
+Flower - Commercial Bronze,2026-11-04T02:46:58Z,3.02,credit,Kaymbo,utilities,china-unionpay
+Chef Hat 25cm,2016-07-04T06:20:08Z,3.89,credit,Feednation,utilities,switch
+Cheese - Gouda Smoked,2033-09-29T00:47:00Z,8.50,debit,Gabtype,classes,visa
+Napkin White - Starched,2003-05-02T02:52:37Z,3.27,debit,Thoughtblab,groceries,jcb
+Cake - French Pear Tart,2048-05-22T14:22:37Z,5.15,credit,Kazio,home,mastercard
+V8 - Vegetable Cocktail,2042-07-07T13:08:52Z,8.21,credit,Twitterwire,medical,jcb
+Roe - Flying Fish,2043-08-05T19:43:04Z,1.98,debit,Realpoint,groceries,jcb
+"Water - Mineral, Carbonated",2035-11-12T07:21:55Z,3.16,credit,Avamba,home,maestro
+Bagel - Whole White Sesame,2022-03-20T09:53:37Z,3.20,debit,Dazzlesphere,home,diners-club-us-ca
+Crab - Imitation Flakes,2024-03-03T11:56:54Z,1.44,credit,Plambee,medical,mastercard
+Carrots - Mini Red Organic,2006-04-02T14:16:44Z,5.68,credit,Zoombeat,groceries,switch
+"Soup - Knorr, Country Bean",2031-03-23T12:21:12Z,3.94,debit,Skimia,entertainment,jcb
+Ice Cream - Super Sandwich,2043-03-12T02:23:21Z,7.76,credit,Feedfire,home,bankcard
+Uniform Linen Charge,2050-05-27T09:30:21Z,4.90,credit,Reallinks,home,switch
+Broccoli - Fresh,2042-05-16T08:48:10Z,7.51,debit,Buzzshare,entertainment,switch
+"Water - Mineral, Natural",2046-05-10T13:45:36Z,9.03,credit,Topdrive,entertainment,americanexpress
+Sugar - Crumb,2002-11-15T05:12:35Z,3.64,debit,Linkbuzz,clothing,jcb
+Peach - Halves,2008-01-10T20:18:05Z,1.69,debit,Midel,medical,americanexpress
+"Chocolate - Pistoles, Lactee, Milk",2028-05-11T11:17:36Z,8.20,debit,Trudeo,clothing,visa-electron
+Dc - Frozen Momji,2040-11-23T10:16:22Z,1.74,debit,Zoombeat,clothing,visa-electron
+"Soup - Canadian Pea, Dry Mix",2031-10-05T19:56:29Z,1.36,credit,Browsezoom,medical,jcb
+Chick Peas - Dried,2015-09-11T01:15:54Z,4.65,credit,Devpoint,classes,switch
+"Doilies - 12, Paper",2007-07-28T15:03:02Z,9.06,credit,Geba,classes,americanexpress
+"Mushrooms - Black, Dried",2009-11-05T18:55:56Z,7.32,credit,Wikibox,medical,diners-club-us-ca
+Rosemary - Dry,2004-10-06T07:23:32Z,6.70,credit,Jaloo,entertainment,jcb
+Sesame Seed,2049-04-10T00:18:42Z,4.67,debit,Yodoo,medical,laser
+Wine - Magnotta - Cab Sauv,2031-04-03T12:54:39Z,5.18,credit,Zooxo,groceries,americanexpress
+"Pepper - Paprika, Spanish",2045-05-31T08:47:00Z,6.56,credit,Eimbee,classes,jcb
+Chips - Potato Jalapeno,2050-08-08T03:12:52Z,0.29,debit,Twitterwire,medical,maestro
+Squash - Guords,2044-06-08T07:05:12Z,4.36,debit,Dabshots,medical,jcb
+Tea - Herbal I Love Lemon,2019-05-08T17:01:48Z,8.39,credit,Avavee,classes,jcb
+Wine - Jafflin Bourgongone,2044-04-07T09:04:56Z,2.84,credit,Tanoodle,clothing,bankcard
+Calaloo,2015-07-01T10:01:20Z,8.27,debit,Gigazoom,car,diners-club-us-ca
+"Wine - White, Gewurtzraminer",2041-02-02T19:21:29Z,5.86,debit,Avavee,car,jcb
+Jam - Raspberry,2015-08-28T22:34:45Z,6.69,debit,Riffpedia,clothing,jcb
+"Quail - Eggs, Fresh",2033-01-29T14:37:46Z,0.82,debit,Riffpath,utilities,diners-club-carte-blanche
+"Chilli Paste, Hot Sambal Oelek",2004-01-01T15:47:50Z,0.22,debit,Youtags,classes,switch
+"Artichoke - Bottom, Canned",2024-07-07T06:23:57Z,6.75,debit,Bubblemix,utilities,mastercard
+Spice - Peppercorn Melange,2005-02-12T05:17:56Z,4.93,credit,Realmix,medical,visa-electron
+Beer - Camerons Auburn,2021-10-16T13:20:59Z,5.47,credit,Divape,car,maestro
+Smoked Tongue,2038-09-30T11:59:20Z,1.88,credit,Meeveo,home,jcb
+Muffin Hinge Container 6,2003-03-17T21:02:56Z,0.44,debit,Oyoloo,clothing,jcb
+Mustard - Individual Pkg,2031-01-14T07:11:12Z,6.89,credit,Yakijo,car,mastercard
+"Juice - Pineapple, 341 Ml",2027-11-26T16:55:19Z,5.68,debit,Dabshots,medical,diners-club-carte-blanche
+Tuna - Loin,2042-05-24T04:59:22Z,1.11,debit,Realbridge,groceries,switch
+Chicken - Soup Base,2025-05-22T22:16:35Z,6.74,debit,Zoozzy,medical,mastercard
+Skirt - 29 Foot,2002-05-07T19:47:50Z,6.78,credit,Quatz,medical,americanexpress
+Thermometer Digital,2002-09-12T03:40:12Z,6.79,debit,Devcast,car,jcb
+Cheese - Wine,2042-02-11T02:31:44Z,2.05,debit,Katz,utilities,jcb
+Cheese - Asiago,2000-11-18T04:38:43Z,9.70,debit,Avavee,medical,jcb
+Creamers - 10%,2048-07-27T12:58:21Z,1.31,debit,Quamba,car,jcb
+Cheese - Goat,2004-04-10T17:08:13Z,1.76,debit,Oyoloo,car,china-unionpay
+Chocolate - Milk Coating,2042-05-22T18:05:34Z,2.59,credit,Voonte,entertainment,jcb
+Pastry - Baked Scones - Mini,2022-10-02T08:45:35Z,0.22,credit,Blognation,medical,solo
+Pear - Halves,2012-05-13T06:18:01Z,5.35,debit,Yombu,medical,jcb
+Veal Inside - Provimi,2044-02-12T05:58:28Z,0.46,debit,Mydo,utilities,jcb
+Wine - Beringer Founders Estate,2034-10-10T23:08:23Z,9.81,debit,Wikizz,medical,bankcard
+Flower - Potmums,2047-04-09T15:24:16Z,8.45,debit,Avamm,car,jcb
+Pork Loin Bine - In Frenched,2007-12-06T21:57:41Z,0.75,debit,Eare,entertainment,jcb
+Tumeric,2012-03-17T11:52:01Z,6.77,credit,Vidoo,utilities,china-unionpay
+"Chicken - Wings, Tip Off",2008-11-02T11:32:10Z,5.72,credit,Shufflester,entertainment,jcb
+"Wine - White, Lindemans Bin 95",2014-11-29T19:07:28Z,9.08,credit,Skibox,entertainment,jcb
+Mustard - Pommery,2018-06-14T21:22:18Z,2.40,credit,Meezzy,car,diners-club-us-ca
+"Soup - Cream Of Broccoli, Dry",2038-08-22T21:02:51Z,8.44,debit,Tazz,medical,bankcard
+Flower - Leather Leaf Fern,2014-01-14T13:58:24Z,6.74,credit,Oyoba,entertainment,switch
+Basil - Seedlings Cookstown,2008-12-06T08:00:05Z,0.74,credit,Camimbo,medical,visa-electron
+"Shrimp - 16/20, Peeled Deviened",2030-09-13T12:11:49Z,4.52,credit,Mybuzz,home,americanexpress
+Browning Caramel Glace,2029-12-22T21:10:08Z,4.37,debit,Feedbug,classes,mastercard
+Salmon - Fillets,2008-06-01T14:19:06Z,2.55,debit,Lazz,clothing,jcb
+Pepper - Red Bell,2029-04-20T05:14:13Z,0.88,credit,Skidoo,utilities,jcb
+Muffin Puck Ww Carrot,2005-03-15T17:06:41Z,6.71,credit,Flipbug,clothing,jcb
+"Capon - Breast, Double, Wing On",2023-11-11T14:40:43Z,3.55,debit,Ntag,home,jcb
+Couscous,2034-05-16T19:16:54Z,9.17,debit,Buzzbean,medical,china-unionpay
+Lidsoupcont Rp12dn,2029-10-29T13:40:25Z,3.60,credit,Mynte,entertainment,diners-club-enroute
+Grapefruit - Pink,2000-04-15T08:36:51Z,0.06,debit,Brainsphere,entertainment,jcb
+Cheese - Parmesan Grated,2015-01-24T16:46:48Z,3.66,debit,Zoombeat,clothing,americanexpress
+"Lamb - Whole, Frozen",2049-01-15T10:14:43Z,3.86,debit,Zooxo,classes,maestro
+Flavouring Vanilla Artificial,2019-03-22T11:01:21Z,5.17,credit,Gevee,medical,bankcard
+Cod - Fillets,2033-07-21T08:30:30Z,3.47,debit,Gevee,groceries,mastercard
+Yeast Dry - Fermipan,2027-10-28T19:31:40Z,9.58,credit,Tavu,groceries,jcb
+Ice Cream - Chocolate,2002-02-08T15:13:39Z,3.76,credit,Kayveo,clothing,laser
+Water - Green Tea Refresher,2007-05-03T08:03:15Z,1.54,debit,Innotype,medical,visa-electron
+Tray - 12in Rnd Blk,2016-12-03T07:56:43Z,6.17,credit,Fanoodle,car,china-unionpay
+Herb Du Provence - Primerba,2009-08-13T09:35:36Z,3.87,debit,Quaxo,car,jcb
+Snapple Raspberry Tea,2030-12-07T10:23:11Z,8.98,debit,Realpoint,classes,jcb
+"Veal - Shank, Pieces",2015-03-01T11:07:45Z,1.80,credit,Vidoo,entertainment,mastercard
+Liqueur - Melon,2027-06-21T07:14:48Z,3.46,credit,Trupe,entertainment,maestro
+Steampan - Lid For Half Size,2036-09-23T19:23:43Z,5.36,debit,Gabtype,medical,jcb
+Sweet Pea Sprouts,2004-08-19T08:50:00Z,6.68,credit,Yotz,groceries,jcb
+Shichimi Togarashi Peppeers,2001-03-23T01:09:23Z,4.34,credit,Jamia,home,mastercard
+Trueblue - Blueberry Cranberry,2029-03-20T18:09:01Z,7.42,credit,Yakitri,classes,bankcard
+Soap - Hand Soap,2029-11-05T13:57:43Z,9.07,debit,Photofeed,medical,jcb
+Chicken - Base,2016-03-17T23:36:56Z,4.41,credit,Realblab,utilities,jcb
+"Soup - Knorr, Country Bean",2045-12-27T19:28:46Z,1.41,debit,Feedbug,car,jcb
+Juice - Orange 1.89l,2000-04-19T06:41:48Z,0.90,credit,Jaxbean,groceries,jcb
+"Trout - Rainbow, Fresh",2031-01-04T05:15:43Z,0.87,credit,Voonix,home,jcb
+"Nut - Peanut, Roasted",2026-11-27T04:06:52Z,8.73,credit,Skipstorm,home,jcb
+Ice Cream Bar - Oreo Sandwich,2046-06-15T09:15:43Z,9.22,credit,Quire,home,switch
+Crackers Cheez It,2040-09-27T01:06:03Z,5.73,debit,Linktype,entertainment,diners-club-carte-blanche
+Bar Mix - Lime,2047-10-15T11:49:23Z,2.31,debit,Voonder,entertainment,instapayment
+Bay Leaf,2019-05-12T00:28:50Z,3.83,credit,Ooba,utilities,switch
+Almonds Ground Blanched,2043-03-28T10:47:31Z,8.06,credit,Dynabox,clothing,jcb
+Sauce - Sesame Thai Dressing,2014-07-30T02:06:38Z,5.12,credit,Edgewire,classes,laser
+"Vermouth - White, Cinzano",2011-07-08T13:36:24Z,3.06,credit,Quaxo,utilities,visa-electron
+Veal - Osso Bucco,2009-07-16T05:35:14Z,3.00,credit,Jaxworks,car,jcb
+Smirnoff Green Apple Twist,2040-11-16T19:14:00Z,4.77,credit,Kazio,groceries,china-unionpay
+Vinegar - Tarragon,2026-03-08T08:05:59Z,3.60,credit,Meembee,clothing,jcb
+Steamers White,2048-12-04T06:57:16Z,7.08,credit,Skyvu,car,visa-electron
+Ginger - Crystalized,2020-12-07T10:52:35Z,0.76,debit,Browsezoom,classes,jcb
+Crawfish,2040-03-07T13:19:45Z,7.54,debit,Thoughtsphere,clothing,visa-electron
+Pepper - Yellow Bell,2026-12-27T15:18:47Z,5.10,credit,Katz,car,jcb
+Beets - Mini Golden,2028-08-15T15:24:51Z,8.90,credit,Shufflebeat,home,jcb
+"Beef - Tongue, Fresh",2049-11-13T04:58:14Z,8.22,debit,Vinte,car,jcb
+Eggplant Oriental,2013-12-11T22:13:30Z,1.17,credit,Topicware,groceries,americanexpress
+Crab Meat Claw Pasteurise,2030-06-09T08:44:44Z,5.93,debit,Yakidoo,home,maestro
+"Crab - Dungeness, Whole",2032-04-24T21:39:39Z,9.22,credit,Izio,clothing,instapayment
+"Doilies - 5, Paper",2029-04-25T03:19:31Z,0.03,credit,Brainsphere,medical,jcb
+Salmon Atl.whole 8 - 10 Lb,2017-10-29T02:09:34Z,9.74,debit,Mydo,car,americanexpress
+"Soup - Knorr, Ministrone",2038-12-13T11:34:27Z,7.38,credit,Kwilith,clothing,visa
+Apple - Macintosh,2008-04-06T20:24:46Z,5.64,credit,Buzzdog,clothing,americanexpress
+"Beef - Bones, Marrow",2043-09-05T06:23:59Z,8.24,credit,Shuffledrive,groceries,visa-electron
+"Sauce - Apple, Unsweetened",2041-09-16T12:12:08Z,3.56,debit,Photobug,entertainment,maestro
+Pepper - Sorrano,2038-02-22T20:41:56Z,2.44,credit,Mynte,home,jcb
+Chickhen - Chicken Phyllo,2006-09-13T05:29:25Z,2.64,debit,BlogXS,utilities,visa-electron
+Dc Hikiage Hira Huba,2005-11-04T17:43:40Z,6.46,credit,Quatz,car,visa
+"Soup - Knorr, Chicken Noodle",2019-09-16T02:53:38Z,3.49,credit,Thoughtbridge,clothing,jcb
+Samosa - Veg,2025-12-12T08:44:48Z,8.28,credit,Yambee,classes,mastercard
+"Doilies - 5, Paper",2030-02-22T04:32:04Z,9.63,credit,Edgeify,car,switch
+Tea - Grapefruit Green Tea,2038-08-26T01:33:52Z,2.81,debit,Mydeo,clothing,jcb
+Puree - Mango,2038-12-22T23:10:43Z,6.41,credit,Twiyo,car,maestro
+"Rum - Coconut, Malibu",2045-05-13T20:57:43Z,5.39,credit,Kazio,utilities,maestro
+Thyme - Dried,2020-05-20T00:14:53Z,6.07,credit,Kwinu,entertainment,americanexpress
+Wine - Chianti Classico Riserva,2049-07-21T00:56:54Z,5.09,credit,Tavu,classes,jcb
+Buttons,2027-05-15T00:07:43Z,9.96,credit,Leexo,entertainment,jcb
+Bar Nature Valley,2043-06-18T17:53:02Z,5.31,debit,Brainbox,entertainment,americanexpress
+Honey - Lavender,2016-05-15T03:50:50Z,0.98,debit,Muxo,entertainment,jcb
+"Syrup - Monin, Irish Cream",2023-03-02T23:14:22Z,2.47,debit,Blogpad,car,americanexpress
+Sauce - Soy Low Sodium - 3.87l,2022-10-25T23:13:18Z,1.22,credit,Kanoodle,home,jcb
+Salt - Sea,2030-11-05T20:36:54Z,8.75,credit,Voomm,home,diners-club-carte-blanche
+Jack Daniels,2039-06-23T10:02:16Z,4.62,credit,Vimbo,classes,bankcard
+Lid Tray - 12in Dome,2021-10-14T08:50:19Z,2.41,credit,Voonix,home,americanexpress
+Longos - Greek Salad,2036-03-15T05:00:44Z,5.88,credit,Fanoodle,car,instapayment
+Oats Large Flake,2016-09-14T19:43:12Z,9.14,debit,Gabvine,medical,mastercard
+Sorrel - Fresh,2050-12-26T03:47:46Z,3.36,credit,Agivu,clothing,visa-electron
+Nectarines,2025-01-22T04:00:26Z,3.01,debit,Geba,groceries,jcb
+Anchovy Fillets,2013-03-16T12:36:48Z,8.85,debit,Realfire,home,jcb
+"Ham - Smoked, Bone - In",2002-05-27T23:11:21Z,4.46,debit,Plambee,clothing,mastercard
+Galliano,2023-04-19T02:37:44Z,5.26,debit,Realbridge,entertainment,jcb
+Beef - Bresaola,2023-01-12T16:18:35Z,7.03,credit,Riffwire,car,jcb
+Ecolab - Solid Fusion,2008-09-09T12:43:59Z,1.52,credit,Feedfire,utilities,jcb
+Petit Baguette,2044-07-24T13:42:45Z,8.03,debit,Latz,car,jcb
+Liquid Aminios Acid - Braggs,2044-02-06T18:18:23Z,2.41,credit,Jabbersphere,classes,instapayment
+Shrimp - 31/40,2030-12-13T09:29:22Z,5.98,debit,Tagcat,groceries,jcb
+Bread Ww Cluster,2016-09-26T01:36:21Z,4.03,debit,Gabtune,groceries,maestro
+Beets,2011-04-02T00:21:26Z,5.20,debit,Yabox,entertainment,maestro
+Frangelico,2017-10-13T01:29:19Z,4.81,debit,Devcast,classes,maestro
+Turkey Tenderloin Frozen,2039-10-19T02:25:40Z,4.47,debit,Kwinu,home,jcb
+Grenadillo,2031-12-22T12:17:31Z,4.16,credit,Flipstorm,clothing,jcb
+"Pepper - Green, Chili",2003-11-01T07:06:06Z,2.92,debit,Realbridge,car,visa-electron
+"Seedlings - Mix, Organic",2000-10-18T05:46:07Z,0.65,debit,Photospace,medical,switch
+Grand Marnier,2006-03-23T15:51:12Z,1.59,credit,Lajo,car,mastercard
+Wine - Casillero Deldiablo,2034-05-24T09:10:19Z,6.85,credit,Skippad,home,maestro
+Wine - Pinot Noir Pond Haddock,2006-10-23T04:55:30Z,1.96,debit,Fiveclub,utilities,americanexpress
+Oysters - Smoked,2026-11-23T22:51:52Z,1.30,credit,Skidoo,utilities,bankcard
+"Lamb - Whole, Fresh",2015-11-26T11:43:56Z,6.69,debit,Centizu,clothing,jcb
+Carbonated Water - White Grape,2030-01-18T15:12:32Z,0.00,debit,Thoughtstorm,utilities,jcb
+Squid U5 - Thailand,2014-02-13T05:13:30Z,2.47,credit,Reallinks,car,visa
+Flour - Fast / Rapid,2031-01-26T03:08:48Z,3.73,credit,Rhybox,classes,diners-club-carte-blanche
+Beef - Shank,2041-09-08T11:40:55Z,9.54,credit,Wikivu,car,china-unionpay
+Beer - Sleemans Honey Brown,2013-02-04T08:25:28Z,6.53,credit,Tagchat,car,jcb
+Sugar - Crumb,2042-05-14T03:08:02Z,8.12,credit,Avamm,classes,diners-club-enroute
+Vaccum Bag - 14x20,2027-04-09T01:58:46Z,7.76,credit,Realbridge,groceries,bankcard
+"Rice Pilaf, Dry,package",2021-12-06T23:19:38Z,0.71,credit,Jabbertype,classes,maestro
+Crab - Soft Shell,2020-02-03T12:54:05Z,1.04,credit,Trilith,medical,diners-club-carte-blanche
+Pate - Liver,2007-05-10T07:09:13Z,0.76,credit,Centizu,clothing,jcb
+"Coffee - Colombian, Portioned",2041-07-11T09:52:41Z,7.59,credit,Zoomcast,medical,jcb
+Wine - Chianti Classico Riserva,2006-06-07T21:29:27Z,9.54,debit,Realbridge,utilities,jcb
+Melon - Cantaloupe,2049-04-16T05:02:08Z,5.05,debit,Jaxbean,medical,visa
+Tray - 12in Rnd Blk,2019-03-27T16:14:50Z,3.87,credit,Centidel,entertainment,visa-electron
+Lamb Leg - Bone - In Nz,2029-03-08T14:17:48Z,4.51,credit,Gabspot,home,visa-electron
+"Coke - Diet, 355 Ml",2024-10-17T19:21:15Z,9.97,credit,Janyx,entertainment,switch
+Blueberries,2032-04-08T22:45:56Z,6.83,credit,Abata,utilities,maestro
+Pastry - Chocolate Marble Tea,2021-07-25T16:29:15Z,0.26,debit,Dynabox,medical,maestro
+Sauce - Hoisin,2042-08-03T02:26:40Z,2.12,debit,Talane,medical,visa-electron
+Cornish Hen,2041-03-19T17:30:27Z,5.02,debit,Midel,clothing,americanexpress
+Cheese - Montery Jack,2021-02-10T14:51:20Z,2.23,debit,Eimbee,groceries,switch
+Uniform Linen Charge,2035-01-15T02:36:04Z,8.42,credit,Riffpath,classes,switch
+Wine - Clavet Saint Emilion,2025-09-14T12:42:32Z,1.24,credit,Twitterbeat,classes,americanexpress
+Nut - Pumpkin Seeds,2028-04-25T17:25:22Z,8.21,debit,Meedoo,entertainment,maestro
+Scallops - 20/30,2034-12-26T01:02:46Z,5.37,debit,Fivebridge,classes,visa-electron
+Chocolate - Milk Coating,2002-08-23T02:26:29Z,5.17,credit,Skinder,medical,bankcard
+Cream Of Tartar,2034-02-25T10:24:56Z,6.47,credit,Vinder,entertainment,mastercard
+Apple - Custard,2029-10-23T02:15:38Z,3.19,debit,Eire,clothing,china-unionpay
+"Seedlings - Mix, Organic",2009-07-27T05:24:46Z,7.53,debit,Wikizz,clothing,jcb
+Ginger - Crystalized,2030-03-09T09:40:48Z,2.36,debit,Zoonder,car,maestro
+"Soup - Knorr, Veg / Beef",2025-06-09T01:20:35Z,4.43,credit,Browsecat,entertainment,jcb
+Juice - Apple Cider,2039-11-26T08:02:15Z,4.27,credit,Layo,home,jcb
+Cheese - Ricotta,2022-06-13T02:32:45Z,1.08,credit,Dabtype,car,jcb
+Chinese Foods - Chicken Wing,2040-07-15T07:20:27Z,7.68,credit,Blognation,groceries,switch
+Cleaner - Pine Sol,2012-12-03T11:26:24Z,9.06,debit,Quimba,groceries,jcb
+Island Oasis - Lemonade,2033-12-04T15:12:14Z,8.98,debit,Mudo,classes,switch
+Seedlings - Clamshell,2021-11-21T06:54:17Z,7.77,credit,Jabbercube,medical,laser
+"Wine - Red, Harrow Estates, Cab",2018-04-24T00:25:32Z,9.93,debit,Rhyzio,entertainment,jcb
+Roe - Flying Fish,2024-06-06T23:39:39Z,8.01,debit,Brightdog,classes,bankcard
+"Flour - Corn, Fine",2038-05-29T15:02:09Z,1.20,debit,Edgeify,classes,mastercard
+Chocolate Bar - Oh Henry,2034-04-09T22:12:57Z,9.23,debit,Yambee,classes,china-unionpay
+Cake - Pancake,2034-08-11T04:20:38Z,0.73,credit,Avaveo,medical,jcb
+Chocolate Bar - Reese Pieces,2044-04-04T01:59:50Z,1.35,debit,Tekfly,utilities,diners-club-carte-blanche
+English Muffin,2014-04-04T04:44:43Z,8.07,credit,Zoombox,car,jcb
+Mousse - Banana Chocolate,2030-04-22T15:22:20Z,1.03,debit,Kanoodle,utilities,instapayment
+Lettuce - Lolla Rosa,2015-05-11T09:27:36Z,1.92,credit,Tanoodle,classes,diners-club-enroute
+Irish Cream - Butterscotch,2007-05-13T19:37:58Z,3.02,credit,Bubblemix,clothing,americanexpress
+"Pasta - Elbows, Macaroni, Dry",2000-04-20T17:07:34Z,7.02,debit,Jayo,medical,bankcard
+Shortbread - Cookie Crumbs,2032-03-09T16:25:10Z,4.41,debit,Twitterlist,groceries,jcb
+Cherries - Fresh,2027-12-12T08:47:36Z,9.13,debit,Eidel,classes,jcb
+Ecolab - Medallion,2038-10-14T12:34:20Z,7.20,debit,Linkbridge,entertainment,jcb
+General Purpose Trigger,2005-03-18T13:29:57Z,2.02,credit,Rooxo,medical,diners-club-carte-blanche
+Brandy Apricot,2010-09-06T15:36:05Z,7.43,credit,Dynava,classes,americanexpress
+Shortbread - Cookie Crumbs,2032-11-12T20:32:25Z,6.63,debit,Meemm,medical,switch
+Carbonated Water - Raspberry,2030-04-09T17:41:06Z,4.24,credit,Devpoint,home,bankcard
+Beans - Butter Lrg Lima,2045-10-17T03:47:22Z,7.24,credit,Yodoo,car,jcb
+Coffee Decaf Colombian,2003-10-03T13:46:23Z,3.27,debit,Voolia,utilities,jcb
+Thermometer Digital,2029-02-06T21:19:23Z,1.27,credit,Yombu,home,jcb
+Cheese Cheddar Processed,2017-07-23T02:55:46Z,1.96,credit,Myworks,entertainment,visa-electron
+Butter - Salted,2000-11-02T10:53:44Z,5.06,credit,Devpulse,entertainment,jcb
+Chambord Royal,2015-01-04T18:07:17Z,4.88,credit,Feedmix,groceries,jcb
+Rosemary - Dry,2017-06-28T00:29:21Z,9.00,debit,Trilith,classes,jcb
+Cheese - Gorgonzola,2027-01-29T08:17:46Z,1.15,credit,Realpoint,clothing,instapayment
+Dragon Fruit,2001-11-26T10:29:34Z,5.97,credit,Realmix,clothing,jcb
+Wine - Chenin Blanc K.w.v.,2019-04-13T05:06:34Z,9.79,credit,Livetube,utilities,jcb
+Cheese - Gorgonzola,2049-02-21T09:53:12Z,0.26,debit,Skyndu,groceries,visa-electron
+Pastry - Key Limepoppy Seed Tea,2032-06-03T09:17:10Z,9.28,credit,Layo,medical,visa-electron
+Fond - Neutral,2024-08-10T16:06:19Z,2.36,debit,Npath,car,maestro
+Wine - Peller Estates Late,2021-09-13T15:11:27Z,4.42,credit,Eire,home,jcb
+Soup V8 Roasted Red Pepper,2016-09-07T01:17:46Z,3.39,debit,Zoombeat,clothing,americanexpress
+Longos - Chicken Cordon Bleu,2009-06-07T17:47:03Z,4.98,credit,Skimia,home,jcb
+Pastry - Carrot Muffin - Mini,2000-12-13T01:35:01Z,5.98,credit,Viva,entertainment,mastercard
+"Sugar - Brown, Individual",2035-05-22T21:48:03Z,6.45,credit,Zoomcast,home,jcb
+Oil - Shortening - All - Purpose,2023-03-02T15:42:22Z,1.59,debit,Aimbo,classes,mastercard
+Flour - Bread,2004-09-07T13:02:45Z,8.36,credit,Wikizz,clothing,jcb
+Cup - 4oz Translucent,2010-11-22T04:03:02Z,4.72,debit,Vimbo,clothing,maestro
+Cheese Cloth No 60,2001-10-15T01:35:08Z,3.79,credit,Linklinks,classes,visa-electron
+Coffee - Espresso,2019-07-23T10:25:49Z,6.18,credit,Edgeclub,medical,americanexpress
+Extract - Rum,2025-11-21T07:42:47Z,7.72,debit,Thoughtworks,groceries,maestro
+Lemon Balm - Fresh,2003-02-26T11:54:58Z,6.44,debit,Kwideo,entertainment,mastercard
+English Muffin,2017-06-09T16:52:17Z,9.37,credit,Vipe,classes,jcb
+Tuna - Sushi Grade,2017-02-19T04:10:18Z,5.74,debit,Aivee,classes,jcb
+Pepper - Green,2039-03-02T09:28:26Z,2.20,debit,Realbridge,utilities,maestro
+"Coconut - Creamed, Pure",2038-07-10T15:20:19Z,5.14,debit,Voomm,entertainment,laser
+Sour Puss Sour Apple,2041-04-22T08:13:01Z,8.76,debit,Meemm,classes,jcb
+Rice - Wild,2038-06-21T18:58:30Z,4.11,credit,Quire,utilities,visa
+Wine - Delicato Merlot,2024-06-26T16:26:53Z,4.59,debit,Skalith,clothing,solo
+Cookie Chocolate Chip With,2022-01-13T01:04:11Z,9.79,credit,InnoZ,groceries,jcb
+Curry Paste - Madras,2031-03-27T23:26:41Z,2.18,debit,Cogilith,clothing,mastercard
+Buffalo - Striploin,2038-01-29T00:34:46Z,7.21,debit,Mybuzz,classes,diners-club-international
+Liners - Baking Cups,2040-11-20T13:54:18Z,3.87,debit,Topiczoom,clothing,switch
+Hinge W Undercut,2013-02-17T03:02:24Z,5.69,credit,Skipfire,medical,instapayment
+Beef - Bresaola,2043-11-22T04:28:59Z,4.80,credit,Skiptube,home,jcb
+Garbage Bags - Black,2034-04-02T04:19:57Z,9.40,debit,Yambee,classes,jcb
+Cake - Box Window 10x10x2.5,2027-08-02T11:54:43Z,6.96,credit,Gigaclub,classes,jcb
+Pate - Cognac,2043-12-09T17:14:39Z,3.44,credit,Photospace,entertainment,laser
+Gatorade - Fruit Punch,2028-10-25T19:54:49Z,2.60,debit,Vidoo,utilities,visa-electron
+Tamarind Paste,2033-12-17T12:09:06Z,5.93,debit,Feedspan,medical,diners-club-enroute
+"Crush - Grape, 355 Ml",2027-09-17T07:18:06Z,5.61,credit,Kanoodle,medical,visa
+"Salmon - Whole, 4 - 6 Pounds",2043-01-20T14:34:35Z,4.42,debit,Photobug,groceries,instapayment
+Ice Cream - Turtles Stick Bar,2043-04-28T13:25:15Z,7.02,credit,Quimm,classes,bankcard
+Spinach - Packaged,2017-07-08T19:01:07Z,9.35,credit,Kwideo,utilities,laser
+Lettuce - Lambs Mash,2010-05-15T19:08:37Z,2.93,credit,Leexo,clothing,americanexpress
+Appetizer - Assorted Box,2008-10-05T17:45:15Z,7.67,debit,Yamia,medical,visa-electron
+Tart - Pecan Butter Squares,2035-01-07T04:34:50Z,2.16,debit,Topiclounge,clothing,jcb
+Chips - Assorted,2007-08-07T15:35:18Z,7.07,debit,InnoZ,medical,mastercard
+Pork - Ham Hocks - Smoked,2009-05-22T05:52:09Z,3.58,debit,Trilia,classes,bankcard
+"Coconut - Shredded, Sweet",2010-10-08T11:17:36Z,0.31,credit,Pixope,home,jcb
+Foil - Round Foil,2019-01-27T22:34:16Z,6.36,debit,Bluejam,car,diners-club-international
+Pork - Belly Fresh,2030-04-06T11:34:28Z,9.32,credit,Quimba,entertainment,jcb
+Chocolate Liqueur - Godet White,2011-05-02T17:29:10Z,4.68,credit,Jabbersphere,entertainment,laser
+Carbonated Water - Blackberry,2041-05-31T21:54:57Z,3.77,credit,Innotype,groceries,jcb
+Cheese - Valancey,2019-05-09T19:00:46Z,2.68,credit,Fatz,utilities,jcb
+Pears - Bartlett,2006-03-25T20:48:39Z,1.90,credit,Chatterpoint,utilities,mastercard
+Petite Baguette,2032-01-08T00:25:37Z,6.16,credit,Brainlounge,classes,china-unionpay
+Pasta - Ravioli,2009-12-31T11:00:07Z,7.95,credit,Eayo,home,laser
+Arizona - Plum Green Tea,2042-08-07T16:47:20Z,8.65,credit,Skidoo,medical,switch
+Table Cloth 54x54 Colour,2048-09-19T01:26:38Z,9.37,debit,Teklist,classes,americanexpress
+Turnip - Mini,2016-05-13T12:57:54Z,9.76,credit,Browsedrive,medical,jcb
+"Doilies - 7, Paper",2039-05-20T08:15:20Z,5.96,credit,Yakijo,utilities,visa-electron
+Steel Wool S.o.s,2034-10-04T20:14:53Z,4.15,debit,Yodel,medical,jcb
+Coffee Cup 8oz 5338cd,2001-04-05T19:37:51Z,6.26,debit,Voonix,classes,solo
+Wine - Chablis J Moreau Et Fils,2044-08-08T15:44:24Z,8.07,credit,Digitube,clothing,visa-electron
+Carbonated Water - Raspberry,2011-09-17T07:08:29Z,6.71,debit,Edgewire,classes,maestro
+Capers - Ox Eye Daisy,2023-08-01T06:05:39Z,1.91,credit,Demivee,home,jcb
+Beef - Tenderloin Tails,2014-03-31T15:49:49Z,2.94,credit,Cogibox,entertainment,visa-electron
+"Soup - Campbells, Butternut",2035-12-03T13:49:36Z,3.98,credit,Rhyzio,groceries,mastercard
+Bread - Rosemary Focaccia,2044-08-07T04:06:17Z,8.63,debit,Devbug,classes,jcb
+The Pop Shoppe - Cream Soda,2008-12-09T00:14:39Z,5.75,credit,Voolith,classes,americanexpress
+"Coffee - Beans, Whole",2046-04-26T01:08:45Z,8.70,debit,BlogXS,home,diners-club-international
+"Pepper - Red, Finger Hot",2002-03-04T02:28:25Z,6.22,debit,Linkbuzz,classes,jcb
+Dip - Tapenade,2031-08-22T10:55:54Z,8.01,credit,Innojam,medical,americanexpress
+Yoplait Drink,2008-08-07T15:53:52Z,4.88,debit,Gabtype,car,mastercard
+Yams,2018-03-27T03:54:42Z,8.61,credit,Realmix,classes,jcb
+Cloves - Ground,2025-08-06T15:36:52Z,5.41,debit,Jaxbean,car,mastercard
+Shortbread - Cookie Crumbs,2016-04-04T21:55:52Z,8.18,credit,Ainyx,home,diners-club-enroute
+Lettuce Romaine Chopped,2022-11-04T13:05:56Z,7.15,debit,Skynoodle,home,switch

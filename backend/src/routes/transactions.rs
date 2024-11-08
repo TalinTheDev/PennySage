@@ -1,4 +1,4 @@
-use std::{fmt, iter::Successors};
+use std::fmt;
 
 use super::{ApiError, ApiResponse};
 use crate::{db::gen_id, jwt::AccessTokenClaims, AppState};
@@ -11,8 +11,7 @@ use axum::{
 };
 use chrono::DateTime;
 use csv::Reader;
-use futures_util::{stream::StreamExt, TryFutureExt};
-use rust_decimal::Decimal;
+use serde::de::Deserializer;
 use serde::{Deserialize, Serialize};
 use serde_json::json;
 use validator::{Validate, ValidationError};
@@ -27,16 +26,23 @@ pub fn routes() -> Router<AppState> {
 }
 
 #[derive(Debug, Serialize, Deserialize, sqlx::Type)]
+#[sqlx(rename_all = "lowercase")]
 enum TransactionType {
   Credit,
   Debit,
 }
-impl fmt::Display for TransactionType {
-  fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-    match self {
-      TransactionType::Credit => write!(f, "credit"),
-      TransactionType::Debit => write!(f, "debit"),
-    }
+
+fn deserialize_transaction_type<'de, D>(deserializer: D) -> Result<TransactionType, D::Error>
+where
+  D: Deserializer<'de>,
+{
+  let buf = String::deserialize(deserializer)?;
+  match buf.as_str() {
+    "credit" => Ok(TransactionType::Credit),
+    "debit" => Ok(TransactionType::Debit),
+    "Credit" => Ok(TransactionType::Credit),
+    "Debit" => Ok(TransactionType::Debit),
+    _ => Err(serde::de::Error::custom("Invalid transaction type")),
   }
 }
 
@@ -388,6 +394,7 @@ struct ImportedTransaction {
   description: String,
   date: String,
   amount: String,
+  #[serde(deserialize_with = "deserialize_transaction_type")]
   r#type: TransactionType,
   merchant: String,
   category: String,
@@ -399,7 +406,7 @@ pub async fn import_transactions(
   user: AccessTokenClaims,
   mut multipart: Multipart,
 ) -> ApiResponse {
-  let total_transactions;
+  let mut total_transactions = 0;
   let mut failed_transactions = 0;
   let form_data = multipart.next_field().await;
   match form_data {
@@ -439,8 +446,8 @@ pub async fn import_transactions(
             }
           }
         };
-        total_transactions = rdr.records().count();
         for result in rdr.deserialize() {
+          total_transactions += 1;
           let transaction: ImportedTransaction = match result {
             Ok(r) => r,
             Err(_) => {

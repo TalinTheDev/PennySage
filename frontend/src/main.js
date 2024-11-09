@@ -11,6 +11,7 @@ import Cookies from "./utils/Cookies";
 import { useUserStore } from "./stores/useUserStore";
 import "primeicons/primeicons.css";
 import ToastService from "primevue/toastservice";
+import ConfirmationService from "primevue/confirmationservice";
 
 const app = createApp(App);
 
@@ -48,6 +49,7 @@ app.use(PrimeVue, {
   }
 });
 app.use(ToastService);
+app.use(ConfirmationService);
 if (Cookies.check("accessToken")) {
   useUserStore().login(
     { username: Cookies.get("username"), role: Cookies.get("role") },

@@ -17,8 +17,10 @@
   import { ref, onBeforeMount, onMounted, computed } from "vue";
   import { useApiStore } from "@/stores/useApiStore.js";
   import { useToast } from "primevue/usetoast";
+  import { useConfirm } from "primevue/useconfirm";
 
   const toast = useToast();
+  const confirm = useConfirm();
   const api = useApiStore().api;
 
   const transactions = ref([]);
@@ -81,40 +83,58 @@
     if (selectedItems.value.length === 0) {
       return;
     }
-    let transactionsToBeDeleted = [];
-    selectedItems.value.forEach((transaction) => {
-      transactionsToBeDeleted.push(transaction.id);
+    confirm.require({
+      message: "Do you want to delete these transactions?",
+      header: "Delete Transactions",
+      icon: "pi pi-info-circle",
+      rejectLabel: "Cancel",
+      rejectProps: {
+        label: "Cancel",
+        severity: "secondary",
+        outlined: true
+      },
+      acceptProps: {
+        label: "Delete",
+        severity: "danger"
+      },
+      accept: () => {
+        let transactionsToBeDeleted = [];
+        selectedItems.value.forEach((transaction) => {
+          transactionsToBeDeleted.push(transaction.id);
+        });
+        loading.value = true;
+        api
+          .delete("/transactions/delete", {
+            data: {
+              transactions: transactionsToBeDeleted
+            }
+          })
+          .then((data) => {
+            toast.add({
+              severity: "info",
+              summary: "Transaction Deleted",
+              detail: data,
+              life: 3000
+            });
+            transactionsToBeDeleted.forEach((id) => {
+              mappedTransactions.value.delete(id);
+            });
+            transactions.value = Array.from(mappedTransactions.value.values());
+            selectedItems.value = [];
+            loading.value = false;
+          })
+          .catch((error) => {
+            toast.add({
+              severity: "error",
+              summary: "Transactions Delete Failed",
+              detail: error.message,
+              life: 3000
+            });
+            loading.value = false;
+          });
+      },
+      reject: () => {}
     });
-    loading.value = true;
-    api
-      .delete("/transactions/delete", {
-        data: {
-          transactions: transactionsToBeDeleted
-        }
-      })
-      .then((data) => {
-        toast.add({
-          severity: "info",
-          summary: "Transaction Deleted",
-          detail: data,
-          life: 3000
-        });
-        transactionsToBeDeleted.forEach((id) => {
-          mappedTransactions.value.delete(id);
-        });
-        transactions.value = Array.from(mappedTransactions.value.values());
-        selectedItems.value = [];
-        loading.value = false;
-      })
-      .catch((error) => {
-        toast.add({
-          severity: "error",
-          summary: "Transactions Delete Failed",
-          detail: error.message,
-          life: 3000
-        });
-        loading.value = false;
-      });
   };
 
   const compareTransactions = (oldTransaction, newTransaction) => {

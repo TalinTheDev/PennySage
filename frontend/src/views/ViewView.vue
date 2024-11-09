@@ -14,23 +14,32 @@
   import Select from "primevue/select";
 
   import { FilterMatchMode } from "@primevue/core/api";
-  import { ref, onBeforeMount, onMounted } from "vue";
+  import { ref, onBeforeMount, onMounted, computed } from "vue";
   import { useApiStore } from "@/stores/useApiStore.js";
   import { useToast } from "primevue/usetoast";
 
   const toast = useToast();
-
-  const transactions = ref();
-  const mappedTransactions = ref(new Map());
   const api = useApiStore().api;
-  const selectedTransactions = ref();
+
+  const transactions = ref([]);
+  const mappedTransactions = ref(new Map());
+
+  const transactionsCount = computed(() => {
+    return transactions.value.length;
+  });
+  const selectedItems = ref();
+  const rows = ref(5);
+  const first = ref(0);
+  const editingRows = ref([]);
+
+  const selectAll = ref(false);
   const loading = ref(false);
+
+  const filters = ref();
   const typeFilterOptions = ref([
     { label: "Debit", value: "debit" },
     { label: "Credit", value: "credit" }
   ]);
-  const filters = ref();
-  const editingRows = ref([]);
 
   const initFilters = () => {
     filters.value = {
@@ -69,11 +78,11 @@
   };
 
   const deleteTransactions = () => {
-    if (selectedTransactions.value.length === 0) {
+    if (selectedItems.value.length === 0) {
       return;
     }
     let transactionsToBeDeleted = [];
-    selectedTransactions.value.forEach((transaction) => {
+    selectedItems.value.forEach((transaction) => {
       transactionsToBeDeleted.push(transaction.id);
     });
     loading.value = true;
@@ -94,6 +103,7 @@
           mappedTransactions.value.delete(id);
         });
         transactions.value = Array.from(mappedTransactions.value.values());
+        selectedItems.value = [];
         loading.value = false;
       })
       .catch((error) => {
@@ -168,6 +178,22 @@
       });
   };
 
+  const onSelectAllChange = (event) => {
+    selectAll.value = event.checked;
+    if (selectAll.value) {
+      selectedItems.value = transactions.value;
+    } else {
+      selectedItems.value = [];
+    }
+  };
+
+  const onRowUnselect = () => {
+    selectAll.value = false;
+  };
+
+  const onRowSelect = () => {
+    selectAll.value = selectedItems.value.length === transactions.value.length;
+  };
   onBeforeMount(() => {
     initFilters();
   });
@@ -196,26 +222,37 @@
         <Button @click="initFilters">Clear Filters</Button>
         <Button @click="deleteTransactions">Delete Selected Transactions</Button>
       </div>
+      <p class="totalTransactions">{{ transactionsCount }} transactions found</p>
+      <p class="selectedTransactions">
+        {{ selectedItems ? selectedItems.length : 0 }} transactions selected
+      </p>
     </div>
 
     <DataTable
-      :value="transactions"
+      v-model:value="transactions"
+      dataKey="id"
+      v-model:loading="loading"
+      rowHover
       sortMode="multiple"
       removableSort
+      size="small"
       :multiSortMeta="[{ field: 'date', order: -1 }]"
-      :filters="filters"
-      dataKey="id"
-      :loading="loading"
+      v-model:filters="filters"
       filterDisplay="menu"
-      rowHover
       :globalFilterFields="['desc', 'amount', 'merchant', 'category', 'payment_source']"
-      :selection="selectedTransactions"
-      :editingRows="editingRows"
-      editMode="row"
-      @row-edit-save="editTransaction"
+      v-model:first="first"
+      v-model:rows="rows"
       paginator
-      :rows="5"
-      :rowsPerPageOptions="[5, 10, 20, 50]">
+      :rowsPerPageOptions="[5, 10, 20, 50]"
+      v-model:selection="selectedItems"
+      :selectAll="selectAll"
+      @select-all-change="onSelectAllChange"
+      @row-select="onRowSelect"
+      @row-unselect="onRowUnselect"
+      @value-change="onValueChange"
+      v-model:editingRows="editingRows"
+      editMode="row"
+      @row-edit-save="editTransaction">
       <template #empty> No transactions found. </template>
       <Column selectionMode="multiple"></Column>
       <Column field="id" hidden />
@@ -323,7 +360,10 @@
   .tableHeader {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-template-areas: "search actions";
+    grid-template-rows: 1fr 1fr;
+    grid-template-areas:
+      "search actions"
+      "totalTransactions selectedTransactions";
     column-gap: 0.5rem;
     align-items: center;
     padding: 1rem;
@@ -344,6 +384,16 @@
       button {
         margin: 0;
       }
+    }
+    p {
+      font-size: 1.05rem;
+    }
+    .totalTransactions {
+      grid-area: totalTransactions;
+    }
+    .selectedTransactions {
+      grid-area: selectedTransactions;
+      text-align: right;
     }
   }
 </style>

@@ -211,5 +211,6 @@
   .content {
     grid-area: content;
     overflow-y: scroll;
+    padding: 0rem 2rem;
   }
 </style>

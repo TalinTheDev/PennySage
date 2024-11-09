@@ -11,12 +11,8 @@
 
 <style scoped>
   .pageHeader {
-    padding: 1rem 2rem;
+    padding: 1rem;
     background-color: var(--white);
-    box-shadow: 0px 3px 3px 0px var(--border);
-    z-index: -1;
-    position: relative;
-    margin-bottom: 1rem;
   }
   .header > * {
     font-weight: bold;

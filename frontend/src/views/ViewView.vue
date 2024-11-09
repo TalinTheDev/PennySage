@@ -183,15 +183,18 @@
       </template>
     </PageHeader>
     <div class="tableHeader">
-      <div class="actions">
-        <Button @click="initFilters">Clear Filters</Button>
-        <Button @click="deleteTransactions">Delete Selected Transactions</Button>
-      </div>
       <div class="search">
         <IconField>
           <InputIcon class="pi pi-search" />
-          <InputText v-model="filters['global'].value" placeholder="Search" fluid />
+          <InputText
+            v-model="filters['global'].value"
+            placeholder="Search"
+            pt:root:class="searchInput" />
         </IconField>
+      </div>
+      <div class="actions">
+        <Button @click="initFilters">Clear Filters</Button>
+        <Button @click="deleteTransactions">Delete Selected Transactions</Button>
       </div>
     </div>
 
@@ -200,19 +203,19 @@
       sortMode="multiple"
       removableSort
       :multiSortMeta="[{ field: 'date', order: -1 }]"
-      size="small"
-      v-model:filters="filters"
+      :filters="filters"
       dataKey="id"
       :loading="loading"
       filterDisplay="menu"
       rowHover
       :globalFilterFields="['desc', 'amount', 'merchant', 'category', 'payment_source']"
-      v-model:selection="selectedTransactions"
-      v-model:editingRows="editingRows"
+      :selection="selectedTransactions"
+      :editingRows="editingRows"
       editMode="row"
       @row-edit-save="editTransaction"
-      pt:thead:class="thead"
-      pt:table:class="table">
+      paginator
+      :rows="5"
+      :rowsPerPageOptions="[5, 10, 20, 50]">
       <template #empty> No transactions found. </template>
       <Column selectionMode="multiple"></Column>
       <Column field="id" hidden />
@@ -316,39 +319,31 @@
   </AppLayout>
 </template>
 
-<style>
-  table {
-    width: calc(100% - 4rem);
-    margin: 2rem auto;
-    border-collapse: collapse;
-
-    td {
-      font-weight: 400;
-      font-size: 0.85rem;
-    }
-  }
-  thead th div span {
-    font-weight: 400;
-    font-size: 0.85rem;
-  }
-</style>
 <style scoped>
   .tableHeader {
-    width: calc(100% - 4rem);
-    margin: 2rem auto 0;
     display: grid;
-    grid-template-columns: 2fr 1fr;
-    grid-template-areas: "actions search";
-
-    .actions {
-      grid-area: "actions";
-      display: flex;
-      column-gap: 0.5rem;
-    }
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: "search actions";
+    column-gap: 0.5rem;
+    align-items: center;
+    padding: 1rem;
 
     .search {
-      grid-area: "search";
-      margin: auto 5rem;
+      grid-area: search;
+
+      .searchInput {
+        width: 100%;
+      }
+    }
+
+    .actions {
+      grid-area: actions;
+      display: flex;
+      column-gap: 0.5rem;
+
+      button {
+        margin: 0;
+      }
     }
   }
 </style>

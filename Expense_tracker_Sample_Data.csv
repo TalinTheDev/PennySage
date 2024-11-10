@@ -1,0 +1,43 @@
+description,date,amount,type,merchant,category,payment_source
+Mortgage,2023-07-28,2512.4,debit,Mortgage,Mortgage,Bank
+Boscov Payment,2023-01-18,242.35,debit,Boscovs,Payment,Bank
+School of rock,2024-06-20,260,debit,School of Rock,Classes,Bank
+Costco Payment,2021-11-11,1763.47,credit,Costcos,Payment,Costco
+Costco Payment,2023-11-05,1763.47,debit,Costcos,Payment,Bank
+Food Emp,2021-08-15,8.94,debit,Food emp,Grocery,Credit
+Food Emp,2023-09-02,6.78,debit,Food emp,Grocery,Credit
+WSJ Subs,2020-05-17,297.48,debit,WSJ,Home Expense,Credit
+Walmart,2020-01-23,64.18,debit,Walmarts,Home Expense,Credit
+Patel Bro,2024-11-16,80.59,debit,Patels,Grocery,Credit
+Walmart Return,2021-12-05,12.98,credit,Walmarts,Home Expense,Credit
+Walmart Return,2023-12-22,19.21,credit,Walmarts,Home Expense,Credit
+Temple Donation,2022-09-24,51,debit,Temple,Home Expense,Credit
+NJ Natural Gas,2020-02-26,34.61,debit,NJ Natural Gas,Utility - Gas,Credit
+Great Clips,2024-09-02,22,debit,Greate clips,Home Expense,Credit
+Koshin ATA Graduation,2021-12-23,65,debit,ATA,Classes,Credit
+Wegman,2020-12-03,44.53,debit,Wegmans,Grocery,Credit
+Shoprite,2022-07-05,4.49,debit,Shoprites,Grocery,Credit
+Walmart,2023-10-03,5.09,debit,Walmarts,Home Expense,Credit
+Netflix,2022-01-14,16.52,debit,Netflixs,Utility - TV,J-Amex
+Petrol,2020-09-14,25.35,debit,Gas,Petrol,Sams Credit
+Patel Bro,2023-06-12,51,debit,Patel,Grocery,Credit
+Walmart,2024-08-07,34.61,debit,Walmarts,Shopping,J-Amex
+Parking,2023-02-22,22,debit,Parking,Misc,Sams Credit
+Mint Mobile,2023-07-25,65,debit,Mint,Phone,Credit
+Petrol,2022-03-08,44.53,debit,Gas,Petrol,J-Amex
+Ezee Pass,2020-09-20,4.49,debit,NJ,Travel,Sams Credit
+ATA Talin,2021-04-10,5.09,debit,ATAs,Classes,Bank
+Gieco Car Ins.,2022-11-09,16.52,debit,Giecos,Insurance,Bank
+Dental Talin,2021-10-06,25.35,debit,Dental,Medical,Bank
+Cheesecake factory,2023-03-13,51,debit,Cheesecake Factory,Dinning,Bank
+Sixs flag,2022-10-18,34.61,debit,Six Flag,Entertainment,Sams Credit
+Oil change CRV,2024-04-19,22,debit,Oil Change,Car Maintenance,Credit
+Home Depot,2020-07-21,51,debit,Home Depot,Home Expense,J-Amex
+Home Depot,2022-04-13,34.61,debit,Home Depot,Home Exp - Lawn,Sams Credit
+NJPL,2022-07-03,22,debit,NJPL,Utility - Electricity,Bank
+NJ Natural Gas,2024-09-22,65,debit,NJ Natural Gas,Utility - Gas,Sams Credit
+Gordon Cornor Water,2023-04-27,44.53,debit,Gordons,Utility - Water,Credit
+Optimum,2023-02-21,4.49,debit,Optimum,Utility - Internet,J-Amex
+Netflix,2021-03-12,5.09,debit,Netflixs,Utility - TV,Sams Credit
+Marlboro Sewer Com.,2021-12-22,16.52,debit,Marlboros,Utility - Sewer,Bank
+Freehold Cartridge,2024-07-16,25.35,debit,Freeholds,Utility - Trash,Bank

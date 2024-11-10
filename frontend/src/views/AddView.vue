@@ -11,6 +11,7 @@
   import DatePicker from "primevue/datepicker";
   import InputNumber from "primevue/inputnumber";
   import SelectButton from "primevue/selectbutton";
+  import FileUpload from "primevue/fileupload";
   import { useToast } from "primevue/usetoast";
 
   const toast = useToast();
@@ -24,11 +25,11 @@
   const merchant = ref("");
   const category = ref("");
   const paymentSource = ref("");
-  // const items = ref([]);
   const typeOptions = ref([
     { name: "Debit", value: "debit" },
     { name: "Credit", value: "credit" }
   ]);
+  const fileupload = ref();
 
   const errors = ref(new Map());
   const validateDate = (value) => {
@@ -129,8 +130,7 @@
   const handleImportTransactions = () => {
     const config = { headers: { "Content-Type": "multipart/form-data" } };
     const form = new FormData();
-    form.append("file", document.getElementById("transactionImportFile").files[0]);
-    console.log(document.getElementById("transactionImportFile").files[0]);
+    form.append("file", fileupload.value.files[0]);
     api
       .post("/transactions/import", form, config)
       .then((data) => {
@@ -267,8 +267,23 @@
         <span class="formHeader">Import Transactions</span>
       </template>
       <template #content>
-        <input type="file" id="transactionImportFile" />
-        <Button @click="handleImportTransactions">Import Transactions</Button>
+        <div class="importBox">
+          <div class="fileInput">
+            <FileUpload
+              ref="fileupload"
+              mode="basic"
+              name="file[]"
+              accept=".csv"
+              :maxFileSize="1000000"
+              @upload="handleImportTransactions"
+              pt:root:class="fileInput" />
+          </div>
+          <div class="inputSubmit">
+            <Button @click="handleImportTransactions" pt:root:class="fileUploadButton">
+              Import Transactions
+            </Button>
+          </div>
+        </div>
       </template>
     </Card>
   </AppLayout>
@@ -277,5 +292,18 @@
   .columns {
     display: flex;
     column-gap: 1rem;
+  }
+  .importBox {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    column-gap: 0.5rem;
+    grid-template-areas: "fileInput inputSubmit";
+    align-items: center;
+  }
+  .fileInput {
+    grid-area: fileInput;
+  }
+  .inputSubmit {
+    grid-area: inputSubmit;
   }
 </style>

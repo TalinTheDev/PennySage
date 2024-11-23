@@ -1,5 +1,3 @@
-use std::fmt;
-
 use super::{ApiError, ApiResponse};
 use crate::{db::gen_id, jwt::AccessTokenClaims, AppState};
 use axum::{
@@ -11,7 +9,6 @@ use axum::{
 };
 use chrono::DateTime;
 use csv::Reader;
-use serde::de::Deserializer;
 use serde::{Deserialize, Serialize};
 use serde_json::json;
 use validator::{Validate, ValidationError};
@@ -25,46 +22,18 @@ pub fn routes() -> Router<AppState> {
     .route("/import", post(import_transactions))
 }
 
-#[derive(Debug, Serialize, Deserialize, sqlx::Type)]
-#[sqlx(rename_all = "lowercase")]
-enum TransactionType {
-  Credit,
-  Debit,
-}
-
-fn deserialize_transaction_type<'de, D>(deserializer: D) -> Result<TransactionType, D::Error>
-where
-  D: Deserializer<'de>,
-{
-  let buf = String::deserialize(deserializer)?;
-  match buf.as_str() {
-    "credit" => Ok(TransactionType::Credit),
-    "debit" => Ok(TransactionType::Debit),
-    "Credit" => Ok(TransactionType::Credit),
-    "Debit" => Ok(TransactionType::Debit),
-    _ => Err(serde::de::Error::custom("Invalid transaction type")),
-  }
-}
-
-#[derive(Deserialize, Validate)]
+#[derive(Deserialize)]
 pub struct TransactionItemReq {
-  #[validate(length(min = 1))]
   desc: String,
-  #[validate(custom(function = "validate_amount"))]
   amount: String,
   category: String,
 }
 
-#[derive(Deserialize, Validate)]
+#[derive(Deserialize)]
 pub struct TransactionReq {
-  #[validate(length(min = 1))]
   desc: String,
-  #[validate(custom(function = "validate_date"))]
   date: String,
-  #[validate(custom(function = "validate_amount"))]
   amount: String,
-  #[validate(custom(function = "validate_type"))]
-  r#type: String,
   merchant: String,
   category: String,
   payment_source: String,
@@ -76,7 +45,9 @@ pub async fn new(
   user: AccessTokenClaims,
   Json(transaction): Json<TransactionReq>,
 ) -> ApiResponse {
-  if transaction.validate().err().is_some() {
+  let mut credit_amount = 0.00;
+  let mut debit_amount = 0.00;
+  if validate_date(&transaction.date).is_err() {
     // TODO: Tell which fields are invalid
     return ApiResponse::Failure {
       status: StatusCode::BAD_REQUEST,
@@ -98,7 +69,27 @@ pub async fn new(
       }
     }
   };
-  match sqlx::query!("INSERT INTO transactions (id, user_id, description, date, amount, type, merchant, category, payment_source) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);", transaction_id, user.id, transaction.desc, transaction.date, transaction.amount, transaction.r#type, transaction.merchant, transaction.category, transaction.payment_source).execute(&mut *tx).await{
+  match validate_amount(&transaction.amount) {
+    Ok(amount) => {
+      if amount < 0.00 {
+        debit_amount = amount.abs();
+      } else if amount > 0.00 {
+        credit_amount = amount.abs()
+      }
+    }
+    Err(e) => {
+      return ApiResponse::Failure {
+        status: StatusCode::INTERNAL_SERVER_ERROR,
+        error: ApiError::Complex {
+          message: "Internal server error while adding transaction (error parsing amount)"
+            .to_owned(),
+          error: Box::new(e.to_string()),
+        },
+      }
+    }
+  }
+
+  match sqlx::query!("INSERT INTO transactions (id, user_id, description, date, credit_amount, debit_amount, merchant, category, payment_source) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);", transaction_id, user.id, transaction.desc, transaction.date, credit_amount, debit_amount, transaction.merchant, transaction.category, transaction.payment_source).execute(&mut *tx).await{
         Ok(_) => {
             if let Some(items) = transaction.items {
                 if items.is_empty() {
@@ -115,7 +106,20 @@ pub async fn new(
                             Ok(id) => id,
                             Err(e) => { return e; }
                         };
-                        match sqlx::query!("INSERT INTO transaction_items (id, transaction_id, description, amount, category) VALUES (?, ?, ?, ?, ?)", item_id, transaction_id, item.desc, item.amount, item.category).execute(&mut *tx).await {
+                        let amount = match validate_amount(&item.amount) {
+                          Ok(amount) => amount,
+                          Err(e) => {
+                            return ApiResponse::Failure {
+                              status: StatusCode::INTERNAL_SERVER_ERROR,
+                              error: ApiError::Complex {
+                                message: "Internal server error while adding transaction (error parsing amount)"
+                                  .to_owned(),
+                                error: Box::new(e.to_string()),
+                              },
+                            }
+                          }
+                        };
+                        match sqlx::query!("INSERT INTO transaction_items (id, transaction_id, description, amount, category) VALUES (?, ?, ?, ?, ?)", item_id, transaction_id, item.desc, amount, item.category).execute(&mut *tx).await {
                             Ok(_) => continue,
                             Err(_) => {
                                 match tx.rollback().await {
@@ -163,18 +167,17 @@ pub fn validate_date(date: &String) -> Result<(), ValidationError> {
   Ok(())
 }
 
-pub fn validate_amount(amount: &String) -> Result<(), ValidationError> {
-  if amount == "0.00" {
-    return Err(ValidationError::new("Amount cannot be $0"));
+pub fn validate_amount(amount: &String) -> Result<f64, ValidationError> {
+  match amount.parse::<f64>() {
+    Ok(amount) => {
+      if amount == 0.00 {
+        Err(ValidationError::new("Amount cannot be $0"))
+      } else {
+        Ok(amount)
+      }
+    }
+    Err(_) => Err(ValidationError::new("Invalid amount")),
   }
-  Ok(())
-}
-
-pub fn validate_type(transaction_type: &String) -> Result<(), ValidationError> {
-  if *transaction_type != "credit".to_string() && *transaction_type != "debit".to_string() {
-    return Err(ValidationError::new("Invalid transaction type"));
-  }
-  Ok(())
 }
 
 #[derive(Clone, Serialize)]
@@ -182,8 +185,8 @@ pub struct TransactionRow {
   pub id: String,
   pub desc: String,
   pub date: String,
-  pub amount: f64,
-  pub r#type: String,
+  pub credit_amount: f64,
+  pub debit_amount: f64,
   pub merchant: String,
   pub category: String,
   pub payment_source: String,
@@ -194,8 +197,7 @@ pub struct TransactionRowWithItems {
   pub id: String,
   pub desc: String,
   pub date: String,
-  pub amount: f64,
-  pub r#type: String,
+  pub amount: f64, // Only has amount field here because this is what gets sent to client (not credit_amount or debit_amount)
   pub merchant: String,
   pub category: String,
   pub payment_source: String,
@@ -219,22 +221,31 @@ pub async fn get_transactions(
   user: AccessTokenClaims,
 ) -> ApiResponse {
   let mut results: Vec<TransactionRowWithItems> = Vec::new();
-  match sqlx::query_as!(TransactionRow, "SELECT id, description AS desc, date, amount, type, merchant, category, payment_source FROM transactions WHERE user_id = ?;", user.id).fetch_all(&state.db_pool).await {
+  match sqlx::query_as!(TransactionRow, "SELECT id, description AS desc, date, credit_amount, debit_amount, merchant, category, payment_source FROM transactions WHERE user_id = ?;", user.id).fetch_all(&state.db_pool).await {
         Ok(rows) => {
             for row in rows.iter(){
+              let amount;
+              if row.credit_amount > 0.00 {
+                amount = row.credit_amount;
+              } else if row.debit_amount > 0.00 {
+                amount = -1.00 * row.debit_amount;
+              } else {
+                amount = 0.00;
+              }
                 match sqlx::query_as!(TransactionItem, "SELECT description as desc, amount, category FROM transaction_items WHERE transaction_id = ?", row.id).fetch_all(&state.db_pool).await {
                     Ok(items) => {
                         let transaction = row.clone();
                         results.push(TransactionRowWithItems {
-                            id: transaction.id, desc: transaction.desc, date: transaction.date, amount: transaction.amount, merchant: transaction.merchant, category: transaction.category, payment_source: transaction.payment_source, r#type: transaction.r#type, items: Some(items)
-                        }
-                        );
+                            id: transaction.id, desc: transaction.desc, date: transaction.date, amount: amount, merchant: transaction.merchant, category: transaction.category, payment_source: transaction.payment_source, items: Some(items)
+                        });
                     }
                     Err(e) => match e {
-                        sqlx::Error::RowNotFound =>{let transaction = row.clone(); results.push(TransactionRowWithItems {
-                            id: transaction.id, desc: transaction.desc, date: transaction.date, amount: transaction.amount, merchant: transaction.merchant, category: transaction.category, payment_source: transaction.payment_source, r#type: transaction.r#type, items: None
-                        }
-                        );},
+                        sqlx::Error::RowNotFound =>{
+                          let transaction = row.clone(); 
+                          results.push(TransactionRowWithItems {
+                            id: transaction.id, desc: transaction.desc, date: transaction.date, amount: amount, merchant: transaction.merchant, category: transaction.category, payment_source: transaction.payment_source, items: None
+                          });
+                        },
                         _ => return ApiResponse::Failure { status: StatusCode::INTERNAL_SERVER_ERROR, error: ApiError::Simple("Could not fetch transaction items from database (internal server error)".to_owned()) }
                     }
                 }
@@ -360,7 +371,34 @@ pub async fn edit_transaction(
       match edit.field.as_str() {
         "desc" => query.push("description = "),
         "date" => query.push("date = "),
-        "amount" => query.push("amount = "),
+        "amount" => {
+          let mut debit_amount = 0.00;
+          let mut credit_amount = 0.00;
+          match validate_amount(&edit.value) {
+            Ok(amount) => {
+              if amount < 0.00 {
+                debit_amount = amount.abs();
+              } else if amount > 0.00 {
+                credit_amount = amount.abs()
+              }
+            }
+            Err(e) => {
+              return ApiResponse::Failure {
+                status: StatusCode::INTERNAL_SERVER_ERROR,
+                error: ApiError::Complex {
+                  message: "Internal server error while updating transaction (error parsing amount)"
+                    .to_owned(),
+                  error: Box::new(e.to_string()),
+                },
+              }
+            }
+          }
+          query.push("credit_amount = ");
+          query.push_bind(credit_amount);
+          query.push("debit_amount = ");
+          query.push_bind(debit_amount);
+          continue;
+        },
         "merchant" => query.push("merchant = "),
         "category" => query.push("category = "),
         "payment_source" => query.push("payment_source = "),
@@ -394,8 +432,6 @@ struct ImportedTransaction {
   description: String,
   date: String,
   amount: String,
-  #[serde(deserialize_with = "deserialize_transaction_type")]
-  r#type: TransactionType,
   merchant: String,
   category: String,
   payment_source: String,
@@ -459,7 +495,28 @@ pub async fn import_transactions(
             Ok(id) => id,
             Err(e) => return e,
           };
-          match sqlx::query!("INSERT INTO transactions (id, user_id, description, date, amount, type, merchant, category, payment_source) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);", transaction_id, user.id, transaction.description, transaction.date, transaction.amount, transaction.r#type, transaction.merchant, transaction.category, transaction.payment_source).execute(&mut *tx).await {
+          let mut credit_amount = 0.00;
+          let mut debit_amount = 0.00;
+          match validate_amount(&transaction.amount) {
+            Ok(amount) => {
+              if amount < 0.00 {
+                debit_amount = amount.abs();
+              } else if amount > 0.00 {
+                credit_amount = amount.abs()
+              }
+            }
+            Err(e) => {
+              return ApiResponse::Failure {
+                status: StatusCode::INTERNAL_SERVER_ERROR,
+                error: ApiError::Complex {
+                  message: "Internal server error while adding transaction (error parsing amount)"
+                    .to_owned(),
+                  error: Box::new(e.to_string()),
+                },
+              }
+            }
+          }
+          match sqlx::query!("INSERT INTO transactions (id, user_id, description, date, credit_amount, debit_amount, merchant, category, payment_source) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);", transaction_id, user.id, transaction.description, transaction.date, credit_amount, debit_amount, transaction.merchant, transaction.category, transaction.payment_source).execute(&mut *tx).await {
                 Ok(_) => continue,
                 Err(_) => {
                     failed_transactions += 1;

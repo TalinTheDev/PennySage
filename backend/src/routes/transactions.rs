@@ -395,6 +395,7 @@ pub async fn edit_transaction(
           }
           query.push("credit_amount = ");
           query.push_bind(credit_amount);
+          query.push(", ");
           query.push("debit_amount = ");
           query.push_bind(debit_amount);
           continue;

@@ -1,7 +1,6 @@
 <script setup>
   import AppLayout from "@/layouts/AppLayout.vue";
   import Button from "@/components/Button.vue";
-  import TransactionTypeChip from "@/components/TransactionTypeChip.vue";
   import DataTable from "primevue/datatable";
   import Column from "primevue/column";
   import InputText from "primevue/inputtext";
@@ -10,8 +9,6 @@
   import IconField from "primevue/iconfield";
   import InputIcon from "primevue/inputicon";
   import DatePicker from "primevue/datepicker";
-
-  import Select from "primevue/select";
 
   import { FilterMatchMode } from "@primevue/core/api";
   import { ref, onBeforeMount, onMounted, computed } from "vue";
@@ -38,10 +35,6 @@
   const loading = ref(false);
 
   const filters = ref();
-  const typeFilterOptions = ref([
-    { label: "Debit", value: "debit" },
-    { label: "Credit", value: "credit" }
-  ]);
 
   const initFilters = () => {
     filters.value = {
@@ -49,7 +42,6 @@
       desc: { value: null, matchMode: FilterMatchMode.CONTAINS },
       date: { value: null, matchMode: FilterMatchMode.DATE_IS },
       amount: { value: null, matchMode: FilterMatchMode.CONTAINS },
-      type: { value: null, matchMode: FilterMatchMode.EQUALS },
       merchant: { value: null, matchMode: FilterMatchMode.CONTAINS },
       category: { value: null, matchMode: FilterMatchMode.CONTAINS },
       payment_source: { value: null, matchMode: FilterMatchMode.CONTAINS }
@@ -147,9 +139,6 @@
     }
     if (oldTransaction.amount !== newTransaction.amount) {
       diff.push({ field: "amount", value: newTransaction.amount.toString() });
-    }
-    if (oldTransaction.type !== newTransaction.type) {
-      diff.push({ field: "type", value: newTransaction.type });
     }
     if (oldTransaction.merchant !== newTransaction.merchant) {
       diff.push({ field: "merchant", value: newTransaction.merchant });
@@ -307,32 +296,13 @@
             @input="filterCallback()"
             placeholder="Filter by amount" />
         </template>
-        <template #body="{ data }"> ${{ parseFloat(data.amount).toFixed(2) }} </template>
+        <template #body="{ data }"
+          >{{ parseFloat(data.amount).toFixed(2) > 0 ? "" : "-" }}${{
+            Math.abs(parseFloat(data.amount)).toFixed(2)
+          }}
+        </template>
         <template #editor="{ data, field }">
           <InputNumber mode="currency" currency="USD" v-model="data[field]" fluid />
-        </template>
-      </Column>
-      <Column field="type" header="Type" sortable>
-        <template #body="{ data }">
-          <TransactionTypeChip type="credit" v-if="data.type === 'credit'" />
-          <TransactionTypeChip type="debit" v-if="data.type === 'debit'" />
-        </template>
-        <template #filter="{ filterModel, filterCallback }">
-          <Select
-            v-model="filterModel.value"
-            optionLabel="label"
-            optionValue="value"
-            :options="typeFilterOptions"
-            placeholder="Filter by Type"
-            @change="filterCallback()" />
-        </template>
-        <template #editor="{ data, field }">
-          <Select
-            v-model="data[field]"
-            fluid
-            :options="typeFilterOptions"
-            optionLabel="label"
-            optionValue="value" />
         </template>
       </Column>
       <Column field="merchant" sortable header="Merchant">

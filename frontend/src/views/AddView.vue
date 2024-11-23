@@ -10,7 +10,6 @@
   import InputText from "primevue/inputtext";
   import DatePicker from "primevue/datepicker";
   import InputNumber from "primevue/inputnumber";
-  import SelectButton from "primevue/selectbutton";
   import FileUpload from "primevue/fileupload";
   import { useToast } from "primevue/usetoast";
 
@@ -21,14 +20,10 @@
   const dateInput = ref(new Date());
   let date = "0000-00-00T00:00:00.000Z";
   const amount = ref(0.0);
-  const transactionType = ref("debit");
   const merchant = ref("");
   const category = ref("");
   const paymentSource = ref("");
-  const typeOptions = ref([
-    { name: "Debit", value: "debit" },
-    { name: "Credit", value: "credit" }
-  ]);
+
   const fileupload = ref();
 
   const errors = ref(new Map());
@@ -40,8 +35,8 @@
     }
   };
   const validateAmount = (value) => {
-    if (!(parseFloat(value.substring(1)) > 0)) {
-      errors.value.set("AmountErr", "Amount must be greater than $0.00");
+    if (parseFloat(value.substring(1)) === 0) {
+      errors.value.set("AmountErr", "Amount cannot be equal to $0.00");
     } else {
       errors.value.delete("AmountErr");
     }
@@ -70,8 +65,8 @@
     } else {
       errors.value.delete("DateErr");
     }
-    if (!(parseFloat(amount.value) > 0) || amount.value == null) {
-      errors.value.set("AmountErr", "Amount must be greater than $0.00");
+    if (parseFloat(amount.value) === 0 || amount.value === null) {
+      errors.value.set("AmountErr", "Amount must not be equal to $0.00");
     } else {
       errors.value.delete("AmountErr");
     }
@@ -103,7 +98,6 @@
         desc: description.value,
         date: date,
         amount: amount.value.toString(),
-        type: transactionType.value,
         merchant: merchant.value,
         category: category.value,
         payment_source: paymentSource.value
@@ -203,19 +197,6 @@
                   validateAmount(value);
                 }
               " />
-          </InputBox>
-          <InputBox name="Type">
-            <SelectButton
-              v-model="transactionType"
-              optionLabel="name"
-              optionValue="value"
-              pt:root:class="typeButton"
-              @blur="
-                (event) => {
-                  validate(event.target, 'Type');
-                }
-              "
-              :options="typeOptions" />
           </InputBox>
         </div>
         <div class="columns">

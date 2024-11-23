@@ -11,6 +11,7 @@ use erased_serde::Serialize as ErasedSerialize;
 use serde::Serialize;
 use serde_json::json;
 
+mod analytics;
 pub mod auth;
 mod settings;
 mod transactions;
@@ -19,6 +20,7 @@ pub fn app() -> Router<AppState> {
   Router::new()
     .nest("/auth", auth::routes())
     .nest("/transactions", transactions::routes())
+    .nest("/analytics", analytics::routes())
     .nest("/settings", settings::routes())
 }
 

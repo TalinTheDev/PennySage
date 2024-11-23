@@ -44,7 +44,7 @@ struct CurrentMonthsBalanceBySource {
 
 #[derive(Serialize)]
 struct AverageSavingsForLast6Months {
-  date: Option<String>,
+  month: Option<String>,
   savings: f64,
 }
 
@@ -165,7 +165,7 @@ async fn dashboard(State(state): State<crate::AppState>, user: AccessTokenClaims
     return_data["current_months_credit_debit_balance"] = json!(d);
   }
 
-  let average_savings = sqlx::query_as!(AverageSavingsForLast6Months, "SELECT IFNULL(AVG(credit_amount - debit_amount), 0.00) as savings, STRFTIME('%m', date) as date FROM transactions WHERE user_id = ? GROUP BY STRFTIME('%m', date) ORDER BY DATE(date) DESC LIMIT 6;", user.id).fetch_all(&state.db_pool).await;
+  let average_savings = sqlx::query_as!(AverageSavingsForLast6Months, "SELECT IFNULL(AVG(credit_amount - debit_amount), 0.00) as savings, STRFTIME('%m', date) as month FROM transactions WHERE user_id = ? GROUP BY STRFTIME('%Y-%m', date) ORDER BY STRFTIME('%Y-%m', date) DESC LIMIT 6;", user.id).fetch_all(&state.db_pool).await;
   if let Err(_) = average_savings {
     return ApiResponse::Failure {
       status: StatusCode::INTERNAL_SERVER_ERROR,

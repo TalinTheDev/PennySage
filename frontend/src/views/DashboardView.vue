@@ -4,6 +4,9 @@
   import PageHeader from "@/components/PageHeader.vue";
 
   import { useUserStore } from "@/stores/useUserStore.js";
+  import { useApiStore } from "@/stores/useApiStore.js";
+
+  const api = useApiStore().api;
   const user = useUserStore();
 
   let date = new Date();
@@ -15,6 +18,10 @@
       day: "numeric"
     }).format(date)
   );
+
+  api.get("/analytics/dashboard").then((response) => {
+    console.log(response);
+  });
 </script>
 <template>
   <AppLayout>

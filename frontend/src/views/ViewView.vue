@@ -245,7 +245,6 @@
       sortMode="multiple"
       removableSort
       size="small"
-      :multiSortMeta="[{ field: 'date', order: -1 }]"
       v-model:filters="filters"
       filterDisplay="menu"
       :globalFilterFields="['desc', 'amount', 'merchant', 'category', 'payment_source']"

@@ -22,8 +22,8 @@ CREATE TABLE IF NOT EXISTS transactions (
 
   description TEXT NOT NULL DEFAULT 'Transaction',
   date TEXT NOT NULL DEFAULT '0000-00-00T00:00:00.000Z',
-  amount REAL NOT NULL DEFAULT 0.00,
-  type TEXT NOT NULL DEFAULT 'debit',
+  credit_amount REAL NOT NULL DEFAULT 0.00,
+  debit_amount REAL NOT NULL DEFAULT 0.00,
   merchant TEXT NOT NULL DEFAULT 'Merchant N/A',
   category TEXT NOT NULL DEFAULT 'Category N/A',
   payment_source TEXT NOT NULL DEFAULT 'Payment Source N/A',

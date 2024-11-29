@@ -11,6 +11,7 @@
     "pinia",
     "primevue",
     "rushstack",
-    "sqlx"
+    "sqlx",
+    "usetoast"
   ]
 }

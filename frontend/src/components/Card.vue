@@ -11,7 +11,8 @@
 
 <style scoped>
   .cardParent {
-    display: inline-block;
+    display: flex;
+    flex-direction: column;
     border-radius: 10px;
     background-color: var(--white);
     border: 1px solid var(--border);
@@ -28,6 +29,7 @@
     }
     .content {
       padding: 1.5rem;
+      flex-grow: 1;
     }
   }
 </style>

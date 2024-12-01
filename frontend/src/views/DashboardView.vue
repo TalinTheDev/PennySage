@@ -295,11 +295,11 @@
   .charts {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
-    grid-template-rows: repeat(3, 1fr);
+    /* grid-template-rows: repeat(3, 1fr); */
     grid-template-areas:
-      "bpctm bpctm bpctm asitctm asitctm cmbacttmly cmbacttmly"
-      "bpctm bpctm bpctm aspmftlsm aspmftlsm aspmftlsm aspmftlsm"
-      "lmbcbs lmbcbs cmbcbs cmbcbs cmcvdt cmcvdt cmcvdt";
+      "bpctm bpctm bpctm  lmbcbs lmbcbs cmbcbs cmbcbs"
+      "asitctm asitctm cmbacttmly cmbacttmly aspmftlsm aspmftlsm aspmftlsm"
+      "cmcvdt cmcvdt cmcvdt cmcvdt cmcvdt cmcvdt cmcvdt";
   }
 
   tr,

@@ -117,6 +117,20 @@
             balance: `${parseFloat(item.balance) < 0 ? "-" : ""}$${Math.abs(parseFloat(item.balance)).toFixed(2)}`
           });
         });
+
+        response.current_months_balance_by_source.forEach((item) => {
+          current_months_balance_by_source.value.push({
+            source: item.source,
+            balance: `${parseFloat(item.balance) < 0 ? "-" : ""}$${Math.abs(parseFloat(item.balance)).toFixed(2)}`
+          });
+        });
+
+        let credit_debit_balance = response.current_months_credit_debit_balance;
+        current_months_credit_debit_balance.value.push({
+          credit: `$${parseFloat(credit_debit_balance.credit).toFixed(2)}`,
+          debit: `$${parseFloat(credit_debit_balance.debit).toFixed(2)}`,
+          balance: `$${Math.abs(parseFloat(credit_debit_balance.balance)).toFixed(2)}`
+        });
       })
       .catch((error) => {
         toast.add({
@@ -190,6 +204,44 @@
           <p v-else>No data available</p>
         </template>
       </Card>
+      <Card class="card">
+        <template #header>
+          <span>Current month's balance categorized by source</span>
+        </template>
+        <template #content>
+          <table v-if="current_months_balance_by_source.length != 0">
+            <tr>
+              <th>Source</th>
+              <th>Balance</th>
+            </tr>
+            <tr v-for="item in current_months_balance_by_source" :key="item.source">
+              <td>{{ item.source }}</td>
+              <td>{{ item.balance }}</td>
+            </tr>
+          </table>
+          <p v-else>No data available</p>
+        </template>
+      </Card>
+      <Card class="card">
+        <template #header>
+          <span>Current month's credit vs debit transactions</span>
+        </template>
+        <template #content>
+          <table v-if="current_months_credit_debit_balance.length != 0">
+            <tr>
+              <th>Credit</th>
+              <th>Debit</th>
+              <th>Balance</th>
+            </tr>
+            <tr v-for="item in current_months_credit_debit_balance" :key="item.credit">
+              <td>{{ item.credit }}</td>
+              <td>{{ item.debit }}</td>
+              <td>{{ item.balance }}</td>
+            </tr>
+          </table>
+          <p v-else>No data available</p>
+        </template>
+      </Card>
     </div>
   </AppLayout>
 </template>
@@ -214,5 +266,16 @@
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     grid-template-rows: repeat(auto-fit, minmax(300px, 1fr));
+  }
+
+  tr,
+  th,
+  td,
+  table {
+    border: 1px solid var(--dark-grey);
+    border-collapse: collapse;
+    padding: 1rem;
+    width: 100%;
+    text-align: center;
   }
 </style>

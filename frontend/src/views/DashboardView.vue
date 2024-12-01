@@ -33,6 +33,7 @@
 
   let pieChartOptions = ref({
     responsive: true,
+    maintainAspectRatio: false,
     plugins: {
       tooltip: {
         callbacks: {
@@ -56,6 +57,7 @@
   });
   let barChartOptions = ref({
     responsive: true,
+    maintainAspectRatio: false,
     plugins: {
       tooltip: {
         callbacks: {
@@ -131,6 +133,19 @@
           debit: `$${parseFloat(credit_debit_balance.debit).toFixed(2)}`,
           balance: `$${Math.abs(parseFloat(credit_debit_balance.balance)).toFixed(2)}`
         });
+
+        average_savings.value.datasets.push({
+          label: " Savings", // Space needed in front of label for formatting
+          data: []
+        });
+        response.average_savings.reverse().forEach((item) => {
+          average_savings.value.labels.push(
+            Intl.DateTimeFormat("en", { year: "numeric", month: "short" }).format(
+              new Date(item.year, item.month - 1)
+            )
+          );
+          average_savings.value.datasets[0].data.push(item.savings);
+        });
       })
       .catch((error) => {
         toast.add({
@@ -156,37 +171,52 @@
       </template>
     </PageHeader>
     <div class="charts">
-      <Card class="card">
+      <Card class="card bpctm" isCentered>
         <template #header>
           <span>Balance per category this month</span>
         </template>
         <template #content>
-          <Chart type="pie" :data="amount_per_category_current_month" :options="pieChartOptions" />
+          <Chart
+            v-if="amount_per_category_current_month.labels.length != 0"
+            type="pie"
+            :data="amount_per_category_current_month"
+            :options="pieChartOptions"
+            :canvasProps="{ style: 'flex: 1 1 0;height: auto;' }"
+            :pt="{ root: { class: 'chartContainer' } }" />
+          <p v-else>No data available</p>
         </template>
       </Card>
-      <Card class="card">
+      <Card class="card asitctm" isCentered>
         <template #header>
           <span>Amount spent in top categories this month</span>
         </template>
         <template #content>
           <Chart
+            v-if="top_categories_for_amount_spent_for_current_month.labels.length != 0"
             type="bar"
             :data="top_categories_for_amount_spent_for_current_month"
-            :options="barChartOptions" />
+            :options="barChartOptions"
+            :canvasProps="{ style: 'flex: 1 1 0;height: auto;' }"
+            :pt="{ root: { class: 'chartContainer' } }" />
+          <p v-else>No data available</p>
         </template>
       </Card>
-      <Card class="card">
+      <Card class="card cmbacttmly" isCentered>
         <template #header>
           <span>Current month's balance as compared to this month last year</span>
         </template>
         <template #content>
           <Chart
+            v-if="current_month_balance_compared_to_last_year.labels.length != 0"
             type="bar"
             :data="current_month_balance_compared_to_last_year"
-            :options="barChartOptions" />
+            :options="barChartOptions"
+            :canvasProps="{ style: 'flex: 1 1 0;height: auto;' }"
+            :pt="{ root: { class: 'chartContainer' } }" />
+          <p v-else>No data available</p>
         </template>
       </Card>
-      <Card class="card">
+      <Card class="card lmbcbs" isCentered>
         <template #header>
           <span>Last month's balance categorized by source</span>
         </template>
@@ -204,7 +234,7 @@
           <p v-else>No data available</p>
         </template>
       </Card>
-      <Card class="card">
+      <Card class="card cmbcbs" isCentered>
         <template #header>
           <span>Current month's balance categorized by source</span>
         </template>
@@ -222,7 +252,7 @@
           <p v-else>No data available</p>
         </template>
       </Card>
-      <Card class="card">
+      <Card class="card cmcvdt" isCentered>
         <template #header>
           <span>Current month's credit vs debit transactions</span>
         </template>
@@ -242,30 +272,34 @@
           <p v-else>No data available</p>
         </template>
       </Card>
+      <Card class="card aspmftlsm" isCentered>
+        <template #header>
+          <span>Average savings per month for the last six months</span>
+        </template>
+        <template #content>
+          <Chart
+            v-if="average_savings.labels.length != 0"
+            type="bar"
+            :data="average_savings"
+            :options="barChartOptions"
+            :canvasProps="{ style: 'flex: 1 1 0;height: auto;' }"
+            :pt="{ root: { class: 'chartContainer' } }" />
+          <p v-else>No data available</p>
+        </template>
+      </Card>
     </div>
   </AppLayout>
 </template>
 
 <style scoped>
-  .header {
-    width: 100vw;
-    padding: 1rem 2rem;
-    background-color: var(--white);
-    box-shadow: 0px 3px 3px 0px var(--border);
-    z-index: -1;
-    position: relative;
-    margin-bottom: 2rem;
-  }
-  .subheader {
-    color: var(--light-grey);
-    font-size: 0.9rem;
-    display: block;
-  }
-
   .charts {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    grid-template-rows: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(7, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    grid-template-areas:
+      "bpctm bpctm bpctm asitctm asitctm cmbacttmly cmbacttmly"
+      "bpctm bpctm bpctm aspmftlsm aspmftlsm aspmftlsm aspmftlsm"
+      "lmbcbs lmbcbs cmbcbs cmbcbs cmcvdt cmcvdt cmcvdt";
   }
 
   tr,
@@ -277,5 +311,40 @@
     padding: 1rem;
     width: 100%;
     text-align: center;
+  }
+
+  .bpctm {
+    grid-area: bpctm;
+  }
+
+  .asitctm {
+    grid-area: asitctm;
+  }
+
+  .cmbacttmly {
+    grid-area: cmbacttmly;
+  }
+
+  .aspmftlsm {
+    grid-area: aspmftlsm;
+  }
+
+  .lmbcbs {
+    grid-area: lmbcbs;
+  }
+
+  .cmbcbs {
+    grid-area: cmbcbs;
+  }
+
+  .cmcvdt {
+    grid-area: cmcvdt;
+  }
+
+  .chartContainer {
+    display: flex;
+    flex-flow: column;
+    width: 100%;
+    height: 100%;
   }
 </style>

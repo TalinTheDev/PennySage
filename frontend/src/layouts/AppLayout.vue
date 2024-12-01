@@ -91,7 +91,7 @@
     width: 100%;
     height: 100%;
     display: grid;
-    grid-template-columns: clamp(200px + 2.5rem, 20%, 325px) 1fr;
+    grid-template-columns: clamp(200px + 2.5rem, 15%, 325px) 1fr;
     grid-template-areas: "nav content";
   }
 

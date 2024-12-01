@@ -1,9 +1,13 @@
+<script setup>
+  const props = defineProps({ isCentered: Boolean });
+</script>
+
 <template>
   <div class="cardParent">
     <div class="header">
       <slot name="header" />
     </div>
-    <div class="content">
+    <div class="content" :class="{ center: isCentered }">
       <slot name="content" />
     </div>
   </div>
@@ -30,6 +34,12 @@
     .content {
       padding: 1.5rem;
       flex-grow: 1;
+
+      &.center {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
     }
   }
 </style>

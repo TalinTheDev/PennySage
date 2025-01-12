@@ -22,6 +22,7 @@ pub fn app() -> Router<AppState> {
     .nest("/transactions", transactions::routes())
     .nest("/analytics", analytics::routes())
     .nest("/settings", settings::routes())
+    .route("/hello", get(|| async {"Hello World"}))
 }
 
 #[derive(Serialize)]

@@ -1,8 +1,8 @@
 use axum::Router;
+use env_logger::Env;
+use log::info;
 use sqlx::{sqlite::SqlitePoolOptions, Sqlite};
 use std::{env, time::Duration};
-use log::{info};
-use env_logger::Env;
 mod db;
 mod jwt;
 mod middleware;
@@ -16,13 +16,12 @@ struct AppState {
 #[tokio::main]
 async fn main() {
   // Init logger
-  let env = Env::default()
-        .filter_or("API_LOG_LEVEL", "INFO");
+  let env = Env::default().filter_or("API_LOG_LEVEL", "INFO");
   env_logger::init_from_env(env);
 
   // Load env file
   dotenvy::dotenv().expect("env file should be present");
-  
+
   // Start DB Pool
   let db_url = env::var("DATABASE_URL").expect("Database URL should be set in env file");
   let pool = SqlitePoolOptions::new()
@@ -43,7 +42,7 @@ async fn main() {
   let app = Router::new()
     .nest("/api", routes::app())
     .with_state(AppState { db_pool: pool });
-  
+
   // Serve app
   axum::serve(listener, app).await.unwrap();
 }

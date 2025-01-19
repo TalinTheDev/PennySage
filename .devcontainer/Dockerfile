@@ -8,6 +8,7 @@ RUN curl -fsSL https://deb.nodesource.com/setup_21.x | bash - && \
 
 # Set up development tools
 RUN cargo install sqlx-cli
+RUN rustup component add rustfmt
 
 # Set the working directory
 WORKDIR /workspace

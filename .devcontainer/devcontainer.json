@@ -22,6 +22,5 @@
     "Breadnaught.vscode-ignore",
     "Vue.volar",
     "ms-azuretools.vscode-docker"
-  ],
-  "remoteUser": "root"
+  ]
 }

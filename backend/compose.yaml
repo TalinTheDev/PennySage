@@ -15,7 +15,7 @@ services:
     volumes:
       - db-data:/data
     env_file:
-      - path: .env
+      - path: ../.env
         required: true
 volumes:
   db-data:

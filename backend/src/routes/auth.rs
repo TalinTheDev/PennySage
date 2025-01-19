@@ -163,9 +163,9 @@ pub async fn register(
                   Ok(_) => {
                     return set_tokens(user_row, state.db_pool).await
                   },
-                  Err(_) => return ApiResponse::Failure {
+                  Err(e) => return ApiResponse::Failure {
                     status: StatusCode::INTERNAL_SERVER_ERROR,
-                    error: ApiError::Simple("Internal server error while registering user".to_owned()),
+                    error: ApiError::Complex{message: "Internal server error while registering user".to_owned(), error: Box::new(e.to_string())},
                   }
                 }
               },
@@ -175,9 +175,9 @@ pub async fn register(
                     status: StatusCode::INTERNAL_SERVER_ERROR,
                     error: ApiError::Simple("Internal server error while registering user".to_owned()),
                   },
-                  Err(_) => return ApiResponse::Failure {
+                  Err(e) => return ApiResponse::Failure {
                     status: StatusCode::INTERNAL_SERVER_ERROR,
-                    error: ApiError::Simple("Internal server error while registering user".to_owned()),
+                    error: ApiError::Complex{message: "Internal server error while registering user".to_owned(), error: Box::new(e.to_string())},
                   }
                 }
               }
@@ -185,16 +185,16 @@ pub async fn register(
           } else {
             match transaction.commit().await {
               Ok(_) => return set_tokens(user_row, state.db_pool).await,
-              Err(_) => return ApiResponse::Failure {
+              Err(e) => return ApiResponse::Failure {
                 status: StatusCode::INTERNAL_SERVER_ERROR,
-                error: ApiError::Simple("Internal server error while registering user".to_owned()),
+                error: ApiError::Complex{message: "Internal server error while registering user".to_owned(), error: Box::new(e.to_string())},
               }
             }
           }
           },
-          Err(_) => ApiResponse::Failure {
+          Err(e) => ApiResponse::Failure {
             status: StatusCode::INTERNAL_SERVER_ERROR,
-            error: ApiError::Simple("Internal server error while registering user".to_owned()),
+            error: ApiError::Complex{message: "Internal server error while registering user".to_owned(), error: Box::new(e.to_string())},
           }
         }
       } else {
@@ -204,9 +204,12 @@ pub async fn register(
         }
       }
     }
-    Err(_) => ApiResponse::Failure {
+    Err(e) => ApiResponse::Failure {
       status: StatusCode::UNAUTHORIZED,
-      error: ApiError::Simple("Internal server error while registering user".to_owned()),
+      error: ApiError::Complex {
+        message: "Internal server error while registering user".to_owned(),
+        error: Box::new(e.to_string()),
+      },
     },
   }
 }

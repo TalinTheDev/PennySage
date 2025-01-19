@@ -22,10 +22,17 @@ async fn main() -> ExitCode {
   let env = Env::default().filter_or("API_LOG_LEVEL", "INFO");
   env_logger::init_from_env(env);
 
-  // Load env file
-  if let Err(e) = dotenvy::dotenv() {
-    error!("Error reading env variables ({})", e);
-    return ExitCode::FAILURE;
+  match env::var("RUNTIME") {
+    Ok(runtime) => {
+      if runtime != "docker" {
+        // Load env file
+        if let Err(e) = dotenvy::dotenv() {
+          error!("Error reading env variables ({})", e);
+          return ExitCode::FAILURE;
+        }
+      }
+    }
+    Err(_) => {}
   }
 
   // Start DB Pool

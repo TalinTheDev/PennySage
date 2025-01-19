@@ -1,5 +1,4 @@
 name: "PennySage (Frontend)"
-version: '2'
 
 services:
   server:

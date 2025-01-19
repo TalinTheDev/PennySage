@@ -19,6 +19,9 @@ async fn main() {
   // Init logger
   env_logger::init();
 
+  // Load env file
+  dotenvy::dotenv().expect("env file should be present");
+  
   // Start DB Pool
   let db_url = env::var("DATABASE_URL").expect("Database URL should be set in env file");
   let pool = SqlitePoolOptions::new()

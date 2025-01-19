@@ -5,8 +5,8 @@ use axum::{
   body::Body,
   http::{header::SET_COOKIE, StatusCode},
   response::{IntoResponse, Response},
+  routing::get,
   Router,
-  routing::get
 };
 use erased_serde::Serialize as ErasedSerialize;
 use serde::Serialize;
@@ -23,7 +23,7 @@ pub fn app() -> Router<AppState> {
     .nest("/transactions", transactions::routes())
     .nest("/analytics", analytics::routes())
     .nest("/settings", settings::routes())
-    .route("/hello", get(|| async {"Hello World! Server running..."}))
+    .route("/hello", get(|| async { "Hello World! Server running..." }))
 }
 
 #[derive(Serialize)]

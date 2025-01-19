@@ -9,7 +9,9 @@ use crate::{jwt::AccessTokenClaims, AppState};
 use super::{ApiError, ApiResponse};
 
 pub fn routes() -> Router<AppState> {
-  Router::new().route("/dashboard", get(dashboard)).route("/analytics", get(analytics))
+  Router::new()
+    .route("/dashboard", get(dashboard))
+    .route("/analytics", get(analytics))
 }
 
 #[derive(Serialize)]

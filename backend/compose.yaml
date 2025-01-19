@@ -1,7 +1,7 @@
 name: "PennySage (Backend)"
 
 services:
-  server:
+  api_server:
     build:
       context: .
       target: final

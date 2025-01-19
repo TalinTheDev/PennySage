@@ -1,7 +1,7 @@
 name: "PennySage (Frontend)"
 
 services:
-  server:
+  app_server:
     build:
       context: .
     image: pennysage_frontend

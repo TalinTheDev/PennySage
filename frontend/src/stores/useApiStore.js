@@ -7,7 +7,7 @@ import { useRouter } from "vue-router";
 export const useApiStore = defineStore("useApiStore", () => {
   const user = useUserStore();
   const router = useRouter();
-  const baseURL = "/api/";
+  const baseURL = "/api";
   const api = ref(
     axios.create({
       baseURL: baseURL,

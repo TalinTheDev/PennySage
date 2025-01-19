@@ -1,0 +1,20 @@
+name: "PennySage"
+
+services:
+  api_server:
+    extends:
+      file: ./backend/compose.yaml
+      service: api_server
+    networks:
+      - pennysage_network
+  app_server:
+    extends:
+      file: ./frontend/compose.yaml
+      service: app_server
+    networks:
+      - pennysage_network
+volumes:
+  db-data:
+networks:
+  pennysage_network:
+    driver: bridge

@@ -9,6 +9,7 @@ use axum::{
   Router,
 };
 use erased_serde::Serialize as ErasedSerialize;
+use log::error;
 use serde::Serialize;
 use serde_json::json;
 
@@ -94,7 +95,7 @@ impl IntoResponse for ApiResponse {
           .unwrap()
       }
       ApiResponse::Failure { error, status } => {
-        println!("Error occurred with status code ({}): {}", status, error);
+        error!("Error occurred with status code ({}): {}", status, error);
         match error {
           ApiError::Simple(e) => res_builder
             .status(status)

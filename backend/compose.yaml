@@ -1,0 +1,21 @@
+name: "PennySage (Backend)"
+
+services:
+  server:
+    build:
+      context: .
+      target: final
+      args:
+        DATABASE_DIR: ${DATABASE_DIR}
+        DATABASE_FILE: ${DATABASE_FILE}
+        DATABASE_URL: ${DATABASE_URL}
+    image: pennysage_backend
+    ports:
+      - 3000:3000
+    volumes:
+      - db-data:/data
+    env_file:
+      - path: .env
+        required: true
+volumes:
+  db-data:

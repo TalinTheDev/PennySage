@@ -14,9 +14,10 @@ struct AppState {
 #[tokio::main]
 async fn main() {
   // Load env file
-  dotenvy::dotenv().expect("env file should be present");
+  // dotenvy::dotenv().expect("env file should be present");
   // Start DB Pool
   let db_url = env::var("DATABASE_URL").expect("Database URL should be set in env file");
+  println!("{}", db_url);
   let pool = SqlitePoolOptions::new()
     .max_connections(5)
     .acquire_timeout(Duration::from_secs(3))
@@ -26,7 +27,7 @@ async fn main() {
 
   // Start http listener & log
   let listener =
-    tokio::net::TcpListener::bind(env::var("HOST_URL").unwrap_or("127.0.0.1:3000".to_owned()))
+    tokio::net::TcpListener::bind(env::var("HOST_URL").unwrap_or("0.0.0.0:3000".to_owned()))
       .await
       .unwrap();
   print!("{esc}c", esc = 27 as char);

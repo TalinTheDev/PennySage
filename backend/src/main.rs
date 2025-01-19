@@ -1,13 +1,12 @@
 use axum::Router;
 use sqlx::{sqlite::SqlitePoolOptions, Sqlite};
 use std::{env, time::Duration};
+use log::{info};
+use env_logger::Env;
 mod db;
 mod jwt;
 mod middleware;
 mod routes;
-
-#[macro_use]
-extern crate log;
 
 #[derive(Clone)]
 struct AppState {
@@ -17,7 +16,9 @@ struct AppState {
 #[tokio::main]
 async fn main() {
   // Init logger
-  env_logger::init();
+  let env = Env::default()
+        .filter_or("API_LOG_LEVEL", "INFO");
+  env_logger::init_from_env(env);
 
   // Load env file
   dotenvy::dotenv().expect("env file should be present");
@@ -36,6 +37,7 @@ async fn main() {
     tokio::net::TcpListener::bind(env::var("HOST_URL").unwrap_or("0.0.0.0:3000".to_owned()))
       .await
       .unwrap();
+  println!("{esc}c", esc = 27 as char);
   info!("App listening on {}", listener.local_addr().unwrap());
 
   let app = Router::new()

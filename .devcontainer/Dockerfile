@@ -7,7 +7,7 @@ RUN curl -fsSL https://deb.nodesource.com/setup_21.x | bash - && \
   npm install -g pnpm
 
 # Set up development tools
-RUN cargo install sqlx-cli
+RUN cargo install sqlx-cli --no-default-features --features sqlite
 RUN rustup component add rustfmt
 
 # Set the working directory

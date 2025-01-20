@@ -13,9 +13,11 @@ services:
     ports:
       - 3000:3000
     volumes:
-      - db-data:/data
+      - db-data:/bin/pennysage/
     env_file:
       - path: ../.env
         required: true
+    environment:
+      - RUNTIME=docker
 volumes:
   db-data:

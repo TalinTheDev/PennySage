@@ -48,8 +48,8 @@ RUN --mount=type=bind,source=src,target=src \
     --mount=type=cache,target=/app/target/ \
     --mount=type=cache,target=/usr/local/cargo/git/db \
     --mount=type=cache,target=/usr/local/cargo/registry/ \
-    mkdir $DATABASE_DIR -m 777 && \
-    touch $DATABASE_FILE && \
+    mkdir ${DATABASE_DIR} && \
+    touch ${DATABASE_FILE} && \
     sqlx database create && sqlx migrate run && \
     cargo build --locked --release && \
     cp ./target/release/$APP_NAME /bin/server
@@ -81,14 +81,15 @@ RUN adduser \
     --uid "${UID}" \
     appuser
 
-
-# Copy the executable & database from the "build" stage.
-COPY --from=build /bin/server /bin/
-COPY --from=build /data/ /data/
-RUN chmod 777 -R $DATABASE_FILE
+# Copy the database & executable from the "build" stage.\
+COPY --from=build ${DATABASE_FILE} ${DATABASE_FILE}
+COPY --from=build /bin/server /bin/server
 
 # Expose the port that the application listens on.
 EXPOSE 3000
+
+# Update permissions for /data folder
+RUN chown -R appuser /data
 
 # Switch to non-privileged user
 USER appuser

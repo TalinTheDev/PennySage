@@ -33,7 +33,6 @@
 
   let pieChartOptions = ref({
     responsive: true,
-    maintainAspectRatio: false,
     plugins: {
       tooltip: {
         callbacks: {
@@ -57,7 +56,6 @@
   });
   let barChartOptions = ref({
     responsive: true,
-    maintainAspectRatio: false,
     plugins: {
       tooltip: {
         callbacks: {
@@ -294,12 +292,12 @@
 <style scoped>
   .charts {
     display: grid;
-    grid-template-columns: repeat(7, 1fr);
+    grid-template-columns: repeat(12, 1fr);
     /* grid-template-rows: repeat(3, 1fr); */
     grid-template-areas:
-      "bpctm bpctm bpctm  lmbcbs lmbcbs cmbcbs cmbcbs"
-      "asitctm asitctm cmbacttmly cmbacttmly aspmftlsm aspmftlsm aspmftlsm"
-      "cmcvdt cmcvdt cmcvdt cmcvdt cmcvdt cmcvdt cmcvdt";
+      "bpctm bpctm bpctm bpctm bpctm lmbcbs lmbcbs lmbcbs lmbcbs cmbcbs cmbcbs cmbcbs"
+      "asitctm asitctm asitctm asitctm cmbacttmly cmbacttmly cmbacttmly cmbacttmly aspmftlsm aspmftlsm aspmftlsm aspmftlsm"
+      ". . . cmcvdt cmcvdt cmcvdt cmcvdt cmcvdt cmcvdt . . .";
   }
 
   tr,

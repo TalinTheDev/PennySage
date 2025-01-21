@@ -44,10 +44,13 @@ pub async fn gen_id(
     match statement.fetch_one(connection).await {
       Ok(_) => continue,
       Err(Error::RowNotFound) => return Ok(id),
-      Err(_) => {
+      Err(e) => {
         return Err(ApiResponse::Failure {
           status: StatusCode::INTERNAL_SERVER_ERROR,
-          error: ApiError::Simple("Internal server error generating user id".to_owned()),
+          error: ApiError::Complex {
+            message: "Internal server error generating id".to_owned(),
+            error: Box::new(e.to_string()),
+          },
         })
       }
     }

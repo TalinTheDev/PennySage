@@ -7,3 +7,7 @@
 3. Open project in the dev container using the configured file
 4. Start backend server by running `cargo run` in the backend directory
 5. Start frontend server by running `pnpm dev` in the frontend directory
+
+## Notes
+
+- DO NOT RUN any git commands from within the dev container. Doing so will mess up file permissions.

@@ -105,7 +105,7 @@ async fn dashboard(State(state): State<crate::AppState>, user: AccessTokenClaims
     return_data["top_categories_for_amount_spent_for_current_month"] = json!(d);
   }
 
-  let current_month_balance_compared_to_last_year = sqlx::query_as!(LastYearBalanceComparedToThisYearBalance, "SELECT SUM(debit_amount) - SUM(credit_amount) AS balance, STRFTIME('%Y', date) AS year FROM transactions WHERE user_id = ? AND (date LIKE ? OR date LIKE ?) GROUP BY STRFTIME('%Y', date) ORDER BY STRFTIME('%Y', date);", current_year, last_year, user.id).fetch_all(&state.db_pool).await;
+  let current_month_balance_compared_to_last_year = sqlx::query_as!(LastYearBalanceComparedToThisYearBalance, "SELECT SUM(debit_amount) - SUM(credit_amount) AS balance, STRFTIME('%Y', date) AS year FROM transactions WHERE user_id = ? AND (date LIKE ? OR date LIKE ?) GROUP BY STRFTIME('%Y', date) ORDER BY STRFTIME('%Y', date);", user.id, current_year, last_year).fetch_all(&state.db_pool).await;
   if let Err(_) = current_month_balance_compared_to_last_year {
     return ApiResponse::Failure {
       status: StatusCode::INTERNAL_SERVER_ERROR,

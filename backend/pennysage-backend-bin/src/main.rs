@@ -52,12 +52,7 @@ async fn main() -> ExitCode {
       return ExitCode::FAILURE;
     }
   };
-  let pool = match SqlitePoolOptions::new()
-    .max_connections(5)
-    .acquire_timeout(Duration::from_secs(5))
-    .connect(&db_url)
-    .await
-  {
+  let pool = match pennysage_backend_lib::db::create_db_pool(&db_url).await {
     Ok(pool) => pool,
     Err(e) => {
       error!("Couldn't connect to database. Error: {}", e);
@@ -71,6 +66,7 @@ async fn main() -> ExitCode {
     error!("Error starting server listener at {}", host_url);
     return ExitCode::FAILURE;
   };
+  // Clear terminal
   println!("{esc}c", esc = 27 as char);
   info!("App listening on {}", listener.local_addr().unwrap());
 
@@ -88,8 +84,16 @@ async fn main() -> ExitCode {
     return ExitCode::FAILURE;
   };
 
-  backup_database(db_url).await;
-  ExitCode::SUCCESS
+  match pennysage_backend_lib::db::backup_database(db_url).await {
+    Ok(_) => {
+      info!("Database backup created successfully");
+      return ExitCode::SUCCESS;
+    }
+    Err(e) => {
+      error!("Error creating database backup: {}", e);
+      return ExitCode::FAILURE;
+    }
+  }
 }
 
 async fn shutdown_signal() {
@@ -124,85 +128,4 @@ fn load_local_env() -> Option<ExitCode> {
     return Some(ExitCode::FAILURE);
   }
   None
-}
-
-pub async fn backup_database(db_url: String) {
-  match fs::create_dir_all("./backups") {
-    Ok(_) => {
-      info!("Backup directory created successfully.");
-    }
-    Err(e) => {
-      error!(
-        "Error creating backup directory ({}). Could not backup database",
-        e
-      );
-      return;
-    }
-  }
-
-  delete_old_backups();
-  let connection = sqlx::SqliteConnection::connect(&db_url).await;
-
-  if let Ok(mut connection) = connection {
-    match connection
-      .execute(
-        format!(
-          "VACUUM INTO './backups/db-backup_{}.db'",
-          chrono::Local::now().to_rfc3339()
-        )
-        .as_str(),
-      )
-      .await
-    {
-      Ok(_) => {
-        info!("Database backup created successfully.");
-      }
-      Err(e) => {
-        error!("Error creating database backup ({})", e);
-      }
-    }
-  } else {
-    error!(
-      "Error connecting to database for backup ({})",
-      connection.unwrap_err()
-    );
-  }
-}
-
-fn delete_old_backups() {
-  let backup_dir = "./backups";
-  let max_backups = 5;
-
-  let entries = fs::read_dir(backup_dir);
-  if let Ok(entries) = entries {
-    let mut backups: Vec<_> = entries.filter_map(|entry| entry.ok()).collect();
-
-    // Sort the backups by modified time. Exit early if error in reading modified time to prevent backup files from being lost
-    backups.sort_by_key(|entry| {
-      match entry.metadata() {
-        Ok(metadata) => match metadata.modified() {
-          Ok(modified_time) => modified_time,
-          Err(_) => {
-            error!("Error getting modified time for backup file");
-            return;
-          }
-        },
-        Err(_) => {
-          error!("Error getting metadata for backup file");
-          return;
-        }
-      };
-    });
-
-    // Delete old backups if there are more than max_backups
-    if backups.len() > max_backups {
-      for entry in &backups[..(backups.len() - max_backups)] {
-        if let Err(e) = fs::remove_file(entry.path()) {
-          error!("Error deleting old backup file ({})", e);
-        }
-      }
-    }
-  } else {
-    error!("Error reading backup directory.");
-  }
 }

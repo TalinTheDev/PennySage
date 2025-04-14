@@ -139,6 +139,8 @@ pub async fn backup_database(db_url: String) {
       return;
     }
   }
+
+  delete_old_backups();
   let connection = sqlx::SqliteConnection::connect(&db_url).await;
 
   if let Ok(mut connection) = connection {
@@ -164,5 +166,31 @@ pub async fn backup_database(db_url: String) {
       "Error connecting to database for backup ({})",
       connection.unwrap_err()
     );
+  }
+}
+
+// !!! Written by AI !!!
+fn delete_old_backups() {
+  let backup_dir = "./backups";
+  let max_backups = 5;
+
+  // Get all files in the backup directory
+  let entries = fs::read_dir(backup_dir);
+  if let Ok(entries) = entries {
+    let mut backups: Vec<_> = entries.filter_map(|entry| entry.ok()).collect();
+
+    // Sort the backups by modified time
+    backups.sort_by_key(|entry| entry.metadata().unwrap().modified().unwrap());
+
+    // Delete old backups if there are more than max_backups
+    if backups.len() > max_backups {
+      for entry in &backups[..(backups.len() - max_backups)] {
+        if let Err(e) = fs::remove_file(entry.path()) {
+          error!("Error deleting old backup file ({})", e);
+        }
+      }
+    }
+  } else {
+    error!("Error reading backup directory.");
   }
 }

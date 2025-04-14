@@ -12,11 +12,6 @@ mod jwt;
 mod middleware;
 mod routes;
 
-#[derive(Clone)]
-struct AppState {
-  db_pool: sqlx::Pool<Sqlite>,
-}
-
 #[tokio::main]
 async fn main() -> ExitCode {
   // Init logger
@@ -74,7 +69,7 @@ async fn main() -> ExitCode {
   let app = Router::new()
     .nest("/api", routes::app())
     .layer(TimeoutLayer::new(Duration::from_secs(10)))
-    .with_state(AppState { db_pool: pool });
+    .with_state(lib::state::AppState { db_pool: pool });
 
   // Serve app
   let Ok(_) = axum::serve(listener, app)

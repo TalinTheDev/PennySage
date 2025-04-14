@@ -1,5 +1,3 @@
-use std::fmt::Display;
-
 use derive_more::From;
 
 pub type Result<T> = std::result::Result<T, Error>;

@@ -1,4 +1,4 @@
-use super::types;
+use crate::types::returns::Result;
 use chrono;
 use sqlx::sqlite::SqlitePoolOptions;
 use sqlx::Connection;
@@ -6,15 +6,19 @@ use sqlx::Executor;
 use std::fs;
 use std::time::Duration;
 
-fn read_db_url() -> types::Result<String> {
+/// Reads the database url from the env file
+/// Returns the database url as a string
+/// Errors if the env variable is not set
+fn read_db_url() -> Result<String> {
     Ok(std::env::var("DATABASE_URL")?)
 }
+
 /// Reads database url from env file and returns database url & a new database connection pool
 ///
 /// The pool is created with a maximum of 5 connections and a timeout of 5 seconds
 ///
 /// Migrations are also run on the database
-pub async fn create_db_pool() -> types::Result<(String, sqlx::SqlitePool)> {
+pub async fn create_db_pool() -> Result<(String, sqlx::SqlitePool)> {
     let db_url = read_db_url()?;
     let pool = SqlitePoolOptions::new()
         .max_connections(5)
@@ -34,7 +38,7 @@ pub async fn create_db_pool() -> types::Result<(String, sqlx::SqlitePool)> {
 /// Before creating a new backup, it deletes old backups using [`delete_old_backups()`]
 ///
 /// If any error occurs while creating the backup, it will return an error
-pub async fn backup_database(db_url: String) -> types::Result<bool> {
+pub async fn backup_database(db_url: String) -> Result<bool> {
     fs::create_dir_all("./backups")?;
     delete_old_backups();
 

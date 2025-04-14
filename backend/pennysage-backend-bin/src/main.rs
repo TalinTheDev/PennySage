@@ -38,7 +38,7 @@ async fn main() -> ExitCode {
     }
 
     // Start DB Pool
-    let (db_url, pool) = match lib::db::create_db_pool().await {
+    let (db_url, pool) = match lib::db::init::create_db_pool().await {
         Ok(info) => (info.0, info.1),
         Err(e) => {
             error!("Couldn't connect to database. Error: {}", e);
@@ -69,8 +69,7 @@ async fn main() -> ExitCode {
         error!("Error serving app.");
         return ExitCode::FAILURE;
     };
-
-    if let Err(e) = lib::db::backup_database(db_url).await {
+    if let Err(e) = lib::db::init::backup_database(db_url).await {
         error!("Error creating database backup: {}", e);
         return ExitCode::FAILURE;
     } else {

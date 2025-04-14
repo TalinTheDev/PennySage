@@ -3,11 +3,12 @@
 ## Local Development
 
 1. Clone project into WSL.
-2. Open project using VSCode
-3. Create a `.env` file in project root using `sample.env`
-4. Open project in the dev container using the configured file
-5. Start backend server by running `cargo run` in the backend directory
-6. Start frontend server by running `pnpm dev` in the frontend directory
+2. Open project using VSCode.
+3. Create a `./.env` file using `./sample.env`. This is used when running the app in a docker container.
+4. Create a `./backend/.env` file using `./backend/backend-dev.env`. This is used when running the app outside a container.
+5. Open project in the dev container using the configured file.
+6. Start backend server by running `cargo run` in the backend directory.
+7. Start frontend server by running `pnpm dev` in the frontend directory.
 
 ## Notes
 

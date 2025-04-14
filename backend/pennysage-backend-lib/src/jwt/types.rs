@@ -1,8 +1,4 @@
-use crate::types::returns::Result;
-use chrono::{Duration, Local};
-use jsonwebtoken::{decode, encode, DecodingKey, EncodingKey, Header, TokenData, Validation};
 use serde::{Deserialize, Serialize};
-use std::env;
 
 /// Type definition for JWT access token claims
 #[derive(Serialize, Deserialize)]
@@ -17,6 +13,8 @@ pub struct AccessTokenClaims {
     pub role: i64,
 }
 
+/// Type definition for JWT access token
+#[derive(Serialize, Deserialize)]
 pub struct AccessToken {
     pub token: String,
     pub claims: AccessTokenClaims,
@@ -33,4 +31,11 @@ pub struct RefreshTokenClaims {
     pub(crate) jti: String,
     /// User id
     pub user_id: String,
+}
+
+/// Type definition for JWT refresh token
+#[derive(Serialize, Deserialize)]
+pub struct RefreshToken {
+    pub token: String,
+    pub claims: RefreshTokenClaims,
 }

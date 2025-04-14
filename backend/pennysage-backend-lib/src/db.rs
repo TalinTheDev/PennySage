@@ -13,11 +13,13 @@ use std::time::Duration;
 ///
 /// Returns a `Result<>` containing the SqlitePool or an `sqlx::error`
 pub async fn create_db_pool(db_url: &str) -> Result<sqlx::SqlitePool, sqlx::Error> {
-    SqlitePoolOptions::new()
+    let pool = SqlitePoolOptions::new()
         .max_connections(5)
         .acquire_timeout(Duration::from_secs(5))
         .connect(&db_url)
-        .await
+        .await?;
+    sqlx::migrate!().run(&pool).await?;
+    return Ok(pool);
 }
 
 /// Creates a backup of the database at its current state

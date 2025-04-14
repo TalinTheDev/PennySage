@@ -1,8 +1,6 @@
 use axum::Router;
 use env_logger::Env;
 use log::{error, info};
-use sqlx::{sqlite::SqlitePoolOptions, Connection, Executor, Sqlite};
-use std::fs;
 use std::{env, process::ExitCode, time::Duration};
 use tokio::net::TcpListener;
 use tokio::signal;
@@ -40,16 +38,8 @@ async fn main() -> ExitCode {
   }
 
   // Start DB Pool
-  let db_url = match env::var("DATABASE_URL") {
-    Ok(db_url) => db_url,
-    Err(e) => {
-      error!("Couldn't read DATABASE_URL. Error: {}", e);
-      return ExitCode::FAILURE;
-    }
-  };
-
-  let pool = match lib::db::create_db_pool(&db_url).await {
-    Ok(pool) => pool,
+  let (db_url, pool) = match lib::db::create_db_pool().await {
+    Ok(info) => (info.0, info.1),
     Err(e) => {
       error!("Couldn't connect to database. Error: {}", e);
       return ExitCode::FAILURE;

@@ -5,21 +5,24 @@ use sqlx::Connection;
 use sqlx::Executor;
 use std::fs;
 use std::time::Duration;
-/// Creates and returns a new database connection pool
+
+fn read_db_url() -> types::Result<String> {
+    Ok(std::env::var("DATABASE_URL")?)
+}
+/// Reads database url from env file and returns database url & a new database connection pool
 ///
 /// The pool is created with a maximum of 5 connections and a timeout of 5 seconds
 ///
-/// Takes in a database URL as a string slice
-///
-/// Returns a [`types::Result<sqlx::SqlitePool>`]
-pub async fn create_db_pool(db_url: &str) -> types::Result<sqlx::SqlitePool> {
+/// Migrations are also run on the database
+pub async fn create_db_pool() -> types::Result<(String, sqlx::SqlitePool)> {
+    let db_url = read_db_url()?;
     let pool = SqlitePoolOptions::new()
         .max_connections(5)
         .acquire_timeout(Duration::from_secs(5))
         .connect(&db_url)
         .await?;
     sqlx::migrate!().run(&pool).await?;
-    return Ok(pool);
+    return Ok((db_url, pool));
 }
 
 /// Creates a backup of the database at its current state

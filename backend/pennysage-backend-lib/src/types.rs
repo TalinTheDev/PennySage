@@ -5,12 +5,20 @@ pub type Result<T> = std::result::Result<T, Error>;
 #[derive(Debug, From)]
 pub enum Error {
     // IO errors
+    /// IO error when interacting with the filesystem
     #[from]
     IoError(std::io::Error),
 
+    // Misc errors
+    /// Error when attempting to read a env variable
+    #[from]
+    EnvError(std::env::VarError),
+
     // SQLX errors
+    /// SQLX error when interacting with the database
     #[from]
     DatabaseError(sqlx::Error),
+    /// SQLX error when attempting to run database migrations
     #[from]
     DatabaseMigrateError(sqlx::migrate::MigrateError),
 }

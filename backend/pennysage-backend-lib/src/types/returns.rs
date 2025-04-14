@@ -22,6 +22,10 @@ pub enum Error {
     #[from]
     JWTEncodeError(jsonwebtoken::errors::Error),
 
+    /// Error when hashing passwords
+    #[from]
+    PasswordHashError(argon2::password_hash::Error),
+
     // SQLX errors
     /// SQLX error when interacting with the database
     #[from]

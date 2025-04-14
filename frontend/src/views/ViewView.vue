@@ -79,7 +79,6 @@
       message: "Do you want to delete these transactions?",
       header: "Delete Transactions",
       icon: "pi pi-info-circle",
-      rejectLabel: "Cancel",
       rejectProps: {
         label: "Cancel",
         severity: "secondary",

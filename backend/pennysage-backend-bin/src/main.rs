@@ -52,6 +52,7 @@ async fn main() -> ExitCode {
       return ExitCode::FAILURE;
     }
   };
+
   let pool = match lib::db::create_db_pool(&db_url).await {
     Ok(pool) => pool,
     Err(e) => {
@@ -84,15 +85,12 @@ async fn main() -> ExitCode {
     return ExitCode::FAILURE;
   };
 
-  match lib::db::backup_database(db_url).await {
-    Ok(_) => {
-      info!("Database backup created successfully");
-      return ExitCode::SUCCESS;
-    }
-    Err(e) => {
-      error!("Error creating database backup: {}", e);
-      return ExitCode::FAILURE;
-    }
+  if let Err(e) = lib::db::backup_database(db_url).await {
+    error!("Error creating database backup: {}", e);
+    return ExitCode::FAILURE;
+  } else {
+    info!("Database backup created successfully");
+    return ExitCode::SUCCESS;
   }
 }
 

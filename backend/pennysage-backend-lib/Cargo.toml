@@ -4,5 +4,6 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
-"sqlx" = { version = "0.7", features = ["sqlite", "macros"] }
+sqlx = { version = "0.7", features = ["sqlite", "macros"] }
 chrono = { version = "0.4.38", features = ["alloc"] }
+derive_more = { version = "2.0.1", features = ["from"] }

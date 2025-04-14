@@ -1,10 +1,10 @@
+use super::types;
 use chrono;
 use sqlx::sqlite::SqlitePoolOptions;
 use sqlx::Connection;
 use sqlx::Executor;
 use std::fs;
 use std::time::Duration;
-
 /// Creates and returns a new database connection pool
 ///
 /// The pool is created with a maximum of 5 connections and a timeout of 5 seconds
@@ -12,7 +12,7 @@ use std::time::Duration;
 /// Takes in a database URL as a string slice
 ///
 /// Returns a `Result<>` containing the SqlitePool or an `sqlx::error`
-pub async fn create_db_pool(db_url: &str) -> Result<sqlx::SqlitePool, sqlx::Error> {
+pub async fn create_db_pool(db_url: &str) -> types::Result<sqlx::SqlitePool> {
     let pool = SqlitePoolOptions::new()
         .max_connections(5)
         .acquire_timeout(Duration::from_secs(5))
@@ -31,38 +31,22 @@ pub async fn create_db_pool(db_url: &str) -> Result<sqlx::SqlitePool, sqlx::Erro
 /// Before creating a new backup, it deletes old backups using `delete_old_backups`
 ///
 /// If any error occurs while creating the backup, it will return an error
-pub async fn backup_database(db_url: String) -> Result<String, Box<dyn std::error::Error>> {
-    match fs::create_dir_all("./backups") {
-        Ok(_) => (),
-        Err(e) => {
-            return Err(Box::new(e));
-        }
-    }
-
+pub async fn backup_database(db_url: String) -> types::Result<bool> {
+    fs::create_dir_all("./backups")?;
     delete_old_backups();
-    let connection = sqlx::SqliteConnection::connect(&db_url).await;
 
-    if let Ok(mut connection) = connection {
-        match connection
-            .execute(
-                format!(
-                    "VACUUM INTO './backups/db-backup_{}.db'",
-                    chrono::Local::now().to_rfc3339()
-                )
-                .as_str(),
+    let mut connection = sqlx::SqliteConnection::connect(&db_url).await?;
+
+    connection
+        .execute(
+            format!(
+                "VACUUM INTO './backups/db-backup_{}.db'",
+                chrono::Local::now().to_rfc3339()
             )
-            .await
-        {
-            Ok(_) => {
-                return Ok("Database backup created successfully".to_string());
-            }
-            Err(e) => {
-                return Err(Box::new(e));
-            }
-        }
-    } else {
-        return Err(Box::new(connection.unwrap_err()));
-    }
+            .as_str(),
+        )
+        .await?;
+    Ok(true)
 }
 
 /// Deletes oldest database backup file if there are more than 5 old backups

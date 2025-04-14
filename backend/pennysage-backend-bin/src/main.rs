@@ -52,7 +52,7 @@ async fn main() -> ExitCode {
       return ExitCode::FAILURE;
     }
   };
-  let pool = match pennysage_backend_lib::db::create_db_pool(&db_url).await {
+  let pool = match lib::db::create_db_pool(&db_url).await {
     Ok(pool) => pool,
     Err(e) => {
       error!("Couldn't connect to database. Error: {}", e);
@@ -84,7 +84,7 @@ async fn main() -> ExitCode {
     return ExitCode::FAILURE;
   };
 
-  match pennysage_backend_lib::db::backup_database(db_url).await {
+  match lib::db::backup_database(db_url).await {
     Ok(_) => {
       info!("Database backup created successfully");
       return ExitCode::SUCCESS;

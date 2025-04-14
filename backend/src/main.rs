@@ -2,6 +2,7 @@ use axum::Router;
 use env_logger::Env;
 use log::{error, info};
 use sqlx::{sqlite::SqlitePoolOptions, Connection, Executor, Sqlite};
+use std::fs;
 use std::{env, process::ExitCode, time::Duration};
 use tokio::net::TcpListener;
 use tokio::signal;
@@ -126,6 +127,18 @@ fn load_local_env() -> Option<ExitCode> {
 }
 
 pub async fn backup_database(db_url: String) {
+  match fs::create_dir_all("./backups") {
+    Ok(_) => {
+      info!("Backup directory created successfully.");
+    }
+    Err(e) => {
+      error!(
+        "Error creating backup directory ({}). Could not backup database",
+        e
+      );
+      return;
+    }
+  }
   let connection = sqlx::SqliteConnection::connect(&db_url).await;
 
   if let Ok(mut connection) = connection {

@@ -12,103 +12,103 @@ mod routes;
 
 #[tokio::main]
 async fn main() -> ExitCode {
-  // Init logger
-  let env = Env::default().filter_or("API_LOG_LEVEL", "INFO");
-  env_logger::init_from_env(env);
+    // Init logger
+    let env = Env::default().filter_or("API_LOG_LEVEL", "INFO");
+    env_logger::init_from_env(env);
 
-  let rt = env::var("RUNTIME");
-  if let Ok(runtime) = rt {
-    if runtime == "docker" {
-      info!("Running in docker container...")
-    } else {
-      match load_local_env() {
-        Some(e) => {
-          return e;
+    let rt = env::var("RUNTIME");
+    if let Ok(runtime) = rt {
+        if runtime == "docker" {
+            info!("Running in docker container...")
+        } else {
+            match load_local_env() {
+                Some(e) => {
+                    return e;
+                }
+                None => {}
+            }
         }
-        None => {}
-      }
+    } else {
+        match load_local_env() {
+            Some(e) => {
+                return e;
+            }
+            None => {}
+        }
     }
-  } else {
-    match load_local_env() {
-      Some(e) => {
-        return e;
-      }
-      None => {}
+
+    // Start DB Pool
+    let (db_url, pool) = match lib::db::create_db_pool().await {
+        Ok(info) => (info.0, info.1),
+        Err(e) => {
+            error!("Couldn't connect to database. Error: {}", e);
+            return ExitCode::FAILURE;
+        }
+    };
+
+    // Start http listener & log
+    let host_url = env::var("HOST_URL").unwrap_or("0.0.0.0:3000".to_owned());
+    let Ok(listener) = TcpListener::bind(host_url.clone()).await else {
+        error!("Error starting server listener at {}", host_url);
+        return ExitCode::FAILURE;
+    };
+    // Clear terminal
+    println!("{esc}c", esc = 27 as char);
+    info!("App listening on {}", listener.local_addr().unwrap());
+
+    let app = Router::new()
+        .nest("/api", routes::app())
+        .layer(TimeoutLayer::new(Duration::from_secs(10)))
+        .with_state(lib::state::AppState { db_pool: pool });
+
+    // Serve app
+    let Ok(_) = axum::serve(listener, app)
+        .with_graceful_shutdown(shutdown_signal())
+        .await
+    else {
+        error!("Error serving app.");
+        return ExitCode::FAILURE;
+    };
+
+    if let Err(e) = lib::db::backup_database(db_url).await {
+        error!("Error creating database backup: {}", e);
+        return ExitCode::FAILURE;
+    } else {
+        info!("Database backup created successfully");
+        return ExitCode::SUCCESS;
     }
-  }
-
-  // Start DB Pool
-  let (db_url, pool) = match lib::db::create_db_pool().await {
-    Ok(info) => (info.0, info.1),
-    Err(e) => {
-      error!("Couldn't connect to database. Error: {}", e);
-      return ExitCode::FAILURE;
-    }
-  };
-
-  // Start http listener & log
-  let host_url = env::var("HOST_URL").unwrap_or("0.0.0.0:3000".to_owned());
-  let Ok(listener) = TcpListener::bind(host_url.clone()).await else {
-    error!("Error starting server listener at {}", host_url);
-    return ExitCode::FAILURE;
-  };
-  // Clear terminal
-  println!("{esc}c", esc = 27 as char);
-  info!("App listening on {}", listener.local_addr().unwrap());
-
-  let app = Router::new()
-    .nest("/api", routes::app())
-    .layer(TimeoutLayer::new(Duration::from_secs(10)))
-    .with_state(lib::state::AppState { db_pool: pool });
-
-  // Serve app
-  let Ok(_) = axum::serve(listener, app)
-    .with_graceful_shutdown(shutdown_signal())
-    .await
-  else {
-    error!("Error serving app.");
-    return ExitCode::FAILURE;
-  };
-
-  if let Err(e) = lib::db::backup_database(db_url).await {
-    error!("Error creating database backup: {}", e);
-    return ExitCode::FAILURE;
-  } else {
-    info!("Database backup created successfully");
-    return ExitCode::SUCCESS;
-  }
 }
 
 async fn shutdown_signal() {
-  let ctrl_c = async {
-    signal::ctrl_c()
-      .await
-      .expect("failed to install Ctrl+C handler");
-  };
+    let ctrl_c = async {
+        signal::ctrl_c()
+            .await
+            .expect("failed to install Ctrl+C handler");
+    };
 
-  #[cfg(unix)]
-  let terminate = async {
-    signal::unix::signal(signal::unix::SignalKind::terminate())
-      .expect("failed to install signal handler")
-      .recv()
-      .await;
-  };
+    #[cfg(unix)]
+    let terminate = async {
+        signal::unix::signal(signal::unix::SignalKind::terminate())
+            .expect("failed to install signal handler")
+            .recv()
+            .await;
+    };
 
-  #[cfg(not(unix))]
-  let terminate = std::future::pending::<()>();
+    #[cfg(not(unix))]
+    let terminate = std::future::pending::<()>();
 
-  tokio::select! {
-      _ = ctrl_c => {},
-      _ = terminate => {},
-  }
+    tokio::select! {
+        _ = ctrl_c => {},
+        _ = terminate => {},
+    }
 }
 
 fn load_local_env() -> Option<ExitCode> {
-  info!("Running outside of docker container...");
-  // Load env file
-  if let Err(e) = dotenvy::dotenv() {
-    error!("Error reading env variables ({})", e);
-    return Some(ExitCode::FAILURE);
-  }
-  None
+    info!("Running outside of docker container...");
+    // Load env file
+    if let Err(e) = dotenvy::dotenv() {
+        error!("Error reading env variables ({})", e);
+        return Some(ExitCode::FAILURE);
+    }
+    None
 }

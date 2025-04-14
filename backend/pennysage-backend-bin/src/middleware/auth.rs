@@ -12,22 +12,22 @@ use axum_extra::TypedHeader;
 #[async_trait]
 impl<S> FromRequestParts<S> for AccessTokenClaims
 where
-  S: Send + Sync,
+    S: Send + Sync,
 {
-  type Rejection = ApiResponse;
+    type Rejection = ApiResponse;
 
-  async fn from_request_parts(parts: &mut Parts, _state: &S) -> Result<Self, Self::Rejection> {
-    // Extract the token from the authorization header
-    let TypedHeader(Authorization(bearer)) = parts
-      .extract::<TypedHeader<Authorization<Bearer>>>()
-      .await
-      .map_err(|_| ApiResponse::Failure {
-        status: StatusCode::UNAUTHORIZED,
-        error: ApiError::Simple("Access token not found".to_owned()),
-      })?;
-    // Decode the user data
-    let token_data = verify_access_token(bearer.token().to_string())?;
+    async fn from_request_parts(parts: &mut Parts, _state: &S) -> Result<Self, Self::Rejection> {
+        // Extract the token from the authorization header
+        let TypedHeader(Authorization(bearer)) = parts
+            .extract::<TypedHeader<Authorization<Bearer>>>()
+            .await
+            .map_err(|_| ApiResponse::Failure {
+                status: StatusCode::UNAUTHORIZED,
+                error: ApiError::Simple("Access token not found".to_owned()),
+            })?;
+        // Decode the user data
+        let token_data = verify_access_token(bearer.token().to_string())?;
 
-    Ok(token_data)
-  }
+        Ok(token_data)
+    }
 }

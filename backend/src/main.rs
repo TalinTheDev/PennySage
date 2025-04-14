@@ -1,7 +1,7 @@
 use axum::Router;
 use env_logger::Env;
 use log::{error, info};
-use sqlx::{sqlite::SqlitePoolOptions, Sqlite};
+use sqlx::{sqlite::SqlitePoolOptions, Connection, Executor, Sqlite};
 use std::{env, process::ExitCode, time::Duration};
 use tokio::net::TcpListener;
 use tokio::signal;
@@ -87,6 +87,7 @@ async fn main() -> ExitCode {
     return ExitCode::FAILURE;
   };
 
+  backup_database(db_url).await;
   ExitCode::SUCCESS
 }
 
@@ -122,4 +123,33 @@ fn load_local_env() -> Option<ExitCode> {
     return Some(ExitCode::FAILURE);
   }
   None
+}
+
+pub async fn backup_database(db_url: String) {
+  let connection = sqlx::SqliteConnection::connect(&db_url).await;
+
+  if let Ok(mut connection) = connection {
+    match connection
+      .execute(
+        format!(
+          "VACUUM INTO './backups/db-backup_{}.db'",
+          chrono::Local::now().to_rfc3339()
+        )
+        .as_str(),
+      )
+      .await
+    {
+      Ok(_) => {
+        info!("Database backup created successfully.");
+      }
+      Err(e) => {
+        error!("Error creating database backup ({})", e);
+      }
+    }
+  } else {
+    error!(
+      "Error connecting to database for backup ({})",
+      connection.unwrap_err()
+    );
+  }
 }

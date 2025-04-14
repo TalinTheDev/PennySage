@@ -11,7 +11,7 @@ use std::time::Duration;
 ///
 /// Takes in a database URL as a string slice
 ///
-/// Returns a `Result<>` containing the SqlitePool or an `sqlx::error`
+/// Returns a [`types::Result<sqlx::SqlitePool>`]
 pub async fn create_db_pool(db_url: &str) -> types::Result<sqlx::SqlitePool> {
     let pool = SqlitePoolOptions::new()
         .max_connections(5)
@@ -28,7 +28,7 @@ pub async fn create_db_pool(db_url: &str) -> types::Result<sqlx::SqlitePool> {
 ///
 /// Backup file is named `db-backup_<timestamp>.db`
 ///
-/// Before creating a new backup, it deletes old backups using `delete_old_backups`
+/// Before creating a new backup, it deletes old backups using [`delete_old_backups()`]
 ///
 /// If any error occurs while creating the backup, it will return an error
 pub async fn backup_database(db_url: String) -> types::Result<bool> {

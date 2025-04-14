@@ -11,8 +11,11 @@
   import { useApiStore } from "@/stores/useApiStore.js";
   import { useUserStore } from "@/stores/useUserStore";
   import { useToast } from "primevue/usetoast";
+  import { useConfirm } from "primevue/useconfirm";
+  import router from "@/router";
 
   const toast = useToast();
+  const confirm = useConfirm();
   const api = useApiStore().api;
   const userStore = useUserStore();
   const errors = ref(new Map());
@@ -145,6 +148,47 @@
         newDetails.value = oldDetails.value;
       });
   };
+
+  const deleteAccount = () => {
+    confirm.require({
+      message: "Are you sure you want to delete your account?",
+      header: "Delete Account",
+      icon: "pi pi-exclamation-triangle",
+      rejectProps: {
+        label: "No",
+        severity: "secondary",
+        outlined: true
+      },
+      acceptProps: {
+        label: "Delete",
+        severity: "danger"
+      },
+      accept: () => {
+        api
+          .delete("/auth/user")
+          .then(() => {
+            router.push("/");
+            userStore.logout();
+            toast.add({
+              severity: "info",
+              summary: "Account Deleted",
+              detail: "Account successfully deleted",
+              life: 3000
+            });
+          })
+          .catch((error) => {
+            toast.add({
+              severity: "error",
+              summary: "Transactions Delete Failed",
+              detail: error.message,
+              life: 3000
+            });
+            loading.value = false;
+          });
+      },
+      reject: () => {}
+    });
+  };
 </script>
 <template>
   <AppLayout>
@@ -251,6 +295,14 @@
             " />
         </InputBox>
         <Button @click="updatePassword">Update Password</Button>
+      </template>
+    </Card>
+    <Card>
+      <template #header>
+        <span class="formHeader">Account Actions</span>
+      </template>
+      <template #content>
+        <Button @click="deleteAccount">Delete Account</Button>
       </template>
     </Card>
   </AppLayout>

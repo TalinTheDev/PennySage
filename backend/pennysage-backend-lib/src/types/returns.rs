@@ -14,6 +14,14 @@ pub enum Error {
     #[from]
     EnvError(std::env::VarError),
 
+    /// Error when parsing integer from string
+    #[from]
+    IntParseError(std::num::ParseIntError),
+
+    /// Error when encoding JWT tokens
+    #[from]
+    JWTEncodeError(jsonwebtoken::errors::Error),
+
     // SQLX errors
     /// SQLX error when interacting with the database
     #[from]

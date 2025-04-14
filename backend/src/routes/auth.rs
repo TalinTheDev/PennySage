@@ -1,10 +1,10 @@
 use crate::{
   db::{gen_id, hash_password, verify_password},
-  jwt::{gen_access_token, gen_refresh_token, verify_refresh_token},
+  jwt::{gen_access_token, gen_refresh_token, verify_refresh_token, AccessTokenClaims},
   routes::{ApiError, ApiResponse},
   AppState,
 };
-use axum::{extract::State, http::StatusCode, routing::post, Json, Router};
+use axum::{extract::State, http::StatusCode, routing::delete, routing::post, Json, Router};
 use axum_extra::extract::{
   cookie::{self, SameSite},
   CookieJar,
@@ -20,6 +20,7 @@ pub fn routes() -> Router<AppState> {
     .route("/logout", post(logout))
     .route("/register", post(register))
     .route("/refresh_tokens", post(refresh_tokens))
+    .route("/user", delete(delete_user))
 }
 
 #[derive(Deserialize, Validate)]
@@ -274,5 +275,34 @@ pub async fn set_tokens(user_data: UserRow, db: sqlx::Pool<sqlx::Sqlite>) -> Api
         "role": user_data.role}
     })),
     cookies: vec![refresh_cookie],
+  }
+}
+
+pub async fn delete_user(
+  State(state): State<crate::AppState>,
+  user: AccessTokenClaims,
+  jar: CookieJar,
+) -> ApiResponse {
+  match sqlx::query!("DELETE FROM users WHERE id = ?;", user.id)
+    .execute(&state.db_pool)
+    .await
+  {
+    Ok(_) => {
+      logout(jar).await;
+      ApiResponse::SuccessWithCookies {
+        status: StatusCode::OK,
+        data: Box::new(json!({
+          "message": "User deleted successfully"
+        })),
+        cookies: vec![],
+      }
+    }
+    Err(e) => ApiResponse::Failure {
+      status: StatusCode::INTERNAL_SERVER_ERROR,
+      error: ApiError::Complex {
+        message: "Internal server error while deleting user".to_owned(),
+        error: Box::new(e.to_string()),
+      },
+    },
   }
 }

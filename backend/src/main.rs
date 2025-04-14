@@ -169,18 +169,30 @@ pub async fn backup_database(db_url: String) {
   }
 }
 
-// !!! Written by AI !!!
 fn delete_old_backups() {
   let backup_dir = "./backups";
   let max_backups = 5;
 
-  // Get all files in the backup directory
   let entries = fs::read_dir(backup_dir);
   if let Ok(entries) = entries {
     let mut backups: Vec<_> = entries.filter_map(|entry| entry.ok()).collect();
 
-    // Sort the backups by modified time
-    backups.sort_by_key(|entry| entry.metadata().unwrap().modified().unwrap());
+    // Sort the backups by modified time. Exit early if error in reading modified time to prevent backup files from being lost
+    backups.sort_by_key(|entry| {
+      match entry.metadata() {
+        Ok(metadata) => match metadata.modified() {
+          Ok(modified_time) => modified_time,
+          Err(_) => {
+            error!("Error getting modified time for backup file");
+            return;
+          }
+        },
+        Err(_) => {
+          error!("Error getting metadata for backup file");
+          return;
+        }
+      };
+    });
 
     // Delete old backups if there are more than max_backups
     if backups.len() > max_backups {

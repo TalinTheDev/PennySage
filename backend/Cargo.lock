@@ -1549,6 +1549,7 @@ dependencies = [
  "chrono",
  "derive_more",
  "jsonwebtoken",
+ "nanoid",
  "serde",
  "sqlx",
 ]

@@ -1,4 +1,4 @@
-use crate::types::returns::Result;
+use crate::types::lib_return::Result;
 use chrono;
 use sqlx::sqlite::SqlitePoolOptions;
 use sqlx::Connection;

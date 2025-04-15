@@ -1,5 +1,5 @@
 use crate::db::tables::Tables;
-use crate::types::returns::{Error, Result};
+use crate::types::lib_return::{Error, Result};
 use nanoid::nanoid;
 use sqlx::{Pool, Sqlite};
 

@@ -1,4 +1,4 @@
-use crate::types::returns::Result;
+use crate::types::lib_return::Result;
 use argon2::{
     password_hash::{rand_core::OsRng, PasswordHash, PasswordHasher, PasswordVerifier, SaltString},
     Argon2,

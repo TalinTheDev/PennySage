@@ -59,7 +59,7 @@ async fn main() -> ExitCode {
     let app = Router::new()
         .nest("/api", routes::app())
         .layer(TimeoutLayer::new(Duration::from_secs(10)))
-        .with_state(lib::state::AppState { db_pool: pool });
+        .with_state(lib::types::state::AppState { db_pool: pool });
 
     // Serve app
     let Ok(_) = axum::serve(listener, app)

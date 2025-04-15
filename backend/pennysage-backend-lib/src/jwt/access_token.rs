@@ -1,5 +1,5 @@
-use super::types::{AccessToken, AccessTokenClaims};
-use crate::types::returns::Result;
+use crate::types::jwt::{AccessToken, AccessTokenClaims};
+use crate::types::lib_return::Result;
 use chrono::{Duration, Local};
 use jsonwebtoken::{decode, encode, DecodingKey, EncodingKey, Header, Validation};
 use std::env;

@@ -7,7 +7,6 @@ use tokio::signal;
 use tower_http::timeout::TimeoutLayer;
 mod db;
 mod jwt;
-mod middleware;
 mod routes;
 
 #[tokio::main]

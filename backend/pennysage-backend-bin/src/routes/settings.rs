@@ -1,20 +1,12 @@
-use std::any::Any;
-
-use crate::{
-    db::{hash_password, verify_password},
-    jwt::AccessTokenClaims,
-};
 use axum::{extract::State, routing::patch, Json, Router};
 use http::StatusCode;
+use lib::types::jwt::AccessToken;
 use lib::types::state::AppState;
 use serde::Deserialize;
 use sqlx::Row;
 use validator::Validate;
 
-use super::{
-    auth::{set_tokens, UserRow},
-    //    ApiError, ApiResponse,
-};
+use super::auth::{set_tokens, UserRow};
 use lib::types::api_return::{ApiError, ApiResponse};
 
 pub fn routes() -> Router<AppState> {
@@ -37,7 +29,7 @@ pub struct EditReq {
 
 pub async fn edit_user(
     State(state): State<AppState>,
-    user: AccessTokenClaims,
+    user: AccessToken,
     Json(data): Json<EditReq>,
 ) -> ApiResponse {
     if data.edits.len() == 0 {
@@ -62,7 +54,7 @@ pub async fn edit_user(
             query.push_bind(edit.value.clone());
         }
         query.push(" WHERE id = ");
-        query.push_bind(user.id);
+        query.push_bind(user.claims.user_id);
         query.push(" RETURNING id, username, email, password, first_name, last_name, role");
         let result = query.build().fetch_one(&state.db_pool).await;
         if let Err(e) = result {
@@ -98,12 +90,15 @@ pub struct PasswordChange {
 
 pub async fn change_password(
     State(state): State<AppState>,
-    user: AccessTokenClaims,
+    user: AccessToken,
     Json(data): Json<PasswordChange>,
 ) -> ApiResponse {
-    match sqlx::query!("SELECT password FROM users WHERE id = ?", user.id)
-        .fetch_one(&state.db_pool)
-        .await
+    match sqlx::query!(
+        "SELECT password FROM users WHERE id = ?",
+        user.claims.user_id
+    )
+    .fetch_one(&state.db_pool)
+    .await
     {
         // Old password fetched successfully from database in `old.password`
         Ok(old) => {
@@ -136,7 +131,7 @@ pub async fn change_password(
                 match sqlx::query!(
                     "UPDATE users SET password = ? WHERE id = ?",
                     new_hash,
-                    user.id
+                    user.claims.user_id
                 )
                 .execute(&state.db_pool)
                 .await

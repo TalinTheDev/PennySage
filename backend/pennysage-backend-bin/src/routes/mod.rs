@@ -1,6 +1,5 @@
 use std::fmt::{self, Display};
 
-use crate::AppState;
 use axum::{
     body::Body,
     http::{header::SET_COOKIE, StatusCode},
@@ -9,6 +8,7 @@ use axum::{
     Router,
 };
 use erased_serde::Serialize as ErasedSerialize;
+use lib::types::state::AppState;
 use log::error;
 use serde::Serialize;
 use serde_json::json;

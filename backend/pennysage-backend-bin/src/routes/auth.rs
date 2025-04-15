@@ -4,15 +4,15 @@ use axum_extra::extract::{
     CookieJar,
 };
 use cookie::Cookie;
+use lib::auth::password::{hash_password, verify_password};
+use lib::db::tables::Tables;
 use lib::types::api_return::{ApiError, ApiResponse};
+use lib::types::db::UserRow;
 use lib::types::{jwt::AccessToken, jwt::RefreshToken, state::AppState};
 use serde::Deserialize;
 use serde_json::json;
 use sqlx::{Pool, Sqlite};
 use validator::Validate;
-use lib::auth::password::{hash_password, verify_password};
-use lib::db::tables::Tables;
-use lib::types::db::UserRow;
 
 pub fn routes() -> Router<AppState> {
     Router::new()
@@ -60,7 +60,6 @@ pub async fn login(
           return ApiResponse::new(StatusCode::UNAUTHORIZED)
             .message("Invalid username/password combo".to_string())
             .error(ApiError::new("Invalid username/password combo".to_string()));
-          
         }
       }
       Err(e) => return ApiResponse::new(StatusCode::INTERNAL_SERVER_ERROR).message("Internal server authenticating user".to_string()).error(ApiError::new(format!("Internal server error authenticating user: {}", e.to_string())))
@@ -72,8 +71,7 @@ pub async fn login(
             .message("Internal server error while looking up user".to_string())
             .error(ApiError::new("Internal server error while looking up user".to_string()))
     };
-  }
-
+}
 
 #[derive(Deserialize, Validate)]
 pub struct RegisterReq {
@@ -114,17 +112,30 @@ pub async fn register(
             if rows.is_empty() {
                 let user_id = match Tables::Users.gen_id(&state.db_pool).await {
                     Ok(id) => id,
-                    Err(e) => return ApiResponse::new(StatusCode::INTERNAL_SERVER_ERROR).message("Internal server error while registering user".to_string()).error(ApiError::new(format!("Internal server error while generating user id: {}", e.to_string())))
+                    Err(e) => {
+                        return ApiResponse::new(StatusCode::INTERNAL_SERVER_ERROR)
+                            .message("Internal server error while registering user".to_string())
+                            .error(ApiError::new(format!(
+                                "Internal server error while generating user id: {}",
+                                e.to_string()
+                            )))
+                    }
                 };
                 let hashed_password = match hash_password(user_details.password) {
                     Ok(p) => p,
-                    Err(e) => return ApiResponse::new(StatusCode::INTERNAL_SERVER_ERROR).message("Internal server error while registering user".to_string()).error(ApiError::new(format!("Internal server error while hashing password: {}", e.to_string()))),
+                    Err(e) => {
+                        return ApiResponse::new(StatusCode::INTERNAL_SERVER_ERROR)
+                            .message("Internal server error while registering user".to_string())
+                            .error(ApiError::new(format!(
+                                "Internal server error while hashing password: {}",
+                                e.to_string()
+                            )))
+                    }
                 };
                 let role = 0;
                 let mut transaction = match state.db_pool.begin().await {
                     Ok(tx) => tx,
                     Err(e) => return ApiResponse::new(StatusCode::INTERNAL_SERVER_ERROR).message("Internal server error while registering user".to_string()).error(ApiError::new(format!("Internal server error while preparing transaction to register user: {}", e.to_string())))
-                    
                 };
                 match sqlx::query!("INSERT INTO users (id, username, first_name, last_name, email, password, role) VALUES (?, ?, ?, ?, ?, ?, ?);", user_id, user_details.username, user_details.first_name, user_details.last_name, user_details.email, hashed_password, role).execute(&mut *transaction).await{
           Ok(_) => {
@@ -149,8 +160,7 @@ pub async fn register(
                   Ok(_) => {
                     return set_tokens(user_row, state.db_pool).await
                   },
-                  Err(e) => 
-                  return ApiResponse::new(StatusCode::INTERNAL_SERVER_ERROR).message("Internal server error while registering user".to_string()).error(ApiError::new(format!("Internal server error while inserting family details into database: {}", e.to_string())))
+                  Err(e) => return ApiResponse::new(StatusCode::INTERNAL_SERVER_ERROR).message("Internal server error while registering user".to_string()).error(ApiError::new(format!("Internal server error while inserting family details into database: {}", e.to_string())))
                 }
               },
               Err(_) => {
@@ -170,11 +180,20 @@ pub async fn register(
           Err(e) => return ApiResponse::new(StatusCode::INTERNAL_SERVER_ERROR).message("Internal server error while registering user".to_string()).error(ApiError::new(format!("Internal server error while inserting user details into database: {}", e.to_string()))),
         }
             } else {
-              return ApiResponse::new(StatusCode::CONFLICT).message("Username/email already exists".to_string()).error(ApiError::new(format!("Username/email already exists")));
+                return ApiResponse::new(StatusCode::CONFLICT)
+                    .message("Username/email already exists".to_string())
+                    .error(ApiError::new(format!("Username/email already exists")));
             }
         }
-        Err(e) => return ApiResponse::new(StatusCode::INTERNAL_SERVER_ERROR).message("Internal server error while registering user".to_string()).error(ApiError::new(format!("Internal server error while  looking up username/email in database: {}", e.to_string())))
-        };    
+        Err(e) => {
+            return ApiResponse::new(StatusCode::INTERNAL_SERVER_ERROR)
+                .message("Internal server error while registering user".to_string())
+                .error(ApiError::new(format!(
+                    "Internal server error while  looking up username/email in database: {}",
+                    e.to_string()
+                )))
+        }
+    };
 }
 
 #[axum::debug_handler]
@@ -182,30 +201,38 @@ pub async fn refresh_tokens(State(state): State<AppState>, jar: CookieJar) -> Ap
     let refresh_token = match jar.get("refresh_token") {
         Some(token) => token.value().to_owned(),
         None => {
-          return ApiResponse::new(StatusCode::UNAUTHORIZED).message("Unauthorized".to_string())
-            .error(ApiError::new("Refresh token not found".to_string()));
+            return ApiResponse::new(StatusCode::UNAUTHORIZED)
+                .message("Unauthorized".to_string())
+                .error(ApiError::new("Refresh token not found".to_string()));
         }
     };
     let refresh_token = match RefreshToken::from_token(refresh_token) {
-      Ok(token) => token,
-      Err(e) => {
-        return ApiResponse::new(StatusCode::UNAUTHORIZED).message("Unauthorized".to_string())
-          .error(ApiError::new(format!("Error parsing refresh token: {}", e.to_string())));
-      }
-    };
-    match refresh_token.verify(&state.db_pool).await {
-        Ok(data) => {
-          if let Ok(user_details) = Tables::Users.get_user_details(refresh_token.claims.user_id, &state.db_pool).await {
-            return set_tokens(user_details, state.db_pool).await;
-          } else {
+        Ok(token) => token,
+        Err(e) => {
             return ApiResponse::new(StatusCode::UNAUTHORIZED)
                 .message("Unauthorized".to_string())
                 .error(ApiError::new(format!(
-                    "Error looking up user details: {}",
-                    data.to_string()
+                    "Error parsing refresh token: {}",
+                    e.to_string()
                 )));
-          }
-        },
+        }
+    };
+    match refresh_token.verify(&state.db_pool).await {
+        Ok(data) => {
+            if let Ok(user_details) = Tables::Users
+                .get_user_details(refresh_token.claims.user_id, &state.db_pool)
+                .await
+            {
+                return set_tokens(user_details, state.db_pool).await;
+            } else {
+                return ApiResponse::new(StatusCode::UNAUTHORIZED)
+                    .message("Unauthorized".to_string())
+                    .error(ApiError::new(format!(
+                        "Error looking up user details: {}",
+                        data.to_string()
+                    )));
+            }
+        }
         Err(e) => {
             return ApiResponse::new(StatusCode::UNAUTHORIZED)
                 .message("Unauthorized".to_string())
@@ -213,7 +240,7 @@ pub async fn refresh_tokens(State(state): State<AppState>, jar: CookieJar) -> Ap
                     "Error verifying refresh token: {}",
                     e.to_string()
                 )));
-        },
+        }
     }
 }
 
@@ -288,13 +315,16 @@ pub async fn delete_user(
         Ok(_) => {
             logout(jar).await;
             return ApiResponse::new(StatusCode::OK)
-                .message("User deleted successfully".to_string()).cookies(vec![]);
-            
+                .message("User deleted successfully".to_string())
+                .cookies(vec![]);
         }
-        Err(e) => return ApiResponse::new(StatusCode::INTERNAL_SERVER_ERROR).message("Internal server error while deleting user".to_string())
-            .error(ApiError::new(format!(
-                "Internal server error while deleting user: {}",
-                e.to_string()
-            ))),
+        Err(e) => {
+            return ApiResponse::new(StatusCode::INTERNAL_SERVER_ERROR)
+                .message("Internal server error while deleting user".to_string())
+                .error(ApiError::new(format!(
+                    "Internal server error while deleting user: {}",
+                    e.to_string()
+                )))
+        }
     }
 }

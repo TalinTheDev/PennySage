@@ -6,8 +6,9 @@ use serde::Deserialize;
 use sqlx::Row;
 use validator::Validate;
 
-use super::auth::{set_tokens, UserRow};
+use super::auth::set_tokens;
 use lib::types::api_return::{ApiError, ApiResponse};
+use lib::types::db::UserRow;
 
 pub fn routes() -> Router<AppState> {
     Router::new()

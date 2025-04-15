@@ -38,7 +38,7 @@ impl RefreshToken {
     }
 
     /// Returns a new `RefreshToken` instance from the given token string
-    pub fn from_token(&self, token: String) -> Result<Self> {
+    pub fn from_token(token: String) -> Result<Self> {
         let token = RefreshToken {
             claims: RefreshToken::extract_claims(token.as_str())?,
             token,

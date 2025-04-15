@@ -1,7 +1,3 @@
-use crate::{
-    db::{gen_id, hash_password, verify_password},
-    jwt::{gen_access_token, gen_refresh_token, verify_refresh_token, AccessTokenClaims},
-};
 use axum::{extract::State, http::StatusCode, routing::delete, routing::post, Json, Router};
 use axum_extra::extract::{
     cookie::{self, SameSite},
@@ -14,6 +10,9 @@ use serde::Deserialize;
 use serde_json::json;
 use sqlx::{Pool, Sqlite};
 use validator::Validate;
+use lib::auth::password::{hash_password, verify_password};
+use lib::db::tables::Tables;
+use lib::types::db::UserRow;
 
 pub fn routes() -> Router<AppState> {
     Router::new()
@@ -32,16 +31,6 @@ pub struct LoginReq {
     password: String,
 }
 
-pub struct UserRow {
-    pub id: String,
-    pub username: String,
-    pub email: String,
-    pub password: String,
-    pub first_name: String,
-    pub last_name: String,
-    pub role: i64,
-}
-
 #[axum::debug_handler]
 pub async fn login(
     State(state): State<AppState>,
@@ -49,10 +38,11 @@ pub async fn login(
 ) -> ApiResponse {
     if user_details.validate().err().is_some() {
         // TODO: Tell which fields are invalid
-        return ApiResponse::Failure {
-            status: StatusCode::BAD_REQUEST,
-            error: ApiError::Simple("User details provided have an invalid format".to_owned()),
-        };
+        return ApiResponse::new(StatusCode::BAD_REQUEST)
+            .message("User details provided have an invalid format".to_string())
+            .error(ApiError::new(
+                "User details provided have an invalid format".to_string(),
+            ));
     }
     match sqlx::query_as!(
     UserRow,
@@ -65,26 +55,25 @@ pub async fn login(
     Ok(user) => match verify_password(user_details.password, user.password.as_str().to_owned()) {
       Ok(valid) => {
         if valid {
-          set_tokens(user, state.db_pool).await
+          return set_tokens(user, state.db_pool).await;
         } else {
-          return ApiResponse::Failure {
-            status: StatusCode::UNAUTHORIZED,
-            error: ApiError::Simple("Invalid username/password combo".to_owned()),
-          };
+          return ApiResponse::new(StatusCode::UNAUTHORIZED)
+            .message("Invalid username/password combo".to_string())
+            .error(ApiError::new("Invalid username/password combo".to_string()));
+          
         }
       }
-      Err(e) => e,
+      Err(e) => return ApiResponse::new(StatusCode::INTERNAL_SERVER_ERROR).message("Internal server authenticating user".to_string()).error(ApiError::new(format!("Internal server error authenticating user: {}", e.to_string())))
     },
-    Err(sqlx::Error::RowNotFound) => ApiResponse::Failure {
-      status: StatusCode::UNAUTHORIZED,
-      error: ApiError::Simple("Invalid username/password combo".to_owned()),
-    },
-    Err(_) => ApiResponse::Failure {
-      status: StatusCode::UNAUTHORIZED,
-      error: ApiError::Simple("Internal server error while looking up user".to_owned()),
-    },
+    Err(sqlx::Error::RowNotFound) => return ApiResponse::new(StatusCode::UNAUTHORIZED)
+            .message("Invalid username/password combo".to_string())
+            .error(ApiError::new("Invalid username/password combo".to_string())),
+    Err(_) => return ApiResponse::new(StatusCode::INTERNAL_SERVER_ERROR)
+            .message("Internal server error while looking up user".to_string())
+            .error(ApiError::new("Internal server error while looking up user".to_string()))
+    };
   }
-}
+
 
 #[derive(Deserialize, Validate)]
 pub struct RegisterReq {
@@ -103,14 +92,15 @@ pub struct RegisterReq {
 }
 
 pub async fn register(
-    State(state): State<crate::AppState>,
+    State(state): State<AppState>,
     Json(user_details): Json<RegisterReq>,
 ) -> ApiResponse {
     if user_details.validate().err().is_some() {
-        return ApiResponse::Failure {
-            status: StatusCode::BAD_REQUEST,
-            error: ApiError::Simple("User details provided have an invalid format".to_owned()),
-        };
+        return ApiResponse::new(StatusCode::BAD_REQUEST)
+            .message("User details provided have an invalid format".to_string())
+            .error(ApiError::new(
+                "User details provided have an invalid format".to_string(),
+            ));
     }
     match sqlx::query!(
         "SELECT * FROM users WHERE username = ? OR email = ?;",
@@ -122,24 +112,19 @@ pub async fn register(
     {
         Ok(rows) => {
             if rows.is_empty() {
-                let user_id = match gen_id(crate::db::Tables::Users, &state.db_pool).await {
+                let user_id = match Tables::Users.gen_id(&state.db_pool).await {
                     Ok(id) => id,
-                    Err(e) => return e,
+                    Err(e) => return ApiResponse::new(StatusCode::INTERNAL_SERVER_ERROR).message("Internal server error while registering user".to_string()).error(ApiError::new(format!("Internal server error while generating user id: {}", e.to_string())))
                 };
                 let hashed_password = match hash_password(user_details.password) {
                     Ok(p) => p,
-                    Err(e) => return e,
+                    Err(e) => return ApiResponse::new(StatusCode::INTERNAL_SERVER_ERROR).message("Internal server error while registering user".to_string()).error(ApiError::new(format!("Internal server error while hashing password: {}", e.to_string()))),
                 };
                 let role = 0;
                 let mut transaction = match state.db_pool.begin().await {
                     Ok(tx) => tx,
-                    Err(_) => return ApiResponse::Failure {
-                        status: StatusCode::INTERNAL_SERVER_ERROR,
-                        error: ApiError::Simple(
-                            "Internal server error while preparing transaction to register user"
-                                .to_owned(),
-                        ),
-                    },
+                    Err(e) => return ApiResponse::new(StatusCode::INTERNAL_SERVER_ERROR).message("Internal server error while registering user".to_string()).error(ApiError::new(format!("Internal server error while preparing transaction to register user: {}", e.to_string())))
+                    
                 };
                 match sqlx::query!("INSERT INTO users (id, username, first_name, last_name, email, password, role) VALUES (?, ?, ?, ?, ?, ?, ?);", user_id, user_details.username, user_details.first_name, user_details.last_name, user_details.email, hashed_password, role).execute(&mut *transaction).await{
           Ok(_) => {
@@ -154,9 +139,9 @@ pub async fn register(
             };
 
             if let Some(name) = user_details.family_name {
-              let family_id = match gen_id(crate::db::Tables::Users, &state.db_pool).await {
+              let family_id = match Tables::Users.gen_id(&state.db_pool).await {
                 Ok(id) => id,
-                Err(e) => return e,
+                Err(e) => return ApiResponse::new(StatusCode::INTERNAL_SERVER_ERROR).message("Internal server error while registering user".to_string()).error(ApiError::new(format!("Internal server error while generating family id: {}", e.to_string()))),
               };
             match sqlx::query!("INSERT INTO families (id, admin_id, name) VALUES (?, ?, ?);", family_id, user_id, name).execute(&mut *transaction).await {
               Ok(_) => {
@@ -164,71 +149,71 @@ pub async fn register(
                   Ok(_) => {
                     return set_tokens(user_row, state.db_pool).await
                   },
-                  Err(e) => return ApiResponse::Failure {
-                    status: StatusCode::INTERNAL_SERVER_ERROR,
-                    error: ApiError::Complex{message: "Internal server error while registering user".to_owned(), error: Box::new(e.to_string())},
-                  }
+                  Err(e) => 
+                  return ApiResponse::new(StatusCode::INTERNAL_SERVER_ERROR).message("Internal server error while registering user".to_string()).error(ApiError::new(format!("Internal server error while inserting family details into database: {}", e.to_string())))
                 }
               },
               Err(_) => {
                 match transaction.rollback().await {
-                  Ok(_) => return ApiResponse::Failure {
-                    status: StatusCode::INTERNAL_SERVER_ERROR,
-                    error: ApiError::Simple("Internal server error while registering user".to_owned()),
-                  },
-                  Err(e) => return ApiResponse::Failure {
-                    status: StatusCode::INTERNAL_SERVER_ERROR,
-                    error: ApiError::Complex{message: "Internal server error while registering user".to_owned(), error: Box::new(e.to_string())},
-                  }
+                  Ok(_) => return ApiResponse::new(StatusCode::INTERNAL_SERVER_ERROR).message("Internal server error while registering user".to_string()).error(ApiError::new(format!("Internal server error while inserting user details into database. Transaction rolled back."))),
+                  Err(e) => return ApiResponse::new(StatusCode::INTERNAL_SERVER_ERROR).message("Internal server error while registering user".to_string()).error(ApiError::new(format!("Internal server error while inserting user details into database. Transaction roll back failed: {}", e.to_string()))),
                 }
               }
             }
           } else {
             match transaction.commit().await {
               Ok(_) => return set_tokens(user_row, state.db_pool).await,
-              Err(e) => return ApiResponse::Failure {
-                status: StatusCode::INTERNAL_SERVER_ERROR,
-                error: ApiError::Complex{message: "Internal server error while registering user".to_owned(), error: Box::new(e.to_string())},
-              }
+              Err(e) => return ApiResponse::new(StatusCode::INTERNAL_SERVER_ERROR).message("Internal server error while registering user".to_string()).error(ApiError::new(format!("Internal server error while committing user details into database: {}", e.to_string()))),
             }
           }
           },
-          Err(e) => ApiResponse::Failure {
-            status: StatusCode::INTERNAL_SERVER_ERROR,
-            error: ApiError::Complex{message: "Internal server error while registering user".to_owned(), error: Box::new(e.to_string())},
-          }
+          Err(e) => return ApiResponse::new(StatusCode::INTERNAL_SERVER_ERROR).message("Internal server error while registering user".to_string()).error(ApiError::new(format!("Internal server error while inserting user details into database: {}", e.to_string()))),
         }
             } else {
-                ApiResponse::Failure {
-                    status: StatusCode::CONFLICT,
-                    error: ApiError::Simple("Username/email already exists".to_owned()),
-                }
+              return ApiResponse::new(StatusCode::CONFLICT).message("Username/email already exists".to_string()).error(ApiError::new(format!("Username/email already exists")));
             }
         }
-        Err(e) => ApiResponse::Failure {
-            status: StatusCode::UNAUTHORIZED,
-            error: ApiError::Complex {
-                message: "Internal server error while registering user".to_owned(),
-                error: Box::new(e.to_string()),
-            },
-        },
-    }
+        Err(e) => return ApiResponse::new(StatusCode::INTERNAL_SERVER_ERROR).message("Internal server error while registering user".to_string()).error(ApiError::new(format!("Internal server error while  looking up username/email in database: {}", e.to_string())))
+        };    
 }
 
 #[axum::debug_handler]
-pub async fn refresh_tokens(State(state): State<crate::AppState>, jar: CookieJar) -> ApiResponse {
+pub async fn refresh_tokens(State(state): State<AppState>, jar: CookieJar) -> ApiResponse {
     let refresh_token = match jar.get("refresh_token") {
         Some(token) => token.value().to_owned(),
         None => {
-            return ApiResponse::Failure {
-                status: StatusCode::UNAUTHORIZED,
-                error: ApiError::Simple("Refresh token not found".to_owned()),
-            };
+          return ApiResponse::new(StatusCode::UNAUTHORIZED).message("Unauthorized".to_string())
+            .error(ApiError::new("Refresh token not found".to_string()));
         }
     };
-    match verify_refresh_token(refresh_token, &state.db_pool).await {
-        Ok(data) => set_tokens(data.1, state.db_pool).await,
-        Err(e) => e,
+    let refresh_token = match RefreshToken::from_token(refresh_token) {
+      Ok(token) => token,
+      Err(e) => {
+        return ApiResponse::new(StatusCode::UNAUTHORIZED).message("Unauthorized".to_string())
+          .error(ApiError::new(format!("Error parsing refresh token: {}", e.to_string())));
+      }
+    };
+    match refresh_token.verify(&state.db_pool).await {
+        Ok(data) => {
+          if let Ok(user_details) = Tables::Users.get_user_details(refresh_token.claims.user_id, &state.db_pool).await {
+            return set_tokens(user_details, state.db_pool).await;
+          } else {
+            return ApiResponse::new(StatusCode::UNAUTHORIZED)
+                .message("Unauthorized".to_string())
+                .error(ApiError::new(format!(
+                    "Error looking up user details: {}",
+                    data.to_string()
+                )));
+          }
+        },
+        Err(e) => {
+            return ApiResponse::new(StatusCode::UNAUTHORIZED)
+                .message("Unauthorized".to_string())
+                .error(ApiError::new(format!(
+                    "Error verifying refresh token: {}",
+                    e.to_string()
+                )));
+        },
     }
 }
 
@@ -292,30 +277,24 @@ pub async fn set_tokens(user_data: UserRow, conn: Pool<Sqlite>) -> ApiResponse {
 }
 
 pub async fn delete_user(
-    State(state): State<crate::AppState>,
-    user: AccessTokenClaims,
+    State(state): State<AppState>,
+    user: AccessToken,
     jar: CookieJar,
 ) -> ApiResponse {
-    match sqlx::query!("DELETE FROM users WHERE id = ?;", user.id)
+    match sqlx::query!("DELETE FROM users WHERE id = ?;", user.claims.user_id)
         .execute(&state.db_pool)
         .await
     {
         Ok(_) => {
             logout(jar).await;
-            ApiResponse::SuccessWithCookies {
-                status: StatusCode::OK,
-                data: Box::new(json!({
-                  "message": "User deleted successfully"
-                })),
-                cookies: vec![],
-            }
+            return ApiResponse::new(StatusCode::OK)
+                .message("User deleted successfully".to_string()).cookies(vec![]);
+            
         }
-        Err(e) => ApiResponse::Failure {
-            status: StatusCode::INTERNAL_SERVER_ERROR,
-            error: ApiError::Complex {
-                message: "Internal server error while deleting user".to_owned(),
-                error: Box::new(e.to_string()),
-            },
-        },
+        Err(e) => return ApiResponse::new(StatusCode::INTERNAL_SERVER_ERROR).message("Internal server error while deleting user".to_string())
+            .error(ApiError::new(format!(
+                "Internal server error while deleting user: {}",
+                e.to_string()
+            ))),
     }
 }

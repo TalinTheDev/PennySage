@@ -26,6 +26,10 @@ pub enum Error {
     #[from]
     PasswordHashError(argon2::password_hash::Error),
 
+    /// Error when parsing cookies
+    #[from]
+    CookieParseError(String),
+
     // SQLX errors
     /// SQLX error when interacting with the database
     #[from]

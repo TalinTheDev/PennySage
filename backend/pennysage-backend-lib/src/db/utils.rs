@@ -1,4 +1,5 @@
 use crate::db::tables::Tables;
+use crate::types::db::UserRow;
 use crate::types::lib_return::{Error, Result};
 use nanoid::nanoid;
 use sqlx::{Pool, Sqlite};
@@ -25,5 +26,24 @@ impl Tables {
                 Err(e) => return Err(Error::DatabaseError(e)),
             }
         }
+    }
+
+    pub async fn get_user_details(&self, id: String, conn: &Pool<Sqlite>) -> Result<UserRow> {
+        let result = sqlx::query!(
+            "SELECT id, username, email, password, first_name, last_name, role FROM users WHERE id = ?",
+            id
+        )
+        .fetch_one(conn)
+        .await?;
+
+        Ok(UserRow {
+            id: result.id,
+            username: result.username,
+            email: result.email,
+            password: result.password,
+            first_name: result.first_name,
+            last_name: result.last_name,
+            role: result.role,
+        })
     }
 }

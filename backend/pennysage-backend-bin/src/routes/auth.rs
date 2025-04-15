@@ -1,8 +1,6 @@
 use crate::{
     db::{gen_id, hash_password, verify_password},
     jwt::{gen_access_token, gen_refresh_token, verify_refresh_token, AccessTokenClaims},
-    routes::{ApiError, ApiResponse},
-    AppState,
 };
 use axum::{extract::State, http::StatusCode, routing::delete, routing::post, Json, Router};
 use axum_extra::extract::{
@@ -10,8 +8,11 @@ use axum_extra::extract::{
     CookieJar,
 };
 use cookie::Cookie;
+use lib::types::api_return::{ApiError, ApiResponse};
+use lib::types::{jwt::AccessToken, jwt::RefreshToken, state::AppState};
 use serde::Deserialize;
 use serde_json::json;
+use sqlx::{Pool, Sqlite};
 use validator::Validate;
 
 pub fn routes() -> Router<AppState> {
@@ -244,37 +245,50 @@ pub async fn logout(jar: CookieJar) -> CookieJar {
             .to_string(),
     )
 }
-
-pub async fn set_tokens(user_data: UserRow, db: sqlx::Pool<sqlx::Sqlite>) -> ApiResponse {
-    let access_token = match gen_access_token(user_data.id.clone(), user_data.role) {
+pub async fn set_tokens(user_data: UserRow, conn: Pool<Sqlite>) -> ApiResponse {
+    let access_token = match AccessToken::new(user_data.id.clone(), user_data.role) {
         Ok(token) => token,
-        Err(e) => return e,
+        Err(e) => {
+            return ApiResponse::new(StatusCode::INTERNAL_SERVER_ERROR)
+                .message("Internal server error while generating access token".to_string())
+                .error(ApiError::new(format!(
+                    "Internal server error while generating access token: {}",
+                    e.to_string()
+                )))
+        }
     };
-    let refresh_token = match gen_refresh_token(user_data.id, db).await {
+    let refresh_token = match RefreshToken::new(user_data.id.clone(), conn).await {
         Ok(token) => token,
-        Err(e) => return e,
+        Err(e) => {
+            return ApiResponse::new(StatusCode::INTERNAL_SERVER_ERROR)
+                .message("Internal server error while generating refresh token".to_string())
+                .error(ApiError::new(format!(
+                    "Internal server error while generating refresh token: {}",
+                    e.to_string()
+                )))
+        }
     };
-    let refresh_cookie = Cookie::build(("refresh_token", refresh_token))
+    let refresh_cookie = Cookie::build(("refresh_token", refresh_token.token))
         .secure(true)
         .http_only(true)
         .path("/api")
-        .same_site(SameSite::Strict)
+        .same_site(SameSite::Strict) //TODO: CHANGE FOR PROD
         .partitioned(true)
         .build()
         .encoded()
         .to_string();
-    ApiResponse::SuccessWithCookies {
-        status: StatusCode::OK,
-        data: Box::new(json!({
-            "access_token": access_token, "user_details": {
-            "username": user_data.username,
-            "email": user_data.email,
-            "first_name": user_data.first_name,
-            "last_name": user_data.last_name,
-            "role": user_data.role}
-        })),
-        cookies: vec![refresh_cookie],
-    }
+    ApiResponse::new(StatusCode::OK)
+        .json(json!({
+            "access_token": access_token.token,
+            "user_details": {
+                "username": user_data.username,
+                "email": user_data.email,
+                "first_name": user_data.first_name,
+                "last_name": user_data.last_name,
+                "role": user_data.role
+            }
+        }))
+        .cookies(vec![refresh_cookie])
 }
 
 pub async fn delete_user(

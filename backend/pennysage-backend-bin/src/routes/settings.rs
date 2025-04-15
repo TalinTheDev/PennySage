@@ -1,18 +1,21 @@
+use std::any::Any;
+
 use crate::{
     db::{hash_password, verify_password},
     jwt::AccessTokenClaims,
-    AppState,
 };
 use axum::{extract::State, routing::patch, Json, Router};
 use http::StatusCode;
+use lib::types::state::AppState;
 use serde::Deserialize;
 use sqlx::Row;
 use validator::Validate;
 
 use super::{
     auth::{set_tokens, UserRow},
-    ApiError, ApiResponse,
+    //    ApiError, ApiResponse,
 };
+use lib::types::api_return::{ApiError, ApiResponse};
 
 pub fn routes() -> Router<AppState> {
     Router::new()
@@ -33,15 +36,12 @@ pub struct EditReq {
 }
 
 pub async fn edit_user(
-    State(state): State<crate::AppState>,
+    State(state): State<AppState>,
     user: AccessTokenClaims,
     Json(data): Json<EditReq>,
 ) -> ApiResponse {
     if data.edits.len() == 0 {
-        return ApiResponse::Success {
-            status: StatusCode::OK,
-            data: Box::new(format!("No user details to update")),
-        };
+        return ApiResponse::new(StatusCode::OK).message("No user details to update".to_string());
     } else {
         let mut query: sqlx::QueryBuilder<'_, sqlx::Sqlite> =
             sqlx::QueryBuilder::new("UPDATE users SET ".to_owned());
@@ -66,13 +66,12 @@ pub async fn edit_user(
         query.push(" RETURNING id, username, email, password, first_name, last_name, role");
         let result = query.build().fetch_one(&state.db_pool).await;
         if let Err(e) = result {
-            return ApiResponse::Failure {
-                status: StatusCode::INTERNAL_SERVER_ERROR,
-                error: ApiError::Complex {
-                    message: "Internal server error while editing user details".to_owned(),
-                    error: Box::new(e.to_string()),
-                },
-            };
+            return ApiResponse::new(StatusCode::INTERNAL_SERVER_ERROR)
+                .message("Internal server error while editing user details".to_string())
+                .error(ApiError::new(format!(
+                    "Internal server error while editing user details: {}",
+                    e.to_string()
+                )));
         } else if let Ok(r) = result {
             let user: UserRow = UserRow {
                 id: r.get("id"),
@@ -86,11 +85,7 @@ pub async fn edit_user(
             return set_tokens(user, state.db_pool).await;
         }
     }
-
-    ApiResponse::Success {
-        status: StatusCode::OK,
-        data: Box::new("User details edited successfully"),
-    }
+    ApiResponse::new(StatusCode::OK).message("User details edited successfully".to_string())
 }
 
 #[derive(Deserialize, Validate)]
@@ -102,19 +97,42 @@ pub struct PasswordChange {
 }
 
 pub async fn change_password(
-    State(state): State<crate::AppState>,
+    State(state): State<AppState>,
     user: AccessTokenClaims,
     Json(data): Json<PasswordChange>,
-) -> Result<ApiResponse, ApiResponse> {
-    // let old_hashed = hash_password(data.old)?;
-
+) -> ApiResponse {
     match sqlx::query!("SELECT password FROM users WHERE id = ?", user.id)
         .fetch_one(&state.db_pool)
         .await
     {
+        // Old password fetched successfully from database in `old.password`
         Ok(old) => {
-            if verify_password(data.old, old.password)? {
-                let new_hash = hash_password(data.new)?;
+            // If password is valid
+            if match lib::auth::password::verify_password(data.old, old.password) {
+                Ok(val) => val,
+                Err(e) => {
+                    return ApiResponse::new(StatusCode::INTERNAL_SERVER_ERROR)
+                        .message("Internal server error while changing password".to_string())
+                        .error(ApiError::new(format!(
+                            "Internal server error while changing password: {}",
+                            e.to_string()
+                        )));
+                }
+            } {
+                // Hash the new password
+                let new_hash = match lib::auth::password::hash_password(data.new) {
+                    Ok(hash) => hash,
+                    Err(e) => {
+                        return ApiResponse::new(StatusCode::INTERNAL_SERVER_ERROR)
+                            .message("Internal server error while changing password".to_string())
+                            .error(ApiError::new(format!(
+                                "Internal server error while changing password: {}",
+                                e.to_string()
+                            )));
+                    }
+                };
+
+                // Update the password in the database
                 match sqlx::query!(
                     "UPDATE users SET password = ? WHERE id = ?",
                     new_hash,
@@ -124,36 +142,34 @@ pub async fn change_password(
                 .await
                 {
                     Ok(_) => {
-                        return Ok(ApiResponse::Success {
-                            status: StatusCode::OK,
-                            data: Box::new("Password changed successfully"),
-                        });
+                        return ApiResponse::new(StatusCode::OK)
+                            .message("Password changed successfully".to_string());
                     }
                     Err(e) => {
-                        return Err(ApiResponse::Failure {
-                            status: StatusCode::INTERNAL_SERVER_ERROR,
-                            error: ApiError::Complex {
-                                message: "Internal server error while changing password".to_owned(),
-                                error: Box::new(e.to_string()),
-                            },
-                        });
+                        return ApiResponse::new(StatusCode::INTERNAL_SERVER_ERROR)
+                            .message("Internal server error while changing password".to_string())
+                            .error(ApiError::new(format!(
+                                "Internal server error while changing password: {}",
+                                e.to_string()
+                            )));
                     }
                 }
-            } else {
-                return Ok(ApiResponse::Success {
-                    status: StatusCode::BAD_REQUEST,
-                    data: Box::new("Incorrect password"),
-                });
+            }
+            // Else if the password is invalid
+            else {
+                return ApiResponse::new(StatusCode::BAD_REQUEST)
+                    .message("Incorrect password".to_string())
+                    .error(ApiError::new("Incorrect password".to_string()));
             }
         }
+        // Error while fetching the old password from database
         Err(e) => {
-            return Err(ApiResponse::Failure {
-                status: StatusCode::INTERNAL_SERVER_ERROR,
-                error: ApiError::Complex {
-                    message: "Internal server error while changing password".to_owned(),
-                    error: Box::new(e.to_string()),
-                },
-            });
+            return ApiResponse::new(StatusCode::INTERNAL_SERVER_ERROR)
+                .message("Internal server error while changing password".to_string())
+                .error(ApiError::new(format!(
+                    "Internal server error while changing password: {}",
+                    e.to_string()
+                )));
         }
     }
 }

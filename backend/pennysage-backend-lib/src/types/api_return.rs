@@ -2,6 +2,8 @@ use axum::{
     http::StatusCode,
     response::{IntoResponse, Response},
 };
+use serde::Serialize;
+use serde_json::json;
 
 /// Represents an API response with a required status code field and other optional fields
 #[derive(Clone)]
@@ -53,7 +55,7 @@ impl ApiResponse {
 
 impl IntoResponse for ApiResponse {
     /// Converts a `ApiResponse` instance into an axum response
-    fn into_response(self) -> Response {
+    fn into_response(mut self) -> Response {
         // res_builder needs to be re-assigned every time it is used because
         // all those functions (eg. header, body, status), consume the builder
         // and return it again
@@ -67,53 +69,32 @@ impl IntoResponse for ApiResponse {
                 res_builder = res_builder.header("Set-Cookie", cookie);
             }
         }
-
-        // If a field is present, add it to the body of the response
-        // If that fails, return an internal server error
-
-        if let Some(message) = self.message {
-            match res_builder.body(message.into()) {
-                Ok(body) => return body,
-                Err(_) => {
-                    let mut response = Response::new("Internal Server Error".into());
-                    *response.status_mut() = StatusCode::INTERNAL_SERVER_ERROR;
-                    return response;
-                }
-            }
-        }
-
-        if let Some(json) = self.json {
-            match res_builder.body(json.to_string().into()) {
-                Ok(body) => return body,
-                Err(_) => {
-                    let mut response = Response::new("Internal Server Error".into());
-                    *response.status_mut() = StatusCode::INTERNAL_SERVER_ERROR;
-                    return response;
-                }
-            }
-        }
-
-        if let Some(error) = self.error {
-            match res_builder.body(error.message.into()) {
-                Ok(body) => return body,
-                Err(_) => {
-                    let mut response = Response::new("Internal Server Error".into());
-                    *response.status_mut() = StatusCode::INTERNAL_SERVER_ERROR;
-                    return response;
-                }
-            }
-        }
-        // If there are no fields set, return a default response with status code
-        else {
-            let mut response = Response::new("Nothing to say".into());
-            *response.status_mut() = self.status;
-            return response;
+        let body = json!({
+            "message": self.message.get_or_insert("Nothing to say".to_string()),
+            "data": self.json.get_or_insert(json!(null)),
+            "error": self.error.get_or_insert(ApiError::new(json!(null).to_string())),
+        });
+        match res_builder.body(body.to_string().into()) {
+            Ok(res) => res,
+            Err(e) => Response::builder()
+                .status(StatusCode::INTERNAL_SERVER_ERROR)
+                .header("Content-Type", "application/json")
+                .body(
+                    json!({
+                        "message": "Internal server error",
+                        "json": json!(null),
+                        "error": ApiError::new(e.to_string())
+                    })
+                    .to_string()
+                    .into(),
+                )
+                .unwrap(),
         }
     }
 }
 
 /// Represents an error in the API response
-#[derive(Clone)]
+#[derive(Clone, Serialize)]
 pub struct ApiError {
     /// Holds the error message
     pub message: String,

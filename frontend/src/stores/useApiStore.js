@@ -65,7 +65,7 @@ export const useApiStore = defineStore("useApiStore", () => {
           .post("/auth/refresh_tokens")
           .then(({ data }) => {
             console.log("refreshed token");
-            user.login(data.user_details, data.access_token);
+            user.login(data.data.user_details, data.data.access_token);
             let request = error.config;
             api.value
               .request(request)

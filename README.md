@@ -9,7 +9,7 @@
 5. Open project in the dev container using the configured file.
 6. In the container, run `sqlx database setup --source ./pennysage-backend-lib/migrations/` in `./backend` to create the dev database and run migrations.
 7. Start backend server by running `cargo run` in the `./backend` directory.
-8. Start frontend server by running `pnpm dev` in the `./frontend` directory.
+8. Start frontend server by running `pnpm install && pnpm dev` in the `./frontend` directory.
 
 ## Notes
 

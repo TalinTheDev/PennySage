@@ -11,6 +11,13 @@
 7. Start backend server by running `cargo run` in the `./backend` directory.
 8. Start frontend server by running `pnpm install && pnpm dev` in the `./frontend` directory.
 
+## Docker Compose Deployment
+
+1. Open project in WSL
+2. In the project root, run `docker compose up --build` the first time
+3. Run `docker compose down` to stop the servers
+4. Run `docker compose up` to start the servers each subsequent time
+
 ## Notes
 
 - DO NOT RUN any git commands from within the dev container. Doing so will mess up file permissions.

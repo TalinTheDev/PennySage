@@ -7,7 +7,7 @@
 # Want to help us make this template better? Share your feedback here: https://forms.gle/ybq9Krt8jtBL3iCk7
 
 ARG RUST_VERSION=1.84
-ARG APP_NAME=pennysage-backend
+ARG APP_NAME=pennysage-backend-bin
 
 ################################################################################
 # Create a stage for building the application.
@@ -30,7 +30,6 @@ ENV DATABASE_URL=${DATABASE_URL}
 RUN apk add clang lld musl-dev git
 
 RUN cargo install sqlx-cli --no-default-features --features sqlite --root ${CARGO_INSTALL_ROOT}
-RUN echo "Cargo Bin: ${CARGO_INSTALL_ROOT}" && ls ${CARGO_INSTALL_ROOT}/bin
 ENV PATH=${CARGO_INSTALL_ROOT}/bin:$PATH
 
 # Build the application.
@@ -41,16 +40,17 @@ ENV PATH=${CARGO_INSTALL_ROOT}/bin:$PATH
 # Leverage a bind mount to the src directory to avoid having to copy the
 # source code into the container. Once built, copy the executable to an
 # output directory before the cache mounted /app/target is unmounted.
-RUN --mount=type=bind,source=src,target=src \
+RUN --mount=type=bind,source=pennysage-backend-bin,target=pennysage-backend-bin \
+    --mount=type=bind,source=pennysage-backend-lib,target=pennysage-backend-lib \
     --mount=type=bind,source=Cargo.toml,target=Cargo.toml \
     --mount=type=bind,source=Cargo.lock,target=Cargo.lock \
-    --mount=type=bind,source=migrations,target=migrations \
+    --mount=type=bind,source=pennysage-backend-lib/migrations,target=migrations \
     --mount=type=cache,target=/app/target/ \
     --mount=type=cache,target=/usr/local/cargo/git/db \
     --mount=type=cache,target=/usr/local/cargo/registry/ \
     mkdir ${DATABASE_DIR} && \
     touch ${DATABASE_FILE} && \
-    sqlx database create && sqlx migrate run && \
+    sqlx database setup && \
     cargo build --locked --release && \
     cp ./target/release/$APP_NAME /bin/server
 

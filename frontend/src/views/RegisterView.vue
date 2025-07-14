@@ -98,7 +98,7 @@
         last_name: lastName.value,
         password: password.value
       })
-      .then((data) => {
+      .then(({ data }) => {
         userStore.login(data.user_details, data.access_token);
         router.push({ name: "dashboard" });
       })

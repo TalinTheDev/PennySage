@@ -42,7 +42,7 @@
   const getAnalyticsData = () => {
     api
       .get("/analytics/analytics")
-      .then((response) => {
+      .then(({ data }) => {
         /*
          * Reversing done for display purposes (latest data on the right)
          * Can't be done by using a different ordering in SQL query as that results in opposite end of dates being
@@ -52,7 +52,7 @@
           label: " Debit Balance", // Space needed in front of label for formatting
           data: []
         });
-        response.monthly_debit_balance_for_last_6_months.reverse().forEach((item) => {
+        data.monthly_debit_balance_for_last_6_months.reverse().forEach((item) => {
           monthly_debit_balance_for_last_6_months.value.labels.push(
             new Date(item.date).toLocaleString("default", { month: "long" })
           );
@@ -63,7 +63,7 @@
           label: " Balance", // Space needed in front of label for formatting
           data: []
         });
-        response.net_balance_for_past_5_years.reverse().forEach((item) => {
+        data.net_balance_for_past_5_years.reverse().forEach((item) => {
           net_balance_for_past_5_years.value.labels.push(item.year);
           net_balance_for_past_5_years.value.datasets[0].data.push(item.balance);
         });

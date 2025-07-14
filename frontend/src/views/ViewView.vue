@@ -52,13 +52,12 @@
     loading.value = true;
     api
       .get("/transactions/all")
-      .then((data) => {
-        data.forEach((transaction) => {
+      .then(({ data }) => {
+        data.transactions.forEach((transaction) => {
           transaction.date = new Date(transaction.date);
           mappedTransactions.value.set(transaction.id, transaction);
         });
         transactions.value = Array.from(mappedTransactions.value.values());
-        loading.value = false;
       })
       .catch((error) => {
         toast.add({
@@ -67,8 +66,8 @@
           detail: error.message,
           life: 3000
         });
-        loading.value = false;
       });
+    loading.value = false;
   };
 
   const deleteTransactions = () => {

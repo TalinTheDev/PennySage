@@ -76,7 +76,7 @@
         .patch("/settings/editUser", {
           edits: edits
         })
-        .then((data) => {
+        .then(({ data }) => {
           toast.add({
             severity: "info",
             summary: "User Details Edited",

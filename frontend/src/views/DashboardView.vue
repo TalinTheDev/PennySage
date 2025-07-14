@@ -81,12 +81,12 @@
   const getAnalyticsData = () => {
     api
       .get("/analytics/dashboard")
-      .then((response) => {
+      .then(({ data }) => {
         amount_per_category_current_month.value.datasets.push({
           label: " Balance", // Space needed in front of label for formatting
           data: []
         });
-        response.amount_per_category_current_month.forEach((item) => {
+        data.amount_per_category_current_month.forEach((item) => {
           amount_per_category_current_month.value.labels.push(item.category);
           amount_per_category_current_month.value.datasets[0].data.push(item.balance);
         });
@@ -95,7 +95,7 @@
           label: " Amount Spent", // Space needed in front of label for formatting
           data: []
         });
-        response.top_categories_for_amount_spent_for_current_month.forEach((item) => {
+        data.top_categories_for_amount_spent_for_current_month.forEach((item) => {
           top_categories_for_amount_spent_for_current_month.value.labels.push(item.category);
           top_categories_for_amount_spent_for_current_month.value.datasets[0].data.push(
             item.amount
@@ -106,26 +106,26 @@
           label: " Balance", // Space needed in front of label for formatting
           data: []
         });
-        response.current_month_balance_compared_to_last_year.forEach((item) => {
+        data.current_month_balance_compared_to_last_year.forEach((item) => {
           current_month_balance_compared_to_last_year.value.labels.push(item.year);
           current_month_balance_compared_to_last_year.value.datasets[0].data.push(item.balance);
         });
 
-        response.last_months_balance_by_source.forEach((item) => {
+        data.last_months_balance_by_source.forEach((item) => {
           last_months_balance_by_source.value.push({
             source: item.source,
             balance: `${parseFloat(item.balance) < 0 ? "-" : ""}$${Math.abs(parseFloat(item.balance)).toFixed(2)}`
           });
         });
 
-        response.current_months_balance_by_source.forEach((item) => {
+        data.current_months_balance_by_source.forEach((item) => {
           current_months_balance_by_source.value.push({
             source: item.source,
             balance: `${parseFloat(item.balance) < 0 ? "-" : ""}$${Math.abs(parseFloat(item.balance)).toFixed(2)}`
           });
         });
 
-        let credit_debit_balance = response.current_months_credit_debit_balance;
+        let credit_debit_balance = data.current_months_credit_debit_balance;
         current_months_credit_debit_balance.value.push({
           credit: `$${parseFloat(credit_debit_balance.credit).toFixed(2)}`,
           debit: `$${parseFloat(credit_debit_balance.debit).toFixed(2)}`,
@@ -136,7 +136,7 @@
           label: " Savings", // Space needed in front of label for formatting
           data: []
         });
-        response.average_savings.reverse().forEach((item) => {
+        data.average_savings.reverse().forEach((item) => {
           average_savings.value.labels.push(
             Intl.DateTimeFormat("en", { year: "numeric", month: "short" }).format(
               new Date(item.year, item.month - 1)

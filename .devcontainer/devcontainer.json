@@ -1,26 +1,13 @@
 {
-  "name": "PennySage (Dev)",
-  "build": {
-    "dockerfile": "Dockerfile"
-  },
-  "workspaceFolder": "/workspaces/PennySage",
-  "forwardPorts": [80, 3000],
-  "settings": {
-    "terminal.integrated.defaultProfile.linux": "bash"
-  },
-  "extensions": [
-    "streetsidesoftware.code-spell-checker",
-    "kamikillerto.vscode-colorize",
-    "fill-labs.dependi",
-    "dbaeumer.vscode-eslint",
-    "tamasfe.even-better-toml",
-    "christian-kohler.path-intellisense",
-    "esbenp.prettier-vscode",
-    "mechatroner.rainbow-csv",
-    "pucelle.run-on-save",
-    "rust-lang.rust-analyzer",
-    "Breadnaught.vscode-ignore",
-    "Vue.volar",
-    "ms-azuretools.vscode-docker"
-  ]
+	"name": "${localWorkspaceFolderBasename}",
+	"build": {
+		"dockerfile": "Dockerfile",
+		"args": {
+			"USER": "${localEnv:USER:talin}",
+			"HOME": "${localEnv:HOME:/home/talin}"
+		}
+	},
+	"remoteUser": "${localEnv:USER:talin}",
+	"workspaceMount": "source=${localWorkspaceFolder},target=/home/${localEnv:USER:talin}/Projects/${localWorkspaceFolderBasename},type=bind",
+	"workspaceFolder": "/home/${localEnv:USER:talin}/Projects/${localWorkspaceFolderBasename}"
 }

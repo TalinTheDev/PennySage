@@ -13,7 +13,7 @@ services:
     ports:
       - 3000:3000
     volumes:
-      - db-data:/bin/pennysage/
+      - db-data:${DATABASE_DIR}
     env_file:
       - path: ../.env
         required: true

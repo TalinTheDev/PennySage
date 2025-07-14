@@ -63,6 +63,6 @@ COPY --from=build /usr/src/app/dist  /usr/share/nginx/html
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 
 # Expose the default Nginx port
-EXPOSE 80
+EXPOSE 1234
 
 CMD ["nginx", "-g", "daemon off;"]

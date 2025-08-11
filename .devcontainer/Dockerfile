@@ -49,4 +49,4 @@ RUN pacman -S --noconfirm --needed pnpm
 USER $USER
 
 # Expose any required ports (e.g., frontend, backend)
-EXPOSE 1234 3000
+EXPOSE 5173

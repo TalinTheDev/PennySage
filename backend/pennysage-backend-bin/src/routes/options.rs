@@ -1,4 +1,9 @@
-use axum::{extract::State, http::StatusCode, routing::get, Router};
+use axum::{
+    extract::State,
+    http::StatusCode,
+    routing::{get, post},
+    Router,
+};
 use lib::types::{
     api_return::{ApiError, ApiResponse},
     jwt::AccessToken,
@@ -8,7 +13,9 @@ use serde::Serialize;
 use serde_json::json;
 
 pub fn routes() -> Router<AppState> {
-    Router::new().route("/get", get(get_options))
+    Router::new()
+        .route("/get", get(get_options))
+        .route("/new", post(new))
 }
 
 #[derive(Clone, Serialize)]
@@ -47,5 +54,48 @@ pub async fn get_options(State(state): State<AppState>, user: AccessToken) -> Ap
                     )))
             }
         },
+    }
+}
+
+#[axum::debug_handler]
+pub async fn new(
+    State(state): State<AppState>,
+    user: AccessToken,
+    Json(option): Json<OptionItem>,
+) -> ApiResponse {
+    let option_id = match Tables::Options.get_id(&state.db_pool).await {
+        Ok(id) => id,
+        Err(e) => {
+            return ApiResponse::new(StatusCode::INTERNAL_SERVER_ERROR)
+                .message("Internal server error while generating option ID".to_string())
+                .error(ApiError::new(format!(
+                    "Internal server error while generating option ID: {}",
+                    e.to_string()
+                )));
+        }
+    };
+    match sqlx::query!(
+        "INSERT INTO options (id, user_id, value, type) VALUES (?, ?, ?, ?);",
+        option_id,
+        user.claims.user_id,
+        option.value,
+        option.r#type
+    )
+    .execute(&state.db_pool)
+    .await
+    {
+        Ok(_) => {
+            return ApiResponse::new(StatusCode::OK)
+                .message("Option added successfully.")
+                .json(json!({"option_id": option_id}));
+        }
+        Err(e) => {
+            return ApiResponse::new(StatusCode::INTERNAL_SERVER_ERROR)
+                .message("Internal server error while adding option".to_string())
+                .error(ApiError::new(format!(
+                    "Internal server error while adding option: {}",
+                    e.to_string()
+                )));
+        }
     }
 }

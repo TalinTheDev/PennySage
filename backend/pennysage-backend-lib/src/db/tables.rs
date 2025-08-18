@@ -13,4 +13,5 @@ pub enum Tables {
     Transactions,
     TransactionItems,
     RefreshTokens,
+    Options,
 }

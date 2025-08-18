@@ -35,3 +35,6 @@ coverage
 target
 .env
 pennysage-dev.db*
+
+# Yazi
+.Trash-1000/

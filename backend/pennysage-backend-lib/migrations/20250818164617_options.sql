@@ -1,0 +1,11 @@
+-- Add migration script here
+
+CREATE TABLE IF NOT EXISTS options (
+  id TEXT NOT NULL UNIQUE PRIMARY KEY,
+  user_id TEXT NOT NULL,
+
+  value TEXT NOT NULL,
+  type TEXT NOT NULL CHECK(type IN ('M', 'C', 'S')),
+  
+  FOREIGN KEY(user_id) REFERENCES users(id) ON UPDATE CASCADE ON DELETE SET NULL
+) WITHOUT ROWID;

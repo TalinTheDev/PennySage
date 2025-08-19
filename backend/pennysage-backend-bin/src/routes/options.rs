@@ -2,14 +2,15 @@ use axum::{
     extract::State,
     http::StatusCode,
     routing::{get, post},
-    Router,
+    Json, Router,
 };
+use lib::db::tables::Tables;
 use lib::types::{
     api_return::{ApiError, ApiResponse},
     jwt::AccessToken,
     state::AppState,
 };
-use serde::Serialize;
+use serde::{Deserialize, Serialize};
 use serde_json::json;
 
 pub fn routes() -> Router<AppState> {
@@ -18,7 +19,7 @@ pub fn routes() -> Router<AppState> {
         .route("/new", post(new))
 }
 
-#[derive(Clone, Serialize)]
+#[derive(Clone, Serialize, Deserialize)]
 pub struct OptionItem {
     pub value: String,
     pub r#type: String,
@@ -63,7 +64,7 @@ pub async fn new(
     user: AccessToken,
     Json(option): Json<OptionItem>,
 ) -> ApiResponse {
-    let option_id = match Tables::Options.get_id(&state.db_pool).await {
+    let option_id = match Tables::Options.gen_id(&state.db_pool).await {
         Ok(id) => id,
         Err(e) => {
             return ApiResponse::new(StatusCode::INTERNAL_SERVER_ERROR)
@@ -86,7 +87,7 @@ pub async fn new(
     {
         Ok(_) => {
             return ApiResponse::new(StatusCode::OK)
-                .message("Option added successfully.")
+                .message("Option added successfully.".to_string())
                 .json(json!({"option_id": option_id}));
         }
         Err(e) => {

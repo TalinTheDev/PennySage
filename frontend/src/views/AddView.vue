@@ -8,6 +8,7 @@
   import { useApiStore } from "@/stores/useApiStore.js";
   import { useRouter } from "vue-router";
   import InputText from "primevue/inputtext";
+  import AutoComplete from "primevue/autocomplete";
   import DatePicker from "primevue/datepicker";
   import InputNumber from "primevue/inputnumber";
   import FileUpload from "primevue/fileupload";
@@ -21,8 +22,17 @@
   let date = "0000-00-00T00:00:00.000Z";
   const amount = ref(0.0);
   const merchant = ref("");
+  const merchantOptionsAll = ref([]);
+  const merchantOptions = ref([]);
+  const categoryOptionsAll = ref([]);
+  const categoryOptions = ref([]);
+  const sourceOptionsAll = ref([]);
+  const sourceOptions = ref([]);
   const category = ref("");
   const paymentSource = ref("");
+  const newMOption = ref("");
+  const newCOption = ref("");
+  const newSOption = ref("");
 
   const fileupload = ref();
 
@@ -98,11 +108,11 @@
         desc: description.value,
         date: date,
         amount: amount.value.toString(),
-        merchant: merchant.value,
-        category: category.value,
-        payment_source: paymentSource.value
+        merchant: merchant.value.value ? merchant.value.value : merchant.value,
+        category: category.value.value ? category.value.value : category.value,
+        payment_source: paymentSource.value.value ? paymentSource.value.value : paymentSource.value
       })
-      .then((data) => {
+      .then(({ data }) => {
         toast.add({
           severity: "info",
           summary: "Transaction Added",
@@ -120,7 +130,66 @@
         });
       });
   };
-
+  const handleNewMOption = () => {
+    api
+      .post("/options/new", { value: newMOption.value, type: "M" })
+      .then(({ data }) => {
+        toast.add({
+          severity: "info",
+          summary: "Merchant Option Added",
+          detail: `ID: ${data.option_id}`,
+          life: 3000
+        });
+      })
+      .catch((error) => {
+        toast.add({
+          severity: "error",
+          summary: "Error adding merchant option",
+          detail: error.message,
+          life: 3000
+        });
+      });
+  };
+  const handleNewCOption = () => {
+    api
+      .post("/options/new", { value: newCOption.value, type: "C" })
+      .then(({ data }) => {
+        toast.add({
+          severity: "info",
+          summary: "Category Option Added",
+          detail: `ID: ${data.option_id}`,
+          life: 3000
+        });
+      })
+      .catch((error) => {
+        toast.add({
+          severity: "error",
+          summary: "Error adding category option",
+          detail: error.message,
+          life: 3000
+        });
+      });
+  };
+  const handleNewSOption = () => {
+    api
+      .post("/options/new", { value: newSOption.value, type: "S" })
+      .then(({ data }) => {
+        toast.add({
+          severity: "info",
+          summary: "Source Option Added",
+          detail: `ID: ${data.option_id}`,
+          life: 3000
+        });
+      })
+      .catch((error) => {
+        toast.add({
+          severity: "error",
+          summary: "Error adding source option",
+          detail: error.message,
+          life: 3000
+        });
+      });
+  };
   const handleImportTransactions = () => {
     const config = { headers: { "Content-Type": "multipart/form-data" } };
     const form = new FormData();
@@ -145,6 +214,31 @@
         });
       });
   };
+
+  const search = (e, t) => {
+    switch (t) {
+      case "m":
+        merchantOptions.value = merchantOptionsAll.value.filter(
+          (option) => option.value.toLowerCase().search(e.query.toLowerCase()) > -1
+        );
+        break;
+      case "c":
+        categoryOptions.value = categoryOptionsAll.value.filter(
+          (option) => option.value.toLowerCase().search(e.query.toLowerCase()) > -1
+        );
+        break;
+      case "s":
+        sourceOptions.value = sourceOptionsAll.value.filter(
+          (option) => option.value.toLowerCase().search(e.query.toLowerCase()) > -1
+        );
+        break;
+    }
+  };
+  api.get("/options/get").then(({ data }) => {
+    merchantOptionsAll.value = data.options.filter((option) => option.type == "M");
+    categoryOptionsAll.value = data.options.filter((option) => option.type == "C");
+    sourceOptionsAll.value = data.options.filter((option) => option.type == "S");
+  });
 </script>
 <template>
   <AppLayout>
@@ -201,12 +295,19 @@
         </div>
         <div class="columns">
           <InputBox name="Merchant">
-            <InputText
+            <AutoComplete
               fluid
               id="merchant"
               v-model="merchant"
               placeholder="Merchant"
               required
+              :suggestions="merchantOptions"
+              optionLabel="value"
+              @complete="
+                (event) => {
+                  search(event, 'm');
+                }
+              "
               @blur="
                 (event) => {
                   validate(event.target, 'Merchant');
@@ -214,12 +315,19 @@
               " />
           </InputBox>
           <InputBox name="Category">
-            <InputText
+            <AutoComplete
               fluid
               id="category"
               v-model="category"
               placeholder="Category"
               required
+              optionLabel="value"
+              :suggestions="categoryOptions"
+              @complete="
+                (event) => {
+                  search(event, 'c');
+                }
+              "
               @blur="
                 (event) => {
                   validate(event.target, 'Category');
@@ -227,12 +335,19 @@
               " />
           </InputBox>
           <InputBox name="Payment Source">
-            <InputText
+            <AutoComplete
               fluid
               id="paymentSource"
+              optionLabel="value"
               v-model="paymentSource"
               placeholder="Payment Source"
               required
+              :suggestions="sourceOptions"
+              @complete="
+                (event) => {
+                  search(event, 's');
+                }
+              "
               @blur="
                 (event) => {
                   validate(event.target, 'Payment Source');
@@ -267,6 +382,61 @@
         </div>
       </template>
     </Card>
+    <Card>
+      <template #header>
+        <span class="formHeader">Add Options</span>
+      </template>
+      <template #content>
+        <div class="columns">
+          <InputBox name="newMOption">
+            <InputText
+              fluid
+              id="newMOption"
+              v-model="newMOption"
+              placeholder="New Merchant Option"
+              required
+              @blur="
+                (event) => {
+                  validate(event.target, 'MerchantOption');
+                }
+              " />
+          </InputBox>
+          <Button @click="handleNewMOption">Add Merchant</Button>
+        </div>
+        <div class="columns">
+          <InputBox name="newCOption">
+            <InputText
+              fluid
+              id="newCOption"
+              v-model="newCOption"
+              placeholder="New Category Option"
+              required
+              @blur="
+                (event) => {
+                  validate(event.target, 'CategoryOption');
+                }
+              " />
+          </InputBox>
+          <Button @click="handleNewCOption">Add Category</Button>
+        </div>
+        <div class="columns">
+          <InputBox name="newSOption">
+            <InputText
+              fluid
+              id="newSOption"
+              v-model="newSOption"
+              placeholder="New Source Option"
+              required
+              @blur="
+                (event) => {
+                  validate(event.target, 'SourceOption');
+                }
+              " />
+          </InputBox>
+          <Button @click="handleNewSOption">Add Source</Button>
+        </div>
+      </template>
+    </Card>
   </AppLayout>
 </template>
 <style scoped>
@@ -286,5 +456,10 @@
   }
   .inputSubmit {
     grid-area: inputSubmit;
+  }
+  #merchant *,
+  #category *,
+  #paymentSource * {
+    width: 100%;
   }
 </style>

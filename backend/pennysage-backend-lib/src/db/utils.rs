@@ -14,6 +14,7 @@ impl Tables {
             Tables::Transactions => query.push_str(" transactions WHERE id = ?"),
             Tables::TransactionItems => query.push_str(" transaction_items WHERE id = ?"),
             Tables::RefreshTokens => query.push_str(" refresh_tokens WHERE id = ?"),
+            Tables::Options => query.push_str(" options WHERE id = ?"),
         }
 
         let mut id;

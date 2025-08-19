@@ -162,11 +162,10 @@
         id: newData.id,
         edits: edits
       })
-      .then((data) => {
+      .then(() => {
         toast.add({
           severity: "info",
           summary: "Transaction Edited",
-          detail: data,
           life: 3000
         });
 

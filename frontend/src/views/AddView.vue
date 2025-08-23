@@ -297,7 +297,7 @@
           <InputBox name="Merchant">
             <AutoComplete
               fluid
-              id="merchant"
+              dropdown
               v-model="merchant"
               placeholder="Merchant"
               required
@@ -317,12 +317,12 @@
           <InputBox name="Category">
             <AutoComplete
               fluid
-              id="category"
               v-model="category"
               placeholder="Category"
               required
               optionLabel="value"
               :suggestions="categoryOptions"
+              dropdown
               @complete="
                 (event) => {
                   search(event, 'c');
@@ -337,7 +337,7 @@
           <InputBox name="Payment Source">
             <AutoComplete
               fluid
-              id="paymentSource"
+              dropdown
               optionLabel="value"
               v-model="paymentSource"
               placeholder="Payment Source"

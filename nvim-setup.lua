@@ -10,7 +10,8 @@ return {
 		markdown_oxide = {},
 		sqlls = {},
 		taplo = {},
-		volar = {},
+		vue_ls = {},
+		vtsls = {},
 		yamlls = {},
 	},
 	mason = {

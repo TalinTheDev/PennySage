@@ -51,7 +51,7 @@
   const getTransactions = () => {
     loading.value = true;
     api
-      .get("/transactions/all")
+      .get("/transactions/all?first=0&count=10000")
       .then(({ data }) => {
         data.transactions.forEach((transaction) => {
           transaction.date = new Date(transaction.date);

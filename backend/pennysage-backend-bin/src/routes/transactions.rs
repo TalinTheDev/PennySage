@@ -1,6 +1,5 @@
 use axum::{
-    extract::Multipart,
-    extract::State,
+    extract::{Multipart, Query, State},
     http::StatusCode,
     routing::{delete, get, patch, post},
     Json, Router,
@@ -193,6 +192,7 @@ pub struct TransactionRowWithItems {
 #[derive(Clone, Serialize)]
 pub struct TransactionsRes {
     transaction: TransactionRowWithItems,
+    count: i64,
 }
 
 #[derive(Clone, Serialize)]
@@ -202,10 +202,45 @@ pub struct TransactionItem {
     pub category: String,
 }
 
-pub async fn get_transactions(State(state): State<AppState>, user: AccessToken) -> ApiResponse {
+#[derive(Clone, Serialize)]
+pub struct TransactionCount {
+    pub count: i64,
+}
+
+#[derive(Deserialize)]
+pub struct GetReq {
+    pub first: i64,
+    pub count: i64,
+}
+
+pub async fn get_transactions(
+    State(state): State<AppState>,
+    user: AccessToken,
+    Query(page): Query<GetReq>,
+) -> ApiResponse {
     let mut results: Vec<TransactionRowWithItems> = Vec::new();
-    match sqlx::query_as!(TransactionRow, "SELECT id, description AS desc, date, credit_amount, debit_amount, merchant, category, payment_source FROM transactions WHERE user_id = ?;", user.claims.user_id).fetch_all(&state.db_pool).await {
+    let t_count: i64;
+    match sqlx::query_as!(
+        TransactionCount,
+        "SELECT COUNT(1) as count FROM transactions WHERE user_id = ?",
+        user.claims.user_id
+    )
+    .fetch_one(&state.db_pool)
+    .await
+    {
+        Ok(count) => t_count = count.count,
+        Err(e) => {
+            return ApiResponse::new(StatusCode::INTERNAL_SERVER_ERROR)
+                .message("Internal server error while fetching transactions".to_string())
+                .error(ApiError::new(format!(
+                    "Could not fetch transaction items from database (internal server error): {}",
+                    e.to_string()
+                )))
+        }
+    }
+    match sqlx::query_as!(TransactionRow, "SELECT id, description AS desc, date, credit_amount, debit_amount, merchant, category, payment_source FROM transactions WHERE user_id = ? LIMIT ? OFFSET ?;", user.claims.user_id, page.count, page.first).fetch_all(&state.db_pool).await {
         Ok(rows) => {
+
             for row in rows.iter(){
               let amount;
               if row.credit_amount > 0.00 {
@@ -233,7 +268,7 @@ pub async fn get_transactions(State(state): State<AppState>, user: AccessToken) 
                     }
                 }
             }
-            ApiResponse::new(StatusCode::OK).message("Transactions fetched successfully".to_string()).json(json!({"transactions": results}))
+            ApiResponse::new(StatusCode::OK).message("Transactions fetched successfully".to_string()).json(json!({"transactions": results, "count": t_count}))
         },
         Err(e) => match e {
             sqlx::Error::RowNotFound => ApiResponse::new(StatusCode::OK).message("Transactions fetched successfully".to_string()).json(json!({"transactions": results})),

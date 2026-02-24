@@ -26,6 +26,9 @@ pub async fn create_db_pool() -> Result<(String, sqlx::SqlitePool)> {
         .connect(&db_url)
         .await?;
     sqlx::migrate!().run(&pool).await?;
+    sqlx::query("PRAGMA journal_mode = WAL;")
+        .execute(&pool)
+        .await?;
     return Ok((db_url, pool));
 }
 
